@@ -20,4 +20,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>SQL SERVER/script.sql</name>
+			<type>1</type>
+			<location>C:/Users/ASUS/Documents/script.sql</location>
+		</link>
+	</linkedResources>
 </projectDescription>
