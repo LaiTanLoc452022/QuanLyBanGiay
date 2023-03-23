@@ -28,4 +28,7 @@ public class GetDatabase {
 			e.printStackTrace();
 		}
 	}
+	public static void main(String[] args) {
+		Connection C=GetDatabase.getConnection();
+	}
 }
