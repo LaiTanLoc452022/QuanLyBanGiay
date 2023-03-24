@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 24, 2023, 8:47:13 AM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="entity1.Khachhang" table="khachhang" catalog="cuahangbangiay" optimistic-lock="version">
+        <id name="idkhachHang" type="int">
+            <column name="IDKhachHang" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="the" class="entity1.The" fetch="select">
+            <column name="IDThe" />
+        </many-to-one>
+        <property name="ngayLapThe" type="date">
+            <column name="NgayLapThe" length="10" />
+        </property>
+        <property name="hoVaTen" type="string">
+            <column name="HoVaTen" length="100" />
+        </property>
+        <property name="gioiTinh" type="string">
+            <column name="GioiTinh" length="100" />
+        </property>
+        <property name="ngaySinh" type="date">
+            <column name="NgaySinh" length="10" />
+        </property>
+        <property name="diaChi" type="string">
+            <column name="DiaChi" length="100" />
+        </property>
+        <set name="hoadons" table="hoadon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDKhachHang" />
+            </key>
+            <one-to-many class="entity1.Hoadon" />
+        </set>
+    </class>
+</hibernate-mapping>

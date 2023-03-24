@@ -1,5 +1,5 @@
 package entity1;
-// Generated Mar 23, 2023, 7:01:00 PM by Hibernate Tools 4.3.6.Final
+// Generated Mar 24, 2023, 8:47:13 AM by Hibernate Tools 4.3.6.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -22,14 +24,13 @@ import javax.persistence.UniqueConstraint;
 public class Nhanvien implements java.io.Serializable {
 
 	private int idnhanVien;
+	private Loainv loainv;
 	private String hoVaTen;
 	private Integer sdt;
 	private Date ngaySinh;
 	private String email;
 	private Double luong;
-	private Set<Nhanvienbanhang> nhanvienbanhangs = new HashSet<Nhanvienbanhang>(0);
 	private Set<Phieunhap> phieunhaps = new HashSet<Phieunhap>(0);
-	private Set<Nhanvienquanlykho> nhanvienquanlykhos = new HashSet<Nhanvienquanlykho>(0);
 	private Set<Hoadon> hoadons = new HashSet<Hoadon>(0);
 	private Set<Nguoidung> nguoidungs = new HashSet<Nguoidung>(0);
 
@@ -40,18 +41,16 @@ public class Nhanvien implements java.io.Serializable {
 		this.idnhanVien = idnhanVien;
 	}
 
-	public Nhanvien(int idnhanVien, String hoVaTen, Integer sdt, Date ngaySinh, String email, Double luong,
-			Set<Nhanvienbanhang> nhanvienbanhangs, Set<Phieunhap> phieunhaps, Set<Nhanvienquanlykho> nhanvienquanlykhos,
-			Set<Hoadon> hoadons, Set<Nguoidung> nguoidungs) {
+	public Nhanvien(int idnhanVien, Loainv loainv, String hoVaTen, Integer sdt, Date ngaySinh, String email,
+			Double luong, Set<Phieunhap> phieunhaps, Set<Hoadon> hoadons, Set<Nguoidung> nguoidungs) {
 		this.idnhanVien = idnhanVien;
+		this.loainv = loainv;
 		this.hoVaTen = hoVaTen;
 		this.sdt = sdt;
 		this.ngaySinh = ngaySinh;
 		this.email = email;
 		this.luong = luong;
-		this.nhanvienbanhangs = nhanvienbanhangs;
 		this.phieunhaps = phieunhaps;
-		this.nhanvienquanlykhos = nhanvienquanlykhos;
 		this.hoadons = hoadons;
 		this.nguoidungs = nguoidungs;
 	}
@@ -65,6 +64,16 @@ public class Nhanvien implements java.io.Serializable {
 
 	public void setIdnhanVien(int idnhanVien) {
 		this.idnhanVien = idnhanVien;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IDLoai")
+	public Loainv getLoainv() {
+		return this.loainv;
+	}
+
+	public void setLoainv(Loainv loainv) {
+		this.loainv = loainv;
 	}
 
 	@Column(name = "HoVaTen", length = 0)
@@ -114,30 +123,12 @@ public class Nhanvien implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nhanvien")
-	public Set<Nhanvienbanhang> getNhanvienbanhangs() {
-		return this.nhanvienbanhangs;
-	}
-
-	public void setNhanvienbanhangs(Set<Nhanvienbanhang> nhanvienbanhangs) {
-		this.nhanvienbanhangs = nhanvienbanhangs;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nhanvien")
 	public Set<Phieunhap> getPhieunhaps() {
 		return this.phieunhaps;
 	}
 
 	public void setPhieunhaps(Set<Phieunhap> phieunhaps) {
 		this.phieunhaps = phieunhaps;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nhanvien")
-	public Set<Nhanvienquanlykho> getNhanvienquanlykhos() {
-		return this.nhanvienquanlykhos;
-	}
-
-	public void setNhanvienquanlykhos(Set<Nhanvienquanlykho> nhanvienquanlykhos) {
-		this.nhanvienquanlykhos = nhanvienquanlykhos;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nhanvien")
