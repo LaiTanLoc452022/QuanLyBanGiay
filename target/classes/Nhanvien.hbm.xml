@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Mar 30, 2023, 4:22:14 PM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="cuahangbangiay" name="entity1.Nhanvien" optimistic-lock="none" table="nhanvien">
+        <id name="idnhanVien" type="java.lang.Integer">
+            <column name="IDNhanVien"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="entity1.Loainv" fetch="select" name="loainv">
+            <column name="IDLoai"/>
+        </many-to-one>
+        <property name="hoVaTen" type="string">
+            <column length="0" name="HoVaTen"/>
+        </property>
+        <property name="sdt" type="java.lang.Integer">
+            <column name="SDT" unique="true"/>
+        </property>
+        <property name="ngaySinh" type="date">
+            <column length="10" name="NgaySinh"/>
+        </property>
+        <property name="email" type="string">
+            <column length="20" name="email"/>
+        </property>
+        <property name="luong" type="java.lang.Double">
+            <column name="Luong" precision="22" scale="0"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="nguoidungs" table="nguoidung">
+            <key>
+                <column name="IDNhanVien"/>
+            </key>
+            <one-to-many class="entity1.Nguoidung"/>
+        </set>
+    </class>
+</hibernate-mapping>
