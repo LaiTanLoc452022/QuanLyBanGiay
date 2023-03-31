@@ -89,7 +89,7 @@ public class GiayHome {
 	public Giay findById(java.lang.Integer id) {
 		logger.log(Level.INFO, "getting Giay instance with id: " + id);
 		try {
-			Giay instance = (Giay) sessionFactory.getCurrentSession().get("DAO.Giay", id);
+			Giay instance = (Giay) sessionFactory.getCurrentSession().get("entity1.Giay", id);
 			if (instance == null) {
 				logger.log(Level.INFO, "get successful, no instance found");
 			} else {
@@ -105,7 +105,7 @@ public class GiayHome {
 	public List findByExample(Giay instance) {
 		logger.log(Level.INFO, "finding Giay instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("DAO.Giay").add(Example.create(instance))
+			List results = sessionFactory.getCurrentSession().createCriteria("entity1.Giay").add(Example.create(instance))
 					.list();
 			logger.log(Level.INFO, "find by example successful, result size: " + results.size());
 			return results;

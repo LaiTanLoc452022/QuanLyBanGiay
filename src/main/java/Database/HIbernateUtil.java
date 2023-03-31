@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
 
 public class HIbernateUtil {
 	private static SessionFactory factory;
-	public static SessionFactory getSessionFactory() {
+	static {
 		Configuration config=new Configuration().configure("/hibernate.cfg.xml");
 		config.addResource("Giay.hbm.xml");
 		config.addResource("chitiethoadon.hbm.xml");
@@ -22,6 +22,8 @@ public class HIbernateUtil {
 		  StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
 		            config.getProperties()).build();
 		factory=config.buildSessionFactory((org.hibernate.service.ServiceRegistry) serviceRegistry);
+	}
+	public static SessionFactory getSessionFactory() {
 		return factory;
 	}
 }

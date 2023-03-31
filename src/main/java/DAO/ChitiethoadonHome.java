@@ -9,6 +9,7 @@ import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
+import Database.HIbernateUtil;
 import entity1.Chitiethoadon;
 
 /**
@@ -20,7 +21,7 @@ public class ChitiethoadonHome {
 
 	private static final Logger logger = Logger.getLogger(ChitiethoadonHome.class.getName());
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	private final SessionFactory sessionFactory = HIbernateUtil.getSessionFactory();
 
 	protected SessionFactory getSessionFactory() {
 		try {
@@ -90,7 +91,7 @@ public class ChitiethoadonHome {
 	public Chitiethoadon findById(entity1.ChitiethoadonId id) {
 		logger.log(Level.INFO, "getting Chitiethoadon instance with id: " + id);
 		try {
-			Chitiethoadon instance = (Chitiethoadon) sessionFactory.getCurrentSession().get("DAO.Chitiethoadon", id);
+			Chitiethoadon instance = (Chitiethoadon) sessionFactory.getCurrentSession().get("entity1.Chitiethoadon", id);
 			if (instance == null) {
 				logger.log(Level.INFO, "get successful, no instance found");
 			} else {
@@ -106,7 +107,7 @@ public class ChitiethoadonHome {
 	public List findByExample(Chitiethoadon instance) {
 		logger.log(Level.INFO, "finding Chitiethoadon instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("DAO.Chitiethoadon")
+			List results = sessionFactory.getCurrentSession().createCriteria("entity1.Chitiethoadon")
 					.add(Example.create(instance)).list();
 			logger.log(Level.INFO, "find by example successful, result size: " + results.size());
 			return results;
