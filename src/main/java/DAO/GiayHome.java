@@ -5,113 +5,64 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
-import org.hibernate.LockMode;
-import org.hibernate.SessionFactory;
+
+import org.hibernate.*;
 import org.hibernate.criterion.Example;
+
+import Database.HIbernateUtil;
 import entity1.*;
+import org.hibernate.criterion.Projection;
+import org.hibernate.query.Query;
 
 /**
  * Home object for domain model class Giay.
- * @see DAO.Giay
+ * @see entity1.Giay
  * @author Hibernate Tools
  */
-public class GiayHome {
+public class GiayHome<Thing> {
+	
+	
+	public static <Giay>void insert(Giay instance){
+		try(Session session=HIbernateUtil.getSessionFactory().openSession()){
+			Transaction transaction=session.getTransaction();
+			transaction.begin();
+			session.save(instance);
+			transaction.commit();
 
-	private static final Logger logger = Logger.getLogger(GiayHome.class.getName());
+		}
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	}
+	public static List<Giay> getAll(){
+		Session session =HIbernateUtil.getSessionFactory().openSession();
+		Query<Giay> query=session.createQuery("FROM Giay");
+		List<Giay> list=query.list();
+		return list;
+	}
+	public static<Giay> void update(Giay instance){
+		try(Session session=HIbernateUtil.getSessionFactory().openSession()){
+			session.beginTransaction();
+			//Giay giay=session.load(Giay.class,instance.getIdgiay());
+			session.update(instance);
+			session.getTransaction().commit();
+		}
+	}
+	public static<Giay> void delete(  Giay instance){
+		try(Session session =HIbernateUtil.getSessionFactory().openSession()){
+			session.beginTransaction();
+			session.delete(instance);
+			session.getTransaction().commit();
+		}
+	}
+	
 
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			logger.log(Level.SEVERE, "Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
+	public static<Thing> Giay findById(java.lang.Integer id) {
+		Giay instance;
+		Projection projection;
+		try( Session session=HIbernateUtil.getSessionFactory().openSession()){
+		instance=session.get(entity1.Giay.class, id);
+		return instance;
 		}
 	}
 
-	public void persist(Giay transientInstance) {
-		logger.log(Level.INFO, "persisting Giay instance");
-		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
-			logger.log(Level.INFO, "persist successful");
-		} catch (RuntimeException re) {
-			logger.log(Level.SEVERE, "persist failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(Giay instance) {
-		logger.log(Level.INFO, "attaching dirty Giay instance");
-		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
-			logger.log(Level.INFO, "attach successful");
-		} catch (RuntimeException re) {
-			logger.log(Level.SEVERE, "attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(Giay instance) {
-		logger.log(Level.INFO, "attaching clean Giay instance");
-		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
-			logger.log(Level.INFO, "attach successful");
-		} catch (RuntimeException re) {
-			logger.log(Level.SEVERE, "attach failed", re);
-			throw re;
-		}
-	}
-
-	public void delete(Giay persistentInstance) {
-		logger.log(Level.INFO, "deleting Giay instance");
-		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
-			logger.log(Level.INFO, "delete successful");
-		} catch (RuntimeException re) {
-			logger.log(Level.SEVERE, "delete failed", re);
-			throw re;
-		}
-	}
-
-	public Giay merge(Giay detachedInstance) {
-		logger.log(Level.INFO, "merging Giay instance");
-		try {
-			Giay result = (Giay) sessionFactory.getCurrentSession().merge(detachedInstance);
-			logger.log(Level.INFO, "merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			logger.log(Level.SEVERE, "merge failed", re);
-			throw re;
-		}
-	}
-
-	public Giay findById(java.lang.Integer id) {
-		logger.log(Level.INFO, "getting Giay instance with id: " + id);
-		try {
-			Giay instance = (Giay) sessionFactory.getCurrentSession().get("DAO.Giay", id);
-			if (instance == null) {
-				logger.log(Level.INFO, "get successful, no instance found");
-			} else {
-				logger.log(Level.INFO, "get successful, instance found");
-			}
-			return instance;
-		} catch (RuntimeException re) {
-			logger.log(Level.SEVERE, "get failed", re);
-			throw re;
-		}
-	}
-
-	public List findByExample(Giay instance) {
-		logger.log(Level.INFO, "finding Giay instance by example");
-		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("DAO.Giay").add(Example.create(instance))
-					.list();
-			logger.log(Level.INFO, "find by example successful, result size: " + results.size());
-			return results;
-		} catch (RuntimeException re) {
-			logger.log(Level.SEVERE, "find by example failed", re);
-			throw re;
-		}
-	}
+	
 }
