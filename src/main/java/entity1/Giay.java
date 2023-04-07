@@ -2,6 +2,7 @@ package entity1;
 // Generated Mar 30, 2023, 4:12:58 PM by Hibernate Tools 4.3.6.Final
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,10 +18,12 @@ public class Giay implements java.io.Serializable {
 	private String mau;
 	private String vatLieu;
 	private byte[] anh;
+
+
 	private BigDecimal giaBan;
 	private String themMoTa;
-	private Set chitietphieunhaps = new HashSet(0);
-	private Set chitiethoadons = new HashSet(0);
+	private Set<Chitietphieunhap> chitietphieunhaps = new HashSet<>(0);
+	private Set<Chitiethoadon> chitiethoadons = new HashSet<>(0);
 
 	public Giay() {
 	}
@@ -38,6 +41,12 @@ public class Giay implements java.io.Serializable {
 		this.chitietphieunhaps = chitietphieunhaps;
 		this.chitiethoadons = chitiethoadons;
 	}
+	public String toString() {
+		return "Giay [idgiay=" + idgiay + ", phanloai=" + phanloai + ", ten=" + ten + ", size=" + size + ", mau=" + mau
+				+ ", vatLieu=" + vatLieu + ", anh=" + Arrays.toString(anh) + ", giaBan=" + giaBan + ", themMoTa="
+				+ themMoTa  + "]";
+	}
+
 
 	public Integer getIdgiay() {
 		return this.idgiay;
@@ -126,10 +135,6 @@ public class Giay implements java.io.Serializable {
 	public void setChitiethoadons(Set chitiethoadons) {
 		this.chitiethoadons = chitiethoadons;
 	}
-	public String getName() {
-		String returnString;
-		returnString=this.ten+this.mau+this.themMoTa;
-		return returnString;
-	}
+
 
 }

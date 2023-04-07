@@ -21,7 +21,7 @@
         <property name="idnhanVien" type="java.lang.Integer">
             <column name="IDNhanVien"/>
         </property>
-        <set fetch="select" inverse="true" lazy="true" name="chitiethoadons" table="chitiethoadon">
+        <set fetch="select" inverse="true" lazy="false" name="chitiethoadons" table="chitiethoadon">
             <key>
                 <column name="IDHoaDon"/>
             </key>

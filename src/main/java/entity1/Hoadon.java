@@ -17,7 +17,7 @@ public class Hoadon implements java.io.Serializable {
 	private Integer idkhachHang;
 	private BigDecimal tongTien;
 	private Integer idnhanVien;
-	private Set chitiethoadons = new HashSet(0);
+	private Set<Chitiethoadon> chitiethoadons = new HashSet<>(0);
 
 	public Hoadon() {
 	}
