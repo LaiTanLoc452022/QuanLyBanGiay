@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
+
+import entity1.ChitiethoadonId;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,16 +24,22 @@ import entity1.Chitiethoadon;
 public class ChitiethoadonHome {
 	private static Transaction transaction;
 	private static Session session;
-	public static void insert(){
+	public static void insert(Chitiethoadon instance){
 		try{
 			session=HIbernateUtil.getSessionFactory().openSession();
 			transaction=session.beginTransaction();
-
-
+			session.save(instance);
+			transaction.commit();
 			session.close();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 
+	}
+	public static void update(Chitiethoadon instance){
+		session=HIbernateUtil.getSessionFactory().openSession();
+		transaction=session.beginTransaction();
+		session.update(instance);
+		session.close();
 	}
 }
