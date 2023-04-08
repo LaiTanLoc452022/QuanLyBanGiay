@@ -25,7 +25,7 @@ public class HoadonHome {
 		public static void insert(Hoadon instance){
 			try(Session session=HIbernateUtil.getSessionFactory().openSession()){
 				transaction=session.beginTransaction();
-				session.save(instance);
+				session.persist(instance);
 				transaction.commit();
 			}
 		}

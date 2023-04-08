@@ -19,27 +19,11 @@ import Database.HIbernateUtil;
 
 public class Main {
 	public static void main(String[] args) {
-		Hoadon hoadon=new Hoadon();
-		Giay giay=new Giay();
-		giay.setVatLieu("Vai");
-		giay.setSize(41.5);
-		giay.setTen("Nike");
-		giay.setThemMoTa("dep va tien loi");
-		giay.setMau("Xanh");
-		GiayHome.insert(giay);
-		/*Giay giay1=new Giay();
-		giay1.setThemMoTa("xinh");
-		giay1.setTen("adidas");
-		giay1.setVatLieu("nhua");
-		entity1.Chitiethoadon chitiethoadon=new Chitiethoadon(new ChitiethoadonId(hoadon.getIdhoaDon(), giay.getIdgiay(),1),giay,hoadon);
-		Chitiethoadon chitiethoadon1=new Chitiethoadon(new ChitiethoadonId(hoadon.getIdhoaDon(),giay1.getIdgiay(),1),giay1,hoadon);
-		Set<Chitiethoadon> set= new HashSet<>();
-		set.add(chitiethoadon);
-		set.add(chitiethoadon1);
-		hoadon.setChitiethoadons(set);
+		Transaction transaction=HIbernateUtil.getSessionFactory().openSession().beginTransaction();
 
-		HoadonHome.insert(hoadon);*/
 
+		transaction.commit();
+		HIbernateUtil.getSessionFactory().openSession().close();
 		
 		
 		
