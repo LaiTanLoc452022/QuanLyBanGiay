@@ -1,5 +1,5 @@
 package entity1;
-// Generated Mar 30, 2023, 4:12:58 PM by Hibernate Tools 4.3.6.Final
+// Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,23 +9,28 @@ import java.util.Set;
  */
 public class Nhom implements java.io.Serializable {
 
-	private Integer idnhom;
+	private int idnhom;
 	private String tenNhom;
 	private Set phanquyens = new HashSet(0);
 
 	public Nhom() {
 	}
 
-	public Nhom(String tenNhom, Set phanquyens) {
+	public Nhom(int idnhom) {
+		this.idnhom = idnhom;
+	}
+
+	public Nhom(int idnhom, String tenNhom, Set phanquyens) {
+		this.idnhom = idnhom;
 		this.tenNhom = tenNhom;
 		this.phanquyens = phanquyens;
 	}
 
-	public Integer getIdnhom() {
+	public int getIdnhom() {
 		return this.idnhom;
 	}
 
-	public void setIdnhom(Integer idnhom) {
+	public void setIdnhom(int idnhom) {
 		this.idnhom = idnhom;
 	}
 

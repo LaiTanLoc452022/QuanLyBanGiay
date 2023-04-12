@@ -1,5 +1,5 @@
 package entity1;
-// Generated Mar 30, 2023, 4:12:58 PM by Hibernate Tools 4.3.6.Final
+// Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -10,7 +10,7 @@ import java.util.Set;
  */
 public class Nhacungcap implements java.io.Serializable {
 
-	private Integer idnhaCungCap;
+	private int idnhaCungCap;
 	private String ten;
 	private Integer sdt;
 	private String email;
@@ -20,7 +20,12 @@ public class Nhacungcap implements java.io.Serializable {
 	public Nhacungcap() {
 	}
 
-	public Nhacungcap(String ten, Integer sdt, String email, Date thoiGianHopTac, Set hoadons) {
+	public Nhacungcap(int idnhaCungCap) {
+		this.idnhaCungCap = idnhaCungCap;
+	}
+
+	public Nhacungcap(int idnhaCungCap, String ten, Integer sdt, String email, Date thoiGianHopTac, Set hoadons) {
+		this.idnhaCungCap = idnhaCungCap;
 		this.ten = ten;
 		this.sdt = sdt;
 		this.email = email;
@@ -28,11 +33,11 @@ public class Nhacungcap implements java.io.Serializable {
 		this.hoadons = hoadons;
 	}
 
-	public Integer getIdnhaCungCap() {
+	public int getIdnhaCungCap() {
 		return this.idnhaCungCap;
 	}
 
-	public void setIdnhaCungCap(Integer idnhaCungCap) {
+	public void setIdnhaCungCap(int idnhaCungCap) {
 		this.idnhaCungCap = idnhaCungCap;
 	}
 

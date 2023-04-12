@@ -29,6 +29,7 @@ public class HoadonHome {
 				transaction.commit();
 			}
 		}
+
 		public static void update(Hoadon instance){
 			try(Session session =HIbernateUtil.getSessionFactory().openSession()){
 				transaction=session.beginTransaction();

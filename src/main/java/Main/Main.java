@@ -1,4 +1,5 @@
 package Main;
+
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
@@ -18,17 +19,14 @@ import DAO.*;
 import Database.HIbernateUtil;
 
 public class Main {
-	public static void main(String[] args) {
-		Transaction transaction=HIbernateUtil.getSessionFactory().openSession().beginTransaction();
+    public static void main(String[] args) {
+       /*Phanloai pl=new Phanloai();
+       PhanloaiHome.findByID(Phanloai.class,1);*/
+       /* Sanpham sp=SanPhamHome.findByID(Sanpham.class,6);
+        System.out.println(sp.toString());*/
+        List<Sanpham> list=PhanloaiHome.getAllProductFromID();
+        list.forEach(a->System.out.println(a.toString()));
+    }
 
 
-		transaction.commit();
-		HIbernateUtil.getSessionFactory().openSession().close();
-		
-		
-		
-	}
-			
-		
-	
 }

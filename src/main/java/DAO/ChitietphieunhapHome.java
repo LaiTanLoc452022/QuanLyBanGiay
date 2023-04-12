@@ -15,7 +15,7 @@ import org.hibernate.criterion.Example;
  * @see DAO.Chitietphieunhap
  * @author Hibernate Tools
  */
-public class ChitietphieunhapHome {
+public class ChitietphieunhapHome extends Generic_Implement {
 
 	private static final Logger logger = Logger.getLogger(ChitietphieunhapHome.class.getName());
 

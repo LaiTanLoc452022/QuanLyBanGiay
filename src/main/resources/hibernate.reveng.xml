@@ -5,8 +5,8 @@
   <table-filter match-schema="cuahangbangiay" match-name=".*"/>
   <table-filter match-catalog="cuahangbangiay" match-name="chitiethoadon"/>
   <table-filter match-catalog="cuahangbangiay" match-name="chitietphieunhap"/>
-  <table-filter match-catalog="cuahangbangiay" match-name="giay"/>
-  <table-filter match-catalog="cuahangbangiay" match-name="hoadon"/>
+  <table-filter match-catalog="cuahangbangiay" match-name="sanpham"/>
+ <table-filter match-catalog="cuahangbangiay" match-name="hoadon"/>
   <table-filter match-catalog="cuahangbangiay" match-name="khachhang"/>
   <table-filter match-catalog="cuahangbangiay" match-name="loainv"/>
   <table-filter match-catalog="cuahangbangiay" match-name="manhinh"/>

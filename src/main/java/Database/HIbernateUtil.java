@@ -14,7 +14,7 @@ public class HIbernateUtil {
 		Configuration config=new Configuration().configure("/hibernate.cfg.xml");
 		config.addResource("Chitiethoadon.hbm.xml");
 		config.addResource("Chitietphieunhap.hbm.xml");
-		config.addResource("Giay.hbm.xml");
+		config.addResource("Sanpham.hbm.xml");
 		config.addResource("Hoadon.hbm.xml");
 		config.addResource("Khachhang.hbm.xml");
 		config.addResource("Loainv.hbm.xml");

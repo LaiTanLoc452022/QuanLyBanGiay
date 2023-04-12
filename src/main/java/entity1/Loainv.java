@@ -1,5 +1,5 @@
 package entity1;
-// Generated Mar 30, 2023, 4:12:58 PM by Hibernate Tools 4.3.6.Final
+// Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public class Loainv implements java.io.Serializable {
 
-	private Integer idloai;
+	private int idloai;
 	private String tenLoai;
 	private String ghiChu;
 	private Set nhanviens = new HashSet(0);
@@ -17,17 +17,22 @@ public class Loainv implements java.io.Serializable {
 	public Loainv() {
 	}
 
-	public Loainv(String tenLoai, String ghiChu, Set nhanviens) {
+	public Loainv(int idloai) {
+		this.idloai = idloai;
+	}
+
+	public Loainv(int idloai, String tenLoai, String ghiChu, Set nhanviens) {
+		this.idloai = idloai;
 		this.tenLoai = tenLoai;
 		this.ghiChu = ghiChu;
 		this.nhanviens = nhanviens;
 	}
 
-	public Integer getIdloai() {
+	public int getIdloai() {
 		return this.idloai;
 	}
 
-	public void setIdloai(Integer idloai) {
+	public void setIdloai(int idloai) {
 		this.idloai = idloai;
 	}
 

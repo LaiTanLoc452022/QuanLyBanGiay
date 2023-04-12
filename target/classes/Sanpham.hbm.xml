@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Mar 30, 2023, 4:22:14 PM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class catalog="cuahangbangiay" name="entity1.Giay" optimistic-lock="none" table="giay">
+    <class catalog="cuahangbangiay" name="entity1.Sanpham" optimistic-lock="none" table="sanpham">
         <id name="idgiay" type="java.lang.Integer">
             <column name="IDGiay"/>
             <generator class="identity"/>
@@ -27,8 +27,11 @@
         <property name="giaBan" type="big_decimal">
             <column name="GiaBan" scale="4"/>
         </property>
+        <property name="soluong" type="java.lang.Double">
+            <column name="Soluong" precision="22" scale="0"/>
+        </property>
         <property name="themMoTa" type="string">
-            <column length="50" name="ThemMoTa"/>
+            <column length="1000" name="ThemMoTa"/>
         </property>
         <set fetch="select" inverse="true" lazy="true" name="chitietphieunhaps" table="chitietphieunhap">
             <key>

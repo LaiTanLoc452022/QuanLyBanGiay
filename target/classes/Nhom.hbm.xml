@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Mar 30, 2023, 4:22:14 PM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class catalog="cuahangbangiay" name="entity1.Nhom" optimistic-lock="none" table="nhom">
-        <id name="idnhom" type="java.lang.Integer">
+        <id name="idnhom" type="int">
             <column name="IDNhom"/>
-            <generator class="identity"/>
+            <generator class="assigned"/>
         </id>
         <property name="tenNhom" type="string">
             <column length="0" name="TenNhom"/>

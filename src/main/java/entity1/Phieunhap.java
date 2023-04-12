@@ -1,5 +1,5 @@
 package entity1;
-// Generated Mar 30, 2023, 4:12:58 PM by Hibernate Tools 4.3.6.Final
+// Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public class Phieunhap implements java.io.Serializable {
 
-	private Integer idphieuNhap;
+	private int idphieuNhap;
 	private Date ngayTaoPhieu;
 	private Integer idnhanVien;
 	private BigDecimal tongTienNhap;
@@ -21,8 +21,13 @@ public class Phieunhap implements java.io.Serializable {
 	public Phieunhap() {
 	}
 
-	public Phieunhap(Date ngayTaoPhieu, Integer idnhanVien, BigDecimal tongTienNhap, Integer idnhaCungCap,
-			Set chitietphieunhaps) {
+	public Phieunhap(int idphieuNhap) {
+		this.idphieuNhap = idphieuNhap;
+	}
+
+	public Phieunhap(int idphieuNhap, Date ngayTaoPhieu, Integer idnhanVien, BigDecimal tongTienNhap,
+			Integer idnhaCungCap, Set chitietphieunhaps) {
+		this.idphieuNhap = idphieuNhap;
 		this.ngayTaoPhieu = ngayTaoPhieu;
 		this.idnhanVien = idnhanVien;
 		this.tongTienNhap = tongTienNhap;
@@ -30,11 +35,11 @@ public class Phieunhap implements java.io.Serializable {
 		this.chitietphieunhaps = chitietphieunhaps;
 	}
 
-	public Integer getIdphieuNhap() {
+	public int getIdphieuNhap() {
 		return this.idphieuNhap;
 	}
 
-	public void setIdphieuNhap(Integer idphieuNhap) {
+	public void setIdphieuNhap(int idphieuNhap) {
 		this.idphieuNhap = idphieuNhap;
 	}
 
