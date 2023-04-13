@@ -1,7 +1,20 @@
 package Main;
 
+
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+
+import BUS.PhanQuyenBUS;
+import GUI.*;
+
+import java.sql.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -18,15 +31,16 @@ import org.hibernate.query.Query;
 import DAO.*;
 import Database.HIbernateUtil;
 
+import javax.imageio.ImageIO;
+
 public class Main {
     public static void main(String[] args) {
-       /*Phanloai pl=new Phanloai();
-       PhanloaiHome.findByID(Phanloai.class,1);*/
-       /* Sanpham sp=SanPhamHome.findByID(Sanpham.class,6);
-        System.out.println(sp.toString());*/
-        List<Sanpham> list=PhanloaiHome.getAllProductFromID();
-        list.forEach(a->System.out.println(a.toString()));
-    }
+        PhanQuyenBUS pqbus=new PhanQuyenBUS();
+                pqbus.loadImageAndInfo(1);
+                pqbus.setVisible(true);
+
+
+	}
 
 
 }

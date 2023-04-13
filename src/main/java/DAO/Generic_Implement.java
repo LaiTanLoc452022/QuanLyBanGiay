@@ -19,19 +19,18 @@ public class Generic_Implement<T> implements GenericDAO {
         try {
             session = HIbernateUtil.getSessionFactory().openSession();
             session.save(instance);
-
-
+            session.close();
         } catch (HibernateException e) {
             throw new RuntimeException(e);
-        } finally {
-            session.close();
         }
+
+
     }
 
-    public static <T> void update(T instance) {
+    public static <T> void update(T instance) {//object phải persisted
         try {
             session = HIbernateUtil.getSessionFactory().openSession();
-            transaction = HIbernateUtil.getSessionFactory().openSession().beginTransaction();
+            transaction = session.beginTransaction();
             session.update(instance);
             transaction.commit();
             session.close();

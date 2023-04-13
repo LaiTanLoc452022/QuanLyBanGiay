@@ -15,22 +15,20 @@ import java.util.List;
 public class PhanloaiHome extends Generic_Implement<Phanloai> {
    private static Session session;
     private static Transaction transaction;
-    public static List<Sanpham> getAllProductFromID(){
+    public static List<Object[]> getAllProductFromCategory(int id){
         try{
             session=HIbernateUtil.getSessionFactory().openSession();
            // Query<Phanloai> query=session.createQuery("select * From ");
             CriteriaBuilder criteriaBuilder= session.getCriteriaBuilder();
-            CriteriaQuery<Sanpham> criteriaQuery= criteriaBuilder.createQuery(Sanpham.class);
+            CriteriaQuery<Object[]> criteriaQuery= criteriaBuilder.createQuery(Object[].class);
             Root<Phanloai> phanloaiRoot =criteriaQuery.from(Phanloai.class);
             Root<Sanpham> sanphamRoot= criteriaQuery.from(Sanpham.class);
-            Join<Sanpham,Phanloai> joinsp=sanphamRoot.join("Sanpham.phanloai.idphanLoai", JoinType.INNER);
-            Query<Sanpham> query=session.createQuery(criteriaQuery);
-            List<Sanpham> list=query.getResultList();
+          criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(phanloaiRoot.get("idphanLoai"),sanphamRoot.get("phanloai")),criteriaBuilder.equal(phanloaiRoot.get("idphanLoai"),id)));
+          criteriaQuery=criteriaQuery.multiselect(sanphamRoot.get("ten").as(String.class));
+            Query<Object[]> query=session.createQuery(criteriaQuery);
+            List<Object[]> list=query.getResultList();
             session.close();
             return list;
-
-
-
         } catch (HibernateException e) {
             throw new RuntimeException(e);
         }

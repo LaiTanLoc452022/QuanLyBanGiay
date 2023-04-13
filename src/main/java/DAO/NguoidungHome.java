@@ -14,6 +14,6 @@ import org.hibernate.criterion.Example;
  * @see entity1.Nguoidung
  * @author Hibernate Tools
  */
-public class NguoidungHome {
+public class NguoidungHome extends Generic_Implement{
 
 }

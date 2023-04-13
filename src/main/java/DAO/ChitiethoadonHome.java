@@ -21,25 +21,6 @@ import entity1.Chitiethoadon;
  * @see DAO.Chitiethoadon
  * @author Hibernate Tools
  */
-public class ChitiethoadonHome {
-	private static Transaction transaction;
-	private static Session session;
-	public static void insert(Chitiethoadon instance){
-		try{
-			session=HIbernateUtil.getSessionFactory().openSession();
-			transaction=session.beginTransaction();
-			session.save(instance);
-			transaction.commit();
-			session.close();
-		}catch (Exception e){
-			e.printStackTrace();
-		}
+public class ChitiethoadonHome extends Generic_Implement {
 
-	}
-	public static void update(Chitiethoadon instance){
-		session=HIbernateUtil.getSessionFactory().openSession();
-		transaction=session.beginTransaction();
-		session.update(instance);
-		session.close();
-	}
 }

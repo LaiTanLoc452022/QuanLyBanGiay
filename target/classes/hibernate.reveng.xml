@@ -2,21 +2,21 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-  <table-filter match-schema="cuahangbangiay" match-name=".*"/>
+   <table-filter match-schema="cuahangbangiay" match-name=".*"/>
   <table-filter match-catalog="cuahangbangiay" match-name="chitiethoadon"/>
   <table-filter match-catalog="cuahangbangiay" match-name="chitietphieunhap"/>
   <table-filter match-catalog="cuahangbangiay" match-name="sanpham"/>
  <table-filter match-catalog="cuahangbangiay" match-name="hoadon"/>
   <table-filter match-catalog="cuahangbangiay" match-name="khachhang"/>
   <table-filter match-catalog="cuahangbangiay" match-name="loainv"/>
-  <table-filter match-catalog="cuahangbangiay" match-name="manhinh"/>
+  <table-filter match-catalog="cuahangbangiay" match-name="manhinh"/> 
   <table-filter match-catalog="cuahangbangiay" match-name="nguoidung"/>
-  <table-filter match-catalog="cuahangbangiay" match-name="nhacungcap"/>
+   <table-filter match-catalog="cuahangbangiay" match-name="nhacungcap"/>  
   <table-filter match-catalog="cuahangbangiay" match-name="nhanvien"/>
-  <table-filter match-catalog="cuahangbangiay" match-name="nhom"/>
+   <table-filter match-catalog="cuahangbangiay" match-name="nhom"/>
   <table-filter match-catalog="cuahangbangiay" match-name="nhomvanguoidung"/>
   <table-filter match-catalog="cuahangbangiay" match-name="phanloai"/>
   <table-filter match-catalog="cuahangbangiay" match-name="phanquyen"/>
   <table-filter match-catalog="cuahangbangiay" match-name="phieunhap"/>
-  <table-filter match-catalog="cuahangbangiay" match-name="the"/>
+  <table-filter match-catalog="cuahangbangiay" match-name="the"/>   
 </hibernate-reverse-engineering>

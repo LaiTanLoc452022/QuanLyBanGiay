@@ -1,0 +1,148 @@
+JFDML JFormDesigner: "8.0.1.0.199" Java: "18.0.2.1" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {comp scrollPane1:::p:756:p, space :0:27:x}}"
+			"$verticalGroup": "par l {seq t {space :::p, comp scrollPane1::::472:x, space :::p}}"
+		} ) {
+			name: "this"
+			"title": "Bảng phân quyền"
+			"background": new java.awt.Color( 202, 227, 231, 255 )
+			"defaultCloseOperation": 3
+			"type": enum java.awt.Window$Type POPUP
+			"focusableWindowState": false
+			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/GUI/image/29.jpg" )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				"autoscrolls": true
+				"doubleBuffered": true
+				"verifyInputWhenFocusTarget": false
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"focusable": false
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq t {space :p:37:p, comp button7:::p:80:p, space ::33:x, comp panel1:::p:579:p, space :p:31:p}, seq l {space :::p, comp headerPanel:::::x, space :::p}}"
+					"$verticalGroup": "par l {seq t {space :::p, comp headerPanel:::::x, space u:::p, par l {comp panel1:::p:288:p, comp button7:::p:41:p}, space :::p}}"
+				} ) {
+					name: "panel2"
+					"background": new java.awt.Color( 202, 227, 231, 255 )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+						"rows": 6
+						"columns": 1
+						"hgap": 34
+						"vgap": 30
+					} ) {
+						name: "panel1"
+						"background": new java.awt.Color( 202, 227, 231, 255 )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button1"
+							"text": "SẢN PHẨM"
+							"background": &Color0 new java.awt.Color( 247, 253, 239, 255 )
+							"border": &BevelBorder0 new javax.swing.border.BevelBorder( 0, sfield java.awt.Color orange, sfield java.awt.Color orange, sfield java.awt.Color orange, null )
+							"foreground": &Color1 new java.awt.Color( 255, 102, 102, 255 )
+							"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 1, 5, false )
+							"cursor": &Cursor0 new java.awt.Cursor( 12 )
+							"autoscrolls": true
+							"defaultCapable": false
+							"focusable": false
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ChonPhanQuyen", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button2"
+							"text": "HÓA ĐƠN"
+							"background": #Color0
+							"border": #BevelBorder0
+							"foreground": #Color1
+							"font": #SwingDerivedFont0
+							"cursor": #Cursor0
+							"autoscrolls": true
+							"focusable": false
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ChonPhanQuyen", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button3"
+							"text": "TÀI KHOẢN"
+							"background": #Color0
+							"border": #BevelBorder0
+							"foreground": #Color1
+							"font": #SwingDerivedFont0
+							"cursor": #Cursor0
+							"autoscrolls": true
+							"focusable": false
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ChonPhanQuyen", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button4"
+							"text": "NHẬP HÀNG"
+							"background": #Color0
+							"border": #BevelBorder0
+							"foreground": #Color1
+							"font": #SwingDerivedFont0
+							"cursor": #Cursor0
+							"autoscrolls": true
+							"focusable": false
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ChonPhanQuyen", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button5"
+							"text": "THỐNG KÊ"
+							"background": #Color0
+							"border": #BevelBorder0
+							"foreground": #Color1
+							"font": #SwingDerivedFont0
+							"cursor": #Cursor0
+							"autoscrolls": true
+							"focusable": false
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ChonPhanQuyen", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button6"
+							"text": "NHÓM"
+							"background": #Color0
+							"border": #BevelBorder0
+							"foreground": #Color1
+							"font": #SwingDerivedFont0
+							"cursor": #Cursor0
+							"autoscrolls": true
+							"focusable": false
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ChonPhanQuyen", true ) )
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq l {space :::p, comp personalImage:::p:112:p, space s:::p, comp textField1:::p:347:p, space ::261:x}}"
+						"$verticalGroup": "par l {seq l {space :p:16:p, comp textField1:::p::p, space ::108:x}, seq l {space :::p, comp personalImage::::134:x, space :::p}}"
+					} ) {
+						name: "headerPanel"
+						"background": new java.awt.Color( 244, 245, 246, 255 )
+						"focusable": false
+						"border": new javax.swing.border.BevelBorder( 0, sfield java.awt.Color orange, sfield java.awt.Color orange, null, null )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "personalImage"
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textField1"
+							"opaque": true
+							"background": new java.awt.Color( 255, 255, 255, 255 )
+							"foreground": new java.awt.Color( 153, 153, 153, 255 )
+							"horizontalAlignment": 0
+							"toolTipText": "Tên Đang nhap"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 3, false )
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button7"
+						"focusable": false
+						"cursor": new java.awt.Cursor( 12 )
+						"border": new javax.swing.border.BevelBorder( 1, null, null, null, null )
+						"opaque": true
+						"text": "CREATE"
+					} )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 70, 0 )
+			"size": new java.awt.Dimension( 785, 515 )
+		} )
+	}
+}
