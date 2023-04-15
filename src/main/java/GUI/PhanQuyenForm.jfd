@@ -22,8 +22,8 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"focusable": false
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :p:37:p, comp button7:::p:80:p, space ::33:x, comp panel1:::p:579:p, space :p:31:p}, seq l {space :::p, comp headerPanel:::::x, space :::p}}"
-					"$verticalGroup": "par l {seq t {space :::p, comp headerPanel:::::x, space u:::p, par l {comp panel1:::p:288:p, comp button7:::p:41:p}, space :::p}}"
+					"$horizontalGroup": "par l {seq l {space :::p, comp headerPanel:::::x, space :::p}, seq l {space ::25:x, par l {comp label1:::p:84:p, comp label3:::::x}, space ::41:x, comp panel1:::p:579:p, space :p:31:p}}"
+					"$verticalGroup": "par l {seq t {space :::p, comp headerPanel:::::x, par l {seq {space u:::p, comp panel1:::p:288:p}, seq l {space :p:44:p, comp label1:::p:71:p, space :::p, comp label3:::p:25:p}}, space :p:6:p}}"
 				} ) {
 					name: "panel2"
 					"background": new java.awt.Color( 202, 227, 231, 255 )
@@ -110,8 +110,8 @@ new FormModel {
 						} )
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :::p, comp personalImage:::p:112:p, space s:::p, comp textField1:::p:347:p, space ::261:x}}"
-						"$verticalGroup": "par l {seq l {space :p:16:p, comp textField1:::p::p, space ::108:x}, seq l {space :::p, comp personalImage::::134:x, space :::p}}"
+						"$horizontalGroup": "par l {seq l {space :::p, comp personalImage:::p:112:p, space u:::p, comp tenNhanVien:::p:253:p, space ::361:x}}"
+						"$verticalGroup": "par l {seq l {space :::p, comp personalImage::::145:x, space :::p}, seq l {space :p:20:p, comp tenNhanVien:::p:31:p, space ::106:x}}"
 					} ) {
 						name: "headerPanel"
 						"background": new java.awt.Color( 244, 245, 246, 255 )
@@ -120,28 +120,42 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "personalImage"
 						} )
-						add( new FormComponent( "javax.swing.JTextField" ) {
-							name: "textField1"
-							"opaque": true
-							"background": new java.awt.Color( 255, 255, 255, 255 )
-							"foreground": new java.awt.Color( 153, 153, 153, 255 )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "tenNhanVien"
 							"horizontalAlignment": 0
-							"toolTipText": "Tên Đang nhap"
-							"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 3, false )
+							"foreground": new java.awt.Color( 51, 51, 51, 255 )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 5, false )
+							auxiliary() {
+								"JavaCodeGenerator.variableName": "tenNhanVien"
+								"JavaCodeGenerator.variableGetter": true
+							}
 						} )
 					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button7"
-						"focusable": false
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/GUI/image/icons8-create-80.png" )
 						"cursor": new java.awt.Cursor( 12 )
-						"border": new javax.swing.border.BevelBorder( 1, null, null, null, null )
-						"opaque": true
 						"text": "CREATE"
+						"background": new java.awt.Color( 153, 255, 153, 255 )
+						"opaque": true
+						"border": new javax.swing.border.BevelBorder( 0, null, null, null, null )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "label1MouseClicked", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "label1MouseMoved", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "CREATE"
+						"horizontalAlignment": 0
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 4, false )
+						"foreground": new java.awt.Color( 0, 204, 51, 255 )
 					} )
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 70, 0 )
+			"location": new java.awt.Point( 30, 0 )
 			"size": new java.awt.Dimension( 785, 515 )
 		} )
 	}

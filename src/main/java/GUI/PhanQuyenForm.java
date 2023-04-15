@@ -4,6 +4,9 @@
 
 package GUI;
 
+import DAO.NhomHome;
+import entity1.Nhom;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -21,9 +24,28 @@ public class PhanQuyenForm extends JFrame {
 		
 	}
 
-	private void ChonPhanQuyen(ActionEvent e) {
-		
-		
+	public void ChonPhanQuyen(ActionEvent e) {
+
+	}
+
+	public JLabel getLabel1() {
+		return label1;
+	}
+
+	private void createUIComponents() {
+		// TODO: add custom component creation code here
+	}
+
+	private void label1MouseClicked(MouseEvent e) {
+		System.out.println("clicked");
+	}
+
+	public JLabel getTenNhanVien() {
+		return tenNhanVien;
+	}
+
+	private void label1MouseMoved(MouseEvent e) {
+		System.out.println("hovvvv");
 	}
 	
 
@@ -41,8 +63,9 @@ public class PhanQuyenForm extends JFrame {
 		button6 = new JButton();
 		headerPanel = new JPanel();
 		personalImage = new JLabel();
-		textField1 = new JTextField();
-		button7 = new JButton();
+		tenNhanVien = new JLabel();
+		label1 = new JLabel();
+		label3 = new JLabel();
 
 		//======== this ========
 		setTitle("B\u1ea3ng ph\u00e2n quy\u1ec1n");
@@ -51,7 +74,7 @@ public class PhanQuyenForm extends JFrame {
 		setType(Window.Type.POPUP);
 		setFocusableWindowState(false);
 		setIconImage(new ImageIcon(getClass().getResource("/GUI/image/29.jpg")).getImage());
-		var contentPane = getContentPane();
+		Container contentPane = getContentPane();
 
 		//======== scrollPane1 ========
 		{
@@ -64,12 +87,13 @@ public class PhanQuyenForm extends JFrame {
 			//======== panel2 ========
 			{
 				panel2.setBackground(new Color(0xcae3e7));
-				panel2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
-				( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
-				.TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
-				. Color .red ) ,panel2. getBorder () ) ); panel2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
-				propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-				;} } );
+				panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+				. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder
+				. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .
+				awt .Font .BOLD ,12 ), java. awt. Color. red) ,panel2. getBorder( )) )
+				; panel2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+				) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+				;
 
 				//======== panel1 ========
 				{
@@ -156,13 +180,10 @@ public class PhanQuyenForm extends JFrame {
 					headerPanel.setFocusable(false);
 					headerPanel.setBorder(new BevelBorder(BevelBorder.RAISED, Color.orange, Color.orange, null, null));
 
-					//---- textField1 ----
-					textField1.setOpaque(true);
-					textField1.setBackground(Color.white);
-					textField1.setForeground(new Color(0x999999));
-					textField1.setHorizontalAlignment(SwingConstants.CENTER);
-					textField1.setToolTipText("T\u00ean \u0110ang nhap");
-					textField1.setFont(textField1.getFont().deriveFont(textField1.getFont().getStyle() | Font.BOLD, textField1.getFont().getSize() + 3f));
+					//---- tenNhanVien ----
+					tenNhanVien.setHorizontalAlignment(SwingConstants.CENTER);
+					tenNhanVien.setForeground(new Color(0x333333));
+					tenNhanVien.setFont(tenNhanVien.getFont().deriveFont(tenNhanVien.getFont().getStyle() | Font.BOLD, tenNhanVien.getFont().getSize() + 5f));
 
 					GroupLayout headerPanelLayout = new GroupLayout(headerPanel);
 					headerPanel.setLayout(headerPanelLayout);
@@ -171,55 +192,81 @@ public class PhanQuyenForm extends JFrame {
 							.addGroup(headerPanelLayout.createSequentialGroup()
 								.addContainerGap()
 								.addComponent(personalImage, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-								.addGap(18, 18, 18)
-								.addComponent(textField1, GroupLayout.PREFERRED_SIZE, 347, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(261, Short.MAX_VALUE))
+								.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+								.addComponent(tenNhanVien, GroupLayout.PREFERRED_SIZE, 253, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(361, Short.MAX_VALUE))
 					);
 					headerPanelLayout.setVerticalGroup(
 						headerPanelLayout.createParallelGroup()
 							.addGroup(headerPanelLayout.createSequentialGroup()
-								.addGap(16, 16, 16)
-								.addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(108, Short.MAX_VALUE))
-							.addGroup(headerPanelLayout.createSequentialGroup()
 								.addContainerGap()
-								.addComponent(personalImage, GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+								.addComponent(personalImage, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
 								.addContainerGap())
+							.addGroup(headerPanelLayout.createSequentialGroup()
+								.addGap(20, 20, 20)
+								.addComponent(tenNhanVien, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(106, Short.MAX_VALUE))
 					);
 				}
 
-				//---- button7 ----
-				button7.setFocusable(false);
-				button7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				button7.setBorder(new BevelBorder(BevelBorder.LOWERED));
-				button7.setOpaque(true);
-				button7.setText("CREATE");
+				//---- label1 ----
+				label1.setIcon(new ImageIcon(getClass().getResource("/GUI/image/icons8-create-80.png")));
+				label1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				label1.setText("CREATE");
+				label1.setBackground(new Color(0x99ff99));
+				label1.setOpaque(true);
+				label1.setBorder(new BevelBorder(BevelBorder.RAISED));
+				label1.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						label1MouseClicked(e);
+					}
+				});
+				label1.addMouseMotionListener(new MouseMotionAdapter() {
+					@Override
+					public void mouseMoved(MouseEvent e) {
+						label1MouseMoved(e);
+					}
+				});
+
+				//---- label3 ----
+				label3.setText("CREATE");
+				label3.setHorizontalAlignment(SwingConstants.CENTER);
+				label3.setFont(label3.getFont().deriveFont(label3.getFont().getStyle() | Font.BOLD, label3.getFont().getSize() + 4f));
+				label3.setForeground(new Color(0x00cc33));
 
 				GroupLayout panel2Layout = new GroupLayout(panel2);
 				panel2.setLayout(panel2Layout);
 				panel2Layout.setHorizontalGroup(
 					panel2Layout.createParallelGroup()
-						.addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-							.addGap(37, 37, 37)
-							.addComponent(button7, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-							.addComponent(panel1, GroupLayout.PREFERRED_SIZE, 579, GroupLayout.PREFERRED_SIZE)
-							.addGap(31, 31, 31))
 						.addGroup(panel2Layout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(headerPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addContainerGap())
+						.addGroup(panel2Layout.createSequentialGroup()
+							.addContainerGap(25, Short.MAX_VALUE)
+							.addGroup(panel2Layout.createParallelGroup()
+								.addComponent(label1, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+							.addComponent(panel1, GroupLayout.PREFERRED_SIZE, 579, GroupLayout.PREFERRED_SIZE)
+							.addGap(31, 31, 31))
 				);
 				panel2Layout.setVerticalGroup(
 					panel2Layout.createParallelGroup()
 						.addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(headerPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 							.addGroup(panel2Layout.createParallelGroup()
-								.addComponent(panel1, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button7, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
-							.addContainerGap())
+								.addGroup(panel2Layout.createSequentialGroup()
+									.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+									.addComponent(panel1, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE))
+								.addGroup(panel2Layout.createSequentialGroup()
+									.addGap(44, 44, 44)
+									.addComponent(label1, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+									.addComponent(label3, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+							.addGap(6, 6, 6))
 				);
 			}
 			scrollPane1.setViewportView(panel2);
@@ -244,14 +291,16 @@ public class PhanQuyenForm extends JFrame {
 		setLocationRelativeTo(getOwner());
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
 	}
-
-	public JButton getButton7() {
-		return button7;
+	
+	public JPanel getPanel2() {
+		return panel2;
 	}
 
-	public void setButton7(JButton button7) {
-		this.button7 = button7;
+	public void setPanel2(JPanel panel2) {
+		this.panel2 = panel2;
 	}
+
+
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
 	// Generated using JFormDesigner Evaluation license - lai loc
@@ -266,8 +315,9 @@ public class PhanQuyenForm extends JFrame {
 	private JButton button6;
 	private JPanel headerPanel;
 	private JLabel personalImage;
-	private JTextField textField1;
-	private JButton button7;
+	private JLabel tenNhanVien;
+	private JLabel label1;
+	private JLabel label3;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 	public JLabel getPersonalImage() {
 		return personalImage;
@@ -277,13 +327,8 @@ public class PhanQuyenForm extends JFrame {
 		this.personalImage = personalImage;
 	}
 
-	public JTextField getTextField1() {
-		return textField1;
-	}
 
-	public void setTextField1(JTextField textField1) {
-		this.textField1 = textField1;
-	}
-	
+
+
 	
 }

@@ -24,7 +24,7 @@ public class PhanloaiHome extends Generic_Implement<Phanloai> {
             Root<Phanloai> phanloaiRoot =criteriaQuery.from(Phanloai.class);
             Root<Sanpham> sanphamRoot= criteriaQuery.from(Sanpham.class);
           criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(phanloaiRoot.get("idphanLoai"),sanphamRoot.get("phanloai")),criteriaBuilder.equal(phanloaiRoot.get("idphanLoai"),id)));
-          criteriaQuery=criteriaQuery.multiselect(sanphamRoot.get("ten").as(String.class));
+          criteriaQuery=criteriaQuery.multiselect(sanphamRoot.get("ten"),sanphamRoot.get("size"),sanphamRoot.get("vatLieu"),sanphamRoot.get("mau"),sanphamRoot.get("giaBan"),sanphamRoot.get("anh"),sanphamRoot.get("soluong"));
             Query<Object[]> query=session.createQuery(criteriaQuery);
             List<Object[]> list=query.getResultList();
             session.close();

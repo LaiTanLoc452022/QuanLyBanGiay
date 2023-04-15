@@ -13,10 +13,7 @@ import BUS.PhanQuyenBUS;
 import GUI.*;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 import entity1.*;
@@ -35,10 +32,13 @@ import javax.imageio.ImageIO;
 
 public class Main {
     public static void main(String[] args) {
-        PhanQuyenBUS pqbus=new PhanQuyenBUS();
-                pqbus.loadImageAndInfo(1);
-                pqbus.setVisible(true);
-
+       List<Object[]>list= PhanloaiHome.getAllProductFromCategory(1);
+        Iterator<Object[]> iterator=list.listIterator();
+        while(iterator.hasNext()){
+            //iterator.next();
+           Object[] array= iterator.next();
+            System.out.println (Arrays.toString (array));
+        }
 
 	}
 
