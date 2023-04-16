@@ -52,11 +52,36 @@ public class UserInterface extends javax.swing.JFrame {
     void openPhanQuyen() {
         LayeredPane.removeAll();
         LayeredPane.add(PhanQuyen);
+        LayeredPane.repaint();
+        LayeredPane.revalidate();
     }
 
     void openNhanVien() {
         LayeredPane.removeAll();
         LayeredPane.add(NhanVien);
+        LayeredPane.repaint();
+        LayeredPane.revalidate();
+    }
+    
+    void openHoaDon() {
+        LayeredPane.removeAll();
+        LayeredPane.add(HoaDon);
+        LayeredPane.repaint();
+        LayeredPane.revalidate();
+    }
+    
+    void openKho() {
+        LayeredPane.removeAll();
+        LayeredPane.add(Kho);
+        LayeredPane.repaint();
+        LayeredPane.revalidate();
+    }
+    
+    void openKhachHang() {
+        LayeredPane.removeAll();
+        LayeredPane.add(KhachHang);
+        LayeredPane.repaint();
+        LayeredPane.revalidate();
     }
 
     /**
@@ -82,6 +107,12 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         NhanVien = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        HoaDon = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        Kho = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        KhachHang = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,16 +145,31 @@ public class UserInterface extends javax.swing.JFrame {
         btn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn.setText("HÓA ĐƠN");
         btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMouseClicked(evt);
+            }
+        });
         sidePanel.add(btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 200, 50));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("KHO");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         sidePanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 216, 200, 50));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("KHÁCH HÀNG");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         sidePanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 272, 200, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -157,17 +203,13 @@ public class UserInterface extends javax.swing.JFrame {
         PhanQuyen.setLayout(PhanQuyenLayout);
         PhanQuyenLayout.setHorizontalGroup(
             PhanQuyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PhanQuyenLayout.createSequentialGroup()
-                .addContainerGap(352, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(328, 328, 328))
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
         );
         PhanQuyenLayout.setVerticalGroup(
             PhanQuyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PhanQuyenLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(449, Short.MAX_VALUE))
+                .addGap(0, 455, Short.MAX_VALUE))
         );
 
         LayeredPane.add(PhanQuyen, "card2");
@@ -193,6 +235,69 @@ public class UserInterface extends javax.swing.JFrame {
         );
 
         LayeredPane.add(NhanVien, "card3");
+
+        jLabel1.setText("Hóa Đơn");
+
+        javax.swing.GroupLayout HoaDonLayout = new javax.swing.GroupLayout(HoaDon);
+        HoaDon.setLayout(HoaDonLayout);
+        HoaDonLayout.setHorizontalGroup(
+            HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HoaDonLayout.createSequentialGroup()
+                .addGap(390, 390, 390)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(359, Short.MAX_VALUE))
+        );
+        HoaDonLayout.setVerticalGroup(
+            HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HoaDonLayout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(330, Short.MAX_VALUE))
+        );
+
+        LayeredPane.add(HoaDon, "card4");
+
+        jLabel2.setText("Kho");
+
+        javax.swing.GroupLayout KhoLayout = new javax.swing.GroupLayout(Kho);
+        Kho.setLayout(KhoLayout);
+        KhoLayout.setHorizontalGroup(
+            KhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(KhoLayout.createSequentialGroup()
+                .addGap(355, 355, 355)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(393, Short.MAX_VALUE))
+        );
+        KhoLayout.setVerticalGroup(
+            KhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(KhoLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(374, Short.MAX_VALUE))
+        );
+
+        LayeredPane.add(Kho, "card5");
+
+        jLabel3.setText("Khách Hàng");
+
+        javax.swing.GroupLayout KhachHangLayout = new javax.swing.GroupLayout(KhachHang);
+        KhachHang.setLayout(KhachHangLayout);
+        KhachHangLayout.setHorizontalGroup(
+            KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(KhachHangLayout.createSequentialGroup()
+                .addGap(313, 313, 313)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(426, Short.MAX_VALUE))
+        );
+        KhachHangLayout.setVerticalGroup(
+            KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(KhachHangLayout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(325, Short.MAX_VALUE))
+        );
+
+        LayeredPane.add(KhachHang, "card6");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -228,6 +333,7 @@ public class UserInterface extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -245,6 +351,18 @@ public class UserInterface extends javax.swing.JFrame {
     private void btnNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNVMouseClicked
         openNhanVien();
     }//GEN-LAST:event_btnNVMouseClicked
+
+    private void btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMouseClicked
+        openHoaDon();
+    }//GEN-LAST:event_btnMouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        openKho();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        openKhachHang();
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -283,12 +401,18 @@ public class UserInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel HoaDon;
+    private javax.swing.JPanel KhachHang;
+    private javax.swing.JPanel Kho;
     private javax.swing.JPanel LayeredPane;
     private javax.swing.JPanel NhanVien;
     private javax.swing.JPanel PhanQuyen;
     private javax.swing.JLabel btn;
     private javax.swing.JLabel btnNV;
     private javax.swing.JLabel btnPQ;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
