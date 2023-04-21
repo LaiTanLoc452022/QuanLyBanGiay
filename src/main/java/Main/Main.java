@@ -32,13 +32,9 @@ import javax.imageio.ImageIO;
 
 public class Main {
     public static void main(String[] args) {
-       List<Object[]>list= PhanloaiHome.getAllProductFromCategory(1);
-        Iterator<Object[]> iterator=list.listIterator();
-        while(iterator.hasNext()){
-            //iterator.next();
-           Object[] array= iterator.next();
-            System.out.println (Arrays.toString (array));
-        }
+       Nguoidung nguoidung=NguoidungHome.findByID(Nguoidung.class,1);
+       Nhom nhom=NhomHome.findByID(Nhom.class,2);
+       Nhomvanguoidung nhomvanguoidung=new Nhomvanguoidung(new NhomvanguoidungId());
 
 	}
 

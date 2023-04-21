@@ -533,7 +533,6 @@ public class UserInterface extends javax.swing.JFrame {
         selectedPanel.setBackground(new java.awt.Color(0, 102, 102));
 
         qtvPanel.setBackground(new java.awt.Color(0, 51, 51));
-        qtvPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         qtvPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -541,6 +540,11 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Quản Trị Viên");
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout qtvPanelLayout = new javax.swing.GroupLayout(qtvPanel);
         qtvPanel.setLayout(qtvPanelLayout);
@@ -553,14 +557,10 @@ public class UserInterface extends javax.swing.JFrame {
         );
         qtvPanelLayout.setVerticalGroup(
             qtvPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(qtvPanelLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jLabel12)
-                .addContainerGap(111, Short.MAX_VALUE))
+            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
         );
 
         nvKhoPanel.setBackground(new java.awt.Color(0, 51, 51));
-        nvKhoPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nvKhoPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -577,14 +577,10 @@ public class UserInterface extends javax.swing.JFrame {
         );
         nvKhoPanelLayout.setVerticalGroup(
             nvKhoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nvKhoPanelLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         nvBanHangPanel.setBackground(new java.awt.Color(0, 51, 51));
-        nvBanHangPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nvBanHangPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel11.setBackground(new java.awt.Color(204, 255, 204));
@@ -603,10 +599,7 @@ public class UserInterface extends javax.swing.JFrame {
         );
         nvBanHangPanelLayout.setVerticalGroup(
             nvBanHangPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nvBanHangPanelLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout selectedPanelLayout = new javax.swing.GroupLayout(selectedPanel);
@@ -1922,7 +1915,12 @@ public class UserInterface extends javax.swing.JFrame {
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
         RegisterForm rf = new RegisterForm();
         rf.setVisible(true);
+        
     }//GEN-LAST:event_jPanel7MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        
+    }//GEN-LAST:event_jLabel12MouseClicked
 
     /**
      * @param args the command line arguments
