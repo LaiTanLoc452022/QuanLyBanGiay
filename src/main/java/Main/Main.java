@@ -32,14 +32,8 @@ import javax.imageio.ImageIO;
 
 public class Main {
     public static void main(String[] args) {
-       List<Object[]>list= PhanloaiHome.getAllProductFromCategory(1);
-        Iterator<Object[]> iterator=list.listIterator();
-        while(iterator.hasNext()){
-            //iterator.next();
-           Object[] array= iterator.next();
-            System.out.println (Arrays.toString (array));
-        }
-
+         List<Nguoidung> list=SanPhamHome.getAll(Nguoidung.class);
+         list.forEach(e->System.out.println(e.getTenDangNhap()));
 	}
 
 

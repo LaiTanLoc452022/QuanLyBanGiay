@@ -5,8 +5,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>QuanLyBanGiay</name>
 	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>18</maven.compiler.source>
+		<maven.compiler.target>18</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -36,5 +36,15 @@
 	  <version>3.7.4</version>
 	  <type>jar</type>
 	 </dependency>
+         <dependency>  
+<groupId>com.google.zxing</groupId>  
+<artifactId>core</artifactId>  
+<version>3.3.0</version>  
+</dependency>  
+<dependency>  
+<groupId>com.google.zxing</groupId>  
+<artifactId>javase</artifactId>  
+<version>3.3.0</version>  
+</dependency>  
 	</dependencies>
 </project>

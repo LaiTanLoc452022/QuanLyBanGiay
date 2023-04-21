@@ -8,7 +8,7 @@ import javax.swing.*;
 
 
 
-    final class createProfilePage extends JFrame implements ActionListener {
+     public class createProfilePage extends JFrame implements ActionListener {
 
         Container container = getContentPane();
 
@@ -97,11 +97,17 @@ import javax.swing.*;
                     try {
                         File file = fileChooser.getSelectedFile();
                         BufferedImage picture = ImageIO.read(file);
-
-                        picLabel.setIcon(new ImageIcon(picture));
+                        Image image=new ImageIcon(picture).getImage();
+                        Image imagescaled=image.getScaledInstance(picLabel.getWidth(),picLabel.getHeight(),Image.SCALE_SMOOTH);
+                        ImageIcon imageIcon=new ImageIcon(imagescaled);
+                        picLabel.setIcon(imageIcon);
                         add(picLabel);
                     } catch (IOException ioe) {
                         ioe.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "ERROR");
+
+                    }
+                    catch(NullPointerException npe){
                         JOptionPane.showMessageDialog(null, "ERROR");
                     }
                 }
