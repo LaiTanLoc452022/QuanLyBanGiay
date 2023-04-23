@@ -45,11 +45,11 @@ public class Generic_Implement<T> implements GenericDAO {
 
     public static <T> List<T> getAll(Class<T> instancetype) {
         try {
-           
-           
+            
+
             session = HIbernateUtil.getSessionFactory().openSession();
             Query<T> query = session.createQuery("FROM " + instancetype.getName());
-          // Query<T> query = session.createQuery("FROM " + instancetype);
+            
             List<T> list = query.list();
             return list;
         } catch (HibernateException e) {

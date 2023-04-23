@@ -32,8 +32,10 @@ import javax.imageio.ImageIO;
 
 public class Main {
     public static void main(String[] args) {
-         List<Nguoidung> list=SanPhamHome.getAll(Nguoidung.class);
-         list.forEach(e->System.out.println(e.getTenDangNhap()));
+       Nguoidung nguoidung=NguoidungHome.findByID(Nguoidung.class,1);
+       Nhom nhom=NhomHome.findByID(Nhom.class,2);
+       Nhomvanguoidung nhomvanguoidung=new Nhomvanguoidung(new NhomvanguoidungId());
+
 	}
 
 
