@@ -9,6 +9,7 @@ public class UserInterface extends javax.swing.JFrame {
         initComponents();
     }
     
+  
     int width = 200;
     int height = 550;
     
@@ -104,10 +105,10 @@ public class UserInterface extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         btnCloseMenu = new javax.swing.JLabel();
         btnHOME = new javax.swing.JLabel();
-        btnPQ = new javax.swing.JLabel();
         btnNV = new javax.swing.JLabel();
         btnHD = new javax.swing.JLabel();
         btnKHO = new javax.swing.JLabel();
+        btnPQ = new javax.swing.JLabel();
         btnKH = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -274,17 +275,6 @@ public class UserInterface extends javax.swing.JFrame {
             }
         });
 
-        btnPQ.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnPQ.setForeground(new java.awt.Color(204, 255, 204));
-        btnPQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnPQ.setText("PHÂN QUYỀN");
-        btnPQ.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPQ.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPQMouseClicked(evt);
-            }
-        });
-
         btnNV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnNV.setForeground(new java.awt.Color(204, 255, 204));
         btnNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -315,6 +305,17 @@ public class UserInterface extends javax.swing.JFrame {
         btnKHO.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnKHOMouseClicked(evt);
+            }
+        });
+
+        btnPQ.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnPQ.setForeground(new java.awt.Color(204, 255, 204));
+        btnPQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnPQ.setText("PHÂN QUYỀN");
+        btnPQ.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPQ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPQMouseClicked(evt);
             }
         });
 
@@ -502,6 +503,12 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(204, 255, 204));
         jLabel14.setText("Tên người dùng:");
 
+        jTextField17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField17ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
         infoPanel.setLayout(infoPanelLayout);
         infoPanelLayout.setHorizontalGroup(
@@ -533,6 +540,7 @@ public class UserInterface extends javax.swing.JFrame {
         selectedPanel.setBackground(new java.awt.Color(0, 102, 102));
 
         qtvPanel.setBackground(new java.awt.Color(0, 51, 51));
+        qtvPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         qtvPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -561,6 +569,7 @@ public class UserInterface extends javax.swing.JFrame {
         );
 
         nvKhoPanel.setBackground(new java.awt.Color(0, 51, 51));
+        nvKhoPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nvKhoPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -581,6 +590,7 @@ public class UserInterface extends javax.swing.JFrame {
         );
 
         nvBanHangPanel.setBackground(new java.awt.Color(0, 51, 51));
+        nvBanHangPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nvBanHangPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel11.setBackground(new java.awt.Color(204, 255, 204));
@@ -1915,12 +1925,21 @@ public class UserInterface extends javax.swing.JFrame {
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
         RegisterForm rf = new RegisterForm();
         rf.setVisible(true);
+        if(rf.isClosed){
+        this.jTextField18.setText(rf.getNguoidung().getTenTaiKhoan());// Set ten tài khoản
+        this.jTextField17.setText(rf.getNguoidung().getIdnguoiDung()+"");
+            System.out.println("closed!");
+        }
         
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         
     }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField17ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1965,7 +1984,7 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JPanel Kho;
     private javax.swing.JPanel LayeredPane;
     private javax.swing.JPanel NhanVien;
-    private javax.swing.JPanel PhanQuyen;
+    protected javax.swing.JPanel PhanQuyen;
     private javax.swing.JLabel btnCloseMenu;
     private javax.swing.JLabel btnHD;
     private javax.swing.JLabel btnHOME;
