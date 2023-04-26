@@ -6,6 +6,7 @@ package UINam;
 
 import DAO.NguoidungHome;
 import entity1.Nguoidung;
+import java.awt.Window;
 
 /**
  *
@@ -13,8 +14,20 @@ import entity1.Nguoidung;
  */
 public class RegisterForm extends javax.swing.JFrame {
 
+    
+
+   // Lộc's tạo thêm thuộc tính:
+    private static Nguoidung registedNguoidung;
+
+    public static Nguoidung getRegistedNguoidung() {
+        return registedNguoidung;
+    }
+    
+
     /**
      * Creates new form RegisterForm
+     *
+     *
      */
     public RegisterForm() {
         initComponents();
@@ -46,7 +59,12 @@ public class RegisterForm extends javax.swing.JFrame {
         tenTaiKhoan = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -97,9 +115,11 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(204, 255, 204));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("REGISTER");
+        jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 204), 3, true));
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                RegisterClicked(evt);
             }
         });
 
@@ -185,20 +205,22 @@ public class RegisterForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        Nguoidung nguoidung=new Nguoidung();
-        if(String.valueOf(password.getPassword()).equals(String.valueOf(retypePassword.getPassword()))) {
-            nguoidung.setTenDangNhap(username.getText());
-            nguoidung.setMatKhau(String.valueOf(password.getPassword()));
-            nguoidung.setTenTaiKhoan(String.valueOf(tenTaiKhoan.getText()));
+  
+    private void RegisterClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisterClicked
+        this.registedNguoidung=new Nguoidung();
+        if(String.valueOf(password.getPassword()).equals(String.valueOf(retypePassword.getPassword()))){
+            registedNguoidung.setTenDangNhap(username.getText());
+            registedNguoidung.setTenTaiKhoan(tenTaiKhoan.getText());
+            registedNguoidung.setMatKhau(String.valueOf(password.getPassword()));
+            NguoidungHome.insert(registedNguoidung);
         }
-        NguoidungHome.insert(nguoidung);
+    }//GEN-LAST:event_RegisterClicked
 
-        
-        
-    }//GEN-LAST:event_jLabel7MouseClicked
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
 
+    
     /**
      * @param args the command line arguments
      */
