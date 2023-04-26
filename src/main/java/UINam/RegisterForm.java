@@ -95,19 +95,33 @@ public class RegisterForm extends javax.swing.JFrame {
 
         jSeparator2.setForeground(new java.awt.Color(204, 255, 204));
 
+<<<<<<< Updated upstream
         username.setBackground(new java.awt.Color(0, 102, 102));
         username.setBorder(null);
 
         password.setBackground(new java.awt.Color(0, 102, 102));
         password.setToolTipText("");
         password.setBorder(null);
+=======
+        jTextField1.setBackground(new java.awt.Color(0, 102, 102));
+        jTextField1.setForeground(new java.awt.Color(204, 255, 204));
+        jTextField1.setBorder(null);
+
+        jPasswordField1.setBackground(new java.awt.Color(0, 102, 102));
+        jPasswordField1.setBorder(null);
+>>>>>>> Stashed changes
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 255, 204));
         jLabel5.setText("Retype Password");
 
+<<<<<<< Updated upstream
         retypePassword.setBackground(new java.awt.Color(0, 102, 102));
         retypePassword.setBorder(null);
+=======
+        jPasswordField2.setBackground(new java.awt.Color(0, 102, 102));
+        jPasswordField2.setBorder(null);
+>>>>>>> Stashed changes
 
         jSeparator3.setForeground(new java.awt.Color(204, 255, 204));
 
@@ -116,24 +130,40 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(204, 255, 204));
         jLabel6.setText("Name");
 
+<<<<<<< Updated upstream
         tenTaiKhoan.setBackground(new java.awt.Color(0, 102, 102));
         tenTaiKhoan.setForeground(new java.awt.Color(0, 102, 102));
         tenTaiKhoan.setToolTipText("");
         tenTaiKhoan.setBorder(null);
+=======
+        jTextField2.setBackground(new java.awt.Color(0, 102, 102));
+        jTextField2.setBorder(null);
+>>>>>>> Stashed changes
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 255, 204));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("REGISTER");
+<<<<<<< HEAD
         jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 204), 3, true));
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+<<<<<<< Updated upstream
+=======
+
+        jSeparator4.setForeground(new java.awt.Color(204, 255, 204));
+=======
+>>>>>>> Stashed changes
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
             }
         });
+<<<<<<< Updated upstream
 
         jSeparator4.setForeground(new java.awt.Color(204, 255, 204));
+=======
+>>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
+>>>>>>> Stashed changes
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,20 +171,26 @@ public class RegisterForm extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
+<<<<<<< Updated upstream
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
+=======
+                .addGap(50, 50, 50)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+>>>>>>> Stashed changes
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3))
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+<<<<<<< Updated upstream
                             .addComponent(tenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(retypePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                             .addComponent(jSeparator2)
@@ -164,11 +200,35 @@ public class RegisterForm extends javax.swing.JFrame {
                             .addComponent(jSeparator3)
                             .addComponent(jSeparator4))))
                 .addContainerGap(103, Short.MAX_VALUE))
+=======
+                            .addComponent(jSeparator1)
+<<<<<<< HEAD
+                            .addComponent(jTextField1)
+                            .addComponent(jPasswordField1)
+                            .addComponent(jPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(jSeparator3)
+                            .addComponent(jSeparator4)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+=======
+                            .addComponent(jSeparator2)
+                            .addComponent(username)
+                            .addComponent(password)
+                            .addComponent(retypePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(jSeparator3)
+                            .addComponent(tenTaiKhoan))))
+>>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> Stashed changes
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< Updated upstream
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -182,19 +242,71 @@ public class RegisterForm extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
+=======
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(1, 1, 1)
+=======
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)))
+>>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+>>>>>>> Stashed changes
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< HEAD
+                    .addComponent(jLabel4)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(1, 1, 1)
+=======
                     .addComponent(jLabel5)
                     .addComponent(retypePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
+>>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< Updated upstream
+=======
+                .addGap(17, 17, 17)
+>>>>>>> Stashed changes
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< HEAD
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+=======
                     .addComponent(jLabel6)
                     .addComponent(tenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< Updated upstream
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 180, Short.MAX_VALUE))
+=======
+                .addGap(20, 20, 20)
+>>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(189, Short.MAX_VALUE))
+>>>>>>> Stashed changes
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,14 +328,26 @@ public class RegisterForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< Updated upstream
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         Nguoidung nguoidung = new Nguoidung();
         if (String.valueOf(password.getPassword()).equals(String.valueOf(retypePassword.getPassword()))) {
+=======
+<<<<<<< HEAD
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel1MouseClicked
+=======
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        Nguoidung nguoidung=new Nguoidung();
+        if(String.valueOf(password.getPassword()).equals(String.valueOf(retypePassword.getPassword()))) {
+>>>>>>> Stashed changes
             nguoidung.setTenDangNhap(username.getText());
             nguoidung.setMatKhau(String.valueOf(password.getPassword()));
             nguoidung.setTenTaiKhoan(String.valueOf(tenTaiKhoan.getText()));
         }
         NguoidungHome.insert(nguoidung);
+<<<<<<< Updated upstream
         
 
     }//GEN-LAST:event_jLabel7MouseClicked
@@ -231,6 +355,13 @@ public class RegisterForm extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel1MouseClicked
+=======
+
+        
+        
+    }//GEN-LAST:event_jLabel7MouseClicked
+>>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments
@@ -280,10 +411,22 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+<<<<<<< Updated upstream
     private javax.swing.JSeparator jSeparator4;
+=======
+<<<<<<< HEAD
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+=======
+>>>>>>> Stashed changes
     private javax.swing.JPasswordField password;
     private javax.swing.JPasswordField retypePassword;
     private javax.swing.JTextField tenTaiKhoan;
     private javax.swing.JTextField username;
+<<<<<<< Updated upstream
+=======
+>>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
+>>>>>>> Stashed changes
     // End of variables declaration//GEN-END:variables
 }
