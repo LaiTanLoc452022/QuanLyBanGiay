@@ -1,5 +1,6 @@
 package UINam;
 
+import BUS.Generic_BUS;
 import DAO.NhanvienHome;
 import entity1.Nhanvien;
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,30 +19,30 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class UserInterface extends javax.swing.JFrame {
-
+    
     private static String username = "root";
     private static String pass = "Phuc. 20032003";
     private static String data = "jdbc:mysql://localhost:3306/cuahangbangiay";
-
+    
     Connection sqlconn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
     int q;
-
+    
     public void GetDataTable() throws SQLException {
-
+        
         try {
             sqlconn = DriverManager.getConnection(data, username, pass);
             pst = sqlconn.prepareStatement("select * from nhanvien order by IDNhanVien, HoVaTen");
             rs = pst.executeQuery();
-
+            
             ResultSetMetaData stData = rs.getMetaData();
-
+            
             q = stData.getColumnCount();
-
+            
             DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
             RecordTable.setRowCount(0);
-
+            
             while (rs.next()) {
                 Vector columnData = new Vector();
                 for (int i = 1; i <= q; i++) {
@@ -54,36 +56,53 @@ public class UserInterface extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-
+        
     }
-
+    
+    public void GetData() {
+        ArrayList<Nhanvien> array = Generic_BUS.getAll(Nhanvien.class);
+        DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
+        RecordTable.setRowCount(0);
+        for (int i = 0; i < array.size(); ++i) {
+            Object[] rowData = new Object[7];
+            rowData[0] = array.get(i).getIdnhanVien();
+            rowData[1] = array.get(i).getHoVaTen();
+            rowData[2] = array.get(i).getSdt();
+            rowData[3] = array.get(i).getNgaySinh();
+            rowData[4] = array.get(i).getEmail();
+            rowData[5] = array.get(i).getLuong();
+            RecordTable.addRow(rowData);
+        }
+    }
+    
     public UserInterface() throws SQLException {
         initComponents();
-        GetDataTable();
+        GetData();
+        
     }
-
+    
     int width = 200;
     int height = 550;
-
+    
     void openMenuBar() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < width; i++) {
                     sidePanel.setSize(i, height);
-
+                    
                     try {
                         Thread.sleep(2);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(UserInterface.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
+                    
                 }
             }
         }).start();
-
+        
     }
-
+    
     void closeMenuBar() {
         new Thread(new Runnable() {
             @Override
@@ -95,55 +114,55 @@ public class UserInterface extends javax.swing.JFrame {
                     } catch (InterruptedException ex) {
                         Logger.getLogger(UserInterface.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
+                    
                 }
             }
         }).start();
-
+        
     }
-
+    
     void openHome() {
         LayeredPane.removeAll();
         LayeredPane.add(Home);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     void openPhanQuyen() {
         LayeredPane.removeAll();
         LayeredPane.add(PhanQuyen);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     void openNhanVien() {
         LayeredPane.removeAll();
         LayeredPane.add(NhanVien);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     void openHoaDon() {
         LayeredPane.removeAll();
         LayeredPane.add(HoaDon);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     void openKho() {
         LayeredPane.removeAll();
         LayeredPane.add(Kho);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     void openKhachHang() {
         LayeredPane.removeAll();
         LayeredPane.add(KhachHang);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -2149,13 +2168,14 @@ public class UserInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
         int SelectedRows = tableNV.getSelectedRow();
-
+        
         msnv.setText(RecordTable.getValueAt(SelectedRows, 0).toString());
         hovaten.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
         sdt.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
         ngaysinh.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
         email.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
         luong.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
+
     }//GEN-LAST:event_tableNVMouseClicked
 
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
@@ -2181,9 +2201,9 @@ public class UserInterface extends javax.swing.JFrame {
         Nhanvien nv = new Nhanvien();
         nv.setHoVaTen(hovaten.getText());
         nv.setSdt(Integer.parseInt(sdt.getText()));
-        nv.setNgaySinh(new Date(Integer.parseInt(ngaysinh.getText())));
+        
         nv.setEmail(email.getText());
-
+        
         NhanvienHome.update(nv);
     }//GEN-LAST:event_updateMouseClicked
 
@@ -2192,14 +2212,14 @@ public class UserInterface extends javax.swing.JFrame {
         try {
             sqlconn = DriverManager.getConnection(data, username, pass);
             pst = sqlconn.prepareStatement("delete from nhanvien where (IDNhanVien=?) and (HoVaTen=?)");
-
+            
             pst.setString(1, msnv.getText());
             pst.setString(2, hovaten.getText());
-
+            
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Delete Successfully!");
             GetDataTable();
-
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -2231,8 +2251,28 @@ public class UserInterface extends javax.swing.JFrame {
 //        nv.setNgaySinh(new Date(ngaysinh.getText()));
         nv.setEmail(email.getText());
 //        nv.setLuong(luong.getText());
-
+        ArrayList<Nhanvien> array = Generic_BUS.getList();
+        array.add(nv);
+        try {
+            
+            DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
+            RecordTable.setRowCount(0);
+            for (int i = 0; i < array.size(); ++i) {
+                Object[] rowData = new Object[7];
+                rowData[0] = array.get(i).getIdnhanVien();
+                rowData[1] = array.get(i).getHoVaTen();
+                rowData[2] = array.get(i).getSdt();
+                rowData[3] = array.get(i).getNgaySinh();
+                rowData[4] = array.get(i).getEmail();
+                rowData[5] = array.get(i).getLuong();
+                RecordTable.addRow(rowData);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Update ");
+        }
+        System.out.println("ok");
         NhanvienHome.insert(nv);
+
     }//GEN-LAST:event_insertMouseClicked
 
     /**

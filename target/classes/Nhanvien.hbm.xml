@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Apr 13, 2023, 8:42:14 PM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="cuahangbangiay" name="entity1.Nhanvien" optimistic-lock="none" table="nhanvien">
+        <id name="idnhanVien" type="java.lang.Integer">
+            <column name="IDNhanVien"/>
+            <generator class="identity"/>
+        </id>
+        <property name="hoVaTen" type="string">
+            <column length="0" name="HoVaTen"/>
+        </property>
+        <property name="sdt" type="java.lang.Integer">
+            <column name="SDT" unique="true"/>
+        </property>
+        <property name="ngaySinh" type="date">
+            <column length="10" name="NgaySinh"/>
+        </property>
+        <property name="email" type="string">
+            <column length="20" name="email"/>
+        </property>
+        <property name="luong" type="java.lang.Double">
+            <column name="Luong" precision="22" scale="0"/>
+        </property>
+        <property name="idloai" type="java.lang.Integer">
+            <column name="IDLoai"/>
+        </property>
+        <property name="anh" type="binary">
+            <column name="Anh"/>
+        </property>
+    </class>
+</hibernate-mapping>
