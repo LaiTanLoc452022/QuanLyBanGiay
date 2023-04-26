@@ -34,11 +34,6 @@ public class LoginForm extends javax.swing.JFrame {
         loginBtn = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-<<<<<<< Updated upstream
-=======
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
->>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -140,15 +135,6 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 50, 50));
 
-<<<<<<< Updated upstream
-=======
-        jLabel5.setIcon(new javax.swing.ImageIcon("src//main//java//UINam//login//icons8_user_20px_1.png"));
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 20, 20));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("src//main//java//UINam//login//icons8_password_20px.png"));
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 20, 20));
-
->>>>>>> Stashed changes
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -238,11 +224,6 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-<<<<<<< Updated upstream
-=======
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
->>>>>>> Stashed changes
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;

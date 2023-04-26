@@ -190,15 +190,6 @@ public class UserInterface extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableNV = new javax.swing.JTable();
-<<<<<<< Updated upstream
-=======
-        jPanel8 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
->>>>>>> Stashed changes
         jPanel11 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -541,7 +532,6 @@ public class UserInterface extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
         jPanel7.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel7MouseClicked(evt);
@@ -580,14 +570,6 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(204, 255, 204));
         jLabel14.setText("Tên người dùng:");
 
-        jTextField17.setBackground(new java.awt.Color(0, 102, 102));
-        jTextField17.setForeground(new java.awt.Color(204, 255, 204));
-        jTextField17.setBorder(null);
-
-        jTextField18.setBackground(new java.awt.Color(0, 102, 102));
-        jTextField18.setForeground(new java.awt.Color(204, 255, 204));
-        jTextField18.setBorder(null);
-
         javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
         infoPanel.setLayout(infoPanelLayout);
         infoPanelLayout.setHorizontalGroup(
@@ -619,11 +601,7 @@ public class UserInterface extends javax.swing.JFrame {
         selectedPanel.setBackground(new java.awt.Color(0, 102, 102));
 
         qtvPanel.setBackground(new java.awt.Color(0, 51, 51));
-<<<<<<< HEAD
         qtvPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        qtvPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-=======
->>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
         qtvPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -652,11 +630,7 @@ public class UserInterface extends javax.swing.JFrame {
         );
 
         nvKhoPanel.setBackground(new java.awt.Color(0, 51, 51));
-<<<<<<< HEAD
         nvKhoPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        nvKhoPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-=======
->>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
         nvKhoPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -677,11 +651,7 @@ public class UserInterface extends javax.swing.JFrame {
         );
 
         nvBanHangPanel.setBackground(new java.awt.Color(0, 51, 51));
-<<<<<<< HEAD
         nvBanHangPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        nvBanHangPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-=======
->>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
         nvBanHangPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel11.setBackground(new java.awt.Color(204, 255, 204));
@@ -783,7 +753,6 @@ public class UserInterface extends javax.swing.JFrame {
 
         tableNV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-<<<<<<< Updated upstream
 
             },
             new String [] {
@@ -796,27 +765,6 @@ public class UserInterface extends javax.swing.JFrame {
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
             };
-=======
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "MSNV", "Họ và tên", "SĐT", "Chức vụ", "Địa chỉ", "Email", "Lương"
-            }
-        ));
-        jScrollPane1.setViewportView(tableNV);
-        if (tableNV.getColumnModel().getColumnCount() > 0) {
-            tableNV.getColumnModel().getColumn(0).setHeaderValue("MSNV");
-            tableNV.getColumnModel().getColumn(1).setHeaderValue("Họ và tên");
-            tableNV.getColumnModel().getColumn(2).setHeaderValue("SĐT");
-            tableNV.getColumnModel().getColumn(3).setHeaderValue("Chức vụ");
-            tableNV.getColumnModel().getColumn(4).setHeaderValue("Địa chỉ");
-            tableNV.getColumnModel().getColumn(5).setHeaderValue("Email");
-            tableNV.getColumnModel().getColumn(6).setHeaderValue("Lương");
-        }
->>>>>>> Stashed changes
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
@@ -1116,13 +1064,8 @@ public class UserInterface extends javax.swing.JFrame {
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-<<<<<<< Updated upstream
                 .addGap(16, 16, 16)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-=======
-                .addGap(20, 20, 20)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
->>>>>>> Stashed changes
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -1140,26 +1083,11 @@ public class UserInterface extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-<<<<<<< Updated upstream
                         .addComponent(jComboBox1, 0, 215, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
                 .addGap(16, 16, 16))
-=======
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(141, 141, 141))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1)))
-                .addGap(9, 9, 9))
->>>>>>> Stashed changes
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1181,27 +1109,10 @@ public class UserInterface extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-<<<<<<< Updated upstream
                         .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(26, Short.MAX_VALUE))
-=======
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addContainerGap(20, Short.MAX_VALUE)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
->>>>>>> Stashed changes
         );
 
         javax.swing.GroupLayout NhanVienLayout = new javax.swing.GroupLayout(NhanVien);
@@ -2216,12 +2127,11 @@ public class UserInterface extends javax.swing.JFrame {
         RegisterForm rf = new RegisterForm();
         rf.setVisible(true);
 
-
     }//GEN-LAST:event_jPanel7MouseClicked
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {                                      
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
 
-    }                                     
+    }//GEN-LAST:event_jLabel12MouseClicked
 
     // RESET METHOD
     private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
@@ -2324,15 +2234,6 @@ public class UserInterface extends javax.swing.JFrame {
 
         NhanvienHome.insert(nv);
     }//GEN-LAST:event_insertMouseClicked
-
-=======
-        
-    }                                    
-
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        
-    }//GEN-LAST:event_jLabel12MouseClicked
-
 
     /**
      * @param args the command line arguments
@@ -2536,8 +2437,6 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JPanel selectedPanel;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JTable tableNV;
-<<<<<<< Updated upstream
     private javax.swing.JLabel update;
-=======
->>>>>>> Stashed changes
     // End of variables declaration//GEN-END:variables
+}
