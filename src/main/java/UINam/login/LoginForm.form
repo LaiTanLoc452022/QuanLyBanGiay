@@ -248,7 +248,6 @@
             </Constraint>
           </Constraints>
         </Component>
-<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -256,14 +255,6 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.ImageIcon(&quot;src//main//java//UINam//login//icons8_user_20px_1.png&quot;)" type="code"/>
             </Property>
-=======
-        <Component class="javax.swing.JLabel" name="jLabel5">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/UINam/login/icons8_user_20px_1.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel5"/>
->>>>>>> parent of 1f7690c (up)
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -271,7 +262,6 @@
             </Constraint>
           </Constraints>
         </Component>
-<<<<<<< HEAD
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -285,8 +275,6 @@
           </Constraints>
         </Component>
 >>>>>>> Stashed changes
-=======
->>>>>>> parent of 1f7690c (up)
       </SubComponents>
     </Container>
   </SubComponents>
