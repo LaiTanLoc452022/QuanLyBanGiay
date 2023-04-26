@@ -1828,7 +1828,7 @@ public class UserInterface extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(LayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(LayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1922,24 +1922,17 @@ public class UserInterface extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-        RegisterForm rf = new RegisterForm();
-        rf.setVisible(true);
-        if(rf.isClosed){
-        this.jTextField18.setText(rf.getNguoidung().getTenTaiKhoan());// Set ten tài khoản
-        this.jTextField17.setText(rf.getNguoidung().getIdnguoiDung()+"");
-            System.out.println("closed!");
-        }
-        
-    }//GEN-LAST:event_jPanel7MouseClicked
-
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        
+
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField17ActionPerformed
+
+    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+
+    }//GEN-LAST:event_jPanel7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1984,7 +1977,7 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JPanel Kho;
     private javax.swing.JPanel LayeredPane;
     private javax.swing.JPanel NhanVien;
-    protected javax.swing.JPanel PhanQuyen;
+    private javax.swing.JPanel PhanQuyen;
     private javax.swing.JLabel btnCloseMenu;
     private javax.swing.JLabel btnHD;
     private javax.swing.JLabel btnHOME;

@@ -13,18 +13,16 @@ import java.awt.Window;
  * @author NAM
  */
 public class RegisterForm extends javax.swing.JFrame {
-// Lộc Atribute //
-    public static boolean isClosed;
 
-    private static Nguoidung nguoidung;
+    
 
-    public Nguoidung getNguoidung() {
-        return nguoidung;
+   // Lộc's tạo thêm thuộc tính:
+    private static Nguoidung registedNguoidung;
+
+    public static Nguoidung getRegistedNguoidung() {
+        return registedNguoidung;
     }
-
-    public void setNguoidung(Nguoidung nguoidung) {
-        this.nguoidung = nguoidung;
-    }
+    
 
     /**
      * Creates new form RegisterForm
@@ -118,9 +116,10 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("REGISTER");
         jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 204), 3, true));
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                RegisterClicked(evt);
             }
         });
 
@@ -207,25 +206,21 @@ public class RegisterForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
   
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        this.nguoidung = new Nguoidung();
-        if (String.valueOf(password.getPassword()).equals(String.valueOf(retypePassword.getPassword()))) {
-            nguoidung.setTenDangNhap(username.getText());
-            nguoidung.setMatKhau(String.valueOf(password.getPassword()));
-            nguoidung.setTenTaiKhoan(String.valueOf(tenTaiKhoan.getText()));
+    private void RegisterClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisterClicked
+        this.registedNguoidung=new Nguoidung();
+        if(String.valueOf(password.getPassword()).equals(String.valueOf(retypePassword.getPassword()))){
+            registedNguoidung.setTenDangNhap(username.getText());
+            registedNguoidung.setTenTaiKhoan(tenTaiKhoan.getText());
+            registedNguoidung.setMatKhau(String.valueOf(password.getPassword()));
+            NguoidungHome.insert(registedNguoidung);
         }
-        NguoidungHome.insert(nguoidung);
+    }//GEN-LAST:event_RegisterClicked
 
-
-    }//GEN-LAST:event_jLabel7MouseClicked
-
-    
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        isClosed=true;
-        
     }//GEN-LAST:event_formWindowClosed
 
+    
     /**
      * @param args the command line arguments
      */

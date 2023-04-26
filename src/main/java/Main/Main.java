@@ -10,9 +10,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 
+import BUS.Generic_BUS;
 import GUI.*;
 
-import java.sql.Date;
+
 import java.util.*;
 
 
@@ -32,9 +33,11 @@ import javax.imageio.ImageIO;
 
 public class Main {
     public static void main(String[] args) {
-        NewJPanel njp=new NewJPanel();
-        njp.setVisible(true);
-	}
+
+        ArrayList<Nhanvien> list= Generic_BUS.getAll(Nhanvien.class);
+        list.forEach(e-> System.out.println(e.toString()));
+    }
+      
 
 
 }
