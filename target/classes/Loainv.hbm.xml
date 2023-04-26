@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="cuahangbangiay" name="entity1.Loainv" optimistic-lock="none" table="loainv">
+        <id name="idloai" type="int">
+            <column name="IDLoai"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="tenLoai" type="string">
+            <column length="50" name="TenLoai"/>
+        </property>
+        <property name="ghiChu" type="string">
+            <column length="50" name="GhiChu"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="nhanviens" table="nhanvien">
+            <key>
+                <column name="IDLoai"/>
+            </key>
+            <one-to-many class="entity1.Nhanvien"/>
+        </set>
+    </class>
+</hibernate-mapping>
