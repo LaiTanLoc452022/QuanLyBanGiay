@@ -43,7 +43,7 @@ public class SanPhamForm extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), null));
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 210, 170));
 
         Vatlieu.setText("jTextField1");
