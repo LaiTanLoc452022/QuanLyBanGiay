@@ -533,6 +533,7 @@ public class UserInterface extends javax.swing.JFrame {
         selectedPanel.setBackground(new java.awt.Color(0, 102, 102));
 
         qtvPanel.setBackground(new java.awt.Color(0, 51, 51));
+        qtvPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         qtvPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -561,6 +562,7 @@ public class UserInterface extends javax.swing.JFrame {
         );
 
         nvKhoPanel.setBackground(new java.awt.Color(0, 51, 51));
+        nvKhoPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nvKhoPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -581,6 +583,7 @@ public class UserInterface extends javax.swing.JFrame {
         );
 
         nvBanHangPanel.setBackground(new java.awt.Color(0, 51, 51));
+        nvBanHangPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nvBanHangPanel.setPreferredSize(new java.awt.Dimension(200, 260));
 
         jLabel11.setBackground(new java.awt.Color(204, 255, 204));
@@ -1606,6 +1609,12 @@ public class UserInterface extends javax.swing.JFrame {
         );
 
         jPanel27.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 7, -1, -1));
+
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
         jPanel27.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 7, 262, 40));
 
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Giày", "Tên Giày", "Năm SX", "Thương Hiệu", "Giá" }));
@@ -1922,6 +1931,10 @@ public class UserInterface extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel12MouseClicked
 
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1961,7 +1974,7 @@ public class UserInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel HoaDon;
     private javax.swing.JPanel Home;
-    private javax.swing.JPanel KhachHang;
+    protected javax.swing.JPanel KhachHang;
     private javax.swing.JPanel Kho;
     private javax.swing.JPanel LayeredPane;
     private javax.swing.JPanel NhanVien;
