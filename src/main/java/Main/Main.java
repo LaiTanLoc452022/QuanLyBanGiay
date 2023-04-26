@@ -9,10 +9,11 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-import BUS.PhanQuyenBUS;
+
+import BUS.Generic_BUS;
 import GUI.*;
 
-import java.sql.Date;
+
 import java.util.*;
 
 
@@ -32,11 +33,11 @@ import javax.imageio.ImageIO;
 
 public class Main {
     public static void main(String[] args) {
-       Nguoidung nguoidung=NguoidungHome.findByID(Nguoidung.class,1);
-       Nhom nhom=NhomHome.findByID(Nhom.class,2);
-       Nhomvanguoidung nhomvanguoidung=new Nhomvanguoidung(new NhomvanguoidungId());
 
-	}
+        ArrayList<Nhanvien> list= Generic_BUS.getAll(Nhanvien.class);
+        list.forEach(e-> System.out.println(e.toString()));
+    }
+      
 
 
 }
