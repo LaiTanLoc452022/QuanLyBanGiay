@@ -36,6 +36,7 @@
 	  <version>3.7.4</version>
 	  <type>jar</type>
 	 </dependency>
+         
          <dependency>  
 <groupId>com.google.zxing</groupId>  
 <artifactId>core</artifactId>  
@@ -46,5 +47,12 @@
 <artifactId>javase</artifactId>  
 <version>3.3.0</version>  
 </dependency>  
+<!-- https://mvnrepository.com/artifact/com.toedter/jcalendar -->
+<dependency>
+    <groupId>com.toedter</groupId>
+    <artifactId>jcalendar</artifactId>
+    <version>1.4</version>
+</dependency>
+
 	</dependencies>
 </project>
