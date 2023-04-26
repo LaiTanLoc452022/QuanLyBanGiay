@@ -45,7 +45,6 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         tenTaiKhoan = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,12 +55,6 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 255, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("X");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,6 +84,7 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(204, 255, 204));
         jLabel4.setText("Password");
 
+<<<<<<< HEAD
         jSeparator1.setForeground(new java.awt.Color(204, 255, 204));
 
         jSeparator2.setForeground(new java.awt.Color(204, 255, 204));
@@ -111,10 +105,13 @@ public class RegisterForm extends javax.swing.JFrame {
         jPasswordField1.setBorder(null);
 >>>>>>> Stashed changes
 
+=======
+>>>>>>> parent of 1f7690c (up)
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 255, 204));
         jLabel5.setText("Retype Password");
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         retypePassword.setBackground(new java.awt.Color(0, 102, 102));
         retypePassword.setBorder(null);
@@ -125,11 +122,14 @@ public class RegisterForm extends javax.swing.JFrame {
 
         jSeparator3.setForeground(new java.awt.Color(204, 255, 204));
 
+=======
+>>>>>>> parent of 1f7690c (up)
         jLabel6.setBackground(new java.awt.Color(204, 255, 204));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 255, 204));
         jLabel6.setText("Name");
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         tenTaiKhoan.setBackground(new java.awt.Color(0, 102, 102));
         tenTaiKhoan.setForeground(new java.awt.Color(0, 102, 102));
@@ -140,10 +140,13 @@ public class RegisterForm extends javax.swing.JFrame {
         jTextField2.setBorder(null);
 >>>>>>> Stashed changes
 
+=======
+>>>>>>> parent of 1f7690c (up)
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 255, 204));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("REGISTER");
+<<<<<<< HEAD
 <<<<<<< HEAD
         jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 204), 3, true));
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -153,6 +156,8 @@ public class RegisterForm extends javax.swing.JFrame {
         jSeparator4.setForeground(new java.awt.Color(204, 255, 204));
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 1f7690c (up)
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
@@ -160,17 +165,24 @@ public class RegisterForm extends javax.swing.JFrame {
         });
 <<<<<<< Updated upstream
 
+<<<<<<< HEAD
         jSeparator4.setForeground(new java.awt.Color(204, 255, 204));
 =======
 >>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
 >>>>>>> Stashed changes
 
+=======
+>>>>>>> parent of 1f7690c (up)
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(126, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
             .addGroup(jPanel2Layout.createSequentialGroup()
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -183,6 +195,14 @@ public class RegisterForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
 >>>>>>> Stashed changes
+=======
+                .addGap(50, 50, 50)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+>>>>>>> parent of 1f7690c (up)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
@@ -190,14 +210,21 @@ public class RegisterForm extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                             .addComponent(tenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(retypePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                             .addComponent(jSeparator2)
                             .addComponent(password)
+=======
+>>>>>>> parent of 1f7690c (up)
                             .addComponent(jSeparator1)
+                            .addComponent(jSeparator2)
                             .addComponent(username)
+                            .addComponent(password)
+                            .addComponent(retypePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                             .addComponent(jSeparator3)
+<<<<<<< HEAD
                             .addComponent(jSeparator4))))
                 .addContainerGap(103, Short.MAX_VALUE))
 =======
@@ -223,11 +250,16 @@ public class RegisterForm extends javax.swing.JFrame {
 >>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 >>>>>>> Stashed changes
+=======
+                            .addComponent(tenTaiKhoan))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> parent of 1f7690c (up)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -264,6 +296,22 @@ public class RegisterForm extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
 >>>>>>> Stashed changes
+=======
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)))
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+>>>>>>> parent of 1f7690c (up)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 <<<<<<< HEAD
                     .addComponent(jLabel4)
@@ -281,10 +329,14 @@ public class RegisterForm extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
 >>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
                 .addGap(17, 17, 17)
 >>>>>>> Stashed changes
+=======
+                .addGap(20, 20, 20)
+>>>>>>> parent of 1f7690c (up)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 <<<<<<< HEAD
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,6 +347,7 @@ public class RegisterForm extends javax.swing.JFrame {
 =======
                     .addComponent(jLabel6)
                     .addComponent(tenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,6 +360,11 @@ public class RegisterForm extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(189, Short.MAX_VALUE))
 >>>>>>> Stashed changes
+=======
+                .addGap(20, 20, 20)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 205, Short.MAX_VALUE))
+>>>>>>> parent of 1f7690c (up)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -320,8 +378,8 @@ public class RegisterForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -330,6 +388,7 @@ public class RegisterForm extends javax.swing.JFrame {
 
 <<<<<<< Updated upstream
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+<<<<<<< HEAD
         Nguoidung nguoidung = new Nguoidung();
         if (String.valueOf(password.getPassword()).equals(String.valueOf(retypePassword.getPassword()))) {
 =======
@@ -342,16 +401,25 @@ public class RegisterForm extends javax.swing.JFrame {
         Nguoidung nguoidung=new Nguoidung();
         if(String.valueOf(password.getPassword()).equals(String.valueOf(retypePassword.getPassword()))) {
 >>>>>>> Stashed changes
+=======
+        Nguoidung nguoidung=new Nguoidung();
+        if(String.valueOf(password.getPassword()).equals(String.valueOf(retypePassword.getPassword()))) {
+>>>>>>> parent of 1f7690c (up)
             nguoidung.setTenDangNhap(username.getText());
             nguoidung.setMatKhau(String.valueOf(password.getPassword()));
             nguoidung.setTenTaiKhoan(String.valueOf(tenTaiKhoan.getText()));
         }
         NguoidungHome.insert(nguoidung);
+<<<<<<< HEAD
 <<<<<<< Updated upstream
-        
+=======
 
+        
+>>>>>>> parent of 1f7690c (up)
+        
     }//GEN-LAST:event_jLabel7MouseClicked
 
+<<<<<<< HEAD
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel1MouseClicked
@@ -363,6 +431,8 @@ public class RegisterForm extends javax.swing.JFrame {
 >>>>>>> 4c2d4b6a45254c57a18759271c7be205fdf43ab8
 >>>>>>> Stashed changes
 
+=======
+>>>>>>> parent of 1f7690c (up)
     /**
      * @param args the command line arguments
      */
@@ -411,6 +481,7 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     private javax.swing.JSeparator jSeparator4;
 =======
@@ -420,6 +491,8 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 1f7690c (up)
     private javax.swing.JPasswordField password;
     private javax.swing.JPasswordField retypePassword;
     private javax.swing.JTextField tenTaiKhoan;

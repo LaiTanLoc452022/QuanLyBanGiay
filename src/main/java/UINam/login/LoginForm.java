@@ -4,12 +4,9 @@ import DAO.Generic_Implement;
 import DAO.NguoidungHome;
 import UINam.UserInterface;
 import entity1.Nguoidung;
-import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class LoginForm extends javax.swing.JFrame {
 
@@ -34,11 +31,15 @@ public class LoginForm extends javax.swing.JFrame {
         loginBtn = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 >>>>>>> Stashed changes
+=======
+        jLabel5 = new javax.swing.JLabel();
+>>>>>>> parent of 1f7690c (up)
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -140,6 +141,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 50, 50));
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
         jLabel5.setIcon(new javax.swing.ImageIcon("src//main//java//UINam//login//icons8_user_20px_1.png"));
@@ -149,6 +151,12 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 20, 20));
 
 >>>>>>> Stashed changes
+=======
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UINam/login/icons8_user_20px_1.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 20, 20));
+
+>>>>>>> parent of 1f7690c (up)
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -182,14 +190,10 @@ public class LoginForm extends javax.swing.JFrame {
         for (Nguoidung temp : list) {
 
             if (String.valueOf(passwordF.getPassword()).equals(temp.getMatKhau()) && usernameTF.getText().equals(temp.getTenDangNhap())) {
-                try {
-                    System.out.println("ThanhCong!");
-                    this.dispose();
-                    UserInterface ui = new UserInterface();
-                    ui.setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                System.out.println("ThanhCong!");
+                this.dispose();
+                UserInterface ui = new UserInterface();
+                ui.setVisible(true);
             }
         }
 
@@ -238,11 +242,15 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
 >>>>>>> Stashed changes
+=======
+    private javax.swing.JLabel jLabel5;
+>>>>>>> parent of 1f7690c (up)
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
