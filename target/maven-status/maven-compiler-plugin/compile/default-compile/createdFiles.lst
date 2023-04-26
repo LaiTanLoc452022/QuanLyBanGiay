@@ -11,6 +11,7 @@ entity1\Nhacungcap.class
 UINam\UserInterface$17.class
 DAO\PhieunhapHome.class
 entity1\Phanloai.class
+UINam\RegisterForm$3.class
 DAO\SanPhamHome.class
 UINam\UserInterface.class
 entity1\Hoadon.class
@@ -50,7 +51,6 @@ entity1\Manhinh.class
 UINam\UserInterface$6.class
 entity1\The.class
 BUS\PhanQuyenBUS.class
-UINam\UserInterface$25.class
 DAO\KhachhangHome.class
 GUI\PhanQuyenForm$3.class
 UINam\UserInterface$9.class
@@ -64,6 +64,7 @@ entity1\Loainv.class
 DAO\HoadonHome.class
 Main\Main.class
 UINam\login\LoginForm$4.class
+UINam\RegisterForm$2.class
 UINam\UserInterface$16.class
 Database\HIbernateUtil.class
 UINam\UserInterface$8.class
