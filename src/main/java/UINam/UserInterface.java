@@ -2215,13 +2215,13 @@ public class UserInterface extends javax.swing.JFrame {
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
         RegisterForm rf = new RegisterForm();
         rf.setVisible(true);
-<<<<<<< Updated upstream
+
 
     }//GEN-LAST:event_jPanel7MouseClicked
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {                                      
 
-    }//GEN-LAST:event_jLabel12MouseClicked
+    }                                     
 
     // RESET METHOD
     private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
@@ -2327,13 +2327,13 @@ public class UserInterface extends javax.swing.JFrame {
 
 =======
         
-    }//GEN-LAST:event_jPanel7MouseClicked
+    }                                    
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         
     }//GEN-LAST:event_jLabel12MouseClicked
 
->>>>>>> Stashed changes
+
     /**
      * @param args the command line arguments
      */
@@ -2541,4 +2541,3 @@ public class UserInterface extends javax.swing.JFrame {
 =======
 >>>>>>> Stashed changes
     // End of variables declaration//GEN-END:variables
-}
