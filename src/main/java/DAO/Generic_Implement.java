@@ -51,12 +51,11 @@ public class Generic_Implement<T> implements GenericDAO {
             Query<T> query = session.createQuery("FROM " + instancetype.getName());
             
             List<T> list = query.list();
+            session.close();
             return list;
         } catch (HibernateException e) {
             throw new RuntimeException(e);
-        } finally {
-            session.close();
-        }
+        } 
     }
 
     ;
