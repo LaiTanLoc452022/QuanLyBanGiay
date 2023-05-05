@@ -15,7 +15,7 @@ public class Generic_Implement<T> implements GenericDAO {
     private static Transaction transaction;
 
 
-    public static <T> void insert(T instance) {
+    public static <T> void insert(T instance) {// tạo đối tượng trước rồi , gọi hàm insert nha mằn 
         try {
             session = HIbernateUtil.getSessionFactory().openSession();
             transaction= session.beginTransaction();
