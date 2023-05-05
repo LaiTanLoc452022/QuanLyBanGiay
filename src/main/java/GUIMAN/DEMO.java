@@ -5,7 +5,6 @@
 package GUIMAN;
 
 import BUS.Generic_BUS;
-import DAO.Generic_Implement;
 import DAO.KhachhangHome;
 import DAO.TheHome;
 import UINam.RegisterForm;
@@ -14,7 +13,6 @@ import entity1.Khachhang;
 import entity1.The;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -24,16 +22,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ACER
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class DEMO extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame
+     * Creates new form DEMO
      */
-    public NewJFrame() {
+    public DEMO() {
         initComponents();
     }
     
-    int width = 200;
+        int width = 200;
     int height = 550;
     
     void openMenuBar() {
@@ -2193,7 +2191,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteMouseClicked
 
     private void insertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_insertMouseClicked
-        
+
     }//GEN-LAST:event_insertMouseClicked
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
@@ -2205,19 +2203,17 @@ public class NewJFrame extends javax.swing.JFrame {
             Khachhang kh = new Khachhang();
             The T = new The();
             kh.setIdkhachHang(Integer.parseInt(MaKH.getText()));
-            
-            
+
             T.setIdthe(Integer.parseInt(MaThe.getText()));
             T.setLoai(Hang.getText());
             T.setHeSo(Double.parseDouble(Diem.getText()));
-            
+
             ArrayList<The> ar1 = Generic_BUS.getAll(The.class);
             ar1.add(T);
             TheHome.insert(T);
-            
-            
+
             kh.setThe(T);
-            
+
             Date date1 = NgayLap.getDate();
             kh.setNgayLapThe(date1);
             kh.setHoVaTen(HoVaTenKH.getText());
@@ -2237,12 +2233,12 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_insertKHMouseClicked
 
     private void deleteKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteKHMouseClicked
-//        try{
-//            Khachhang kh = new Khachhang();
-//
-//        }catch(Exception e){
-//            JOptionPane.showConfirmDialog(null, "not delete");
-//        }
+        //        try{
+            //            Khachhang kh = new Khachhang();
+            //
+            //        }catch(Exception e){
+            //            JOptionPane.showConfirmDialog(null, "not delete");
+            //        }
     }//GEN-LAST:event_deleteKHMouseClicked
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
@@ -2286,19 +2282,20 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DEMO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DEMO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DEMO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DEMO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new DEMO().setVisible(true);
             }
         });
     }
