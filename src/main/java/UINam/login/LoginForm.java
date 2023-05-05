@@ -1,12 +1,9 @@
 package UINam.login;
 
-import DAO.Generic_Implement;
 import DAO.NguoidungHome;
 import UINam.UserInterface;
 import entity1.Nguoidung;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
