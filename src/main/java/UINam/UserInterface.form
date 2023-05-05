@@ -616,9 +616,6 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField17">
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField17ActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField18">
                         </Component>
@@ -945,12 +942,12 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="6" rowCount="0">
-                                <Column editable="false" title="MSNV" type="java.lang.String"/>
-                                <Column editable="false" title="H&#x1ecd; v&#xe0; t&#xea;n" type="java.lang.String"/>
-                                <Column editable="false" title="S&#x110;T" type="java.lang.String"/>
-                                <Column editable="false" title="Ng&#xe0;y sinh" type="java.lang.String"/>
-                                <Column editable="false" title="Email" type="java.lang.String"/>
-                                <Column editable="false" title="L&#x1b0;&#x1a1;ng" type="java.lang.String"/>
+                                <Column editable="true" title="MSNV" type="java.lang.String"/>
+                                <Column editable="true" title="H&#x1ecd; v&#xe0; t&#xea;n" type="java.lang.String"/>
+                                <Column editable="true" title="S&#x110;T" type="java.lang.String"/>
+                                <Column editable="true" title="Ng&#xe0;y sinh" type="java.lang.String"/>
+                                <Column editable="true" title="Email" type="java.lang.String"/>
+                                <Column editable="true" title="L&#x1b0;&#x1a1;ng" type="java.lang.String"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1187,14 +1184,16 @@
                                               <Component id="jLabel61" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="hovaten" max="32767" attributes="0"/>
-                                              <Component id="msnv" max="32767" attributes="0"/>
-                                              <Component id="sdt" pref="165" max="32767" attributes="0"/>
-                                              <Component id="chucvu" pref="165" max="32767" attributes="0"/>
-                                              <Component id="ngaysinh" pref="165" max="32767" attributes="0"/>
-                                              <Component id="email" pref="165" max="32767" attributes="0"/>
-                                              <Component id="luong" pref="165" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="hovaten" max="32767" attributes="0"/>
+                                                  <Component id="msnv" max="32767" attributes="0"/>
+                                                  <Component id="sdt" pref="165" max="32767" attributes="0"/>
+                                                  <Component id="chucvu" pref="165" max="32767" attributes="0"/>
+                                                  <Component id="email" pref="165" max="32767" attributes="0"/>
+                                                  <Component id="luong" pref="165" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="ngaysinh" alignment="1" min="-2" pref="165" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -1228,9 +1227,9 @@
                                       <Component id="chucvu" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ngaysinh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ngaysinh" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1300,8 +1299,6 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="chucvu">
                         </Component>
-                        <Component class="javax.swing.JTextField" name="ngaysinh">
-                        </Component>
                         <Component class="javax.swing.JLabel" name="jLabel58">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1349,6 +1346,8 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="luong">
+                        </Component>
+                        <Component class="com.toedter.calendar.JDateChooser" name="ngaysinh">
                         </Component>
                       </SubComponents>
                     </Container>
