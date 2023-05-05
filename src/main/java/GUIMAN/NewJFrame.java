@@ -5,12 +5,16 @@
 package GUIMAN;
 
 import BUS.Generic_BUS;
+import DAO.Generic_Implement;
 import DAO.KhachhangHome;
+import DAO.TheHome;
 import UINam.RegisterForm;
 import UINam.UserInterface;
 import entity1.Khachhang;
+import entity1.The;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -113,19 +117,20 @@ public class NewJFrame extends javax.swing.JFrame {
     
     
     public void GetDataKH() {
-        ArrayList<Khachhang> array = Generic_BUS.getAll(Khachhang.class);
+        ArrayList<Khachhang> array = Generic_BUS.getAll(Khachhang.class); 
+        ArrayList<The> arr = Generic_BUS.getAll(The.class);
         DefaultTableModel RecordTable = (DefaultTableModel) tableKH.getModel();
         RecordTable.setRowCount(0);
         for (int i = 0; i < array.size(); ++i) {
-            Object[] rowData = new Object[7];
+            Object[] rowData = new Object[9];
             rowData[0] = array.get(i).getIdkhachHang();
-            rowData[1] = array.get(i).getHoVaTen();
-            rowData[2] = array.get(i).getGioiTinh();
-            rowData[3] = array.get(i).getThe().getLoai();
-            rowData[4] = array.get(i).getThe().getHeSo();
-            rowData[4] = array.get(i).getThe().getIdthe();
-            rowData[6] = array.get(i).getNgaySinh();
-            rowData[7] = array.get(i).getNgayLapThe();
+            rowData[1] = arr.get(i).getIdthe();
+            rowData[2] = arr.get(i).getLoai();
+            rowData[3] = arr.get(i).getHeSo();
+            rowData[4] = array.get(i).getNgayLapThe();
+            rowData[5] = array.get(i).getHoVaTen();
+            rowData[6] = array.get(i).getGioiTinh();
+            rowData[7] = array.get(i).getNgaySinh();
             rowData[8] = array.get(i).getDiaChi();
 
             RecordTable.addRow(rowData);
@@ -2196,32 +2201,39 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void insertKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_insertKHMouseClicked
-//        try{
+        try{
             Khachhang kh = new Khachhang();
+            The T = new The();
             kh.setIdkhachHang(Integer.parseInt(MaKH.getText()));
-//            kh.the.setIdthe(Integer.parseInt(MaThe.getText()));
-//            kh.the.setLoai(Hang.getText());
-//            kh.the.setHeSo(Double.parseDouble(Diem.getText()));
+            
+            
+            T.setIdthe(Integer.parseInt(MaThe.getText()));
+            T.setLoai(Hang.getText());
+            T.setHeSo(Double.parseDouble(Diem.getText()));
+            
+            ArrayList<The> ar1 = Generic_BUS.getAll(The.class);
+            ar1.add(T);
+            TheHome.insert(T);
+            
+            
+            kh.setThe(T);
+            
             Date date1 = NgayLap.getDate();
             kh.setNgayLapThe(date1);
             kh.setHoVaTen(HoVaTenKH.getText());
             kh.setGioiTinh(GT.getText());
             Date date2 = NgaySinh.getDate();
             kh.setNgaySinh(date2);
-            kh.setGioiTinh(DC.getText());
-            ArrayList<Khachhang> ar = Generic_BUS.getList();
-            
-            for(Khachhang x : ar){
-                System.out.println(x);
-            }
-            
-            ar.add(kh);
+            kh.setGioiTinh(GT.getText());
+            kh.setDiaChi(DC.getText());
+            ArrayList<Khachhang> ar2 = Generic_BUS.getAll(Khachhang.class);
+            ar2.add(kh);
             KhachhangHome.insert(kh);
             GetDataKH();
             JOptionPane.showMessageDialog(null, "Insert Successfully!");
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
-//        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
+        }
     }//GEN-LAST:event_insertKHMouseClicked
 
     private void deleteKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteKHMouseClicked
