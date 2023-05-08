@@ -11,8 +11,15 @@ import UINam.RegisterForm;
 import UINam.UserInterface;
 import entity1.Khachhang;
 import entity1.The;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,7 +30,16 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class DEMO extends javax.swing.JFrame {
+    
+    private static String username = "root";
+    private static String pass = "Phuc. 20032003";
+    private static String data = "jdbc:mysql://localhost:3306/cuahangbangiay";
 
+    Connection sqlconn = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    int q;
+    
     /**
      * Creates new form DEMO
      */
@@ -31,7 +47,37 @@ public class DEMO extends javax.swing.JFrame {
         initComponents();
     }
     
-        int width = 200;
+    public void GetDataTableKH() throws SQLException {
+
+        try {
+            sqlconn = DriverManager.getConnection(data, username, pass);
+            pst = sqlconn.prepareStatement("select * from nhanvien order by IDKhachhang, HoVaTen");
+            rs = pst.executeQuery();
+
+            ResultSetMetaData stData = rs.getMetaData();
+
+            q = stData.getColumnCount();
+
+            DefaultTableModel RecordTable = (DefaultTableModel) tableKH.getModel();
+            RecordTable.setRowCount(0);
+
+            while (rs.next()) {
+                Vector columnData = new Vector();
+                for (int i = 1; i <= q; i++) {
+                    columnData.add(rs.getString("IDNhanVien"));
+                    columnData.add(rs.getString("HoVaTen"));
+                    columnData.add(rs.getString("SDT"));
+                    columnData.add(rs.getString("NgaySinh"));
+                }
+                RecordTable.addRow(columnData);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+
+    }
+    
+    int width = 200;
     int height = 550;
     
     void openMenuBar() {
@@ -1738,6 +1784,11 @@ public class DEMO extends javax.swing.JFrame {
             }
         ));
         tableKH.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tableKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableKHMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tableKH);
 
         jPanel27.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 510, 450));
@@ -2264,6 +2315,23 @@ public class DEMO extends javax.swing.JFrame {
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void tableKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableKHMouseClicked
+        DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
+        int SelectedRows = tableNV.getSelectedRow();
+
+        MaKH.setText(RecordTable.getValueAt(SelectedRows, 0).toString());
+        MaThe.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
+        Hang.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
+        Diem.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
+        Date date1 = (Date) RecordTable.getValueAt(SelectedRows, 4);
+        NgayLap.setDate(date1);
+        HoVaTenKH.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
+        GT.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
+        Date date2 = (Date) RecordTable.getValueAt(SelectedRows, 7);
+        NgaySinh.setDate(date2);
+        DC.setText(RecordTable.getValueAt(SelectedRows, 8).toString());
+    }//GEN-LAST:event_tableKHMouseClicked
 
     /**
      * @param args the command line arguments
