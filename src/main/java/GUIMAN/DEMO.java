@@ -2295,11 +2295,6 @@ public class DEMO extends javax.swing.JFrame {
         try {
             JOptionPane.showMessageDialog(null, "nếu xóa thì sẽ xóa tất cả dữ liệu của khách hàng này!");
             
-            if(MaThe.getText() == ""){
-                JOptionPane.showMessageDialog(null, "Delete error!");
-                return;
-            }
-            
             sqlconn = DriverManager.getConnection(data, username, pass);
             pst = sqlconn.prepareStatement("delete KhachHang, the from KhacHhang inner join the on KhachHang.IDThe = the.IDThe  where (the.IDThe=?)");
             
