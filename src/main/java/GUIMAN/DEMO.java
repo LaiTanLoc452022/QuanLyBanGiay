@@ -339,7 +339,7 @@ public class DEMO extends javax.swing.JFrame {
         jPanel28 = new javax.swing.JPanel();
         insertKH = new javax.swing.JLabel();
         jPanel29 = new javax.swing.JPanel();
-        jLabel39 = new javax.swing.JLabel();
+        UpDateKH = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
         deleteKH = new javax.swing.JLabel();
         jPanel31 = new javax.swing.JPanel();
@@ -1834,11 +1834,16 @@ public class DEMO extends javax.swing.JFrame {
 
         jPanel29.setBackground(new java.awt.Color(0, 51, 51));
 
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(204, 255, 204));
-        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel39.setText("SỬA");
-        jLabel39.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        UpDateKH.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        UpDateKH.setForeground(new java.awt.Color(204, 255, 204));
+        UpDateKH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        UpDateKH.setText("SỬA");
+        UpDateKH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        UpDateKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UpDateKHMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
@@ -1846,14 +1851,14 @@ public class DEMO extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(UpDateKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(UpDateKH, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2351,6 +2356,10 @@ public class DEMO extends javax.swing.JFrame {
         DC.setText(RecordTable.getValueAt(SelectedRows, 8).toString());
     }//GEN-LAST:event_tableKHMouseClicked
 
+    private void UpDateKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpDateKHMouseClicked
+        // TODO add your handling code here:s
+    }//GEN-LAST:event_UpDateKHMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2403,6 +2412,7 @@ public class DEMO extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser NgaySinh;
     private javax.swing.JPanel NhanVien;
     protected javax.swing.JPanel PhanQuyen;
+    private javax.swing.JLabel UpDateKH;
     private javax.swing.JLabel btnCloseMenu;
     private javax.swing.JLabel btnHD;
     private javax.swing.JLabel btnHOME;
@@ -2457,7 +2467,6 @@ public class DEMO extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
