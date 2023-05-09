@@ -11,7 +11,15 @@ import UINam.RegisterForm;
 import UINam.UserInterface;
 import entity1.Khachhang;
 import entity1.The;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import static java.awt.Color.black;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -27,10 +35,14 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -203,6 +215,42 @@ public class DEMO extends javax.swing.JFrame {
         Date date2 = new Date();
         NgayLap.setDateFormatString("yyyy-MM-dd");
         NgayLap.setDate(date2);
+    }
+    
+    public void ImageTableKH() throws IOException{
+        BufferedImage image = ImageIO.read(new File("C:\\Users\\ACER\\Documents\\GitHub\\QuanLyBanGiay\\src\\main\\java\\GUIMAN\\image\\tableKH.png"));
+
+        // Tạo một JLabel để chứa ảnh
+        JFrame frame = new JFrame();
+        JLabel label = new JLabel();
+        label.setPreferredSize(new Dimension(image.getWidth(), image.getHeight()));
+        frame.getContentPane().add(label, BorderLayout.CENTER);
+        
+        frame.setVisible(true);
+
+        // Tạo một Timer để thay đổi kích thước ảnh
+        Timer timer = new Timer(100, new ActionListener() {
+        double scale = 0.1;
+        AffineTransform transform = new AffineTransform();
+
+        public void actionPerformed(ActionEvent e) {
+                if (scale <= 1.0) {
+                // Thay đổi kích thước ảnh
+                scale += 0.8;
+                transform.setToScale(scale, scale);
+                AffineTransformOp op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
+                BufferedImage scaledImage = op.filter(image, null);
+                ImageIcon icon = new ImageIcon(scaledImage);
+
+                // Đặt ảnh vào JLabel
+                label.setIcon(icon);
+                } else {
+                // Dừng Timer
+                    ((Timer) e.getSource()).stop();
+                }
+        }
+        });
+        timer.start();
     }
 
     /**
@@ -379,7 +427,6 @@ public class DEMO extends javax.swing.JFrame {
         NgaySinh = new com.toedter.calendar.JDateChooser();
         jPanel34 = new javax.swing.JPanel();
         INKH = new javax.swing.JLabel();
-        Anh = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -529,7 +576,7 @@ public class DEMO extends javax.swing.JFrame {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnKH, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -570,7 +617,7 @@ public class DEMO extends javax.swing.JFrame {
                 .addGroup(HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addContainerGap(422, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel54)
@@ -585,7 +632,7 @@ public class DEMO extends javax.swing.JFrame {
                 .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(318, Short.MAX_VALUE))
         );
 
         LayeredPane.add(Home, "card7");
@@ -755,7 +802,7 @@ public class DEMO extends javax.swing.JFrame {
             .addGroup(selectedPanelLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(qtvPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
                 .addComponent(nvKhoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90)
                 .addComponent(nvBanHangPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1150,7 +1197,7 @@ public class DEMO extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, 0, 326, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, 0, 305, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
@@ -1186,7 +1233,7 @@ public class DEMO extends javax.swing.JFrame {
         NhanVien.setLayout(NhanVienLayout);
         NhanVienLayout.setHorizontalGroup(
             NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         NhanVienLayout.setVerticalGroup(
@@ -1404,7 +1451,7 @@ public class DEMO extends javax.swing.JFrame {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addContainerGap(125, Short.MAX_VALUE)
+                        .addContainerGap(99, Short.MAX_VALUE)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1432,15 +1479,15 @@ public class DEMO extends javax.swing.JFrame {
         HoaDon.setLayout(HoaDonLayout);
         HoaDonLayout.setHorizontalGroup(
             HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
-            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
         );
         HoaDonLayout.setVerticalGroup(
             HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HoaDonLayout.createSequentialGroup()
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))
+                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
         );
 
         LayeredPane.add(HoaDon, "card2");
@@ -1807,7 +1854,7 @@ public class DEMO extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tableKH);
 
-        jPanel27.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 510, 450));
+        jPanel27.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 510, 450));
 
         jPanel28.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -2101,7 +2148,7 @@ public class DEMO extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        jPanel27.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 74, -1, 440));
+        jPanel27.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, -1, 450));
 
         jPanel34.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -2135,31 +2182,22 @@ public class DEMO extends javax.swing.JFrame {
 
         jPanel27.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 248, 95, -1));
 
-        Anh.setText("hihihiihihii");
-
         javax.swing.GroupLayout KhachHangLayout = new javax.swing.GroupLayout(KhachHang);
         KhachHang.setLayout(KhachHangLayout);
         KhachHangLayout.setHorizontalGroup(
             KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
-            .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(KhachHangLayout.createSequentialGroup()
-                    .addGap(466, 466, 466)
-                    .addComponent(Anh)
-                    .addContainerGap(467, Short.MAX_VALUE)))
+            .addGroup(KhachHangLayout.createSequentialGroup()
+                .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         KhachHangLayout.setVerticalGroup(
             KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(KhachHangLayout.createSequentialGroup()
-                .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
-            .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(KhachHangLayout.createSequentialGroup()
-                    .addGap(291, 291, 291)
-                    .addComponent(Anh)
-                    .addContainerGap(291, Short.MAX_VALUE)))
+                .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
         );
 
         LayeredPane.add(KhachHang, "card2");
@@ -2190,15 +2228,17 @@ public class DEMO extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                        .addGap(96, 96, 96))))
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+            .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
             .addGroup(containerPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2206,7 +2246,7 @@ public class DEMO extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+            .addComponent(containerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 987, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2409,18 +2449,22 @@ public class DEMO extends javax.swing.JFrame {
     }//GEN-LAST:event_UpDateKHMouseClicked
 
     private void INKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_INKHMouseClicked
-        
-        BufferedImage image = new BufferedImage(tableKH.getWidth(), tableKH.getHeight(), BufferedImage.TYPE_INT_RGB);
+        int width = tableKH.getWidth();
+        int height = tableKH.getHeight();
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2 = image.createGraphics();
         tableKH.paint(g2);
         g2.dispose();
-        Anh.setIcon(new ImageIcon(image));
-        Anh.setComponentZOrder(jPanel27, 100);
-        try {
+         try {
             ImageIO.write(image, "png", new File("C:\\Users\\ACER\\Documents\\GitHub\\QuanLyBanGiay\\src\\main\\java\\GUIMAN\\image\\tableKH.png"));
             System.out.println("Table image created successfully.");
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
+        }
+        try {
+            ImageTableKH();
+        } catch (IOException ex) {
+            Logger.getLogger(DEMO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_INKHMouseClicked
 
@@ -2460,7 +2504,6 @@ public class DEMO extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Anh;
     private javax.swing.JTextField DC;
     private javax.swing.JTextField Diem;
     private javax.swing.JTextField GT;
