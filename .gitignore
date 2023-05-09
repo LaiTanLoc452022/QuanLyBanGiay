@@ -17,3 +17,8 @@ src/main/java/Main/Main.java
 src/main/java/UINam/RegisterForm.form
 src/main/java/UINam/RegisterForm.java
 src/main/java/UINam/UserInterface.java
+/target/
+/.metadata/
+C:\Users\ASUS\eclipse-workspace\headprofile\QuanLyBanGiay\target
+*.class
+

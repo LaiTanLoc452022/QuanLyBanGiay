@@ -30,13 +30,11 @@ import javax.imageio.ImageIO;
 public class Main {
 
     public static void main(String[] args) {
-
-//        ArrayList<Nhanvien> list = Generic_BUS.getAll(Nhanvien.class);
-//        list.forEach(e -> System.out.println(e.toString()));
-    Nhanvien nv= new Nhanvien();
-    nv.setEmail("aldosfji");
-    nv.setNgaySinh(new java.sql.Date(2003-1900,11,02));
-    NhanvienHome.insert(nv);
+      ArrayList<Nguoidung> list = Generic_BUS.getAll(Nguoidung.class);
+      list.get(list.size()-1);
+       
+       
+       	
     }
 
 }
