@@ -2357,7 +2357,29 @@ public class DEMO extends javax.swing.JFrame {
     }//GEN-LAST:event_tableKHMouseClicked
 
     private void UpDateKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpDateKHMouseClicked
-        // TODO add your handling code here:s
+        try {
+            Khachhang KH = new Khachhang();
+            Date date1 = NgayLap.getDate();
+            Date date2 = NgaySinh.getDate();
+            KH.setIdkhachHang(Integer.parseInt(MaKH.getText()));
+            The T = new The();
+            T.setIdthe(Integer.parseInt(MaThe.getText()));
+            T.setLoai(Hang.getText());
+            T.setHeSo(Double.parseDouble(Diem.getText()));
+            KH.setThe(T);
+            KH.setNgayLapThe(date1);
+            KH.setHoVaTen(HoVaTenKH.getText());
+            KH.setGioiTinh(GT.getText());
+            KH.setNgaySinh(date2);
+            KH.setDiaChi(DC.getText());
+            KhachhangHome.update(KH);
+            TheHome.update(T);
+            GetDataKH();
+            JOptionPane.showMessageDialog(null, "Update successfully!");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Update error!");
+        }
     }//GEN-LAST:event_UpDateKHMouseClicked
 
     /**
