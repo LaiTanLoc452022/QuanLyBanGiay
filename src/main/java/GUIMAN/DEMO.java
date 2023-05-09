@@ -45,13 +45,15 @@ public class DEMO extends javax.swing.JFrame {
      */
     public DEMO() {
         initComponents();
+        GetDataKH();
+        Fill_Date();
     }
     
     public void GetDataTableKH() throws SQLException {
 
         try {
             sqlconn = DriverManager.getConnection(data, username, pass);
-            pst = sqlconn.prepareStatement("select * from nhanvien order by IDKhachhang, HoVaTen");
+            pst = sqlconn.prepareStatement("select * from KhachHang join the on khachhang.IDThe = the.IDThe order by IDKhachhang");
             rs = pst.executeQuery();
 
             ResultSetMetaData stData = rs.getMetaData();
@@ -64,10 +66,15 @@ public class DEMO extends javax.swing.JFrame {
             while (rs.next()) {
                 Vector columnData = new Vector();
                 for (int i = 1; i <= q; i++) {
-                    columnData.add(rs.getString("IDNhanVien"));
+                    columnData.add(rs.getString("IDKhachHang"));
+                    columnData.add(rs.getString("IDThe"));
+                    columnData.add(rs.getString("Loai"));
+                    columnData.add(rs.getString("HeSo"));
+                    columnData.add(rs.getString("NgayLapThe"));
                     columnData.add(rs.getString("HoVaTen"));
-                    columnData.add(rs.getString("SDT"));
+                    columnData.add(rs.getString("GioiTinh"));
                     columnData.add(rs.getString("NgaySinh"));
+                    columnData.add(rs.getString("DiaChi"));
                 }
                 RecordTable.addRow(columnData);
             }
@@ -2284,12 +2291,28 @@ public class DEMO extends javax.swing.JFrame {
     }//GEN-LAST:event_insertKHMouseClicked
 
     private void deleteKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteKHMouseClicked
-        //        try{
-            //            Khachhang kh = new Khachhang();
-            //
-            //        }catch(Exception e){
-            //            JOptionPane.showConfirmDialog(null, "not delete");
-            //        }
+
+        try {
+            JOptionPane.showMessageDialog(null, "nếu xóa thì sẽ xóa tất cả dữ liệu của khách hàng này!");
+            
+            if(MaThe.getText() == ""){
+                JOptionPane.showMessageDialog(null, "Delete error!");
+                return;
+            }
+            
+            sqlconn = DriverManager.getConnection(data, username, pass);
+            pst = sqlconn.prepareStatement("delete KhachHang, the from KhacHhang inner join the on KhachHang.IDThe = the.IDThe  where (the.IDThe=?)");
+            
+            
+            pst.setString(1, MaThe.getText());
+
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Delete Successfully!");
+            GetDataTableKH();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Delete error!");
+        }
     }//GEN-LAST:event_deleteKHMouseClicked
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
@@ -2317,8 +2340,8 @@ public class DEMO extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void tableKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableKHMouseClicked
-        DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
-        int SelectedRows = tableNV.getSelectedRow();
+        DefaultTableModel RecordTable = (DefaultTableModel) tableKH.getModel();
+        int SelectedRows = tableKH.getSelectedRow();
 
         MaKH.setText(RecordTable.getValueAt(SelectedRows, 0).toString());
         MaThe.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
