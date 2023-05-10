@@ -2442,7 +2442,6 @@ public class DEMO extends javax.swing.JFrame {
             TheHome.update(T);
             GetDataKH();
             JOptionPane.showMessageDialog(null, "Update successfully!");
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Update error!");
         }
