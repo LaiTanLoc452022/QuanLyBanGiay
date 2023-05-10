@@ -1,28 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
 <hibernate-mapping>
-    <class catalog="cuahangbangiay" name="entity1.Khachhang" optimistic-lock="none" table="khachhang">
+    <class name="entity1.Khachhang" table="khachhang" catalog="cuahangbangiay" optimistic-lock="version">
         <id name="idkhachHang" type="java.lang.Integer">
-            <column name="IDKhachHang"/>
-            <generator class="identity"/>
+            <column name="IDKhachHang" />
+            <generator class="identity" />
         </id>
-        <many-to-one class="entity1.The" fetch="select" name="the">
-            <column name="IDThe"/>
+        <many-to-one name="the" class="entity1.The" fetch="select">
+            <column name="IDThe" />
         </many-to-one>
         <property name="ngayLapThe" type="date">
-            <column length="10" name="NgayLapThe"/>
+            <column name="NgayLapThe" length="10" />
         </property>
         <property name="hoVaTen" type="string">
-            <column length="100" name="HoVaTen"/>
+            <column name="HoVaTen" length="100" />
         </property>
         <property name="gioiTinh" type="string">
-            <column length="100" name="GioiTinh"/>
+            <column name="GioiTinh" length="100" />
         </property>
         <property name="ngaySinh" type="date">
-            <column length="10" name="NgaySinh"/>
+            <column name="NgaySinh" length="10" />
         </property>
         <property name="diaChi" type="string">
-            <column length="100" name="DiaChi"/>
+            <column name="DiaChi" length="100" />
         </property>
     </class>
 </hibernate-mapping>

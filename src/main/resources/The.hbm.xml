@@ -1,22 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
 <hibernate-mapping>
-    <class catalog="cuahangbangiay" name="entity1.The" optimistic-lock="none" table="the">
+    <class name="entity1.The" table="the" catalog="cuahangbangiay" optimistic-lock="version">
         <id name="idthe" type="java.lang.Integer">
-            <column name="IDThe"/>
-            <generator class="identity"/>
+            <column name="IDThe" />
+            <generator class="identity" />
         </id>
         <property name="loai" type="string">
-            <column length="20" name="Loai"/>
+            <column name="Loai" length="20" />
         </property>
         <property name="heSo" type="java.lang.Double">
-            <column name="HeSo" precision="22" scale="0"/>
+            <column name="HeSo" precision="22" scale="0" />
         </property>
-        <set fetch="select" inverse="true" lazy="true" name="khachhangs" table="khachhang">
+        <set name="khachhangs" table="khachhang" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="IDThe"/>
+                <column name="IDThe" />
             </key>
-            <one-to-many class="entity1.Khachhang"/>
+            <one-to-many class="entity1.Khachhang" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package entity1;
-// Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final
+// Generated May 9, 2023, 1:47:18 PM by Hibernate Tools 4.3.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,12 +12,12 @@ public class The implements java.io.Serializable {
 	private Integer idthe;
 	private String loai;
 	private Double heSo;
-	private Set khachhangs = new HashSet(0);
+	private Set<Khachhang> khachhangs = new HashSet<Khachhang>(0);
 
 	public The() {
 	}
 
-	public The(String loai, Double heSo, Set khachhangs) {
+	public The(String loai, Double heSo, Set<Khachhang> khachhangs) {
 		this.loai = loai;
 		this.heSo = heSo;
 		this.khachhangs = khachhangs;
@@ -47,11 +47,11 @@ public class The implements java.io.Serializable {
 		this.heSo = heSo;
 	}
 
-	public Set getKhachhangs() {
+	public Set<Khachhang> getKhachhangs() {
 		return this.khachhangs;
 	}
 
-	public void setKhachhangs(Set khachhangs) {
+	public void setKhachhangs(Set<Khachhang> khachhangs) {
 		this.khachhangs = khachhangs;
 	}
 

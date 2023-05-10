@@ -1,28 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
 <hibernate-mapping>
-    <class catalog="cuahangbangiay" name="entity1.Nhacungcap" optimistic-lock="none" table="nhacungcap">
-        <id name="idnhaCungCap" type="int">
-            <column name="IDNhaCungCap"/>
-            <generator class="assigned"/>
+    <class name="entity1.Nhacungcap" table="nhacungcap" catalog="cuahangbangiay" optimistic-lock="version">
+        <id name="idnhaCungCap" type="java.lang.Integer">
+            <column name="IDNhaCungCap" />
+            <generator class="identity" />
         </id>
         <property name="ten" type="string">
-            <column length="0" name="Ten"/>
+            <column name="Ten" length="0" />
         </property>
         <property name="sdt" type="java.lang.Integer">
-            <column name="SDT"/>
+            <column name="SDT" />
         </property>
         <property name="email" type="string">
-            <column length="0" name="Email"/>
+            <column name="Email" length="0" />
         </property>
         <property name="thoiGianHopTac" type="date">
-            <column length="10" name="ThoiGianHopTac"/>
+            <column name="ThoiGianHopTac" length="10" />
         </property>
-        <set fetch="select" inverse="true" lazy="true" name="hoadons" table="hoadon">
+        <set name="hoadons" table="hoadon" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="IDNhaCungCap"/>
+                <column name="IDNhaCungCap" />
             </key>
-            <one-to-many class="entity1.Hoadon"/>
+            <one-to-many class="entity1.Hoadon" />
         </set>
     </class>
 </hibernate-mapping>

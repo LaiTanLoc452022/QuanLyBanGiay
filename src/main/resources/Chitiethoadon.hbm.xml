@@ -1,23 +1,25 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
 <hibernate-mapping>
-    <class catalog="cuahangbangiay" name="entity1.Chitiethoadon" optimistic-lock="none" table="chitiethoadon">
-        <composite-id class="entity1.ChitiethoadonId" name="id">
+    <class name="entity1.Chitiethoadon" table="chitiethoadon" catalog="cuahangbangiay" optimistic-lock="version">
+        <composite-id name="id" class="entity1.ChitiethoadonId">
             <key-property name="idhoaDon" type="java.lang.Integer">
-                <column name="IDHoaDon"/>
+                <column name="IDHoaDon" />
             </key-property>
             <key-property name="idgiay" type="java.lang.Integer">
-                <column name="IDGiay"/>
+                <column name="IDGiay" />
             </key-property>
             <key-property name="soLuong" type="java.lang.Integer">
-                <column name="SoLuong"/>
+                <column name="SoLuong" />
             </key-property>
         </composite-id>
-        <many-to-one class="entity1.Hoadon" fetch="select" insert="false" name="hoadon" update="false">
-            <column name="IDHoaDon"/>
+        <many-to-one name="hoadon" class="entity1.Hoadon" update="false" insert="false" fetch="select">
+            <column name="IDHoaDon" />
         </many-to-one>
-        <many-to-one class="entity1.Sanpham" fetch="select" insert="false" name="sanpham" update="false">
-            <column name="IDGiay"/>
+        <many-to-one name="sanpham" class="entity1.Sanpham" update="false" insert="false" fetch="select">
+            <column name="IDGiay" />
         </many-to-one>
     </class>
 </hibernate-mapping>
