@@ -504,4 +504,8 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JTextField tenTaiKhoan;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
+
+    public Object getRegistedNguoidung() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

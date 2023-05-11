@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class Bus<Thing> {
    private Thing entity;
    private ArrayList<Thing> list;
-   public  ArrayList getList(Class<Thing> instance){
+   public synchronized ArrayList getList(Class<Thing> instance){
        list=new ArrayList();
        list=Generic_BUS.getAll(instance);
        return list;
@@ -32,7 +32,11 @@ public class Bus<Thing> {
           
           }
        });
-       thread.start();
+       try {
+           thread.join();
+       } catch (InterruptedException ex) {
+           Logger.getLogger(Bus.class.getName()).log(Level.SEVERE, null, ex);
+       }
      
            
        if(tempsize<list.size()){
@@ -52,17 +56,33 @@ public class Bus<Thing> {
  * @return void
  * @throws Exception Mô tả về các exception có thể xảy ra.
  */
-   public boolean Sua(Thing instance,int index){
+   public synchronized boolean Sua(Thing instance,int index){
        try{
        Thing tempObject=list.get(index);    //Object temp để lấy id phần tử ban đầu chưa update
        list.set(index, instance);
        Thing persistentObject=list.get(index);// Object persisted
-       
-       new Thread(new Runnable(){
+ 
+       Thread thread1=new Thread(new Runnable(){
            public void run(){
-               Generic_Implement.SuaTheoID(persistentObject);
+               
+                try {
+                   // System.out.println(persistentObject.getClass());
+                Generic_Implement.SuaTheoID(persistentObject);
+                    
+            } catch (RuntimeException re) {
+                re.printStackTrace();
+            }
+              
            }
-       }).start();
+            });
+            thread1.start();
+           try {
+               
+//               thread1.sleep(5000);
+           } catch (Exception ex) {
+               Logger.getLogger(Bus.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       
        }
        catch(IndexOutOfBoundsException ioe){
            JOptionPane.showMessageDialog(null, "Xay ra loi!", "Sua danh sach", JOptionPane.ERROR_MESSAGE);
@@ -81,13 +101,24 @@ public class Bus<Thing> {
  * @return void
  * @throws Exception Mô tả về các exception có thể xảy ra.
  */
-   public boolean Xoa(Thing instance,int index){
+   public synchronized boolean Xoa(Thing instance,int index){
+     
        list.set(index,instance);
-        new Thread(new Runnable(){
+       Thread thread2 = new Thread(new Runnable(){
            public void run(){
-               Generic_Implement.delete(instance);
+                 try {
+                Generic_Implement.delete(instance);
+            } catch (RuntimeException re) {
+                re.printStackTrace();
+            }
            }
-       }).start();
+       });
+       thread2.start();
+//       try {
+//          // thread2.sleep(5000);
+//       } catch (InterruptedException ex) {
+//           Logger.getLogger(Bus.class.getName()).log(Level.SEVERE, null, ex);
+//       }
        
        
        return true;

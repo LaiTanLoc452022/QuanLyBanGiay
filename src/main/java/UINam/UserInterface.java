@@ -1,109 +1,36 @@
 package UINam;
 
-import BUS.Generic_BUS;
-import DAO.NhanvienHome;
-import entity1.Nhanvien;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class UserInterface extends javax.swing.JFrame {
-
-    private static String username = "root";
-    private static String pass = "Phuc. 20032003";
-    private static String data = "jdbc:mysql://localhost:3306/cuahangbangiay";
-
-    Connection sqlconn = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
-    int q;
-
-    public void GetDataTable() throws SQLException {
-
-        try {
-            sqlconn = DriverManager.getConnection(data, username, pass);
-            pst = sqlconn.prepareStatement("select * from nhanvien order by IDNhanVien, HoVaTen");
-            rs = pst.executeQuery();
-
-            ResultSetMetaData stData = rs.getMetaData();
-
-            q = stData.getColumnCount();
-
-            DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
-            RecordTable.setRowCount(0);
-
-            while (rs.next()) {
-                Vector columnData = new Vector();
-                for (int i = 1; i <= q; i++) {
-                    columnData.add(rs.getString("IDNhanVien"));
-                    columnData.add(rs.getString("HoVaTen"));
-                    columnData.add(rs.getString("SDT"));
-                    columnData.add(rs.getString("NgaySinh"));
-                }
-                RecordTable.addRow(columnData);
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-
-    }
-
-    public void GetData() {
-        ArrayList<Nhanvien> array = Generic_BUS.getAll(Nhanvien.class);
-        DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
-        RecordTable.setRowCount(0);
-        for (int i = 0; i < array.size(); ++i) {
-            Object[] rowData = new Object[7];
-            rowData[0] = array.get(i).getIdnhanVien();
-            rowData[1] = array.get(i).getHoVaTen();
-            rowData[2] = array.get(i).getSdt();
-            rowData[3] = array.get(i).getNgaySinh();
-            rowData[4] = array.get(i).getEmail();
-            rowData[5] = array.get(i).getLuong();
-            RecordTable.addRow(rowData);
-        }
-    }
-
-    public UserInterface() throws SQLException {
+    
+    public UserInterface() {
         initComponents();
-        GetData();
-
     }
-
+    
     int width = 200;
     int height = 550;
-
+    
     void openMenuBar() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < width; i++) {
                     sidePanel.setSize(i, height);
-
+                    
                     try {
                         Thread.sleep(2);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(UserInterface.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
+                    
                 }
             }
         }).start();
-
+        
     }
-
+    
     void closeMenuBar() {
         new Thread(new Runnable() {
             @Override
@@ -115,48 +42,48 @@ public class UserInterface extends javax.swing.JFrame {
                     } catch (InterruptedException ex) {
                         Logger.getLogger(UserInterface.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
+                    
                 }
             }
         }).start();
-
+        
     }
-
+    
     void openHome() {
         LayeredPane.removeAll();
         LayeredPane.add(Home);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     void openPhanQuyen() {
         LayeredPane.removeAll();
         LayeredPane.add(PhanQuyen);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     void openNhanVien() {
         LayeredPane.removeAll();
         LayeredPane.add(NhanVien);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     void openHoaDon() {
         LayeredPane.removeAll();
         LayeredPane.add(HoaDon);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     void openKho() {
         LayeredPane.removeAll();
         LayeredPane.add(Kho);
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
-
+    
     void openKhachHang() {
         LayeredPane.removeAll();
         LayeredPane.add(KhachHang);
@@ -164,6 +91,11 @@ public class UserInterface extends javax.swing.JFrame {
         LayeredPane.revalidate();
     }
 
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -228,13 +160,13 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel57 = new javax.swing.JLabel();
         sdt = new javax.swing.JTextField();
         chucvu = new javax.swing.JTextField();
+        ngaysinh = new javax.swing.JTextField();
         jLabel58 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
         jLabel60 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
         jLabel61 = new javax.swing.JLabel();
         luong = new javax.swing.JTextField();
-        ngaysinh = new com.toedter.calendar.JDateChooser();
         jPanel36 = new javax.swing.JPanel();
         update = new javax.swing.JLabel();
         jPanel37 = new javax.swing.JPanel();
@@ -317,16 +249,16 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
+        IdKhachHang = new javax.swing.JTextField();
+        hoVaTenKH = new javax.swing.JTextField();
+        SDT = new javax.swing.JTextField();
+        Hang = new javax.swing.JTextField();
+        Diem = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        DC = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
+        NgayTao = new javax.swing.JTextField();
         jPanel34 = new javax.swing.JPanel();
         jLabel49 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -590,6 +522,12 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(204, 255, 204));
         jLabel14.setText("Tên người dùng:");
 
+        jTextField17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField17ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
         infoPanel.setLayout(infoPanelLayout);
         infoPanelLayout.setHorizontalGroup(
@@ -782,9 +720,16 @@ public class UserInterface extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tableNV.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -939,15 +884,14 @@ public class UserInterface extends javax.swing.JFrame {
                             .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(hovaten)
-                                .addComponent(msnv)
-                                .addComponent(sdt, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                                .addComponent(chucvu, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                                .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                                .addComponent(luong, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                            .addComponent(ngaysinh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(hovaten)
+                            .addComponent(msnv)
+                            .addComponent(sdt, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(chucvu, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(ngaysinh, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(luong, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -972,7 +916,7 @@ public class UserInterface extends javax.swing.JFrame {
                     .addComponent(jLabel58)
                     .addComponent(chucvu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel59)
                     .addComponent(ngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -1679,7 +1623,7 @@ public class UserInterface extends javax.swing.JFrame {
                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 75, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
@@ -1869,6 +1813,12 @@ public class UserInterface extends javax.swing.JFrame {
         );
 
         jPanel27.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 7, -1, -1));
+
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
         jPanel27.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 7, 262, 40));
 
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã KH", "Tên KH", "Hạng", "Điểm", "Ngày tạo" }));
@@ -1914,9 +1864,15 @@ public class UserInterface extends javax.swing.JFrame {
 
         jLabel47.setText("ĐIỂM");
 
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        IdKhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                IdKhachHangActionPerformed(evt);
+            }
+        });
+
+        SDT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SDTActionPerformed(evt);
             }
         });
 
@@ -1947,13 +1903,13 @@ public class UserInterface extends javax.swing.JFrame {
                             .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField10)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField15)
-                            .addComponent(jTextField16))))
+                            .addComponent(hoVaTenKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                            .addComponent(SDT, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(IdKhachHang)
+                            .addComponent(Hang, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Diem, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(DC)
+                            .addComponent(NgayTao))))
                 .addGap(15, 15, 15))
         );
         jPanel33Layout.setVerticalGroup(
@@ -1964,31 +1920,31 @@ public class UserInterface extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(IdKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hoVaTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Hang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Diem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -2119,161 +2075,71 @@ public class UserInterface extends javax.swing.JFrame {
         openKhachHang();
     }//GEN-LAST:event_btnKHMouseClicked
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox6ActionPerformed
+
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_jComboBox7ActionPerformed
+
+    private void jComboBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox8ActionPerformed
+
+    private void IdKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdKhachHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IdKhachHangActionPerformed
 
     private void btnPQMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPQMouseClicked
         openPhanQuyen();
     }//GEN-LAST:event_btnPQMouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        JFrame jf = new JFrame("Exit");
-        if (JOptionPane.showConfirmDialog(jf, "Are you sure you want to leave?", "Quit", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
-    }
+
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
         RegisterForm rf = new RegisterForm();
         rf.setVisible(true);
-
+        
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-
+        
     }//GEN-LAST:event_jLabel12MouseClicked
 
-    // RESET METHOD
-    private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
-        msnv.setText("");
-        hovaten.setText("");
-        sdt.setText("");
-//        ngaysinh.setCalendar("");
-        chucvu.setText("");
-        email.setText("");
-        luong.setText(" ");
-    }//GEN-LAST:event_resetMouseClicked
+    }//GEN-LAST:event_jTextField9ActionPerformed
 
-    private void tableNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableNVMouseClicked
+    private void SDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDTActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
-        int SelectedRows = tableNV.getSelectedRow();
-
-        msnv.setText(RecordTable.getValueAt(SelectedRows, 0).toString());
-        hovaten.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
-        sdt.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
-        ngaysinh.setDateFormatString(RecordTable.getValueAt(SelectedRows, 3).toString());
-        email.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
-        luong.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
-
-    }//GEN-LAST:event_tableNVMouseClicked
-
-    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        // TODO add your handling code here:
-//        try {
-//            sqlconn = DriverManager.getConnection(data, username, pass);
-//            pst = sqlconn.prepareStatement("update nhanvien set HoVaTen=?, SDT=?, NgaySinh=?, email=?, Luong=? where (IDNhanVien=?)");
-//
-//            pst.setString(1, msnv.getText());
-//            pst.setString(2, hovaten.getText());
-//            pst.setString(3, sdt.getText());
-//            pst.setString(4, ngaysinh.getText());
-//            pst.setString(5, email.getText());
-//            pst.setString(6, luong.getText());
-//
-//            pst.executeUpdate();
-//            JOptionPane.showMessageDialog(null, "Update Successfully!");
-//            GetDataTable();
-//
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }
-        Nhanvien nv = new Nhanvien();
-        nv.setHoVaTen(hovaten.getText());
-        nv.setSdt(Integer.parseInt(sdt.getText()));
-
-        nv.setEmail(email.getText());
-
-        NhanvienHome.update(nv);
-    }//GEN-LAST:event_updateMouseClicked
-
-    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
-        // TODO add your handling code here:
-        try {
-            sqlconn = DriverManager.getConnection(data, username, pass);
-            pst = sqlconn.prepareStatement("delete from nhanvien where (IDNhanVien=?) and (HoVaTen=?)");
-
-            pst.setString(1, msnv.getText());
-            pst.setString(2, hovaten.getText());
-
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Delete Successfully!");
-            GetDataTable();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }//GEN-LAST:event_deleteMouseClicked
-
-    private void insertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_insertMouseClicked
-        System.out.println("clicked");
-        System.out.println(ngaysinh.getDate().getDay());
-        try {
-            
-            Nhanvien nv = new Nhanvien();
-
-            //stringDate=sdf.format(ngaysinh.getDateFormatString());
-            nv.setHoVaTen(hovaten.getText());
-            nv.setSdt(Integer.parseInt(sdt.getText()));
-            nv.setNgaySinh(new Date(ngaysinh.getCalendar().YEAR, ngaysinh.getCalendar().MONTH, ngaysinh.getCalendar().DAY_OF_MONTH));
-
-            nv.setEmail(email.getText());
-            nv.setLuong(Double.parseDouble(luong.getText()));
-            ArrayList<Nhanvien> array = Generic_BUS.getList();
-            array.add(nv);
-            // NhanvienHome.insert(nv);
-            GetData();// Cap nhat lai jtable
-            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
-//            DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
-//            RecordTable.setRowCount(0);
-//            for (int i = 0; i < array.size(); ++i) {
-//                Object[] rowData = new Object[7];
-//                rowData[0] = array.get(i).getIdnhanVien();
-//                rowData[1] = array.get(i).getHoVaTen();
-//                rowData[2] = array.get(i).getSdt();
-//                rowData[3] = array.get(i).getNgaySinh();
-//                rowData[4] = array.get(i).getEmail();
-//                rowData[5] = array.get(i).getLuong();
-//                RecordTable.addRow(rowData);
-//            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
-        }
-//        try {
-//            sqlconn = DriverManager.getConnection(data, username, pass);
-//            pst = sqlconn.prepareStatement("insert into nhanvien(IDNhanVien, HoVaTen, SDT, NgaySinh, email, Luong) value(?, ?, ?, ?, ?, ?)");
-//
-//            pst.setString(1, msnv.getText());
-//            pst.setString(2, hovaten.getText());
-//            pst.setString(3, sdt.getText());
-//            pst.setString(4, ngaysinh.getText());
-//            pst.setString(5, email.getText());
-//            pst.setString(6, luong.getText());
-//
-//            pst.executeUpdate();
-//            JOptionPane.showMessageDialog(null, "Insert Successfully!");
-//            GetDataTable();
-//
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }
-    }//GEN-LAST:event_insertMouseClicked
+    }//GEN-LAST:event_SDTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2306,23 +2172,25 @@ public class UserInterface extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new UserInterface().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(UserInterface.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new UserInterface().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DC;
+    private javax.swing.JTextField Diem;
+    private javax.swing.JTextField Hang;
     private javax.swing.JPanel HoaDon;
     private javax.swing.JPanel Home;
-    private javax.swing.JPanel KhachHang;
+    private javax.swing.JTextField IdKhachHang;
+    protected javax.swing.JPanel KhachHang;
     private javax.swing.JPanel Kho;
     private javax.swing.JPanel LayeredPane;
+    private javax.swing.JTextField NgayTao;
     private javax.swing.JPanel NhanVien;
     protected javax.swing.JPanel PhanQuyen;
+    private javax.swing.JTextField SDT;
     private javax.swing.JLabel btnCloseMenu;
     private javax.swing.JLabel btnHD;
     private javax.swing.JLabel btnHOME;
@@ -2334,6 +2202,7 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JPanel containerPanel;
     private javax.swing.JLabel delete;
     private javax.swing.JTextField email;
+    private javax.swing.JTextField hoVaTenKH;
     private javax.swing.JTextField hovaten;
     private javax.swing.JPanel infoPanel;
     private javax.swing.JLabel insert;
@@ -2449,13 +2318,6 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField2;
@@ -2468,7 +2330,7 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField luong;
     private javax.swing.JTextField msnv;
-    private com.toedter.calendar.JDateChooser ngaysinh;
+    private javax.swing.JTextField ngaysinh;
     private javax.swing.JPanel nvBanHangPanel;
     private javax.swing.JPanel nvKhoPanel;
     private javax.swing.JPanel qtvPanel;

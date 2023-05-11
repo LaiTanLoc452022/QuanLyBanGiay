@@ -15,7 +15,7 @@ public class Generic_Implement<T> implements GenericDAO {
     private static Transaction transaction;
 
 
-    public static <T> void insert(T instance) {
+    public static <T> void insert(T instance) {// tạo đối tượng trước rồi , gọi hàm insert nha mằn 
         try {
             session = HIbernateUtil.getSessionFactory().openSession();
             transaction= session.beginTransaction();
@@ -42,15 +42,14 @@ public class Generic_Implement<T> implements GenericDAO {
     }
     public static<T> void SuaTheoID(T instance){
         
-        session=HIbernateUtil.getSessionFactory().openSession();
-         transaction = session.beginTransaction();
+            session=HIbernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
             session.merge(instance);
             session.flush();
             transaction.commit();
             session.close();
+        
     }
-
-    ;
 
     public static <T> List<T> getAll(Class<T> instancetype) {
         try {
@@ -58,7 +57,6 @@ public class Generic_Implement<T> implements GenericDAO {
 
             session = HIbernateUtil.getSessionFactory().openSession();
             Query<T> query = session.createQuery("FROM " + instancetype.getName());
-            
             List<T> list = query.list();
             session.close();
             return list;
@@ -89,9 +87,16 @@ public class Generic_Implement<T> implements GenericDAO {
             transaction = session.beginTransaction();
             session.delete(instance);
             transaction.commit();
-            session.close();
+           
         } catch (Exception e) {
+             if (transaction != null) {
+            transaction.rollback();
+        }
             throw new RuntimeException(e);
+        } finally{
+          if (session != null && session.isOpen()) {
+            session.close();
+          }
         }
 
     }
