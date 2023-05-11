@@ -77,8 +77,7 @@ public class Bus<Thing> {
             });
             thread1.start();
            try {
-               
-//               thread1.sleep(5000);
+               thread1.sleep(100);
            } catch (Exception ex) {
                Logger.getLogger(Bus.class.getName()).log(Level.SEVERE, null, ex);
            }
