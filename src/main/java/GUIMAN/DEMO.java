@@ -4,6 +4,9 @@
  */
 package GUIMAN;
 
+import java.io.FileOutputStream;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import BUS.Generic_BUS;
 import DAO.KhachhangHome;
 import DAO.TheHome;
@@ -37,12 +40,14 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.Timer;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -252,6 +257,45 @@ public class DEMO extends javax.swing.JFrame {
         });
         timer.start();
     }
+    
+    public static void exportToExcel(JTable table, String filePath) {
+        try {
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Data");
+
+            int rowCount = table.getRowCount();
+            int columnCount = table.getColumnCount();
+
+            // Ghi dữ liệu từ JTable vào tệp Excel
+            for (int row = 0; row < rowCount; row++) {
+                Row excelRow = sheet.createRow(row);
+                for (int column = 0; column < columnCount; column++) {
+                    Object value = table.getValueAt(row, column);
+                    Cell cell = excelRow.createCell(column);
+                    if (value != null) {
+                        cell.setCellValue(value.toString());
+                    } else {
+                        cell.setCellValue("");
+                    }
+                }
+            }
+
+            // Tự động điều chỉnh độ rộng của các cột trong Excel
+            for (int column = 0; column < columnCount; column++) {
+                sheet.autoSizeColumn(column);
+            }
+
+            // Lưu workbook vào một tệp Excel
+            try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
+                workbook.write(outputStream);
+            }
+
+            System.out.println("Xuất Excel thành công!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -262,6 +306,7 @@ public class DEMO extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         containerPanel = new javax.swing.JPanel();
         sidePanel = new javax.swing.JPanel();
         btnCloseMenu = new javax.swing.JLabel();
@@ -354,7 +399,7 @@ public class DEMO extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox<>();
         jPanel39 = new javax.swing.JPanel();
-        jLabel55 = new javax.swing.JLabel();
+        INHD = new javax.swing.JLabel();
         Kho = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
@@ -1397,10 +1442,15 @@ public class DEMO extends javax.swing.JFrame {
 
         jPanel39.setBackground(new java.awt.Color(0, 51, 51));
 
-        jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel55.setForeground(new java.awt.Color(204, 255, 204));
-        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel55.setText("IN");
+        INHD.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        INHD.setForeground(new java.awt.Color(204, 255, 204));
+        INHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        INHD.setText("IN");
+        INHD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                INHDMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
         jPanel39.setLayout(jPanel39Layout);
@@ -1408,14 +1458,14 @@ public class DEMO extends javax.swing.JFrame {
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addComponent(INHD, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel39Layout.setVerticalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(INHD, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1480,14 +1530,14 @@ public class DEMO extends javax.swing.JFrame {
         HoaDonLayout.setHorizontalGroup(
             HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
-            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE)
         );
         HoaDonLayout.setVerticalGroup(
             HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HoaDonLayout.createSequentialGroup()
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
         );
 
         LayeredPane.add(HoaDon, "card2");
@@ -2187,9 +2237,9 @@ public class DEMO extends javax.swing.JFrame {
         KhachHangLayout.setHorizontalGroup(
             KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(KhachHangLayout.createSequentialGroup()
-                .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE))
+                .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE)
+                    .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         KhachHangLayout.setVerticalGroup(
@@ -2232,7 +2282,7 @@ public class DEMO extends javax.swing.JFrame {
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+            .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
             .addGroup(containerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2448,24 +2498,61 @@ public class DEMO extends javax.swing.JFrame {
     }//GEN-LAST:event_UpDateKHMouseClicked
 
     private void INKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_INKHMouseClicked
-        int width = tableKH.getWidth();
-        int height = tableKH.getHeight();
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        Graphics2D g2 = image.createGraphics();
-        tableKH.paint(g2);
-        g2.dispose();
-         try {
-            ImageIO.write(image, "png", new File("C:\\Users\\ACER\\Documents\\GitHub\\QuanLyBanGiay\\src\\main\\java\\GUIMAN\\image\\tableKH.png"));
-            System.out.println("Table image created successfully.");
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-        try {
-            ImageTableKH();
-        } catch (IOException ex) {
-            Logger.getLogger(DEMO.class.getName()).log(Level.SEVERE, null, ex);
+//        int width = tableKH.getWidth();
+//        int height = tableKH.getHeight();
+//        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+//        Graphics2D g2 = image.createGraphics();
+//        tableKH.paint(g2);
+//        g2.dispose();
+//         try {
+//            ImageIO.write(image, "png", new File("C:\\Users\\ACER\\Documents\\GitHub\\QuanLyBanGiay\\src\\main\\java\\GUIMAN\\image\\tableKH.png"));
+//            System.out.println("Table image created successfully.");
+//        } catch (IOException e) {
+//            System.out.println("Error: " + e.getMessage());
+//        }
+//        try {
+//            ImageTableKH();
+//        } catch (IOException ex) {
+//            Logger.getLogger(DEMO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        // Tạo đối tượng JFileChooser
+        JFileChooser fileChooser = new JFileChooser();
+
+        // Thiết lập bộ lọc cho chỉ chọn file Excel
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel Files", "xlsx");
+        fileChooser.setFileFilter(filter);
+
+        // Hiển thị hộp thoại chọn file
+        int returnValue = fileChooser.showSaveDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            // Người dùng đã chọn một đường dẫn hợp lệ
+            File selectedFile = fileChooser.getSelectedFile();
+            String filePath = selectedFile.getAbsolutePath();
+
+            // Gọi phương thức để tạo file Excel tại đường dẫn đã chọn
+            exportToExcel(tableKH, filePath + ".xlsx");
+
+            System.out.println("Excel file created successfully at: " + filePath + ".xlsx");
+        } else {
+            // Người dùng không chọn đường dẫn
+            System.out.println("Creation canceled.");
         }
     }//GEN-LAST:event_INKHMouseClicked
+
+    private void INHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_INHDMouseClicked
+        InHoaDon in = new InHoaDon();
+        BufferedImage image = new BufferedImage(in.width(),in.height(),BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics = image.createGraphics();
+        in.get().print(graphics);
+        graphics.dispose();
+        try {
+            ImageIO.write(image, "png", new File("C:\\Users\\ACER\\Documents\\GitHub\\QuanLyBanGiay\\src\\main\\java\\GUIMAN\\image\\HoaDon.png"));
+            System.out.println("Ảnh đã được tạo và lưu thành công.");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_INHDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2510,6 +2597,7 @@ public class DEMO extends javax.swing.JFrame {
     private javax.swing.JTextField HoVaTenKH;
     private javax.swing.JPanel HoaDon;
     private javax.swing.JPanel Home;
+    private javax.swing.JLabel INHD;
     private javax.swing.JLabel INKH;
     protected javax.swing.JPanel KhachHang;
     private javax.swing.JPanel Kho;
@@ -2545,6 +2633,7 @@ public class DEMO extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2590,7 +2679,6 @@ public class DEMO extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
