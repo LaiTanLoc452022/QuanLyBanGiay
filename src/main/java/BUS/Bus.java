@@ -133,6 +133,21 @@ public class Bus<Thing> {
       return result;
        
    }
+   /**
+    * Phương thức này ae sẽ dùng trong trường hợp muốn lấy tất cả các thằng con
+    * ví dụ Giày và phân loại
+    * 1 loại thì sẽ có nhiều giày
+    * tức khóa ngoại idLoai trong Giày sẽ 
+    * @param <Parent>
+    * @param <Child>
+    * @param con
+    * @param cha
+    * @return 
+    */
+   public synchronized <Parent,Child>ArrayList Join(Class<Child> con,Parent cha){
+       ArrayList<Child> listCon=new ArrayList(Generic_Implement.getAllChildrenFromParent(con, cha));
+       return listCon;
+   }
    
    
    

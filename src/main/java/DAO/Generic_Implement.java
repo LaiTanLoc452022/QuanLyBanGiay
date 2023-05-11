@@ -11,8 +11,8 @@ import java.util.List;
 
 public class Generic_Implement<T> implements GenericDAO {
 
-    private static Session session;
-    private static Transaction transaction;
+    public static Session session;
+   public static Transaction transaction;
 
 
     public static <T> void insert(T instance) {// tạo đối tượng trước rồi , gọi hàm insert nha mằn 
@@ -79,6 +79,16 @@ public class Generic_Implement<T> implements GenericDAO {
             throw new RuntimeException(e);
         }
     }
+   public static <Child, Parent> List<Child> getAllChildrenFromParent(Class<Child> childClass, Parent parent) {
+    Session session = HIbernateUtil.getSessionFactory().openSession();
+    String parentClassName = parent.getClass().getSimpleName();
+    String hql = "SELECT c FROM " + childClass.getSimpleName() + " c WHERE c." + parentClassName.toLowerCase() + " = :parent";
+    Query<Child> query = session.createQuery(hql, childClass);
+    query.setParameter("parent", parent);
+    List<Child> children = query.getResultList();
+    session.close();
+    return children;
+}
   
 
     public static <T> void delete(T instance) {

@@ -1,12 +1,9 @@
 package UINam.login;
 
-import DAO.Generic_Implement;
 import DAO.NguoidungHome;
 import UINam.UserInterface;
 import entity1.Nguoidung;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -168,10 +165,14 @@ public class LoginForm extends javax.swing.JFrame {
         for (Nguoidung temp : list) {
 
             if (String.valueOf(passwordF.getPassword()).equals(temp.getMatKhau()) && usernameTF.getText().equals(temp.getTenDangNhap())) {
-                System.out.println("ThanhCong!");
-                this.dispose();
-                UserInterface ui = new UserInterface();
-                ui.setVisible(true);
+                try {
+                    System.out.println("ThanhCong!");
+                    this.dispose();
+                    UserInterface ui = new UserInterface();
+                    ui.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
 
