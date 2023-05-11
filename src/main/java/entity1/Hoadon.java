@@ -12,7 +12,7 @@ import java.util.Set;
 public class Hoadon implements java.io.Serializable {
 
 	private Integer idhoaDon;
-	private Nhacungcap nhacungcap;
+	public Nhacungcap nhacungcap;
 	private Date ngayLap;
 	private Integer idkhachHang;
 	private BigDecimal tongTien;

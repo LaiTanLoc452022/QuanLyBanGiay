@@ -11,6 +11,7 @@ DAO\Generic_Implement.class
 entity1\Nhacungcap.class
 UINam\UserInterface$17.class
 DAO\PhieunhapHome.class
+UINam\UserInterface$27.class
 entity1\Phanloai.class
 UINam\RegisterForm$3.class
 DAO\SanPhamHome.class
@@ -25,6 +26,7 @@ entity1\Sanpham.class
 UINam\UserInterface$5.class
 entity1\Nhanvien.class
 UINam\UserInterface$19.class
+UINam\UserInterface$29.class
 UINam\UserInterface$22.class
 UINam\UserInterface$12.class
 entity1\Chitiethoadon.class
@@ -50,11 +52,13 @@ DAO\NhomHome.class
 entity1\Manhinh.class
 UINam\UserInterface$6.class
 entity1\The.class
+UINam\UserInterface$25.class
 DAO\KhachhangHome.class
 UINam\UserInterface$9.class
 UINam\login\LoginForm$1.class
 UINam\RegisterForm.class
 UINam\UserInterface$10.class
+UINam\UserInterface$28.class
 DAO\NhacungcapHome.class
 UINam\UserInterface$13.class
 entity1\Loainv.class
@@ -63,6 +67,7 @@ Main\Main.class
 UINam\login\LoginForm$4.class
 UINam\RegisterForm$2.class
 UINam\UserInterface$16.class
+UINam\UserInterface$26.class
 Database\HIbernateUtil.class
 UINam\UserInterface$8.class
 entity1\Khachhang.class

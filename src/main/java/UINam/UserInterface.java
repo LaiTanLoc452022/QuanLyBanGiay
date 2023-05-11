@@ -5,8 +5,7 @@ import DAO.HoadonHome;
 import DAO.NhanvienHome;
 import entity1.Hoadon;
 import entity1.Nhanvien;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.awt.Color;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,9 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +22,12 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class UserInterface extends javax.swing.JFrame {
 
@@ -95,7 +97,7 @@ public class UserInterface extends javax.swing.JFrame {
             rowData[2] = array.get(i).getIdkhachHang();
             rowData[3] = array.get(i).getTongTien();
             rowData[4] = array.get(i).getIdnhanVien();
-            rowData[5] = array.get(i).getNhacungcap();
+//            rowData[5] = array.get(i).getNhacungcap();
             RecordTable.addRow(rowData);
         }
     }
@@ -300,6 +302,8 @@ public class UserInterface extends javax.swing.JFrame {
         tongtien = new javax.swing.JTextField();
         idncc = new javax.swing.JTextField();
         ngayxuat = new com.toedter.calendar.JDateChooser();
+        jPanel40 = new javax.swing.JPanel();
+        thongkedoanhthu = new javax.swing.JLabel();
         Kho = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
@@ -1212,6 +1216,11 @@ public class UserInterface extends javax.swing.JFrame {
                 "Mã HĐ", "Ngày xuất ", "ID khách hàng", "Tổng tiền", "ID nhân viên", "ID nhà cung cấp"
             }
         ));
+        tableHD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableHDMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableHD);
 
         jPanel15.setBackground(new java.awt.Color(0, 51, 51));
@@ -1439,6 +1448,35 @@ public class UserInterface extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        jPanel40.setBackground(new java.awt.Color(0, 51, 51));
+
+        thongkedoanhthu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        thongkedoanhthu.setForeground(new java.awt.Color(204, 255, 204));
+        thongkedoanhthu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        thongkedoanhthu.setText("THỐNG KÊ");
+        thongkedoanhthu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                thongkedoanhthuMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
+        jPanel40.setLayout(jPanel40Layout);
+        jPanel40Layout.setHorizontalGroup(
+            jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel40Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(thongkedoanhthu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel40Layout.setVerticalGroup(
+            jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel40Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(thongkedoanhthu, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
@@ -1455,7 +1493,8 @@ public class UserInterface extends javax.swing.JFrame {
                             .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
@@ -1494,6 +1533,8 @@ public class UserInterface extends javax.swing.JFrame {
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1514,7 +1555,7 @@ public class UserInterface extends javax.swing.JFrame {
             .addGroup(HoaDonLayout.createSequentialGroup()
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
         );
 
         LayeredPane.add(HoaDon, "card2");
@@ -2275,6 +2316,7 @@ public class UserInterface extends javax.swing.JFrame {
         Date date = new Date();
         ngaysinh.setDateFormatString("yyyy-MM-dd");
         ngaysinh.setDate(date);
+        ngayxuat.setDate(date);
     }
 
     // RESET METHOD
@@ -2376,7 +2418,7 @@ public class UserInterface extends javax.swing.JFrame {
             hd.setIdkhachHang(Integer.parseInt(idkh.getText()));
 //            hd.setTongTien(BigDecimal.valueOf(tongtien.getText()));
             hd.setIdnhanVien(Integer.parseInt(idnv.getText()));
-//            hd.setNhacungcap(idncc.getText());
+//            hd.nhacungcap.setIdnhaCungCap(Integer.parseInt(idncc.getText()));
             ArrayList<Hoadon> array = Generic_BUS.getList();
             array.add(hd);
             HoadonHome.insert(hd);
@@ -2416,6 +2458,40 @@ public class UserInterface extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_searchMouseClicked
+
+    private void thongkedoanhthuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongkedoanhthuMouseClicked
+        // TODO add your handling code here:
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        Hoadon hd = new Hoadon();
+        BigDecimal doanhthu = hd.getTongTien();
+        Date time = hd.getNgayLap();
+        dataset.setValue(doanhthu, "Value", time);
+        dataset.setValue(doanhthu, "Value", time);
+        dataset.setValue(doanhthu, "Value", time);
+
+        JFreeChart chart = ChartFactory.createBarChart("Thong ke doanh thu", "Thang", "values", dataset, PlotOrientation.VERTICAL, true, true, false);
+        chart.setBackgroundPaint(Color.white);
+        chart.getTitle().setPaint(Color.green);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.BLUE);
+        ChartFrame frame = new ChartFrame("Doanh thu", chart);
+        frame.setVisible(true);
+        frame.setSize(800, 600);
+    }//GEN-LAST:event_thongkedoanhthuMouseClicked
+
+    private void tableHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHDMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel RecordTable = (DefaultTableModel) tableHD.getModel();
+        int SelectedRows = tableHD.getSelectedRow();
+
+        idhd.setText(RecordTable.getValueAt(SelectedRows, 0).toString());
+        Date date = (Date) RecordTable.getValueAt(SelectedRows, 1);
+        ngayxuat.setDate(date);
+        idkh.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
+        tongtien.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
+        idnv.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
+//        idncc.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
+    }//GEN-LAST:event_tableHDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2587,6 +2663,7 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
+    private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
@@ -2631,6 +2708,7 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JPanel sidePanel;
     private javax.swing.JTable tableHD;
     private javax.swing.JTable tableNV;
+    private javax.swing.JLabel thongkedoanhthu;
     private javax.swing.JTextField tongtien;
     private javax.swing.JLabel update;
     // End of variables declaration//GEN-END:variables
