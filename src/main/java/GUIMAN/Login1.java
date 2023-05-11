@@ -180,7 +180,7 @@ public class Login1 extends javax.swing.JFrame {
             if (String.valueOf(passwordF.getPassword()).equals(temp.getMatKhau()) && usernameTF.getText().equals(temp.getTenDangNhap())) {
                 System.out.println("ThanhCong!");
                 this.dispose();
-                UserInterface ui = new UserInterface();
+                DEMO ui = new DEMO();
                 ui.setVisible(true);
             }
         }

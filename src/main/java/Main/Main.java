@@ -34,13 +34,9 @@ import javax.imageio.ImageIO;
 public class Main {
 
     public static void main(String[] args) {
-        The the=Generic_Implement.findByID(The.class, 1);
-        List<Khachhang> listkh=Generic_Implement.getAllChildrenFromParent(Khachhang.class,the);
-        listkh.forEach(e->{
-            System.out.println(e.getThe().getIdthe());
-        
-        });
-              
+        Nhanvien nv=new Nhanvien();
+        nv.setAnh(ImageToByte.toData("C:\\Users\\ACER\\Desktop\\tải xuống (2).jpg"));
+        Generic_Implement.insert(nv);
               
                 
                  

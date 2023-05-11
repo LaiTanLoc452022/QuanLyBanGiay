@@ -6,6 +6,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ImageToByte {
 
@@ -18,6 +20,16 @@ public class ImageToByte {
         }
         catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+    public static byte[] FileToByte(File file){
+        try {
+            BufferedImage bImage = ImageIO.read(file);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ImageIO.write(bImage, "jpg", bos);
+            return bos.toByteArray();
+        } catch (IOException ex) {
+            Logger.getLogger(ImageToByte.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
