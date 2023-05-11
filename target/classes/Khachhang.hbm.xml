@@ -8,7 +8,7 @@
             <column name="IDKhachHang" />
             <generator class="identity" />
         </id>
-        <many-to-one name="the" class="entity1.The" fetch="select">
+        <many-to-one name="the" class="entity1.The" fetch="join">
             <column name="IDThe" />
         </many-to-one>
         <property name="ngayLapThe" type="date">

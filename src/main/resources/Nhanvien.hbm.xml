@@ -8,9 +8,6 @@
             <column name="IDNhanVien" />
             <generator class="identity" />
         </id>
-        <many-to-one name="loainv" class="entity1.Loainv" fetch="select">
-            <column name="IDLoai" />
-        </many-to-one>
         <property name="hoVaTen" type="string">
             <column name="HoVaTen" length="30" />
         </property>

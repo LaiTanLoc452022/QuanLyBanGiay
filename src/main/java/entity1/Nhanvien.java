@@ -11,7 +11,6 @@ import java.util.Set;
 public class Nhanvien implements java.io.Serializable {
 
 	private Integer idnhanVien;
-	private Loainv loainv;
 	private String hoVaTen;
 	private Integer sdt;
 	private Date ngaySinh;
@@ -31,9 +30,9 @@ public class Nhanvien implements java.io.Serializable {
    
         
 
-	public Nhanvien(Loainv loainv, String hoVaTen, Integer sdt, Date ngaySinh, String email, Double luong, byte[] anh,
+	public Nhanvien( String hoVaTen, Integer sdt, Date ngaySinh, String email, Double luong, byte[] anh,
 			Set<Nguoidung> nguoidungs) {
-		this.loainv = loainv;
+		
 		this.hoVaTen = hoVaTen;
 		this.sdt = sdt;
 		this.ngaySinh = ngaySinh;
@@ -51,13 +50,7 @@ public class Nhanvien implements java.io.Serializable {
 		this.idnhanVien = idnhanVien;
 	}
 
-	public Loainv getLoainv() {
-		return this.loainv;
-	}
-
-	public void setLoainv(Loainv loainv) {
-		this.loainv = loainv;
-	}
+	
 
 	public String getHoVaTen() {
 		return this.hoVaTen;
