@@ -34,10 +34,12 @@ import javax.imageio.ImageIO;
 public class Main {
 
     public static void main(String[] args) {
-        Bus<Nhanvien> bus=new Bus();
-         bus.getList(Nhanvien.class);
-         ArrayList<Nhanvien>listNhanvien=bus.TimKiem("Loc");
-         listNhanvien.forEach(e->{System.out.println(e.getHoVaTen());});
+        The the=Generic_Implement.findByID(The.class, 1);
+        List<Khachhang> listkh=Generic_Implement.getAllChildrenFromParent(Khachhang.class,the);
+        listkh.forEach(e->{
+            System.out.println(e.getThe().getIdthe());
+        
+        });
               
               
                 
