@@ -1,8 +1,7 @@
 package entity1;
-// Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final
+// Generated May 9, 2023, 1:47:18 PM by Hibernate Tools 4.3.6.Final
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,14 +20,15 @@ public class Sanpham implements java.io.Serializable {
 	private BigDecimal giaBan;
 	private Double soluong;
 	private String themMoTa;
-	private Set chitietphieunhaps = new HashSet(0);
-	private Set chitiethoadons = new HashSet(0);
+	private Set<Chitietphieunhap> chitietphieunhaps = new HashSet<Chitietphieunhap>(0);
+	private Set<Chitiethoadon> chitiethoadons = new HashSet<Chitiethoadon>(0);
 
 	public Sanpham() {
 	}
 
 	public Sanpham(Phanloai phanloai, String ten, Double size, String mau, String vatLieu, byte[] anh,
-			BigDecimal giaBan, Double soluong, String themMoTa, Set chitietphieunhaps, Set chitiethoadons) {
+			BigDecimal giaBan, Double soluong, String themMoTa, Set<Chitietphieunhap> chitietphieunhaps,
+			Set<Chitiethoadon> chitiethoadons) {
 		this.phanloai = phanloai;
 		this.ten = ten;
 		this.size = size;
@@ -40,14 +40,6 @@ public class Sanpham implements java.io.Serializable {
 		this.themMoTa = themMoTa;
 		this.chitietphieunhaps = chitietphieunhaps;
 		this.chitiethoadons = chitiethoadons;
-	}
-	
-
-	@Override
-	public String toString() {
-		return "Sanpham [idgiay=" + idgiay  + ", ten=" + ten + ", size=" + size + ", mau="
-				+ mau + ", vatLieu=" + vatLieu + ", anh=" + Arrays.toString(anh) + ", giaBan=" + giaBan + ", soluong="
-				+ soluong + ", themMoTa=" + themMoTa +  "]";
 	}
 
 	public Integer getIdgiay() {
@@ -130,19 +122,19 @@ public class Sanpham implements java.io.Serializable {
 		this.themMoTa = themMoTa;
 	}
 
-	public Set getChitietphieunhaps() {
+	public Set<Chitietphieunhap> getChitietphieunhaps() {
 		return this.chitietphieunhaps;
 	}
 
-	public void setChitietphieunhaps(Set chitietphieunhaps) {
+	public void setChitietphieunhaps(Set<Chitietphieunhap> chitietphieunhaps) {
 		this.chitietphieunhaps = chitietphieunhaps;
 	}
 
-	public Set getChitiethoadons() {
+	public Set<Chitiethoadon> getChitiethoadons() {
 		return this.chitiethoadons;
 	}
 
-	public void setChitiethoadons(Set chitiethoadons) {
+	public void setChitiethoadons(Set<Chitiethoadon> chitiethoadons) {
 		this.chitiethoadons = chitiethoadons;
 	}
 

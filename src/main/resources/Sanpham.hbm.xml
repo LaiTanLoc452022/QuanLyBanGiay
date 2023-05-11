@@ -1,49 +1,51 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
 <hibernate-mapping>
-    <class catalog="cuahangbangiay" name="entity1.Sanpham" optimistic-lock="none" table="sanpham">
+    <class name="entity1.Sanpham" table="sanpham" catalog="cuahangbangiay" optimistic-lock="version">
         <id name="idgiay" type="java.lang.Integer">
-            <column name="IDGiay"/>
-            <generator class="identity"/>
+            <column name="IDGiay" />
+            <generator class="identity" />
         </id>
-        <many-to-one class="entity1.Phanloai" fetch="select" name="phanloai">
-            <column name="IDPhanLoai"/>
+        <many-to-one name="phanloai" class="entity1.Phanloai" fetch="select">
+            <column name="IDPhanLoai" />
         </many-to-one>
         <property name="ten" type="string">
-            <column length="50" name="Ten"/>
+            <column name="Ten" length="50" />
         </property>
         <property name="size" type="java.lang.Double">
-            <column name="Size" precision="22" scale="0"/>
+            <column name="Size" precision="22" scale="0" />
         </property>
         <property name="mau" type="string">
-            <column length="10" name="Mau"/>
+            <column name="Mau" length="10" />
         </property>
         <property name="vatLieu" type="string">
-            <column length="50" name="VatLieu"/>
+            <column name="VatLieu" length="50" />
         </property>
         <property name="anh" type="binary">
-            <column name="Anh"/>
+            <column name="Anh" />
         </property>
         <property name="giaBan" type="big_decimal">
-            <column name="GiaBan" scale="4"/>
+            <column name="GiaBan" scale="4" />
         </property>
         <property name="soluong" type="java.lang.Double">
-            <column name="Soluong" precision="22" scale="0"/>
+            <column name="Soluong" precision="22" scale="0" />
         </property>
         <property name="themMoTa" type="string">
-            <column length="1000" name="ThemMoTa"/>
+            <column name="ThemMoTa" length="1000" />
         </property>
-        <set fetch="select" inverse="true" lazy="true" name="chitietphieunhaps" table="chitietphieunhap">
+        <set name="chitietphieunhaps" table="chitietphieunhap" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="IDGiay"/>
+                <column name="IDGiay" />
             </key>
-            <one-to-many class="entity1.Chitietphieunhap"/>
+            <one-to-many class="entity1.Chitietphieunhap" />
         </set>
-        <set fetch="select" inverse="true" lazy="true" name="chitiethoadons" table="chitiethoadon">
+        <set name="chitiethoadons" table="chitiethoadon" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="IDGiay"/>
+                <column name="IDGiay" />
             </key>
-            <one-to-many class="entity1.Chitiethoadon"/>
+            <one-to-many class="entity1.Chitiethoadon" />
         </set>
     </class>
 </hibernate-mapping>

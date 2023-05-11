@@ -5,10 +5,12 @@
 package BUS;
 
 import UINam.RegisterForm;
+import entity1.Nguoidung;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -21,9 +23,16 @@ public class PhanQuyenForm extends javax.swing.JPanel {
     /**
      * Creates new form PhanQuyenForm
      */
+    public ArrayList<Nguoidung> listND;
     public PhanQuyenForm() {
+        listND=Generic_BUS.getAll(Nguoidung.class);
         initComponents();
     }
+
+    public ArrayList<Nguoidung> getListND() {
+        return listND;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,10 +78,12 @@ public class PhanQuyenForm extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 255, 204));
         jLabel13.setText("Mã số người dùng:");
+        jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(204, 255, 204));
         jLabel14.setText("Tên người dùng:");
+        jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jTextField17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,11 +241,11 @@ public class PhanQuyenForm extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(selectedPanelLayout.createSequentialGroup()
                         .addComponent(qtvPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addGap(18, 24, Short.MAX_VALUE)
                         .addComponent(nvKhoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
+                        .addGap(22, 22, 22)
                         .addComponent(nvBanHangPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))))
+                        .addGap(13, 13, 13))))
         );
         selectedPanelLayout.setVerticalGroup(
             selectedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +255,7 @@ public class PhanQuyenForm extends javax.swing.JPanel {
                     .addComponent(nvBanHangPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(nvKhoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qtvPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -258,14 +269,16 @@ public class PhanQuyenForm extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(selectedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(selectedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(174, 174, 174))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,9 +319,9 @@ public class PhanQuyenForm extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 36, Short.MAX_VALUE)
+                .addGap(0, 21, Short.MAX_VALUE)
                 .addComponent(PhanQuyenAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 37, Short.MAX_VALUE))
+                .addGap(0, 40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -317,10 +330,7 @@ public class PhanQuyenForm extends javax.swing.JPanel {
             rf.setVisible(true);
             rf.addWindowListener(new WindowAdapter(){
               public  void windowClosed(WindowEvent e){
-                   jTextField17.setText(rf.getRegistedNguoidung().getIdnguoiDung()+"");
-                   jTextField18.setText(rf.getRegistedNguoidung().getTenTaiKhoan());
-                   jTextField17.setEditable(false);
-                   jTextField18.setEditable(false);
+                   
                }
             });
             
@@ -328,12 +338,14 @@ public class PhanQuyenForm extends javax.swing.JPanel {
     }//GEN-LAST:event_callRegisterForm
 
     public static void main(String[] args) {
+      
         JFrame frame=new JFrame();
         PhanQuyenForm phanquyen=new PhanQuyenForm();
         frame.add(phanquyen);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(900,700);
        frame.setVisible(true);
+       
     }
     private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
         

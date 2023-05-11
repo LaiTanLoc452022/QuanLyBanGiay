@@ -26,9 +26,9 @@ MatrixToImageWriter.writeToFile(matrix, path.substring(path.lastIndexOf('.') + 1
 public static void main(String args[]) throws WriterException, IOException, NotFoundException  
 {  
 //data that we want to store in the QR code  
-String str= "THE HABIT OF PERSISTENCE IS THE HABIT OF VICTORY.";  
+String str= " Con Cho man ngu deo' chiu duoc ";  
 //path where we want to get QR Code  
-String path = "C:\\Users\\Asus\\Desktop\\QRdemo\\Quote.png";  
+String path = "C:\\Users\\Asus\\Desktop\\QRdemo\\qr1.png";  
 //Encoding charset to be used  
 String charset = "UTF-8";  
 Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();  

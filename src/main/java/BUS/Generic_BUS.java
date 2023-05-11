@@ -9,6 +9,7 @@ public class Generic_BUS {
 
     private static ArrayList list;
     public static<Thing> ArrayList<Thing> getAll(Class<Thing> instance){
+        
         list=new ArrayList();
         List<Thing> tempList= Generic_Implement.getAll(instance);
         tempList.forEach(e->{
@@ -17,6 +18,9 @@ public class Generic_BUS {
         return list;
     }
     public static ArrayList getList() {
+       
         return list;
     }
+    
+    
 }

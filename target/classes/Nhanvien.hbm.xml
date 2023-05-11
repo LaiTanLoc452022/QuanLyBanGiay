@@ -1,31 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Apr 13, 2023, 8:42:14 PM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
 <hibernate-mapping>
-    <class catalog="cuahangbangiay" name="entity1.Nhanvien" optimistic-lock="none" table="nhanvien">
+    <class name="entity1.Nhanvien" table="nhanvien" catalog="cuahangbangiay" optimistic-lock="version">
         <id name="idnhanVien" type="java.lang.Integer">
-            <column name="IDNhanVien"/>
-            <generator class="identity"/>
+            <column name="IDNhanVien" />
+            <generator class="identity" />
         </id>
+        <many-to-one name="loainv" class="entity1.Loainv" fetch="select">
+            <column name="IDLoai" />
+        </many-to-one>
         <property name="hoVaTen" type="string">
-            <column length="0" name="HoVaTen"/>
+            <column name="HoVaTen" length="30" />
         </property>
         <property name="sdt" type="java.lang.Integer">
-            <column name="SDT" unique="true"/>
+            <column name="SDT" unique="true" />
         </property>
         <property name="ngaySinh" type="date">
-            <column length="10" name="NgaySinh"/>
+            <column name="NgaySinh" length="10" />
         </property>
         <property name="email" type="string">
-            <column length="20" name="email"/>
+            <column name="email" length="29" />
         </property>
         <property name="luong" type="java.lang.Double">
-            <column name="Luong" precision="22" scale="0"/>
-        </property>
-        <property name="idloai" type="java.lang.Integer">
-            <column name="IDLoai"/>
+            <column name="Luong" precision="22" scale="0" />
         </property>
         <property name="anh" type="binary">
-            <column name="Anh"/>
+            <column name="Anh" />
         </property>
+        <set name="nguoidungs" table="nguoidung" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDNhanVien" />
+            </key>
+            <one-to-many class="entity1.Nguoidung" />
+        </set>
     </class>
 </hibernate-mapping>

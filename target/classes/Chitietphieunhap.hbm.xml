@@ -1,26 +1,28 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
 <hibernate-mapping>
-    <class catalog="cuahangbangiay" name="entity1.Chitietphieunhap" optimistic-lock="none" table="chitietphieunhap">
-        <composite-id class="entity1.ChitietphieunhapId" name="id">
+    <class name="entity1.Chitietphieunhap" table="chitietphieunhap" catalog="cuahangbangiay" optimistic-lock="version">
+        <composite-id name="id" class="entity1.ChitietphieunhapId">
             <key-property name="idphieuNhap" type="java.lang.Integer">
-                <column name="IDPhieuNhap"/>
+                <column name="IDPhieuNhap" />
             </key-property>
             <key-property name="idgiay" type="java.lang.Integer">
-                <column name="IDGiay"/>
+                <column name="IDGiay" />
             </key-property>
             <key-property name="gia" type="big_decimal">
-                <column name="Gia" scale="4"/>
+                <column name="Gia" scale="4" />
             </key-property>
             <key-property name="soluong" type="java.lang.Integer">
-                <column name="Soluong"/>
+                <column name="Soluong" />
             </key-property>
         </composite-id>
-        <many-to-one class="entity1.Phieunhap" fetch="select" insert="false" name="phieunhap" update="false">
-            <column name="IDPhieuNhap"/>
+        <many-to-one name="phieunhap" class="entity1.Phieunhap" update="false" insert="false" fetch="select">
+            <column name="IDPhieuNhap" />
         </many-to-one>
-        <many-to-one class="entity1.Sanpham" fetch="select" insert="false" name="sanpham" update="false">
-            <column name="IDGiay"/>
+        <many-to-one name="sanpham" class="entity1.Sanpham" update="false" insert="false" fetch="select">
+            <column name="IDGiay" />
         </many-to-one>
     </class>
 </hibernate-mapping>

@@ -40,6 +40,15 @@ public class Generic_Implement<T> implements GenericDAO {
             throw new RuntimeException(e);
         }
     }
+    public static<T> void SuaTheoID(T instance){
+        
+        session=HIbernateUtil.getSessionFactory().openSession();
+         transaction = session.beginTransaction();
+            session.merge(instance);
+            session.flush();
+            transaction.commit();
+            session.close();
+    }
 
     ;
 
@@ -72,6 +81,7 @@ public class Generic_Implement<T> implements GenericDAO {
             throw new RuntimeException(e);
         }
     }
+  
 
     public static <T> void delete(T instance) {
         try {
