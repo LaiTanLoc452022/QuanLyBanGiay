@@ -13,7 +13,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -22,6 +25,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static org.apache.poi.hssf.usermodel.HeaderFooter.date;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -2465,9 +2469,15 @@ public class UserInterface extends javax.swing.JFrame {
         Hoadon hd = new Hoadon();
         BigDecimal doanhthu = hd.getTongTien();
         Date time = hd.getNgayLap();
-        dataset.setValue(doanhthu, "Value", time);
-        dataset.setValue(doanhthu, "Value", time);
-        dataset.setValue(doanhthu, "Value", time);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(hd.getNgayLap());
+        int month = calendar.get(Calendar.MONTH);
+
+//        LocalDate localDate = hd.getNgayLap().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        int month = localDate.getMonthValue();
+        dataset.setValue(doanhthu, "Value", month);
+        dataset.setValue(doanhthu, "Value", month);
+        dataset.setValue(doanhthu, "Value", month);
 
         JFreeChart chart = ChartFactory.createBarChart("Thong ke doanh thu", "Thang", "values", dataset, PlotOrientation.VERTICAL, true, true, false);
         chart.setBackgroundPaint(Color.white);

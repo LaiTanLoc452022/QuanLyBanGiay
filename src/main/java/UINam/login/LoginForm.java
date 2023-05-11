@@ -165,10 +165,14 @@ public class LoginForm extends javax.swing.JFrame {
         for (Nguoidung temp : list) {
 
             if (String.valueOf(passwordF.getPassword()).equals(temp.getMatKhau()) && usernameTF.getText().equals(temp.getTenDangNhap())) {
-                System.out.println("ThanhCong!");
-                this.dispose();
-                UserInterface ui = new UserInterface();
-                ui.setVisible(true);
+                try {
+                    System.out.println("ThanhCong!");
+                    this.dispose();
+                    UserInterface ui = new UserInterface();
+                    ui.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
 

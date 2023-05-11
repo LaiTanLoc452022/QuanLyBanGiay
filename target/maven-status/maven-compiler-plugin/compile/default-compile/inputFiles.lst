@@ -13,6 +13,7 @@ C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\DA
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\Phanquyen.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\ChitiethoadonId.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\BUS\Generic_BUS.java
+C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\GUIMAN\DEMO.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\DAO\TheHome.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\Chitietphieunhap.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\Khachhang.java
@@ -23,6 +24,8 @@ C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\BU
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\ChitietphieunhapId.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\UINam\UserInterface.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\Nhom.java
+C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\GUIMAN\Login1.java
+C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\BUS\Bus.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\DAO\PhanloaiHome.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\GUI\ReadQrCode.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\DAO\GenericDAO.java
@@ -35,10 +38,12 @@ C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\Da
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\Nhacungcap.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\GUI\createProfilePage.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\Sanpham.java
+C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\GUIMAN\InHoaDon.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\DAO\NhacungcapHome.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\Manhinh.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\GUI\GenerateQrCode.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\Phieunhap.java
+C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\BUS\PhanQuyenForm.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\Main\Main.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\entity1\Loainv.java
 C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\DAO\PhanquyenHome.java
