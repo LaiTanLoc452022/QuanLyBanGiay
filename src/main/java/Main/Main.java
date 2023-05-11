@@ -26,6 +26,8 @@ import org.hibernate.query.Query;
 
 import DAO.*;
 import Database.HIbernateUtil;
+import UINam.UserInterface;
+import java.math.MathContext;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,19 +36,69 @@ import javax.imageio.ImageIO;
 public class Main {
 
     public static void main(String[] args) {
-        The the=Generic_Implement.findByID(The.class, 1);
-        List<Khachhang> listkh=Generic_Implement.getAllChildrenFromParent(Khachhang.class,the);
-        listkh.forEach(e->{
-            System.out.println(e.getThe().getIdthe());
-        
-        });
-              
-              
-                
-                 
-       
-                
+
+        ArrayList<Hoadon> listhd = Generic_BUS.getAll(Hoadon.class);
+        Set<Date> SetNgay = new HashSet<>(); // 
+        Set<Integer> SetThang = new HashSet<>();
+
+        for (Hoadon e : listhd) {
+            SetNgay.add(e.getNgayLap());
+
+        }
+        for (Hoadon e : listhd) {
+            SetThang.add(e.getNgayLap().getMonth());
+        }
+        double dtmon = 0.0d;
+
+        ArrayList<Cus> dtday = new ArrayList();
+        for (var ngay : SetNgay) {
+            double dt = 0.0d;
+            // System.out.println(ngay.toString());
+            for (int j = 0; j < listhd.size(); ++j) {
+                if (ngay.toString().equals(listhd.get(j).getNgayLap().toString())) {
+                    dt = dt + listhd.get(j).getTongTien().doubleValue();
+                }
+            }
+            Cus custemp = new Cus();
+            custemp.doanhthu = dt;
+            custemp.ngay = ngay;
+            dtday.add(custemp);
+
+        }
+
+        ArrayList<UserInterface.CusMonth> month = new ArrayList();
+        for (int i = 0; i < 12; i++) {
+            month.add(new UserInterface.CusMonth());
+        }
+        int i = 0;
+        for (int itmon : SetThang) {
+            double dttheothang = 0.0d;
+            for (Cus doanhthutheongay : dtday) {
+                if (itmon == doanhthutheongay.ngay.getMonth()) {
+                    dttheothang = dttheothang + doanhthutheongay.doanhthu;
+
+                }
+
+            }
+
+            month.get(i).doanhthu = dttheothang;
+            month.get(i).thang = itmon+1;
+            i = i + 1;
             
-	}
+        }
+        month.forEach(e -> {
+            System.out.println(e.doanhthu + "  " + e.thang);
+        });
+
+    }
+
+    static class Cus {
+
+        public Date ngay;
+        public Double doanhthu;
+
+        public Cus() {
+        }
+    }
 
 }
