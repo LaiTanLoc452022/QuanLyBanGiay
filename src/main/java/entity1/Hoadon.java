@@ -1,5 +1,5 @@
 package entity1;
-// Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final
+// Generated May 9, 2023, 1:47:18 PM by Hibernate Tools 4.3.6.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -17,13 +17,13 @@ public class Hoadon implements java.io.Serializable {
 	private Integer idkhachHang;
 	private BigDecimal tongTien;
 	private Integer idnhanVien;
-	private Set chitiethoadons = new HashSet(0);
+	private Set<Chitiethoadon> chitiethoadons = new HashSet<Chitiethoadon>(0);
 
 	public Hoadon() {
 	}
 
 	public Hoadon(Nhacungcap nhacungcap, Date ngayLap, Integer idkhachHang, BigDecimal tongTien, Integer idnhanVien,
-			Set chitiethoadons) {
+			Set<Chitiethoadon> chitiethoadons) {
 		this.nhacungcap = nhacungcap;
 		this.ngayLap = ngayLap;
 		this.idkhachHang = idkhachHang;
@@ -80,11 +80,11 @@ public class Hoadon implements java.io.Serializable {
 		this.idnhanVien = idnhanVien;
 	}
 
-	public Set getChitiethoadons() {
+	public Set<Chitiethoadon> getChitiethoadons() {
 		return this.chitiethoadons;
 	}
 
-	public void setChitiethoadons(Set chitiethoadons) {
+	public void setChitiethoadons(Set<Chitiethoadon> chitiethoadons) {
 		this.chitiethoadons = chitiethoadons;
 	}
 

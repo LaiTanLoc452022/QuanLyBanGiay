@@ -1,20 +1,25 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
 <hibernate-mapping>
-    <class catalog="cuahangbangiay" name="entity1.Nhomvanguoidung" optimistic-lock="none" table="nhomvanguoidung">
-        <composite-id class="entity1.NhomvanguoidungId" name="id">
+    <class name="entity1.Nhomvanguoidung" table="nhomvanguoidung" catalog="cuahangbangiay" optimistic-lock="version">
+        <composite-id name="id" class="entity1.NhomvanguoidungId">
             <key-property name="idnguoiDung" type="java.lang.Integer">
-                <column name="IDNguoiDung"/>
+                <column name="IDNguoiDung" />
             </key-property>
-            <key-property name="idnhom" type="java.lang.Integer">
-                <column name="IDNhom"/>
+            <key-property name="fkIdnhom" type="java.lang.Integer">
+                <column name="fk_IDNhom" />
             </key-property>
             <key-property name="ghiChu" type="string">
-                <column length="0" name="GhiChu"/>
+                <column name="GhiChu" length="30" />
             </key-property>
         </composite-id>
-        <many-to-one class="entity1.Nguoidung" fetch="select" insert="false" name="nguoidung" update="false">
-            <column name="IDNguoiDung"/>
+        <many-to-one name="nguoidung" class="entity1.Nguoidung" update="false" insert="false" fetch="select">
+            <column name="IDNguoiDung" />
+        </many-to-one>
+        <many-to-one name="nhom" class="entity1.Nhom" update="false" insert="false" fetch="select">
+            <column name="fk_IDNhom" />
         </many-to-one>
     </class>
 </hibernate-mapping>

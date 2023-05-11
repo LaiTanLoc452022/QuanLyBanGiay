@@ -1,5 +1,6 @@
 package Main;
 
+import BUS.Bus;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 import BUS.Generic_BUS;
+import BUS.ImageToByte;
 import GUI.*;
 
 import java.util.*;
@@ -24,19 +26,27 @@ import org.hibernate.query.Query;
 
 import DAO.*;
 import Database.HIbernateUtil;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
 public class Main {
 
     public static void main(String[] args) {
-
-//        ArrayList<Nhanvien> list = Generic_BUS.getAll(Nhanvien.class);
-//        list.forEach(e -> System.out.println(e.toString()));
-    Nhanvien nv= new Nhanvien();
-    nv.setEmail("aldosfji");
-    nv.setNgaySinh(new java.sql.Date(2003-1900,11,02));
-    NhanvienHome.insert(nv);
-    }
+        The the=Generic_Implement.findByID(The.class, 1);
+        List<Khachhang> listkh=Generic_Implement.getAllChildrenFromParent(Khachhang.class,the);
+        listkh.forEach(e->{
+            System.out.println(e.getThe().getIdthe());
+        
+        });
+              
+              
+                
+                 
+       
+                
+            
+	}
 
 }

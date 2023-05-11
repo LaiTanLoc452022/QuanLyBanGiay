@@ -1,5 +1,5 @@
 package entity1;
-// Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final
+// Generated May 9, 2023, 1:47:18 PM by Hibernate Tools 4.3.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,30 +9,25 @@ import java.util.Set;
  */
 public class Loainv implements java.io.Serializable {
 
-	private int idloai;
+	private Integer idloai;
 	private String tenLoai;
 	private String ghiChu;
-	private Set nhanviens = new HashSet(0);
+	private Set<Nhanvien> nhanviens = new HashSet<Nhanvien>(0);
 
 	public Loainv() {
 	}
 
-	public Loainv(int idloai) {
-		this.idloai = idloai;
-	}
-
-	public Loainv(int idloai, String tenLoai, String ghiChu, Set nhanviens) {
-		this.idloai = idloai;
+	public Loainv(String tenLoai, String ghiChu, Set<Nhanvien> nhanviens) {
 		this.tenLoai = tenLoai;
 		this.ghiChu = ghiChu;
 		this.nhanviens = nhanviens;
 	}
 
-	public int getIdloai() {
+	public Integer getIdloai() {
 		return this.idloai;
 	}
 
-	public void setIdloai(int idloai) {
+	public void setIdloai(Integer idloai) {
 		this.idloai = idloai;
 	}
 
@@ -52,11 +47,11 @@ public class Loainv implements java.io.Serializable {
 		this.ghiChu = ghiChu;
 	}
 
-	public Set getNhanviens() {
+	public Set<Nhanvien> getNhanviens() {
 		return this.nhanviens;
 	}
 
-	public void setNhanviens(Set nhanviens) {
+	public void setNhanviens(Set<Nhanvien> nhanviens) {
 		this.nhanviens = nhanviens;
 	}
 
