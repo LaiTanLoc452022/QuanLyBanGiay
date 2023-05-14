@@ -30,13 +30,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
+import javax.swing.table.DefaultTableModel;
 
 public class Main {
 
     public static void main(String[] args) {
-        Nhanvien nv=new Nhanvien();
-        nv.setAnh(ImageToByte.toData("C:\\Users\\ACER\\Desktop\\tải xuống (2).jpg"));
-        Generic_Implement.insert(nv);
+//        Bus bus=new Bus();
+//        ArrayList<Nhanvien> listnv=bus.getList(Nhanvien.class);
+//       ArrayList<Nhanvien>sublist= bus.TimKiem("dsaa");
+//       
+//       sublist.forEach(e->{System.out.println(e.getLuong());
+//                           System.out.println("--------");});
+        
+        
               
                 
                  

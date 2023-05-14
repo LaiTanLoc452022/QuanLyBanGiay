@@ -26,11 +26,9 @@ public class Bus<Thing> {
    }
    public boolean Them(Thing instance){
        int tempsize=list.size();
+       System.out.println("cho man");
        list.add(instance);
              Generic_Implement.insert(list.get(list.size()-1));
-          
-    
-     
        if(tempsize<list.size()){
            return true;
        }
@@ -93,7 +91,6 @@ public class Bus<Thing> {
    public ArrayList TimKiem(String condition){
       ArrayList<Thing> result=new ArrayList();
       for(Thing element:list){
-          System.out.println(element.toString());
           if(element.toString().contains(condition)){
               result.add(element);
           }

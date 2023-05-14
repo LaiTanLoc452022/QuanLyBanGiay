@@ -1,5 +1,4 @@
 package BUS;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -23,13 +22,15 @@ public class ImageToByte {
         }
     }
     public static byte[] FileToByte(File file){
+        ByteArrayOutputStream bos=null;
         try {
             BufferedImage bImage = ImageIO.read(file);
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bos = new ByteArrayOutputStream();
             ImageIO.write(bImage, "jpg", bos);
-            return bos.toByteArray();
+            
         } catch (IOException ex) {
             Logger.getLogger(ImageToByte.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return bos.toByteArray();
     }
 }
