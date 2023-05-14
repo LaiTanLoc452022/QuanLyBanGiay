@@ -30,18 +30,62 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 public class Main {
 
+   
+
+
+
     public static void main(String[] args) {
-//        Bus bus=new Bus();
-//        ArrayList<Nhanvien> listnv=bus.getList(Nhanvien.class);
-//       ArrayList<Nhanvien>sublist= bus.TimKiem("dsaa");
-//       
-//       sublist.forEach(e->{System.out.println(e.getLuong());
-//                           System.out.println("--------");});
+        JFrame frame = new JFrame("Editable JTable Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Dữ liệu mẫu
+        Object[][] data = {
+                {"1", "John Doe"},
+                {"2", "Jane Smith"},
+                {"3", "Bob Johnson"}
+        };
+
+        // Định nghĩa tên cột
+        String[] columnNames = {"ID", "Name"};
+
+        // Tạo mô hình bảng và thiết lập dữ liệu
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+
+        // Tạo JTable từ mô hình bảng
+        JTable table = new JTable(model);
+
+        // Kích hoạt chế độ chỉnh sửa trực tiếp trên ô văn bản
+        table.setDefaultEditor(Object.class, new DefaultCellEditor(new JTextField()));
+        ArrayList<ArrayList<Object>> datalist=new ArrayList();
+        for(int i=0;i< table.getRowCount();++i){
+            ArrayList<Object> row=new ArrayList();
+            for(int j=0;j<table.getColumnCount();++j){
+                row.add(table.getValueAt(i, j));
+            }
+            datalist.add(row);
+            
+        }
+        for(var row: datalist){
+            System.out.println(row.toString());
+        }
         
+        // Đặt JTable vào JScrollPane
+        JScrollPane scrollPane = new JScrollPane(table);
+        frame.add(table);
+        frame.setSize(1000,1000);
+        frame.setVisible(true);
+
         
               
                 
