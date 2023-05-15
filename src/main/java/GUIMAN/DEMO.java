@@ -2403,7 +2403,7 @@ public class DEMO extends javax.swing.JFrame {
             GetDataKH();
             JOptionPane.showMessageDialog(null, "Insert Successfully!");
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
+            JOptionPane.showMessageDialog(null, "Insert Error!");
         }
     }//GEN-LAST:event_insertKHMouseClicked
 
