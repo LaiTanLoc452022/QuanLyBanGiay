@@ -6,8 +6,6 @@ import DAO.HoadonHome;
 import DAO.NhanvienHome;
 import entity1.Hoadon;
 import entity1.Nhanvien;
-import java.awt.Color;
-import java.awt.GradientPaint;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,21 +15,13 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartFrame;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.DefaultCategoryDataset;
 
 public class UserInterface extends javax.swing.JFrame {
 
@@ -292,7 +282,7 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox<>();
         jPanel39 = new javax.swing.JPanel();
-        jLabel55 = new javax.swing.JLabel();
+        inHD = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -1369,10 +1359,15 @@ public class UserInterface extends javax.swing.JFrame {
 
         jPanel39.setBackground(new java.awt.Color(0, 51, 51));
 
-        jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel55.setForeground(new java.awt.Color(204, 255, 204));
-        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel55.setText("IN");
+        inHD.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        inHD.setForeground(new java.awt.Color(204, 255, 204));
+        inHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inHD.setText("IN");
+        inHD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inHDMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
         jPanel39.setLayout(jPanel39Layout);
@@ -1380,14 +1375,14 @@ public class UserInterface extends javax.swing.JFrame {
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addComponent(inHD, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel39Layout.setVerticalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(inHD, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2494,24 +2489,7 @@ public class UserInterface extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_searchMouseClicked
-    public static class Cus {
 
-        public Date ngay;
-        public Double doanhthu;
-
-        public Cus() {
-        }
-    }
-
-    public static class CusMonth {
-
-        public int thang;
-        public Double doanhthu;
-
-        public CusMonth() {
-
-        }
-    }
     private void thongkedoanhthuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongkedoanhthuMouseClicked
         // TODO add your handling code here:
         ThongKeForm thongKe = new ThongKeForm();
@@ -2549,6 +2527,13 @@ public class UserInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Update error!");
         }
     }//GEN-LAST:event_updateHDMouseClicked
+
+    private void inHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inHDMouseClicked
+        // TODO add your handling code here:
+        InHoaDonForm inHDForm = new InHoaDonForm();
+        inHDForm.setVisible(true);
+        inHDForm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_inHDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2623,6 +2608,7 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JTextField idkh;
     private javax.swing.JTextField idncc;
     private javax.swing.JTextField idnv;
+    private javax.swing.JLabel inHD;
     private javax.swing.JPanel infoPanel;
     private javax.swing.JLabel insert;
     private javax.swing.JLabel insertHD;
@@ -2680,7 +2666,6 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;

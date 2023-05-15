@@ -5,12 +5,15 @@
 package UINam;
 
 import BUS.Generic_BUS;
+import static DAO.Generic_Implement.getAllChildrenFromParent;
+import entity1.Chitiethoadon;
 import entity1.Hoadon;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -63,11 +66,6 @@ public class ThongKeForm extends javax.swing.JFrame {
                 tkdttheongayMouseClicked(evt);
             }
         });
-        tkdttheongay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tkdttheongayActionPerformed(evt);
-            }
-        });
 
         tkdttheospbanchay.setText("Thống kê theo sản phẩm bán chạy (theo tháng)");
         tkdttheospbanchay.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,21 +73,11 @@ public class ThongKeForm extends javax.swing.JFrame {
                 tkdttheospbanchayMouseClicked(evt);
             }
         });
-        tkdttheospbanchay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tkdttheospbanchayActionPerformed(evt);
-            }
-        });
 
         tkdttheothang.setText("Thống kê theo tháng");
         tkdttheothang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tkdttheothangMouseClicked(evt);
-            }
-        });
-        tkdttheothang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tkdttheothangActionPerformed(evt);
             }
         });
 
@@ -104,10 +92,7 @@ public class ThongKeForm extends javax.swing.JFrame {
                     .addComponent(tkdttheospbanchay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tkdttheongay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,18 +122,27 @@ public class ThongKeForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    public static class Cus {
 
-    private void tkdttheongayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tkdttheongayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tkdttheongayActionPerformed
+        public Date ngay;
+        public Double doanhthu;
+        public int soluong;
 
-    private void tkdttheospbanchayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tkdttheospbanchayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tkdttheospbanchayActionPerformed
+        public Cus() {
+        }
+    }
 
-    private void tkdttheothangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tkdttheothangActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tkdttheothangActionPerformed
+    public static class CusMonth {
+
+        public int thang;
+        public Double doanhthu;
+        public int soluong;
+
+        public CusMonth() {
+
+        }
+    }
+
 
     private void tkdttheothangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tkdttheothangMouseClicked
         // TODO add your handling code here:
@@ -164,7 +158,7 @@ public class ThongKeForm extends javax.swing.JFrame {
             SetThang.add(e.getNgayLap().getMonth());
         }
         // Tính tổng doanh thu của từng ngày        
-        ArrayList<UserInterface.Cus> dtday = new ArrayList();
+        ArrayList<Cus> dtday = new ArrayList();
         for (var ngay : SetNgay) {
             double dt = 0.0d;
             // System.out.println(ngay.toString());
@@ -173,21 +167,21 @@ public class ThongKeForm extends javax.swing.JFrame {
                     dt = dt + listhd.get(j).getTongTien().doubleValue();
                 }
             }
-            UserInterface.Cus custemp = new UserInterface.Cus();
+            Cus custemp = new Cus();
             custemp.doanhthu = dt;
             custemp.ngay = ngay;
             dtday.add(custemp);
         }
         // Tính tổng doanh thu của từng tháng 
-        ArrayList<UserInterface.CusMonth> month = new ArrayList(12);
+        ArrayList<CusMonth> month = new ArrayList(12);
         for (int itmon : SetThang) {
             double dttheothang = 0.0d;
-            for (UserInterface.Cus doanhthutheongay : dtday) {
+            for (Cus doanhthutheongay : dtday) {
                 if (itmon == doanhthutheongay.ngay.getMonth()) {
                     dttheothang = dttheothang + doanhthutheongay.doanhthu;
                 }
             }
-            UserInterface.CusMonth cusMonth = new UserInterface.CusMonth();
+            CusMonth cusMonth = new CusMonth();
             cusMonth.doanhthu = dttheothang;
             cusMonth.thang = itmon + 1;
             month.add(cusMonth);
@@ -195,7 +189,7 @@ public class ThongKeForm extends javax.swing.JFrame {
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         if (month != null && !month.isEmpty()) {
-            for (UserInterface.CusMonth m : month) {
+            for (CusMonth m : month) {
                 dataset.setValue(m.doanhthu, "Doanh thu theo tháng", Integer.toString(m.thang));
             }
         }
@@ -237,7 +231,7 @@ public class ThongKeForm extends javax.swing.JFrame {
             SetThang.add(e.getNgayLap().getMonth());
         }
         // Tính tổng doanh thu của từng ngày        
-        ArrayList<UserInterface.Cus> dtday = new ArrayList();
+        ArrayList<Cus> dtday = new ArrayList();
         for (var ngay : SetNgay) {
             double dt = 0.0d;
             // System.out.println(ngay.toString());
@@ -246,14 +240,14 @@ public class ThongKeForm extends javax.swing.JFrame {
                     dt = dt + listhd.get(j).getTongTien().doubleValue();
                 }
             }
-            UserInterface.Cus custemp = new UserInterface.Cus();
+            Cus custemp = new Cus();
             custemp.doanhthu = dt;
             custemp.ngay = ngay;
             dtday.add(custemp);
         }
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         if (dtday != null && !dtday.isEmpty()) {
-            for (UserInterface.Cus m : dtday) {
+            for (Cus m : dtday) {
                 dataset.setValue(m.doanhthu, "Doanh thu theo ngày", (m.ngay));
             }
         }
@@ -282,56 +276,58 @@ public class ThongKeForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tkdttheongayMouseClicked
 
     private void tkdttheospbanchayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tkdttheospbanchayMouseClicked
-        // TODO add your handling code here:
-                ArrayList<Hoadon> listhd = Generic_BUS.getAll(Hoadon.class);
-        Set<Date> SetNgay = new HashSet<>(); // 
+        // TODO add your handling code here:      
+        ArrayList<Hoadon> listHD = Generic_BUS.getAll(Hoadon.class);
+        Hoadon hoadon = new Hoadon();
+        List<Chitiethoadon> listCTHD = getAllChildrenFromParent(Chitiethoadon.class, hoadon);
+        Set<Date> SetNgay = new HashSet<>();
         Set<Integer> SetThang = new HashSet<>();
 
-        for (Hoadon e : listhd) {
+        for (Hoadon e : listHD) {
             SetNgay.add(e.getNgayLap());
         }
 
-        for (Hoadon e : listhd) {
+        for (Hoadon e : listHD) {
             SetThang.add(e.getNgayLap().getMonth());
         }
-        // Tính tổng doanh thu của từng ngày        
-        ArrayList<UserInterface.Cus> dtday = new ArrayList();
+        // Tính tổng số lượng bán của từng ngày        
+        ArrayList<Cus> slngay = new ArrayList();
         for (var ngay : SetNgay) {
-            double dt = 0.0d;
-            // System.out.println(ngay.toString());
-            for (int j = 0; j < listhd.size(); ++j) {
-                if (ngay.toString().equals(listhd.get(j).getNgayLap().toString())) {
-                    dt = dt + listhd.get(j).getTongTien().doubleValue();
+            int sl = 0;
+            for (int j = 0; j < listHD.size(); ++j) {
+                if (ngay.toString().equals(listHD.get(j).getNgayLap().toString())) {
+                    sl = sl + listCTHD.get(j).getId().getSoLuong();
                 }
+                System.out.println(sl + " ");
             }
-            UserInterface.Cus custemp = new UserInterface.Cus();
-            custemp.doanhthu = dt;
-            custemp.ngay = ngay;
-            dtday.add(custemp);
+            Cus soluongngay = new Cus();
+            soluongngay.soluong = sl;
+            soluongngay.ngay = ngay;
+            slngay.add(soluongngay);
         }
-        // Tính tổng doanh thu của từng tháng 
-        ArrayList<UserInterface.CusMonth> month = new ArrayList(12);
-        for (int itmon : SetThang) {
-            double dttheothang = 0.0d;
-            for (UserInterface.Cus doanhthutheongay : dtday) {
-                if (itmon == doanhthutheongay.ngay.getMonth()) {
-                    dttheothang = dttheothang + doanhthutheongay.doanhthu;
+        // Tính tổng so luong của từng tháng 
+        ArrayList<CusMonth> month = new ArrayList(12);
+        for (int thang : SetThang) {
+            int sltheothang = 0;
+            for (Cus soluongtheongay : slngay) {
+                if (thang == soluongtheongay.ngay.getMonth()) {
+                    sltheothang = sltheothang + soluongtheongay.soluong;
                 }
             }
-            UserInterface.CusMonth cusMonth = new UserInterface.CusMonth();
-            cusMonth.doanhthu = dttheothang;
-            cusMonth.thang = itmon + 1;
-            month.add(cusMonth);
+            CusMonth soluongthang = new CusMonth();
+            soluongthang.soluong = sltheothang;
+            soluongthang.thang = thang + 1;
+            month.add(soluongthang);
         }
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         if (month != null && !month.isEmpty()) {
-            for (UserInterface.CusMonth m : month) {
-                dataset.setValue(m.doanhthu, "Doanh thu theo tháng", Integer.toString(m.thang));
+            for (CusMonth m : month) {
+                dataset.setValue(m.soluong, "Sản phẩm bán chạy nhất theo tháng", Integer.toString(m.thang));
             }
         }
         // Tạo biểu đồ cột
-        JFreeChart chart = ChartFactory.createBarChart("Thống kê doanh thu theo tháng", "Tháng", "Doanh Thu (VND)", dataset, PlotOrientation.VERTICAL, false, true, false);
+        JFreeChart chart = ChartFactory.createBarChart("Sản phẩm bán chạy nhất theo tháng", "Tháng", "Số lượng", dataset, PlotOrientation.VERTICAL, false, true, false);
         // Lấy đối tượng CategoryPlot từ biểu đồ
         CategoryPlot plot = chart.getCategoryPlot();
         // Thiết lập màu cho cột
@@ -348,7 +344,7 @@ public class ThongKeForm extends javax.swing.JFrame {
         // Thiết lập màu nền cho biểu đồ cột
         plot.setRangeGridlinePaint(new Color(0, 0, 0, 0));
         // Hiển thị biểu đồ trong JFrame
-        ChartFrame frame = new ChartFrame("Doanh thu", chart);
+        ChartFrame frame = new ChartFrame("Sản phẩm bán chạy nhất theo tháng", chart);
         frame.pack();
         frame.setVisible(true);
         frame.setSize(800, 600);
