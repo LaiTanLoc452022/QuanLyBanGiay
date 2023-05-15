@@ -4,10 +4,10 @@ import BUS.Bus;
 import BUS.Generic_BUS;
 import DAO.HoadonHome;
 import DAO.NhanvienHome;
-import Main.Main;
 import entity1.Hoadon;
 import entity1.Nhanvien;
 import java.awt.Color;
+import java.awt.GradientPaint;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,10 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -29,7 +26,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static org.apache.poi.hssf.usermodel.HeaderFooter.date;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -2518,19 +2514,20 @@ public class UserInterface extends javax.swing.JFrame {
     }
     private void thongkedoanhthuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongkedoanhthuMouseClicked
         // TODO add your handling code here:
-
         ArrayList<Hoadon> listhd = Generic_BUS.getAll(Hoadon.class);
         Set<Date> SetNgay = new HashSet<>(); // 
         Set<Integer> SetThang = new HashSet<>();
+
         for (Hoadon e : listhd) {
             SetNgay.add(e.getNgayLap());
-
         }
+
         for (Hoadon e : listhd) {
             SetThang.add(e.getNgayLap().getMonth());
         }
+        // Tính tổng doanh thu của từng ngày        
         ArrayList<Cus> dtday = new ArrayList();
-        for (var ngay : SetNgay) {
+        for (var ngay : SetNgay) { 
             double dt = 0.0d;
             // System.out.println(ngay.toString());
             for (int j = 0; j < listhd.size(); ++j) {
@@ -2542,40 +2539,48 @@ public class UserInterface extends javax.swing.JFrame {
             custemp.doanhthu = dt;
             custemp.ngay = ngay;
             dtday.add(custemp);
-
         }
+        // Tính tổng doanh thu của từng tháng 
         ArrayList<CusMonth> month = new ArrayList(12);
         for (int itmon : SetThang) {
             double dttheothang = 0.0d;
             for (Cus doanhthutheongay : dtday) {
                 if (itmon == doanhthutheongay.ngay.getMonth()) {
                     dttheothang = dttheothang + doanhthutheongay.doanhthu;
-
                 }
-
             }
-            int i = 0;
-            month.get(i).doanhthu = dttheothang;
-            month.get(i).thang = itmon + 1;
-            i++;
-
+            CusMonth cusMonth = new CusMonth();
+            cusMonth.doanhthu = dttheothang;
+            cusMonth.thang = itmon + 1;
+            month.add(cusMonth);
         }
-        month.forEach(e -> {
-            System.out.println(e.doanhthu + "  " + e.thang);
-        });
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-        for (CusMonth m : month) {
-            dataset.setValue(m.doanhthu, "DT", Integer.toString(m.thang));
+        if (month != null && !month.isEmpty()) {
+            for (CusMonth m : month) {
+                dataset.setValue(m.doanhthu, "DT", Integer.toString(m.thang));
+            }
         }
-
-        JFreeChart chart = ChartFactory.createBarChart("Thong ke doanh thu", "Thang", "Doanh Thu", dataset, PlotOrientation.VERTICAL, true, true, false);
-        chart.setBackgroundPaint(Color.white);
-        chart.getTitle().setPaint(Color.green);
-        CategoryPlot p = chart.getCategoryPlot();
-        p.setRangeGridlinePaint(Color.BLUE);
+        // Tạo biểu đồ cột
+        JFreeChart chart = ChartFactory.createBarChart("Thong ke doanh thu", "Thang", "Doanh Thu", dataset, PlotOrientation.VERTICAL, false, true, false);
+        // Lấy đối tượng CategoryPlot từ biểu đồ
+        CategoryPlot plot = chart.getCategoryPlot();
+        // Thiết lập màu cho cột
+        GradientPaint gp = new GradientPaint(
+                0.0f, 0.0f, Color.RED,
+                0.0f, 0.0f, Color.YELLOW
+        );
+        plot.getRenderer().setSeriesPaint(0, gp);
+        // Thiết lập màu nền cho biểu đồ
+        plot.setBackgroundPaint(new GradientPaint(
+                0.0f, 0.0f, Color.WHITE,
+                0.0f, 0.0f, Color.BLUE
+        ));
+        // Thiết lập màu nền cho biểu đồ cột
+        plot.setRangeGridlinePaint(new Color(0, 0, 0, 0));
+        // Hiển thị biểu đồ trong JFrame
         ChartFrame frame = new ChartFrame("Doanh thu", chart);
+        frame.pack();
         frame.setVisible(true);
         frame.setSize(800, 600);
     }//GEN-LAST:event_thongkedoanhthuMouseClicked
