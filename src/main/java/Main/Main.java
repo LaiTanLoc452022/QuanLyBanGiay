@@ -34,15 +34,11 @@ import javax.imageio.ImageIO;
 public class Main {
 
     public static void main(String[] args) {
-        The the=Generic_Implement.findByID(The.class, 1);
-        List<Khachhang> listkh=Generic_Implement.getAllChildrenFromParent(Khachhang.class,the);
-        listkh.forEach(e->{
-            System.out.println(e.getThe().getIdthe());
-        
-        });
-              
-              
-                
+       Hoadon hoadon=new Hoadon();
+       hoadon.setIdhoaDon(9);
+      ArrayList<Chitiethoadon> chitiet=new ArrayList(Generic_Implement.getAllChildrenFromParent(Chitiethoadon.class, hoadon));
+          chitiet.forEach(e->System.out.println(e.getSanpham().getIdgiay()));
+               
                  
        
                 

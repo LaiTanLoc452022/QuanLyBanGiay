@@ -11,7 +11,8 @@ import org.hibernate.cfg.Configuration;
 public class HIbernateUtil {
 	private static SessionFactory factory;
 	static {
-		Configuration config=new Configuration().configure("/hibernate.cfg.xml");
+            
+		Configuration config=new Configuration().configure("hibernate.cfg.xml");
 		config.addResource("Chitiethoadon.hbm.xml");
 		config.addResource("Chitietphieunhap.hbm.xml");
 		config.addResource("Sanpham.hbm.xml");
