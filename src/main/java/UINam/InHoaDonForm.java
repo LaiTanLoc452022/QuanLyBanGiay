@@ -25,14 +25,17 @@ public class InHoaDonForm extends javax.swing.JFrame {
      */
     public void GetDataCTHD() {
         Hoadon hoadon = new Hoadon();
-        List<Chitiethoadon> array = Generic_Implement.getAllChildrenFromParent(Chitiethoadon.class, hoadon);
+        List<Chitiethoadon> array1 = Generic_Implement.getAllChildrenFromParent(Chitiethoadon.class, hoadon);
+        List<Chitiethoadon> array2 = Generic_Implement.getAllChildrenFromParent(Chitiethoadon.class, sanpham);
         DefaultTableModel RecordTable = (DefaultTableModel) tableCTHD.getModel();
         RecordTable.setRowCount(0);
         for (int i = 0; i < array.size(); ++i) {
-            Object[] rowData = new Object[7];
-            rowData[0] = array.get(i).getId().getIdhoaDon();
-            rowData[1] = array.get(i).getHoadon().getNgayLap();
-            rowData[2] = array.get(i).getHoadon().getIdnhanVien();
+            Object[] rowData = new Object[4];
+            rowData[0] = array2.get(i).getSanpham().getTen();
+            rowData[1] = array1.get(i).getId().getSoLuong();
+            rowData[2] = array2.get(i).getSanpham().getGiaBan();
+            rowData[3] = array.get(i).getHoadon().getTongTien();
+
             RecordTable.addRow(rowData);
         }
     }
@@ -124,6 +127,7 @@ public class InHoaDonForm extends javax.swing.JFrame {
         tennv.setBorder(null);
         tennv.setOpaque(true);
 
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("-------------------------------------------------------------------------------------------");
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -140,25 +144,28 @@ public class InHoaDonForm extends javax.swing.JFrame {
                     .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tennv)
                             .addComponent(idcthd)
                             .addComponent(ngaylap)))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                        .addGap(302, 302, 302)))
                 .addGap(55, 55, 55))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

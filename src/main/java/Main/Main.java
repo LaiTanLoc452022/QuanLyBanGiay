@@ -1,104 +1,74 @@
 package Main;
 
-import BUS.Bus;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.math.BigDecimal;
-
-import BUS.Generic_BUS;
-import BUS.ImageToByte;
-import GUI.*;
-
-import java.util.*;
-
-import entity1.*;
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cache.internal.NaturalIdCacheKey;
-import org.hibernate.engine.query.spi.sql.NativeSQLQueryReturn;
-import org.hibernate.query.Query;
-
-import DAO.*;
-import Database.HIbernateUtil;
-import UINam.UserInterface;
-import java.math.MathContext;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.imageio.ImageIO;
+import DAO.ChitiethoadonHome;
+import static DAO.ChitiethoadonHome.getTheoSLGiayVaThang;
+import DAO.Generic_Implement;
+import entity1.Chitiethoadon;
+import entity1.Hoadon;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.CategoryItemLabelGenerator;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<Hoadon> listhd = Generic_BUS.getAll(Hoadon.class);
-        Set<Date> SetNgay = new HashSet<>(); // 
-        Set<Integer> SetThang = new HashSet<>();
+        ArrayList<Object[]> results = getTheoSLGiayVaThang();
 
-        for (Hoadon e : listhd) {
-            SetNgay.add(e.getNgayLap());
+        Collections.sort(results, Comparator.comparingInt((Object[] o) -> (int) o[0]));
 
-        }
-        for (Hoadon e : listhd) {
-            SetThang.add(e.getNgayLap().getMonth());
-        }
-        double dtmon = 0.0d;
+        int[] monthOrder = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
 
-        ArrayList<Cus> dtday = new ArrayList();
-        for (var ngay : SetNgay) {
-            double dt = 0.0d;
-            // System.out.println(ngay.toString());
-            for (int j = 0; j < listhd.size(); ++j) {
-                if (ngay.toString().equals(listhd.get(j).getNgayLap().toString())) {
-                    dt = dt + listhd.get(j).getTongTien().doubleValue();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int month : monthOrder) {
+            for (Object[] result : results) {
+                int resultMonth = (int) result[0];
+                if (resultMonth == month) {
+                    int idGiay = (int) result[1];
+                    int soLuong = ((Number) result[2]).intValue();
+                    dataset.addValue(soLuong, "IDGiay " + idGiay, "Tháng " + month);
                 }
             }
-            Cus custemp = new Cus();
-            custemp.doanhthu = dt;
-            custemp.ngay = ngay;
-            dtday.add(custemp);
-
         }
 
-        ArrayList<UserInterface.CusMonth> month = new ArrayList();
-        for (int i = 0; i < 12; i++) {
-            month.add(new UserInterface.CusMonth());
-        }
-        int i = 0;
-        for (int itmon : SetThang) {
-            double dttheothang = 0.0d;
-            for (Cus doanhthutheongay : dtday) {
-                if (itmon == doanhthutheongay.ngay.getMonth()) {
-                    dttheothang = dttheothang + doanhthutheongay.doanhthu;
+        JFreeChart chart = ChartFactory.createBarChart("Sản phẩm bán chạy nhất theo tháng", "Tháng", "Số lượng", dataset, PlotOrientation.VERTICAL, false, true, false);
 
-                }
+        CategoryPlot plot = chart.getCategoryPlot();
 
+// Định nghĩa CategoryItemLabelGenerator để hiển thị tên giày trên mỗi cột
+        CategoryItemLabelGenerator generator = new StandardCategoryItemLabelGenerator() {
+            @Override
+            public String generateLabel(CategoryDataset dataset, int row, int column) {
+                String label = dataset.getColumnKey(column).toString(); // Lấy tên cột (IDGiay)
+                int idGiay = Integer.parseInt(label.replace("IDGiay ", "")); // Chuyển đổi thành IDGiay
+                String tenGiay = giayMap.get(idGiay); // Lấy tên giày từ ánh xạ giày
+                return tenGiay;
             }
+        };
 
-            month.get(i).doanhthu = dttheothang;
-            month.get(i).thang = itmon+1;
-            i = i + 1;
-            
-        }
-        month.forEach(e -> {
-            System.out.println(e.doanhthu + "  " + e.thang);
-        });
+// Thiết lập CategoryItemLabelGenerator cho BarRenderer của biểu đồ
+        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+        renderer.setSeriesItemLabelGenerator(0, generator);
+        renderer.setSeriesItemLabelsVisible(0, true);
 
-    }
+// Các cài đặt khác cho biểu đồ...
+        ChartFrame frame = new ChartFrame("Sản phẩm bán chạy nhất theo tháng", chart);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setSize(800, 600);
 
-    static class Cus {
-
-        public Date ngay;
-        public Double doanhthu;
-
-        public Cus() {
-        }
     }
 
 }

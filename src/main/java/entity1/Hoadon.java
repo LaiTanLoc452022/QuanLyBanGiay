@@ -11,81 +11,81 @@ import java.util.Set;
  */
 public class Hoadon implements java.io.Serializable {
 
-	private Integer idhoaDon;
-	public Nhacungcap nhacungcap;
-	private Date ngayLap;
-	private Integer idkhachHang;
-	private BigDecimal tongTien;
-	private Integer idnhanVien;
-	private Set<Chitiethoadon> chitiethoadons = new HashSet<Chitiethoadon>(0);
+    private Integer idhoaDon;
+    public Nhacungcap nhacungcap;
+    private Date ngayLap;
+    private Integer idkhachHang;
+    private BigDecimal tongTien;
+    private Integer idnhanVien;
+    private Set<Chitiethoadon> chitiethoadons = new HashSet<Chitiethoadon>(0);
 
-	public Hoadon() {
-	}
+    public Hoadon() {
+    }
 
-	public Hoadon(Nhacungcap nhacungcap, Date ngayLap, Integer idkhachHang, BigDecimal tongTien, Integer idnhanVien,
-			Set<Chitiethoadon> chitiethoadons) {
-		this.nhacungcap = nhacungcap;
-		this.ngayLap = ngayLap;
-		this.idkhachHang = idkhachHang;
-		this.tongTien = tongTien;
-		this.idnhanVien = idnhanVien;
-		this.chitiethoadons = chitiethoadons;
-	}
+    public Hoadon(Nhacungcap nhacungcap, Date ngayLap, Integer idkhachHang, BigDecimal tongTien, Integer idnhanVien,
+            Set<Chitiethoadon> chitiethoadons) {
+        this.nhacungcap = nhacungcap;
+        this.ngayLap = ngayLap;
+        this.idkhachHang = idkhachHang;
+        this.tongTien = tongTien;
+        this.idnhanVien = idnhanVien;
+        this.chitiethoadons = chitiethoadons;
+    }
 
-	public Integer getIdhoaDon() {
-		return this.idhoaDon;
-	}
+    public Integer getIdhoaDon() {
+        return this.idhoaDon;
+    }
 
-	public void setIdhoaDon(Integer idhoaDon) {
-		this.idhoaDon = idhoaDon;
-	}
+    public void setIdhoaDon(Integer idhoaDon) {
+        this.idhoaDon = idhoaDon;
+    }
 
-	public Nhacungcap getNhacungcap() {
-		return this.nhacungcap;
-	}
+    public Nhacungcap getNhacungcap() {
+        return this.nhacungcap;
+    }
 
-	public void setNhacungcap(Nhacungcap nhacungcap) {
-		this.nhacungcap = nhacungcap;
-	}
+    public void setNhacungcap(Nhacungcap nhacungcap) {
+        this.nhacungcap = nhacungcap;
+    }
 
-	public Date getNgayLap() {
-		return this.ngayLap;
-	}
+    public Date getNgayLap() {
+        return this.ngayLap;
+    }
 
-	public void setNgayLap(Date ngayLap) {
-		this.ngayLap = ngayLap;
-	}
+    public void setNgayLap(Date ngayLap) {
+        this.ngayLap = ngayLap;
+    }
 
-	public Integer getIdkhachHang() {
-		return this.idkhachHang;
-	}
+    public Integer getIdkhachHang() {
+        return this.idkhachHang;
+    }
 
-	public void setIdkhachHang(Integer idkhachHang) {
-		this.idkhachHang = idkhachHang;
-	}
+    public void setIdkhachHang(Integer idkhachHang) {
+        this.idkhachHang = idkhachHang;
+    }
 
-	public BigDecimal getTongTien() {
-		return this.tongTien;
-	}
+    public BigDecimal getTongTien() {
+        return this.tongTien;
+    }
 
-	public void setTongTien(BigDecimal tongTien) {
-		this.tongTien = tongTien;
-	}
+    public void setTongTien(BigDecimal tongTien) {
+        this.tongTien = tongTien;
+    }
 
-	public Integer getIdnhanVien() {
-		return this.idnhanVien;
-	}
+    public Integer getIdnhanVien() {
+        return this.idnhanVien;
+    }
 
-	public void setIdnhanVien(Integer idnhanVien) {
-		this.idnhanVien = idnhanVien;
-	}
+    public void setIdnhanVien(Integer idnhanVien) {
+        this.idnhanVien = idnhanVien;
+    }
 
-	public Set<Chitiethoadon> getChitiethoadons() {
-		return this.chitiethoadons;
-	}
+    public Set<Chitiethoadon> getChitiethoadons() {
+        return this.chitiethoadons;
+    }
 
-	public void setChitiethoadons(Set<Chitiethoadon> chitiethoadons) {
-		this.chitiethoadons = chitiethoadons;
-	}
+    public void setChitiethoadons(Set<Chitiethoadon> chitiethoadons) {
+        this.chitiethoadons = chitiethoadons;
+    }
 
 }

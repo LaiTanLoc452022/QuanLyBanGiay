@@ -13,15 +13,13 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     <dependencies>
-        
+        <!-- https://mvnrepository.com/artifact/com.formdev/flatlaf -->
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.32</version>
         </dependency>
-
-
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -38,10 +36,7 @@
             <artifactId>miglayout</artifactId>
             <version>3.7.4</version>
             <type>jar</type>
-        </dependency>
-         
-       
-         
+        </dependency>      
         <dependency>  
             <groupId>com.google.zxing</groupId>  
             <artifactId>core</artifactId>  
@@ -52,14 +47,12 @@
             <artifactId>javase</artifactId>  
             <version>3.3.0</version>  
         </dependency>  
-   
         <!-- Apache POI - Core -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>5.2.0</version>
         </dependency>
-
         <!-- Apache POI - OOXML (XSSF) -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -76,6 +69,11 @@
             <groupId>com.toedter</groupId>
             <artifactId>jcalendar</artifactId>
             <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.1.1</version>
         </dependency>
     </dependencies>
 

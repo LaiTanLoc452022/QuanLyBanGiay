@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 
 import Database.HIbernateUtil;
 import entity1.Hoadon;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.query.Query;
 
@@ -25,5 +26,18 @@ public class ChitiethoadonHome extends Generic_Implement {
             List<ChitiethoadonHome> list = query.list();
             return list;
         }
+    }
+
+    public static ArrayList getTheoSLGiayVaThang() {
+        String hql = "SELECT MONTH(hd.ngayLap), a.id.idgiay, SUM(a.id.soLuong) "
+                + "FROM Chitiethoadon a "
+                + "JOIN a.hoadon hd "
+                + "GROUP BY MONTH(hd.ngayLap), a.id.idgiay";
+
+        Session session = HIbernateUtil.getSessionFactory().openSession();
+        Query<Object[]> query = session.createQuery(hql);
+        ArrayList<Object[]> results = new ArrayList(query.getResultList());
+
+        return results;
     }
 }
