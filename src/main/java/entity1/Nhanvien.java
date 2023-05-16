@@ -21,6 +21,9 @@ public class Nhanvien implements java.io.Serializable {
 
 	public Nhanvien() {
 	}
+        
+        
+        
 
     @Override
     public String toString() {
