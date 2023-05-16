@@ -26,9 +26,11 @@ public class Bus<Thing> {
    }
    public boolean Them(Thing instance){
        int tempsize=list.size();
-       System.out.println("cho man");
        list.add(instance);
-             Generic_Implement.insert(list.get(list.size()-1));
+      
+           Generic_Implement.insert(list.get(list.size()-1));
+     
+            
        if(tempsize<list.size()){
            return true;
        }

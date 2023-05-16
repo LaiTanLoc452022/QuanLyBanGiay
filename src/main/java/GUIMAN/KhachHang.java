@@ -23,11 +23,12 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class KhachHang extends javax.swing.JFrame {
-
-    
     HamCanDung Ham = new HamCanDung();
     ChonF cf = new ChonF(this,true);
     Bus bus = new Bus();
+    public static ArrayList<Khachhang> kh = Generic_BUS.getAll(Khachhang.class);
+    public static ArrayList<The> t = Generic_BUS.getAll(The.class);
+    
     /**
      * Creates new form KhachHang
      */
@@ -46,21 +47,19 @@ public class KhachHang extends javax.swing.JFrame {
      */
     
     public void GetDataKH() {
-        ArrayList<Khachhang> array = Generic_BUS.getAll(Khachhang.class);
-        ArrayList<The> arr = Generic_BUS.getAll(The.class);
         DefaultTableModel RecordTable = (DefaultTableModel) tableKH.getModel();
         RecordTable.setRowCount(0);
-        for (int i = 0; i < array.size(); ++i) {
+        for (int i = 0; i < kh.size(); ++i) {
             Object[] rowData = new Object[9];
-            rowData[0] = array.get(i).getIdkhachHang();
-            rowData[1] = array.get(i).getThe().getIdthe();
-            rowData[2] = arr.get(array.get(i).getThe().getIdthe() - 1).getLoai();
-            rowData[3] = arr.get(array.get(i).getThe().getIdthe() - 1).getHeSo();
-            rowData[4] = array.get(i).getNgayLapThe();
-            rowData[5] = array.get(i).getHoVaTen();
-            rowData[6] = array.get(i).getGioiTinh();
-            rowData[7] = array.get(i).getNgaySinh();
-            rowData[8] = array.get(i).getDiaChi();
+            rowData[0] = kh.get(i).getIdkhachHang();
+            rowData[1] = kh.get(i).getThe().getIdthe();
+            rowData[2] = t.get(kh.get(i).getThe().getIdthe() - 1).getLoai();
+            rowData[3] = t.get(kh.get(i).getThe().getIdthe() - 1).getHeSo();
+            rowData[4] = kh.get(i).getNgayLapThe();
+            rowData[5] = kh.get(i).getHoVaTen();
+            rowData[6] = kh.get(i).getGioiTinh();
+            rowData[7] = kh.get(i).getNgaySinh();
+            rowData[8] = kh.get(i).getDiaChi();
             RecordTable.addRow(rowData);
         }
     }

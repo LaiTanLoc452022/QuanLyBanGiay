@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,15 +22,15 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class HoaDon extends javax.swing.JFrame {
-
-    HamCanDung Ham = new HamCanDung();
-    
+    public static ArrayList<Hoadon> hd = Generic_BUS.getAll(Hoadon.class);
+    public static ArrayList<Nhacungcap> ncc = Generic_BUS.getAll(Nhacungcap.class);
+    public NhapHDandCTHD HD;
     /**
      * Creates new form HoaDon
      */
     public HoaDon() {
         initComponents();
-        GetDataHD();
+        HD = new NhapHDandCTHD();
     }
     
     public JPanel openHD(){
@@ -37,8 +38,6 @@ public class HoaDon extends javax.swing.JFrame {
     }
     
     public void GetDataHD(){
-        ArrayList<Hoadon> hd = Generic_BUS.getAll(Hoadon.class);
-        ArrayList<Nhacungcap> arr = Generic_BUS.getAll(Nhacungcap.class);
         DefaultTableModel RecordTable = (DefaultTableModel) tableHD.getModel();
         RecordTable.setRowCount(0);
         for(int i = 0;i < hd.size();i++){
@@ -68,9 +67,9 @@ public class HoaDon extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableHD = new javax.swing.JTable();
         jPanel15 = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
+        InsertHD = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
+        UpdateHD = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -107,17 +106,22 @@ public class HoaDon extends javax.swing.JFrame {
                 "Mã HĐ", "IDNCC", "Ngày xuất ", "IDKHACHHANG", "IDNHANVIEN", "Tổng Tiền"
             }
         ));
+        tableHD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableHDMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableHD);
 
         jPanel15.setBackground(new java.awt.Color(0, 51, 51));
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(204, 255, 204));
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("THÊM");
-        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+        InsertHD.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        InsertHD.setForeground(new java.awt.Color(204, 255, 204));
+        InsertHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        InsertHD.setText("THÊM");
+        InsertHD.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel22MouseClicked(evt);
+                InsertHDMouseClicked(evt);
             }
         });
 
@@ -127,23 +131,23 @@ public class HoaDon extends javax.swing.JFrame {
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addComponent(InsertHD, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(InsertHD, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel16.setBackground(new java.awt.Color(0, 51, 51));
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(204, 255, 204));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("SỬA");
+        UpdateHD.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        UpdateHD.setForeground(new java.awt.Color(204, 255, 204));
+        UpdateHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        UpdateHD.setText("SỬA");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -151,14 +155,14 @@ public class HoaDon extends javax.swing.JFrame {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addComponent(UpdateHD, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(UpdateHD, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -167,7 +171,12 @@ public class HoaDon extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(204, 255, 204));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("XÓA");
+        jLabel24.setText("CHI TIẾT");
+        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel24MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -363,12 +372,6 @@ public class HoaDon extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        NhapHDandCTHD HD = new NhapHDandCTHD();
-        HD.openHoaDon();
-        
-    }//GEN-LAST:event_jLabel22MouseClicked
-
     private void INHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_INHDMouseClicked
         InHoaDon in = new InHoaDon();
         BufferedImage image = new BufferedImage(in.width(), in.height(), BufferedImage.TYPE_INT_RGB);
@@ -376,12 +379,27 @@ public class HoaDon extends javax.swing.JFrame {
         in.get().print(graphics);
         graphics.dispose();
         try {
-            ImageIO.write(image, "png", new File("C:\\Users\\ACER\\Documents\\GitHub\\QuanLyBanGiay\\src\\main\\java\\GUIMAN\\image\\HoaDon.png"));
+            ImageIO.write(image, "png", new File("src\\main\\java\\GUIMAN\\image\\HoaDon.png"));
             System.out.println("Ảnh đã được tạo và lưu thành công.");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_INHDMouseClicked
+
+    private void InsertHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertHDMouseClicked
+        HD.openHoaDon();
+    }//GEN-LAST:event_InsertHDMouseClicked
+
+    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+        HD.openCTHD();
+    }//GEN-LAST:event_jLabel24MouseClicked
+
+    private void tableHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHDMouseClicked
+        DefaultTableModel RecordRow = (DefaultTableModel) tableHD.getModel();
+        int SelectedRows = tableHD.getSelectedRow();
+        HD.MaHD2.setText(RecordRow.getValueAt( SelectedRows, 0).toString());
+//        HD.TongTien.setText(RecordRow.getValueAt(SelectedRows, 5).toString());
+    }//GEN-LAST:event_tableHDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -421,11 +439,11 @@ public class HoaDon extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel HoaDon;
     private javax.swing.JLabel INHD;
+    private javax.swing.JLabel InsertHD;
+    private javax.swing.JLabel UpdateHD;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -438,6 +456,6 @@ public class HoaDon extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel39;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTable tableHD;
+    public javax.swing.JTable tableHD;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,6 +35,8 @@ public class Kho extends javax.swing.JFrame {
     HamCanDung Ham = new HamCanDung();
     Bus bus = new Bus();
     ChonF cf = new ChonF(this,true);
+    public static ArrayList<Sanpham> sp = Generic_BUS.getAll(Sanpham.class);
+    public static ArrayList<Phanloai> pl = Generic_BUS.getAll(Phanloai.class);
     /**
      * Creates new form Kho
      */
@@ -53,24 +55,22 @@ public class Kho extends javax.swing.JFrame {
      */
     
     public void GetDataK(){
-        ArrayList<Sanpham> array = Generic_BUS.getAll(Sanpham.class);
-        ArrayList<Phanloai> arr = Generic_BUS.getAll(Phanloai.class);
         DefaultTableModel RecordTable = (DefaultTableModel) tableK.getModel();
         RecordTable.setRowCount(0);
-        for (int i = 0; i < array.size(); ++i) {
+        for (int i = 0; i < sp.size(); ++i) {
             Object[] rowData = new Object[12];
-            rowData[0] = array.get(i).getIdgiay();
-            rowData[1] = array.get(i).getTen();
-            rowData[2] = array.get(i).getSize();
-            rowData[3] = array.get(i).getMau();
-            rowData[4] = array.get(i).getVatLieu();
-            rowData[5] = array.get(i).getGiaBan();
-            rowData[6] = array.get(i).getSoluong();
-            rowData[7] = array.get(i).getThemMoTa();
-            rowData[8] = array.get(i).getPhanloai().getIdphanLoai();
-            rowData[9] = arr.get(array.get(i).getPhanloai().getIdphanLoai()-1).getLoai();
-            rowData[10] = arr.get(array.get(i).getPhanloai().getIdphanLoai()-1).getMota();
-            rowData[11] = Ham.AnhToString(array.get(i).getAnh());
+            rowData[0] = sp.get(i).getIdgiay();
+            rowData[1] = sp.get(i).getTen();
+            rowData[2] = sp.get(i).getSize();
+            rowData[3] = sp.get(i).getMau();
+            rowData[4] = sp.get(i).getVatLieu();
+            rowData[5] = sp.get(i).getGiaBan();
+            rowData[6] = sp.get(i).getSoluong();
+            rowData[7] = sp.get(i).getThemMoTa();
+            rowData[8] = sp.get(i).getPhanloai().getIdphanLoai();
+            rowData[9] = pl.get(sp.get(i).getPhanloai().getIdphanLoai()-1).getLoai();
+            rowData[10] = pl.get(sp.get(i).getPhanloai().getIdphanLoai()-1).getMota();
+            rowData[11] = Ham.AnhToString(sp.get(i).getAnh());
             RecordTable.addRow(rowData);
         }
     }
