@@ -30,19 +30,47 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
-
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.*;
 public class Main {
 
+
+
+
     public static void main(String[] args) {
-       Hoadon hoadon=new Hoadon();
-       hoadon.setIdhoaDon(9);
-      ArrayList<Chitiethoadon> chitiet=new ArrayList(Generic_Implement.getAllChildrenFromParent(Chitiethoadon.class, hoadon));
-          chitiet.forEach(e->System.out.println(e.getSanpham().getIdgiay()));
-               
-                 
-       
-                
-            
-	}
+        SwingUtilities.invokeLater(() -> {
+            // Tạo frame
+            JFrame frame = new JFrame("Scroll Pane Frame Example");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            // Tạo nội dung chứa dữ liệu dài
+            JPanel contentPane = new JPanel();
+            contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
+            for (int i = 0; i < 100; i++) {
+                JLabel label = new JLabel("Line " + (i + 1));
+                contentPane.add(label);
+            }
+
+            // Tạo scroll pane và đặt content pane vào scroll pane
+            JScrollPane scrollPane = new JScrollPane(contentPane);
+
+            // Đặt scroll pane làm nội dung chính của frame
+            frame.getContentPane().add(scrollPane);
+
+            // Thiết lập kích thước của frame
+            frame.setSize(300, 200);
+
+            // Hiển thị frame
+            frame.setVisible(true);
+        });
+    
+}
+
 
 }

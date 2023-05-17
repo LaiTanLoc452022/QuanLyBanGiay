@@ -4,6 +4,12 @@
  */
 package GUIMAN;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author ASUS
@@ -309,10 +315,11 @@ public class HoadonPn extends javax.swing.JPanel {
     private void INHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_INHDMouseClicked
         InHoaDon in = new InHoaDon();
         BufferedImage image = new BufferedImage(in.width(),in.height(),BufferedImage.TYPE_INT_RGB);
+        
         Graphics2D graphics = image.createGraphics();
         in.get().print(graphics);
         graphics.dispose();
-        String fileName=generateRandomFileName(".png");
+        String fileName=null;
         try {
 
             ImageIO.write(image, "png", new File("src\\main\\java\\GUIMAN\\image\\"+fileName));
