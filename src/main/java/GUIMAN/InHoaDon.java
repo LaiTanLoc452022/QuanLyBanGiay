@@ -4,11 +4,7 @@
  */
 package GUIMAN;
 
-import BUS.ImageToByte;
-import GUI.GoogleDriveUploader;
-import GUI.QRCodeGenerator;
-import java.awt.Image;
-import javax.swing.ImageIcon;
+import entity1.Hoadon;
 import javax.swing.JPanel;
 
 /**
@@ -20,8 +16,19 @@ public class InHoaDon extends javax.swing.JFrame {
     /**
      * Creates new form InHoaDon
      */
+    private Hoadon hoaDonTruyenVaoTuCTHD;
     public InHoaDon() {
         initComponents();
+    }
+    
+    public void openInHoaDon(Hoadon instance,String HoVaTenNV){
+        setSize(490, 1050);
+        hoaDonTruyenVaoTuCTHD=instance;
+        this.IDhoadon.setText(hoaDonTruyenVaoTuCTHD.getIdhoaDon().toString());
+        this.HoTenNhanVien.setText(HoVaTenNV);
+        this.Ngaylap.setText(hoaDonTruyenVaoTuCTHD.getNgayLap().toString());
+        this.TongTien.setText(hoaDonTruyenVaoTuCTHD.getTongTien().toString());
+        setVisible(true);
     }
 
     /**
@@ -33,7 +40,6 @@ public class InHoaDon extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -69,12 +75,9 @@ public class InHoaDon extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        QrCode = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jScrollPane2.setDoubleBuffered(true);
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(503, 1067));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel1.setText("HÓA ĐƠN");
@@ -95,12 +98,15 @@ public class InHoaDon extends javax.swing.JFrame {
 
         IDhoadon.setBackground(new java.awt.Color(242, 242, 242));
         IDhoadon.setBorder(null);
+        IDhoadon.setOpaque(true);
 
         Ngaylap.setBackground(new java.awt.Color(242, 242, 242));
         Ngaylap.setBorder(null);
+        Ngaylap.setOpaque(true);
 
         HoTenNhanVien.setBackground(new java.awt.Color(242, 242, 242));
         HoTenNhanVien.setBorder(null);
+        HoTenNhanVien.setOpaque(true);
 
         jLabel7.setText("-------------------------------------------------------------------------------------------");
 
@@ -112,7 +118,7 @@ public class InHoaDon extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 58, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -198,11 +204,13 @@ public class InHoaDon extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addGap(52, 52, 52))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE))
         );
 
         jLabel8.setText("---------------------------------------------------------------------------------------------");
@@ -215,10 +223,12 @@ public class InHoaDon extends javax.swing.JFrame {
 
         TongTien.setBackground(new java.awt.Color(242, 242, 242));
         TongTien.setBorder(null);
+        TongTien.setOpaque(true);
 
         jTextField5.setBackground(new java.awt.Color(242, 242, 242));
         jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField5.setBorder(null);
+        jTextField5.setOpaque(true);
 
         jLabel11.setFont(new java.awt.Font("Monotype Corsiva", 0, 14)); // NOI18N
         jLabel11.setText("(Đã làm tròn)");
@@ -250,7 +260,7 @@ public class InHoaDon extends javax.swing.JFrame {
                     .addGroup(ThanhToanLayout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThanhToanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(ThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +271,7 @@ public class InHoaDon extends javax.swing.JFrame {
                                 .addGroup(ThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(126, 126, 126)
+                                .addGap(121, 121, 121)
                                 .addGroup(ThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TienMat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(ThoiLai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -324,7 +334,7 @@ public class InHoaDon extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(97, Short.MAX_VALUE)
                 .addComponent(jLabel18)
                 .addGap(87, 87, 87))
             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -333,7 +343,7 @@ public class InHoaDon extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)))
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 379, Short.MAX_VALUE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addComponent(jLabel21))
@@ -342,7 +352,7 @@ public class InHoaDon extends javax.swing.JFrame {
                         .addComponent(jLabel17))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(169, 169, 169)
-                        .addComponent(QrCode, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -359,7 +369,7 @@ public class InHoaDon extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(QrCode, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -385,22 +395,15 @@ public class InHoaDon extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        jScrollPane2.setViewportView(jPanel1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 3, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -409,49 +412,7 @@ public class InHoaDon extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-      public void ganQrVaoLabel(){
-          ImageIcon tempimg=ImageToByte.byteToImageIcon(QRCodeGenerator.generateQRCodeImage(GoogleDriveUploader.pushAnhLenDrive("C:\\Users\\ASUS\\Desktop\\IMG_20230419_103105.jpg")));
-          Image scaled=tempimg.getImage().getScaledInstance(this.QrCode.getWidth(), this.QrCode.getHeight(), Image.SCALE_SMOOTH);
-          this.QrCode.setIcon(new ImageIcon(scaled));
-        
-    }
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                InHoaDon in=new InHoaDon();
-                in.ganQrVaoLabel();
-                
-                in.setVisible(true);
-                
-            }
-        });
-    }
    
-  
     
     public int width() {
         return jPanel1.getWidth();
@@ -469,7 +430,6 @@ public class InHoaDon extends javax.swing.JFrame {
     private javax.swing.JTextField HoTenNhanVien;
     private javax.swing.JTextField IDhoadon;
     private javax.swing.JTextField Ngaylap;
-    private javax.swing.JLabel QrCode;
     private javax.swing.JPanel ThanhToan;
     private javax.swing.JTextField ThoiLai;
     private javax.swing.JTextField TienMat;
@@ -486,6 +446,7 @@ public class InHoaDon extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
@@ -500,7 +461,6 @@ public class InHoaDon extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables

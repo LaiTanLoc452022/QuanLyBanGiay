@@ -28,41 +28,34 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class NhanVien extends javax.swing.JFrame {
-    
     HamCanDung Ham = new HamCanDung();
     Bus bus = new Bus();
     ChonF cf = new ChonF(this,true);
+    static public ArrayList<Nhanvien> nv =Generic_BUS.getAll(Nhanvien.class);;
     /**
      * Creates new form NhanVien
      */
     public NhanVien() {
         initComponents();
-//        Fill_Date();
     }
     
     public JPanel openNV(){
         return NhanVien;
     }
-    
-//    public void Fill_Date() {
-//        Date date1 = new Date();
-//        NgaySinhNV.setDateFormatString("yyyy-MM-dd");
-//        NgaySinhNV.setDate(date1);
-//    }
-    
+   
+
     public void GetDataNV() {
-        ArrayList<Nhanvien> array = Generic_BUS.getAll(Nhanvien.class);
         DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
         RecordTable.setRowCount(0);
-        for (int i = 0; i < array.size(); ++i) {
+        for (int i = 0; i < nv.size(); ++i) {
             Object[] rowData = new Object[7];
-            rowData[0] = array.get(i).getIdnhanVien();
-            rowData[1] = array.get(i).getHoVaTen();
-            rowData[2] = array.get(i).getSdt();
-            rowData[3] = array.get(i).getNgaySinh();
-            rowData[4] = array.get(i).getEmail();
-            rowData[5] = array.get(i).getLuong();
-            rowData[6] = Ham.AnhToString(array.get(i).getAnh());
+            rowData[0] = nv.get(i).getIdnhanVien();
+            rowData[1] = nv.get(i).getHoVaTen();
+            rowData[2] = nv.get(i).getSdt();
+            rowData[3] = nv.get(i).getNgaySinh();
+            rowData[4] = nv.get(i).getEmail();
+            rowData[5] = nv.get(i).getLuong();
+            rowData[6] = Ham.AnhToString(nv.get(i).getAnh());
             RecordTable.addRow(rowData);
         }
     }
@@ -628,8 +621,9 @@ public class NhanVien extends javax.swing.JFrame {
             int SelectedRows = tableNV.getSelectedRow();
             Nhanvien nv = new Nhanvien();
             nv.setIdnhanVien(Integer.parseInt(MaNV.getText()));
-            bus.getList(Nhanvien.class);
+           this.nv= bus.getList(Nhanvien.class);
             bus.Xoa(nv, SelectedRows);
+            
             GetDataNV();
             JOptionPane.showMessageDialog(null, "Delete Successfully!");
         } catch (Exception e) {
@@ -639,24 +633,25 @@ public class NhanVien extends javax.swing.JFrame {
 
     private void InsertNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertNVMouseClicked
         try {
-            Nhanvien nv = new Nhanvien();
-            nv.setHoVaTen(TenNV.getText());
-            nv.setSdt(Integer.parseInt(SDTNV.getText()));
+            Nhanvien Nv = new Nhanvien();
+            Nv.setHoVaTen(TenNV.getText());
+            Nv.setSdt(Integer.parseInt(SDTNV.getText()));
             Date date1 = NgaySinhNV.getDate();
-            nv.setNgaySinh(date1);
-            nv.setEmail(EmailNV.getText());
-            nv.setLuong(Double.parseDouble(LuongNV.getText()));
+            Nv.setNgaySinh(date1);
+            Nv.setEmail(EmailNV.getText());
+            Nv.setLuong(Double.parseDouble(LuongNV.getText()));
 
             File file = new File(LinkAnhNV.getText());
             BufferedImage picture = ImageIO.read(file);
             Image image = new ImageIcon(picture).getImage();
             Image imagescaled = image.getScaledInstance(AnhNV.getWidth(), AnhNV.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(imagescaled);
-            nv.setAnh(ImageToByte.FileToByte(file));
+            Nv.setAnh(ImageToByte.FileToByte(file));
             AnhNV.setIcon(imageIcon);
 
             bus.getList(Nhanvien.class);
-            bus.Them(nv);
+            bus.Them(Nv);
+            nv.add((Nhanvien)bus.getList().get(bus.getList().size()-1));
             GetDataNV();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);

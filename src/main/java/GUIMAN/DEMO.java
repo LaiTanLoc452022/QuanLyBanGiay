@@ -13,6 +13,8 @@ import BUS.Generic_BUS;
 import DAO.Generic_Implement;
 import DAO.KhachhangHome;
 import DAO.TheHome;
+import entity1.Nguoidung;
+import entity1.Nhanvien;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -57,8 +59,7 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class DEMO extends javax.swing.JFrame {
-
-    
+    public Nguoidung nguoiDungLog;
     NhanVien NV = new NhanVien();
     KhachHang KH = new KhachHang();
     Kho K = new Kho();
@@ -66,11 +67,13 @@ public class DEMO extends javax.swing.JFrame {
     /**
      * Creates new form DEMO
      */
+    
     public DEMO() {
         initComponents();
         KH.GetDataKH();
         NV.GetDataNV();
         K.GetDataK();
+        HD.GetDataHD();
     }
     
     int width = 200;
@@ -82,7 +85,6 @@ public class DEMO extends javax.swing.JFrame {
             public void run() {
                 for (int i = 0; i < width; i++) {
                     sidePanel.setSize(i, height);
-
                     try {
                         Thread.sleep(2);
                     } catch (InterruptedException ex) {
@@ -127,14 +129,25 @@ public class DEMO extends javax.swing.JFrame {
 
     void openNhanVien() {
         LayeredPane.removeAll();
+        LayeredPane.setSize(NV.getSize());
         LayeredPane.add(NV.openNV());
         LayeredPane.repaint();
         LayeredPane.revalidate();
 
     }
-
+    public Nhanvien timNhanvien(int idNV){
+        for(var nhanvienit: NV.nv){
+            if(nhanvienit.getIdnhanVien()==idNV){
+                return nhanvienit;
+            }
+        }
+        return null;
+    }
     void openHoaDon() {
         LayeredPane.removeAll();
+        Nhanvien truyenra = timNhanvien(this.nguoiDungLog.getNhanvien().getIdnhanVien());
+        HD.HD.hdvao.setIdnhanVien(truyenra.getIdnhanVien());
+        HD.HD.HoTen.setText(truyenra.getHoVaTen());
         LayeredPane.add(HD.openHD());
         LayeredPane.repaint();
         LayeredPane.revalidate();
@@ -443,7 +456,7 @@ public class DEMO extends javax.swing.JFrame {
                 .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         LayeredPane.add(Home, "card7");
@@ -683,7 +696,7 @@ public class DEMO extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addComponent(LayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(containerPanelLayout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -708,13 +721,13 @@ public class DEMO extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(containerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(containerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
