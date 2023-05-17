@@ -24,17 +24,17 @@ public class Bus<Thing> {
        
        return list;
    }
-   public boolean Them(Thing instance){
+   public Thing Them(Thing instance){
        int tempsize=list.size();
        list.add(instance);
-      
+    
            Generic_Implement.insert(list.get(list.size()-1));
-     
+  
             
        if(tempsize<list.size()){
-           return true;
+           return instance;
        }
-       return false;
+       return null;
    }
   /**
  * Sài cái Sửa này ae phải cho cái id của thằng instance bằng với 

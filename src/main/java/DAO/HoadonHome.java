@@ -20,36 +20,6 @@ import org.hibernate.query.Query;
  * @see entity1.Hoadon
  * @author Hibernate Tools
  */
-public class HoadonHome {
-	private static Transaction transaction;
-		public static void insert(Hoadon instance){
-			try(Session session=HIbernateUtil.getSessionFactory().openSession()){
-				transaction=session.beginTransaction();
-				session.persist(instance);
-				transaction.commit();
-			}
-		}
-
-		public static void update(Hoadon instance){
-			try(Session session =HIbernateUtil.getSessionFactory().openSession()){
-				transaction=session.beginTransaction();
-				session.merge(instance);
-				transaction.commit();
-			}
-		}
-		public static void delete(Hoadon instance){
-			try(Session session=HIbernateUtil.getSessionFactory().openSession()){
-				 transaction=session.beginTransaction();
-
-				session.delete(instance);
-				transaction.commit();
-			}
-		}
-		public static List<Hoadon> getAll(){
-			try(Session session=HIbernateUtil.getSessionFactory().openSession()){
-				Query<Hoadon> query=session.createQuery("From Hoadon");
-				List<Hoadon> list=  query.list();
-				return list;
-			}
-		}
+public class HoadonHome extends Generic_Implement {
+	
 }

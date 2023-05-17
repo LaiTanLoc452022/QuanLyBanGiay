@@ -4,6 +4,10 @@
  */
 package GUIMAN;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author ASUS
@@ -307,19 +311,19 @@ public class HoadonPn extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void INHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_INHDMouseClicked
-        InHoaDon in = new InHoaDon();
-        BufferedImage image = new BufferedImage(in.width(),in.height(),BufferedImage.TYPE_INT_RGB);
-        Graphics2D graphics = image.createGraphics();
-        in.get().print(graphics);
-        graphics.dispose();
-        String fileName=generateRandomFileName(".png");
-        try {
-
-            ImageIO.write(image, "png", new File("src\\main\\java\\GUIMAN\\image\\"+fileName));
-                System.out.println("Ảnh đã được tạo và lưu thành công.");
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+//        InHoaDon in = new InHoaDon();
+//        BufferedImage image = new BufferedImage(in.width(),in.height(),BufferedImage.TYPE_INT_RGB);
+//        Graphics2D graphics = image.createGraphics();
+//        in.get().print(graphics);
+//        graphics.dispose();
+//        String fileName=generateRandomFileName(".png");
+//        try {
+//
+//            ImageIO.write(image, "png", new File("src\\main\\java\\GUIMAN\\image\\"+fileName));
+//                System.out.println("Ảnh đã được tạo và lưu thành công.");
+//            } catch (IOException ex) {
+//                ex.printStackTrace();
+//            }
     }//GEN-LAST:event_INHDMouseClicked
 
 

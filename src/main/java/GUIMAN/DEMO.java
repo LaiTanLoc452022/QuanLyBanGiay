@@ -146,7 +146,7 @@ public class DEMO extends javax.swing.JFrame {
     void openHoaDon() {
         LayeredPane.removeAll();
         Nhanvien truyenra = timNhanvien(this.nguoiDungLog.getNhanvien().getIdnhanVien());
-        HD.HD.hd.setIdnhanVien(truyenra.getIdnhanVien());
+        HD.HD.hdvao.setIdnhanVien(truyenra.getIdnhanVien());
         HD.HD.HoTen.setText(truyenra.getHoVaTen());
         LayeredPane.add(HD.openHD());
         LayeredPane.repaint();

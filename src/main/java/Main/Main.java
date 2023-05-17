@@ -48,50 +48,11 @@ public class Main {
 
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Multiple Mouse Events Example");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JButton button = new JButton("Click me!");
-        button.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // Xử lý sự kiện mouseClicked
-                JOptionPane.showMessageDialog(null, "Button clicked!");
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                // Xử lý sự kiện mousePressed
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                // Xử lý sự kiện mouseReleased
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                // Xử lý sự kiện mouseEntered
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                // Xử lý sự kiện mouseExited
-                JOptionPane.showMessageDialog(null, "Mouse exited the button!");
-            }
-        });
-
-        frame.getContentPane().add(button);
-        frame.pack();
-        frame.setVisible(true);
-
-        
-              
-                
-                 
+      Hoadon hoadon=new Hoadon();
+     Generic_Implement.insert(hoadon);
+        System.out.println(hoadon.getNhacungcap().getIdnhaCungCap()+"");
        
-                
-            
-	}
+      
+    }
 
 }

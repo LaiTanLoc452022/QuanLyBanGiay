@@ -4,14 +4,18 @@
  */
 package GUIMAN;
 
+import BUS.Bus;
 import BUS.Generic_BUS;
 import entity1.Hoadon;
 import entity1.Nhacungcap;
 import java.awt.Graphics2D;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,34 +26,48 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class HoaDon extends javax.swing.JFrame {
-    public static ArrayList<Hoadon> hd = Generic_BUS.getAll(Hoadon.class);
+
+    public Bus<Hoadon> busHD = new Bus();
+    public static ArrayList<Hoadon> hd;
     public static ArrayList<Nhacungcap> ncc = Generic_BUS.getAll(Nhacungcap.class);
     public NhapHDandCTHD HD;
+
     /**
      * Creates new form HoaDon
      */
     public HoaDon() {
+        hd = busHD.getList(Hoadon.class);
         initComponents();
         HD = new NhapHDandCTHD();
     }
-    
-    public JPanel openHD(){
+
+    public JPanel openHD() {
         return HoaDon;
     }
-    
-    public void GetDataHD(){
+
+    public void GetDataHD() {
+        Object[] rowData = null;
+
         DefaultTableModel RecordTable = (DefaultTableModel) tableHD.getModel();
+
         RecordTable.setRowCount(0);
-        for(int i = 0;i < hd.size();i++){
-            Object[] rowData = new Object[6];
-            rowData[0] = hd.get(i).getIdhoaDon();
-            rowData[1] = hd.get(i).getNhacungcap().getIdnhaCungCap();
-            rowData[2] = hd.get(i).getNgayLap();
-            rowData[3] = hd.get(i).getIdkhachHang();
-            rowData[4] = hd.get(i).getIdnhanVien();
-            rowData[5] = hd.get(i).getTongTien();
+
+        for (int i = 0; i < hd.size(); i++) {
+            rowData = new Object[6];
+            try {
+                rowData[0] = hd.get(i).getIdhoaDon();
+                rowData[1] = hd.get(i).getNhacungcap().getIdnhaCungCap();
+                rowData[2] = hd.get(i).getNgayLap();
+                rowData[3] = hd.get(i).getIdkhachHang();
+                rowData[4] = hd.get(i).getIdnhanVien();
+                rowData[5] = hd.get(i).getTongTien();
+            } catch (NullPointerException nullpot) {
+                rowData[1] = "null";
+            }
+
             RecordTable.addRow(rowData);
         }
+
     }
 
     /**
@@ -385,20 +403,35 @@ public class HoaDon extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_INHDMouseClicked
-
+    public void CTHDdadong(NhapHDandCTHD cthd) {
+        cthd.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                Hoadon hoadontam = new Hoadon();
+                hoadontam = cthd.hoaDonTraVe();
+                hd.add(hoadontam);
+                GetDataHD();
+            }
+        });
+    }
     private void InsertHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertHDMouseClicked
-        HD.openHoaDon();
+        Hoadon hoadon = new Hoadon();
+        int tmp = hd.get(hd.size() - 1).getIdhoaDon() + 1;
+        hoadon.setIdhoaDon(tmp);
+        hoadon.setNgayLap(new Date());
+        hoadon.setIdnhanVien(this.HD.hdvao.getIdnhanVien());
+        HD.openHoaDon(hoadon);
+        CTHDdadong(HD);
+        
+
     }//GEN-LAST:event_InsertHDMouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-        HD.openCTHD();
+
     }//GEN-LAST:event_jLabel24MouseClicked
 
     private void tableHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHDMouseClicked
-        DefaultTableModel RecordRow = (DefaultTableModel) tableHD.getModel();
-        int SelectedRows = tableHD.getSelectedRow();
-        HD.MaHD2.setText(RecordRow.getValueAt( SelectedRows, 0).toString());
-//        HD.TongTien.setText(RecordRow.getValueAt(SelectedRows, 5).toString());
+
     }//GEN-LAST:event_tableHDMouseClicked
 
     /**

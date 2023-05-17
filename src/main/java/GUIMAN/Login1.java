@@ -16,8 +16,8 @@ import javax.swing.ImageIcon;
 public class Login1 extends javax.swing.JFrame {
 
     public  List<Nguoidung> list;
-   public static Nguoidung nguoiDungLog;
-   public DEMO ui=new DEMO();
+   public static Nguoidung nguoiDungLogin;
+   public DEMO ui;
     public Login1() {
         list = NguoidungHome.getAll(Nguoidung.class);
         initComponents();
@@ -182,10 +182,9 @@ public class Login1 extends javax.swing.JFrame {
                 System.out.println("ThanhCong!");
                 this.dispose();
                  ui = new DEMO();
-                this.nguoiDungLog=temp;
-                ui.nguoiDungLog=nguoiDungLog;
+                this.nguoiDungLogin=temp;
+                ui.nguoiDungLog=nguoiDungLogin;
                 ui.setVisible(true);
-               
                 return;
             }
         }

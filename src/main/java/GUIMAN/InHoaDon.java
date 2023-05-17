@@ -4,6 +4,7 @@
  */
 package GUIMAN;
 
+import entity1.Hoadon;
 import javax.swing.JPanel;
 
 /**
@@ -15,8 +16,19 @@ public class InHoaDon extends javax.swing.JFrame {
     /**
      * Creates new form InHoaDon
      */
+    private Hoadon hoaDonTruyenVaoTuCTHD;
     public InHoaDon() {
         initComponents();
+    }
+    
+    public void openInHoaDon(Hoadon instance,String HoVaTenNV){
+        setSize(490, 1050);
+        hoaDonTruyenVaoTuCTHD=instance;
+        this.IDhoadon.setText(hoaDonTruyenVaoTuCTHD.getIdhoaDon().toString());
+        this.HoTenNhanVien.setText(HoVaTenNV);
+        this.Ngaylap.setText(hoaDonTruyenVaoTuCTHD.getNgayLap().toString());
+        this.TongTien.setText(hoaDonTruyenVaoTuCTHD.getTongTien().toString());
+        setVisible(true);
     }
 
     /**
@@ -259,7 +271,7 @@ public class InHoaDon extends javax.swing.JFrame {
                                 .addGroup(ThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(126, 126, 126)
+                                .addGap(121, 121, 121)
                                 .addGroup(ThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TienMat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(ThoiLai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -400,37 +412,7 @@ public class InHoaDon extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InHoaDon().setVisible(true);
-            }
-        });
-    }
+   
     
     public int width() {
         return jPanel1.getWidth();
