@@ -71,7 +71,7 @@ public class ThongKeForm extends javax.swing.JFrame {
         tkspbanchay = new javax.swing.JPanel();
         tkspBanChay = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         containerPanel.setBackground(new java.awt.Color(0, 102, 102));
         containerPanel.setPreferredSize(new java.awt.Dimension(800, 600));
