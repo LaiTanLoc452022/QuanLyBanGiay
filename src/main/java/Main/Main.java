@@ -48,11 +48,15 @@ public class Main {
 
 
     public static void main(String[] args) {
-      Hoadon hoadon=new Hoadon();
-     Generic_Implement.insert(hoadon);
-        System.out.println(hoadon.getNhacungcap().getIdnhaCungCap()+"");
-       
-      
+        ArrayList<Nhanvien> kh = Generic_BUS.getAll(Nhanvien.class);
+        ArrayList<Nhanvien> Nvtmp = new ArrayList();
+        Bus<Nhanvien> bus = new Bus();
+        bus.setList(kh);
+        Nvtmp = bus.TimKiem("sllssllsslsl");
+        
+        for(Nhanvien x : Nvtmp){
+            System.out.println(x.getIdnhanVien());
+        }
     }
 
 }

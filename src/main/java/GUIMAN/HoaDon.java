@@ -29,7 +29,7 @@ public class HoaDon extends javax.swing.JFrame {
 
     public Bus<Hoadon> busHD = new Bus();
     public static ArrayList<Hoadon> hd;
-    public static ArrayList<Nhacungcap> ncc = Generic_BUS.getAll(Nhacungcap.class);
+    public static ArrayList<Nhacungcap> ncc = NhaCungCap.listNCC;
     public NhapHDandCTHD HD;
 
     /**
@@ -416,7 +416,10 @@ public class HoaDon extends javax.swing.JFrame {
     }
     private void InsertHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertHDMouseClicked
         Hoadon hoadon = new Hoadon();
-        int tmp = hd.get(hd.size() - 1).getIdhoaDon() + 1;
+        int tmp=0;
+        if(hd.size()!=0){
+         tmp = hd.get(hd.size() - 1).getIdhoaDon() + 1;
+        }
         hoadon.setIdhoaDon(tmp);
         hoadon.setNgayLap(new Date());
         hoadon.setIdnhanVien(this.HD.hdvao.getIdnhanVien());
