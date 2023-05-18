@@ -19,7 +19,7 @@
                 <column name="IDThe" />
             </key>
             <one-to-many class="entity1.Khachhang" />
-           
+
         </set>
     </class>
 </hibernate-mapping>
