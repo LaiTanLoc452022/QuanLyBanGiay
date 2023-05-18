@@ -17,6 +17,7 @@ public class Hoadon implements java.io.Serializable {
     private Integer idkhachHang;
     private BigDecimal tongTien;
     private Integer idnhanVien;
+    private byte[] Qr;
     private Set<Chitiethoadon> chitiethoadons = new HashSet<Chitiethoadon>(0);
 
     public Hoadon() {
@@ -30,6 +31,14 @@ public class Hoadon implements java.io.Serializable {
         this.tongTien = tongTien;
         this.idnhanVien = idnhanVien;
         this.chitiethoadons = chitiethoadons;
+    }
+
+    public byte[] getQr() {
+        return Qr;
+    }
+
+    public void setQr(byte[] Qr) {
+        this.Qr = Qr;
     }
 
     public Integer getIdhoaDon() {
@@ -84,8 +93,8 @@ public class Hoadon implements java.io.Serializable {
         return this.chitiethoadons;
     }
 
-    public void setChitiethoadons(Set<Chitiethoadon> chitiethoadons) {
-        this.chitiethoadons = chitiethoadons;
-    }
+	public void setChitiethoadons(Set<Chitiethoadon> chitiethoadons) {
+		this.chitiethoadons = chitiethoadons;
+	}
 
 }

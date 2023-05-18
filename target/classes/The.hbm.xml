@@ -15,10 +15,11 @@
             <column name="HeSo" precision="22" scale="0" />
         </property>
         <set name="khachhangs" table="khachhang" inverse="true" lazy="true" fetch="select">
-            <key>
+            <key >
                 <column name="IDThe" />
             </key>
             <one-to-many class="entity1.Khachhang" />
+
         </set>
     </class>
 </hibernate-mapping>

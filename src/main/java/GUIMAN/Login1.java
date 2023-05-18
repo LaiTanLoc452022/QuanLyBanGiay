@@ -8,8 +8,9 @@ import javax.swing.ImageIcon;
 
 public class Login1 extends javax.swing.JFrame {
 
-    public List<Nguoidung> list;
-
+    public  List<Nguoidung> list;
+   public static Nguoidung nguoiDungLogin;
+   public DEMO ui;
     public Login1() {
         list = NguoidungHome.getAll(Nguoidung.class);
         initComponents();
@@ -167,14 +168,17 @@ public class Login1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
-
+        
         for (Nguoidung temp : list) {
 
             if (String.valueOf(passwordF.getPassword()).equals(temp.getMatKhau()) && usernameTF.getText().equals(temp.getTenDangNhap())) {
                 System.out.println("ThanhCong!");
                 this.dispose();
-                DEMO ui = new DEMO();
+                 ui = new DEMO();
+                this.nguoiDungLogin=temp;
+                ui.nguoiDungLog=nguoiDungLogin;
                 ui.setVisible(true);
+                return;
             }
         }
 
