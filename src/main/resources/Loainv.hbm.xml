@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="entity1.Loainv" table="loainv" catalog="cuahangbangiay" optimistic-lock="version">
+        <id name="idloai" type="java.lang.Integer">
+            <column name="IDLoai" />
+            <generator class="identity" />
+        </id>
+        <property name="tenLoai" type="string">
+            <column name="TenLoai" length="50" />
+        </property>
+        <property name="ghiChu" type="string">
+            <column name="GhiChu" length="50" />
+        </property>
+        <set name="nhanviens" table="nhanvien" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDLoai" />
+            </key>
+            <one-to-many class="entity1.Nhanvien" />
+        </set>
+    </class>
+</hibernate-mapping>

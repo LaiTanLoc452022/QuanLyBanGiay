@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="entity1.Nguoidung" table="nguoidung" catalog="cuahangbangiay" optimistic-lock="version">
+        <id name="idnguoiDung" type="java.lang.Integer">
+            <column name="IDNguoiDung" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="nhanvien" class="entity1.Nhanvien" fetch="select">
+            <column name="IDNhanVien" />
+        </many-to-one>
+        <property name="tenDangNhap" type="string">
+            <column name="TenDangNhap" length="30" />
+        </property>
+        <property name="tenTaiKhoan" type="string">
+            <column name="TenTaiKhoan" length="100" />
+        </property>
+        <property name="matKhau" type="string">
+            <column name="MatKhau" length="30" />
+        </property>
+        <set name="nhomvanguoidungs" table="nhomvanguoidung" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDNguoiDung" />
+            </key>
+            <one-to-many class="entity1.Nhomvanguoidung" />
+        </set>
+    </class>
+</hibernate-mapping>

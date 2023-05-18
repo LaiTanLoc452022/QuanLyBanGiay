@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="entity1.Hoadon" table="hoadon" catalog="cuahangbangiay" optimistic-lock="version">
+        <id name="idhoaDon" type="java.lang.Integer">
+            <column name="IDHoaDon" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="nhacungcap" class="entity1.Nhacungcap" fetch="select">
+            <column name="IDNhaCungCap" />
+        </many-to-one>
+        <property name="ngayLap" type="date">
+            <column name="NgayLap" length="10" />
+        </property>
+        <property name="idkhachHang" type="java.lang.Integer">
+            <column name="IDKhachHang" />
+        </property>
+        <property name="tongTien" type="big_decimal">
+            <column name="TongTien" scale="4" />
+        </property>
+        <property name="idnhanVien" type="java.lang.Integer">
+            <column name="IDNhanVien" />
+        </property>
+         <property name="Qr" type="binary">
+            <column name="QR" />
+        </property>
+        <set name="chitiethoadons" table="chitiethoadon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDHoaDon" />
+            </key>
+            <one-to-many class="entity1.Chitiethoadon" />
+        </set>
+    </class>
+</hibernate-mapping>

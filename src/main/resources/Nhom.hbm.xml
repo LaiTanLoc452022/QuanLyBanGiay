@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="entity1.Nhom" table="nhom" catalog="cuahangbangiay" optimistic-lock="version">
+        <id name="idnhom" type="java.lang.Integer">
+            <column name="IDNhom" />
+            <generator class="identity" />
+        </id>
+        <property name="tenNhom" type="string">
+            <column name="TenNhom" length="30" />
+        </property>
+        <set name="phanquyens" table="phanquyen" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDNhom" />
+            </key>
+            <one-to-many class="entity1.Phanquyen" />
+        </set>
+        <set name="nhomvanguoidungs" table="nhomvanguoidung" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fk_IDNhom" />
+            </key>
+            <one-to-many class="entity1.Nhomvanguoidung" />
+        </set>
+    </class>
+</hibernate-mapping>
