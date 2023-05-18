@@ -1,7 +1,6 @@
 package DAO;
 
 import Database.HIbernateUtil;
-import java.lang.reflect.Method;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,23 +8,24 @@ import org.hibernate.query.Query;
 
 import java.lang.reflect.Type;
 import java.util.List;
-import org.hibernate.exception.ConstraintViolationException;
 
 public class Generic_Implement<T> implements GenericDAO {
 
     public static Session session;
     public static Transaction transaction;
 
+
     public static <T> void insert(T instance) {// tạo đối tượng trước rồi , gọi hàm insert nha mằn 
         try {
             session = HIbernateUtil.getSessionFactory().openSession();
-            transaction = session.beginTransaction();
+
             session.save(instance);
-            transaction.commit();
+
             session.close();
         } catch (HibernateException e) {
             throw new RuntimeException(e);
         }
+
 
     }
 
@@ -40,9 +40,9 @@ public class Generic_Implement<T> implements GenericDAO {
         transaction.commit();
         session.close();
 
-    } 
+    }
      catch (Exception e) {
-         
+
         throw new RuntimeException(e);
     }
 }
@@ -61,6 +61,7 @@ public class Generic_Implement<T> implements GenericDAO {
 
     public static <T> List<T> getAll(Class<T> instancetype) {
         try {
+            
 
             session = HIbernateUtil.getSessionFactory().openSession();
             Query<T> query = session.createQuery("FROM " + instancetype.getName());

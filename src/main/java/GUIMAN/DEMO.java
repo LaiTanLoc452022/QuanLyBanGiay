@@ -15,6 +15,7 @@ import DAO.KhachhangHome;
 import DAO.TheHome;
 import entity1.Nguoidung;
 import entity1.Nhanvien;
+import entity1.The;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -59,21 +60,28 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class DEMO extends javax.swing.JFrame {
+    Bus bus = new Bus();
     public Nguoidung nguoiDungLog;
     NhanVien NV = new NhanVien();
     KhachHang KH = new KhachHang();
     Kho K = new Kho();
     HoaDon HD = new HoaDon();
+    TheForm TheForm = new TheForm();
+    PhanLoaiGiay plg = new PhanLoaiGiay();
+    NhaCungCap NCC = new NhaCungCap();
     /**
      * Creates new form DEMO
      */
     
     public DEMO() {
         initComponents();
+        TheForm.GetDataThe();
+        plg.GetDataPhanLoaiGiay();
         KH.GetDataKH();
         NV.GetDataNV();
         K.GetDataK();
         HD.GetDataHD();
+        NCC.GetDataNCC();
     }
     
     int width = 200;
@@ -136,8 +144,8 @@ public class DEMO extends javax.swing.JFrame {
 
     }
     public Nhanvien timNhanvien(int idNV){
-        for(var nhanvienit: NV.nv){
-            if(nhanvienit.getIdnhanVien()==idNV){
+        for(var nhanvienit : NV.nv){
+            if(nhanvienit.getIdnhanVien() == idNV){
                 return nhanvienit;
             }
         }
@@ -166,7 +174,27 @@ public class DEMO extends javax.swing.JFrame {
         LayeredPane.repaint();
         LayeredPane.revalidate();
     }
+    
+    void openThe() {
+        LayeredPane.removeAll();
+        LayeredPane.add(TheForm.openThe());
+        LayeredPane.repaint();
+        LayeredPane.revalidate();
+    } 
 
+    void openPhanLoaiGiay(){
+        LayeredPane.removeAll();
+        LayeredPane.add(plg.openPhanLoaiGiay());
+        LayeredPane.repaint();
+        LayeredPane.revalidate();
+    }
+    
+    void openNCC(){
+        LayeredPane.removeAll();
+        LayeredPane.add(NCC.openNCC());
+        LayeredPane.repaint();
+        LayeredPane.revalidate();
+    }
     
 
 //    public void ImageTableKH() throws IOException {
@@ -228,6 +256,12 @@ public class DEMO extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
+        btnThe = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        btnPhanLoai = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        btnNCC = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         LayeredPane = new javax.swing.JPanel();
         Home = new javax.swing.JPanel();
@@ -254,7 +288,6 @@ public class DEMO extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(921, 750));
 
         containerPanel.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -338,6 +371,39 @@ public class DEMO extends javax.swing.JFrame {
             }
         });
 
+        btnThe.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnThe.setForeground(new java.awt.Color(204, 255, 204));
+        btnThe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnThe.setText("THẺ");
+        btnThe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnThe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTheMouseClicked(evt);
+            }
+        });
+
+        btnPhanLoai.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnPhanLoai.setForeground(new java.awt.Color(204, 255, 204));
+        btnPhanLoai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnPhanLoai.setText("PHÂN LOẠI");
+        btnPhanLoai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPhanLoai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPhanLoaiMouseClicked(evt);
+            }
+        });
+
+        btnNCC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnNCC.setForeground(new java.awt.Color(204, 255, 204));
+        btnNCC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnNCC.setText("NHÀ CUNG CẤP");
+        btnNCC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNCCMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
         sidePanel.setLayout(sidePanelLayout);
         sidePanelLayout.setHorizontalGroup(
@@ -370,9 +436,34 @@ public class DEMO extends javax.swing.JFrame {
                     .addComponent(btnKH, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(sidePanelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sidePanelLayout.createSequentialGroup()
+                        .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(sidePanelLayout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(sidePanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(sidePanelLayout.createSequentialGroup()
+                                        .addGap(51, 51, 51)
+                                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnThe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(sidePanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(sidePanelLayout.createSequentialGroup()
+                                        .addGap(51, 51, 51)
+                                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnPhanLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(sidePanelLayout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidePanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,7 +491,19 @@ public class DEMO extends javax.swing.JFrame {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnKH, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnThe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnPhanLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -775,6 +878,18 @@ public class DEMO extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void btnTheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTheMouseClicked
+        openThe();
+    }//GEN-LAST:event_btnTheMouseClicked
+
+    private void btnPhanLoaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPhanLoaiMouseClicked
+        openPhanLoaiGiay();
+    }//GEN-LAST:event_btnPhanLoaiMouseClicked
+
+    private void btnNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNCCMouseClicked
+        openNCC();
+    }//GEN-LAST:event_btnNCCMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -819,8 +934,11 @@ public class DEMO extends javax.swing.JFrame {
     private javax.swing.JLabel btnHOME;
     private javax.swing.JLabel btnKH;
     private javax.swing.JLabel btnKHO;
+    private javax.swing.JLabel btnNCC;
     private javax.swing.JLabel btnNV;
     private javax.swing.JLabel btnPQ;
+    private javax.swing.JLabel btnPhanLoai;
+    private javax.swing.JLabel btnThe;
     private javax.swing.JPanel containerPanel;
     private javax.swing.JPanel infoPanel;
     private javax.swing.JLabel jLabel10;
@@ -842,6 +960,9 @@ public class DEMO extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JPanel nvBanHangPanel;

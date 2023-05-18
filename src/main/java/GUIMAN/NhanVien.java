@@ -31,20 +31,23 @@ public class NhanVien extends javax.swing.JFrame {
     HamCanDung Ham = new HamCanDung();
     Bus bus = new Bus();
     ChonF cf = new ChonF(this,true);
-    static public ArrayList<Nhanvien> nv =Generic_BUS.getAll(Nhanvien.class);;
+    static public ArrayList<Nhanvien> nv= new ArrayList();
     /**
      * Creates new form NhanVien
      */
     public NhanVien() {
+        nv = bus.getList(Nhanvien.class);
         initComponents();
     }
     
     public JPanel openNV(){
+        this.GetDataNV();
         return NhanVien;
     }
    
 
     public void GetDataNV() {
+        
         DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
         RecordTable.setRowCount(0);
         for (int i = 0; i < nv.size(); ++i) {
@@ -252,6 +255,8 @@ public class NhanVien extends javax.swing.JFrame {
         sadsa.setText("LinkAnh");
 
         LinkAnhNV.setEditable(false);
+        LinkAnhNV.setMaximumSize(new java.awt.Dimension(64, 22));
+        LinkAnhNV.setRequestFocusEnabled(false);
         LinkAnhNV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LinkAnhNVMouseClicked(evt);
@@ -301,7 +306,7 @@ public class NhanVien extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(sadsa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LinkAnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(LinkAnhNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -336,7 +341,7 @@ public class NhanVien extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sadsa)
-                    .addComponent(LinkAnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LinkAnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -452,16 +457,16 @@ public class NhanVien extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, 0, 398, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, 0, 429, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -484,7 +489,7 @@ public class NhanVien extends javax.swing.JFrame {
                         .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(AnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout NhanVienLayout = new javax.swing.GroupLayout(NhanVien);
@@ -537,9 +542,9 @@ public class NhanVien extends javax.swing.JFrame {
         NgaySinhNV.setDate(date1);
         EmailNV.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
         LuongNV.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
-        LinkAnhNV.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
+        LinkAnhNV.setText(RecordTable.getValueAt(SelectedRows,6).toString());
         try{
-            byte[] byteArray = Ham.stringToByteArray(nv.get(SelectedRows).getAnh().toString());
+            byte[] byteArray = Ham.stringToByteArray((String)RecordTable.getValueAt(SelectedRows, 6));
             // Tạo một đối tượng ByteArrayInputStream từ mảng byte
             ByteArrayInputStream bais = new ByteArrayInputStream(byteArray);
             // Đọc hình ảnh từ ByteArrayInputStream
@@ -608,23 +613,30 @@ public class NhanVien extends javax.swing.JFrame {
             ImageIcon imageIcon = new ImageIcon(imagescaled);
             nv.setAnh(ImageToByte.FileToByte(file));
             AnhNV.setIcon(imageIcon);
-            bus.getList(Nhanvien.class);
             bus.Sua(nv, SelectedRows);
+            this.nv=bus.getList();
             GetDataNV();
             JOptionPane.showMessageDialog(null, "Update successfully!");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Update error!");
         }
+        catch(IOException ioecp){
+            JOptionPane.showMessageDialog(null, ioecp.getMessage(),"Lỗi",JOptionPane.ERROR_MESSAGE);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Update error!");
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_UpdateNVMouseClicked
 
     private void DeleteNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteNVMouseClicked
         try {
             int SelectedRows = tableNV.getSelectedRow();
-            Nhanvien nv = new Nhanvien();
-            nv.setIdnhanVien(Integer.parseInt(MaNV.getText()));
-           this.nv= bus.getList(Nhanvien.class);
-            bus.Xoa(nv, SelectedRows);
+            Nhanvien nhanvien = new Nhanvien();
+            nhanvien.setIdnhanVien(Integer.parseInt(MaNV.getText()));
+            bus.Xoa(nhanvien, SelectedRows);
             
+            this.nv=bus.getList();
+            //System.out.println(nv.get(nv.size()-1).getIdnhanVien()  );
             GetDataNV();
             JOptionPane.showMessageDialog(null, "Delete Successfully!");
         } catch (Exception e) {
@@ -649,10 +661,10 @@ public class NhanVien extends javax.swing.JFrame {
             ImageIcon imageIcon = new ImageIcon(imagescaled);
             Nv.setAnh(ImageToByte.FileToByte(file));
             AnhNV.setIcon(imageIcon);
-
-            bus.getList(Nhanvien.class);
+            
             bus.Them(Nv);
-            nv.add((Nhanvien)bus.getList().get(bus.getList().size()-1));
+            this.nv=bus.getList();
+            System.out.println(nv.size()+"    "+bus.getList().size() );
             GetDataNV();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
