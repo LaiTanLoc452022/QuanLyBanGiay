@@ -34,16 +34,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/jgoodies-forms.jar" sourcepath="lib/jgoodies-forms-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/QuanLyBanGiay/lib/jgoodies-forms-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/jgoodies-common.jar" sourcepath="lib/jgoodies-common-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/QuanLyBanGiay/lib/jgoodies-common-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="lib/swing-layout.jar" sourcepath="lib/swing-layout-src.zip">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/QuanLyBanGiay/lib/swing-layout-javadoc.zip!/"/>

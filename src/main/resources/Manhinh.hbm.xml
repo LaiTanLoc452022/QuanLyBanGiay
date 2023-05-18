@@ -1,22 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 9, 2023, 1:46:37 PM by Hibernate Tools 4.3.6.Final -->
 <hibernate-mapping>
-    <class catalog="cuahangbangiay" name="entity1.Manhinh" optimistic-lock="none" table="manhinh">
-        <id name="idmanHinh" type="int">
-            <column name="IDManHinh"/>
-            <generator class="assigned"/>
+    <class name="entity1.Manhinh" table="manhinh" catalog="cuahangbangiay" optimistic-lock="version">
+        <id name="idmanHinh" type="java.lang.Integer">
+            <column name="IDManHinh" />
+            <generator class="identity" />
         </id>
         <property name="tenManHinh" type="string">
-            <column length="0" name="TenManHinh"/>
+            <column name="TenManHinh" length="30" />
         </property>
         <property name="ghiChu" type="string">
-            <column length="0" name="GhiChu"/>
+            <column name="GhiChu" length="30" />
         </property>
-        <set fetch="select" inverse="true" lazy="true" name="phanquyens" table="phanquyen">
-            <key>
-                <column name="IDManHinh"/>
-            </key>
-            <one-to-many class="entity1.Phanquyen"/>
-        </set>
     </class>
 </hibernate-mapping>

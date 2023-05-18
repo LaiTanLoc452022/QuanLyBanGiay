@@ -1,5 +1,5 @@
 package entity1;
-// Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final
+// Generated May 9, 2023, 1:47:18 PM by Hibernate Tools 4.3.6.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -10,22 +10,17 @@ import java.util.Set;
  */
 public class Nhacungcap implements java.io.Serializable {
 
-	private int idnhaCungCap;
+	private Integer idnhaCungCap;
 	private String ten;
 	private Integer sdt;
 	private String email;
 	private Date thoiGianHopTac;
-	private Set hoadons = new HashSet(0);
+	private Set<Hoadon> hoadons = new HashSet<Hoadon>(0);
 
 	public Nhacungcap() {
 	}
 
-	public Nhacungcap(int idnhaCungCap) {
-		this.idnhaCungCap = idnhaCungCap;
-	}
-
-	public Nhacungcap(int idnhaCungCap, String ten, Integer sdt, String email, Date thoiGianHopTac, Set hoadons) {
-		this.idnhaCungCap = idnhaCungCap;
+	public Nhacungcap(String ten, Integer sdt, String email, Date thoiGianHopTac, Set<Hoadon> hoadons) {
 		this.ten = ten;
 		this.sdt = sdt;
 		this.email = email;
@@ -33,11 +28,11 @@ public class Nhacungcap implements java.io.Serializable {
 		this.hoadons = hoadons;
 	}
 
-	public int getIdnhaCungCap() {
+	public Integer getIdnhaCungCap() {
 		return this.idnhaCungCap;
 	}
 
-	public void setIdnhaCungCap(int idnhaCungCap) {
+	public void setIdnhaCungCap(Integer idnhaCungCap) {
 		this.idnhaCungCap = idnhaCungCap;
 	}
 
@@ -73,11 +68,11 @@ public class Nhacungcap implements java.io.Serializable {
 		this.thoiGianHopTac = thoiGianHopTac;
 	}
 
-	public Set getHoadons() {
+	public Set<Hoadon> getHoadons() {
 		return this.hoadons;
 	}
 
-	public void setHoadons(Set hoadons) {
+	public void setHoadons(Set<Hoadon> hoadons) {
 		this.hoadons = hoadons;
 	}
 

@@ -1,5 +1,5 @@
 package entity1;
-// Generated Apr 12, 2023, 10:43:38 AM by Hibernate Tools 5.6.12.Final
+// Generated May 9, 2023, 1:47:18 PM by Hibernate Tools 4.3.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,28 +9,25 @@ import java.util.Set;
  */
 public class Nhom implements java.io.Serializable {
 
-	private int idnhom;
+	private Integer idnhom;
 	private String tenNhom;
-	private Set phanquyens = new HashSet(0);
+	private Set<Phanquyen> phanquyens = new HashSet<Phanquyen>(0);
+	private Set<Nhomvanguoidung> nhomvanguoidungs = new HashSet<Nhomvanguoidung>(0);
 
 	public Nhom() {
 	}
 
-	public Nhom(int idnhom) {
-		this.idnhom = idnhom;
-	}
-
-	public Nhom(int idnhom, String tenNhom, Set phanquyens) {
-		this.idnhom = idnhom;
+	public Nhom(String tenNhom, Set<Phanquyen> phanquyens, Set<Nhomvanguoidung> nhomvanguoidungs) {
 		this.tenNhom = tenNhom;
 		this.phanquyens = phanquyens;
+		this.nhomvanguoidungs = nhomvanguoidungs;
 	}
 
-	public int getIdnhom() {
+	public Integer getIdnhom() {
 		return this.idnhom;
 	}
 
-	public void setIdnhom(int idnhom) {
+	public void setIdnhom(Integer idnhom) {
 		this.idnhom = idnhom;
 	}
 
@@ -42,12 +39,20 @@ public class Nhom implements java.io.Serializable {
 		this.tenNhom = tenNhom;
 	}
 
-	public Set getPhanquyens() {
+	public Set<Phanquyen> getPhanquyens() {
 		return this.phanquyens;
 	}
 
-	public void setPhanquyens(Set phanquyens) {
+	public void setPhanquyens(Set<Phanquyen> phanquyens) {
 		this.phanquyens = phanquyens;
+	}
+
+	public Set<Nhomvanguoidung> getNhomvanguoidungs() {
+		return this.nhomvanguoidungs;
+	}
+
+	public void setNhomvanguoidungs(Set<Nhomvanguoidung> nhomvanguoidungs) {
+		this.nhomvanguoidungs = nhomvanguoidungs;
 	}
 
 }
