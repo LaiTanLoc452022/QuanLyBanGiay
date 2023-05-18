@@ -23,26 +23,26 @@ public class InHoaDonForm extends javax.swing.JFrame {
     /**
      * Creates new form InHoaDon
      */
-    public void GetDataCTHD() {
-        Hoadon hoadon = new Hoadon();
-        List<Chitiethoadon> array1 = Generic_Implement.getAllChildrenFromParent(Chitiethoadon.class, hoadon);
-        List<Chitiethoadon> array2 = Generic_Implement.getAllChildrenFromParent(Chitiethoadon.class, sanpham);
-        DefaultTableModel RecordTable = (DefaultTableModel) tableCTHD.getModel();
-        RecordTable.setRowCount(0);
-        for (int i = 0; i < array.size(); ++i) {
-            Object[] rowData = new Object[4];
-            rowData[0] = array2.get(i).getSanpham().getTen();
-            rowData[1] = array1.get(i).getId().getSoLuong();
-            rowData[2] = array2.get(i).getSanpham().getGiaBan();
-            rowData[3] = array.get(i).getHoadon().getTongTien();
-
-            RecordTable.addRow(rowData);
-        }
-    }
+//    public void GetDataCTHD() {
+//        Hoadon hoadon = new Hoadon();
+//        List<Chitiethoadon> array1 = Generic_Implement.getAllChildrenFromParent(Chitiethoadon.class, hoadon);
+//        List<Chitiethoadon> array2 = Generic_Implement.getAllChildrenFromParent(Chitiethoadon.class, sanpham);
+//        DefaultTableModel RecordTable = (DefaultTableModel) tableCTHD.getModel();
+//        RecordTable.setRowCount(0);
+//        for (int i = 0; i < array.size(); ++i) {
+//            Object[] rowData = new Object[4];
+//            rowData[0] = array2.get(i).getSanpham().getTen();
+//            rowData[1] = array1.get(i).getId().getSoLuong();
+//            rowData[2] = array2.get(i).getSanpham().getGiaBan();
+//            rowData[3] = array.get(i).getHoadon().getTongTien();
+//
+//            RecordTable.addRow(rowData);
+//        }
+//    }
 
     public InHoaDonForm() throws SQLException {
         initComponents();
-        GetDataCTHD();
+//        GetDataCTHD();
     }
 
     /**

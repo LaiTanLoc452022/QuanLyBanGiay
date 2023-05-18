@@ -9,11 +9,9 @@ import static DAO.ChitiethoadonHome.getTheoSLGiayVaThang;
 import entity1.Chitiethoadon;
 import entity1.Hoadon;
 import entity1.Sanpham;
-import java.awt.BorderLayout;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.Color;
+import java.awt.GradientPaint;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -21,12 +19,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.CategoryItemLabelGenerator;
 import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
@@ -41,7 +35,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author NAM
  */
-public class ThongKeForm extends javax.swing.JFrame {
+public class ThongKeFormOld extends javax.swing.JFrame {
 
     /**
      * Creates new form ThongKeForm
@@ -51,7 +45,7 @@ public class ThongKeForm extends javax.swing.JFrame {
     public ArrayList<Sanpham> dssp;
     public ArrayList<Hoadon> listhd;
 
-    public ThongKeForm() {
+    public ThongKeFormOld() {
         results = getTheoSLGiayVaThang();
         dscthd = Generic_BUS.getAll(Chitiethoadon.class);
         dssp = Generic_BUS.getAll(Sanpham.class);
@@ -69,7 +63,6 @@ public class ThongKeForm extends javax.swing.JFrame {
     private void initComponents() {
 
         containerPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         tkdt = new javax.swing.JLabel();
         tktngay = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -77,36 +70,19 @@ public class ThongKeForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tkspbanchay = new javax.swing.JPanel();
         tkspBanChay = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(537, 550));
-        setMinimumSize(new java.awt.Dimension(537, 550));
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(537, 550));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         containerPanel.setBackground(new java.awt.Color(0, 102, 102));
-        containerPanel.setMaximumSize(new java.awt.Dimension(537, 550));
-        containerPanel.setMinimumSize(new java.awt.Dimension(537, 550));
-        containerPanel.setPreferredSize(new java.awt.Dimension(537, 550));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("X");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
+        containerPanel.setPreferredSize(new java.awt.Dimension(800, 600));
 
         tkdt.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        tkdt.setForeground(new java.awt.Color(51, 51, 51));
+        tkdt.setForeground(new java.awt.Color(204, 255, 204));
         tkdt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tkdt.setText("THỐNG KÊ DOANH THU");
 
-        tktngay.setBackground(new java.awt.Color(128,128,128, 220));
+        tktngay.setBackground(new java.awt.Color(0, 102, 102));
+        tktngay.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 204), 3, true));
         tktngay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tktngay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -115,7 +91,7 @@ public class ThongKeForm extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(204, 255, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Thống kê theo ngày");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -125,16 +101,17 @@ public class ThongKeForm extends javax.swing.JFrame {
         tktngayLayout.setHorizontalGroup(
             tktngayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tktngayLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(135, 135, 135)
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(100, 100, 100))
+                .addGap(135, 135, 135))
         );
         tktngayLayout.setVerticalGroup(
             tktngayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
         );
 
-        tktthang.setBackground(new java.awt.Color(128,128,128, 220));
+        tktthang.setBackground(new java.awt.Color(0, 102, 102));
+        tktthang.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 204), 3, true));
         tktthang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tktthang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -143,9 +120,9 @@ public class ThongKeForm extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(204, 255, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Thống kê theo tháng hiện tại");
+        jLabel4.setText("Thống kê theo tháng");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout tktthangLayout = new javax.swing.GroupLayout(tktthang);
@@ -153,16 +130,17 @@ public class ThongKeForm extends javax.swing.JFrame {
         tktthangLayout.setHorizontalGroup(
             tktthangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tktthangLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(132, 132, 132)
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(90, 90, 90))
+                .addGap(129, 129, 129))
         );
         tktthangLayout.setVerticalGroup(
             tktthangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
         );
 
-        tkspbanchay.setBackground(new java.awt.Color(128,128,128, 220));
+        tkspbanchay.setBackground(new java.awt.Color(0, 102, 102));
+        tkspbanchay.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 204), 3, true));
         tkspbanchay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tkspbanchay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -171,7 +149,7 @@ public class ThongKeForm extends javax.swing.JFrame {
         });
 
         tkspBanChay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        tkspBanChay.setForeground(new java.awt.Color(255, 255, 255));
+        tkspBanChay.setForeground(new java.awt.Color(204, 255, 204));
         tkspBanChay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tkspBanChay.setText("Thống kê sản phẩm bán chạy nhất (theo tháng)");
         tkspBanChay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -185,72 +163,52 @@ public class ThongKeForm extends javax.swing.JFrame {
         tkspbanchay.setLayout(tkspbanchayLayout);
         tkspbanchayLayout.setHorizontalGroup(
             tkspbanchayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tkspbanchayLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tkspbanchayLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(tkspBanChay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(16, 16, 16))
         );
         tkspbanchayLayout.setVerticalGroup(
             tkspbanchayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tkspBanChay, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+            .addComponent(tkspBanChay, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
         );
-
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Downloads\\tke.jpg")); // NOI18N
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
         containerPanelLayout.setHorizontalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
-                .addComponent(tkdt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(1, 1, 1))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanelLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tktngay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tkspbanchay, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tktthang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(53, 53, 53))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
-            .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(containerPanelLayout.createSequentialGroup()
-                    .addComponent(jLabel1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(100, 100, 100)
+                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tkspbanchay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tktthang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tktngay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(104, 104, 104))
+            .addComponent(tkdt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tkdt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addGap(22, 22, 22)
+                .addGap(0, 0, 0)
+                .addComponent(tkdt, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(tktngay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tktthang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tkspbanchay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(50, 50, 50))
-            .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(containerPanelLayout.createSequentialGroup()
-                    .addGap(3, 3, 3)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(3, 3, 3)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
         );
 
         pack();
@@ -261,7 +219,6 @@ public class ThongKeForm extends javax.swing.JFrame {
         public Date ngay;
         public Double doanhthu;
         public int soluong;
-        public int day;
 
         public Cus() {
         }
@@ -278,118 +235,69 @@ public class ThongKeForm extends javax.swing.JFrame {
         }
     }
 
-    private ArrayList<Cus> dtCacNgayTrongThang(int selectedMonth, int selectedYear) {
-        ArrayList<Cus> dtCacNgayTrongThang = new ArrayList<>();
-
-        // Lọc dữ liệu trong listhd để chỉ lấy các hóa đơn của tháng và năm được chọn
-        for (Hoadon e : listhd) {
-            if (e.getNgayLap().getMonth() + 1 == selectedMonth && e.getNgayLap().getYear() + 1900 == selectedYear) {
-                boolean found = false;
-                for (Cus cus : dtCacNgayTrongThang) {
-                    if (cus.ngay.equals(e.getNgayLap())) {
-                        cus.doanhthu += e.getTongTien().doubleValue();
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) {
-                    Cus custemp = new Cus();
-                    custemp.doanhthu = e.getTongTien().doubleValue();
-                    custemp.ngay = e.getNgayLap();
-                    dtCacNgayTrongThang.add(custemp);
-                }
-            }
-        }
-
-        return dtCacNgayTrongThang;
-
-    }
-
-    private void updateChartForMonth(int selectedMonth, int selectedYear, DefaultCategoryDataset dataset) {
-        // Xóa dữ liệu cũ trong dataset
-        dataset.clear();
-
-        // Lấy danh sách ngày trong tháng và năm được chọn
-        ArrayList<Cus> dtCacNgayTrongThang = dtCacNgayTrongThang(selectedMonth, selectedYear);
-
-        // Tạo danh sách các ngày trong tháng
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(selectedYear, selectedMonth - 1, 1); // Đặt ngày là 1 để lấy ngày đầu tiên trong tháng
-        int lastDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-        // Thêm các ngày vào biểu đồ
-        for (int day = 1; day <= lastDay; day++) {
-            boolean found = false;
-            for (Cus cus : dtCacNgayTrongThang) {
-                if (cus.ngay.getDate() == day) {
-                    dataset.setValue(cus.doanhthu, "Doanh thu theo ngày", String.valueOf(day));
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                dataset.setValue(0, "Doanh thu theo ngày", String.valueOf(day));
-            }
-        }
-    }
 
     private void tktngayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tktngayMouseClicked
 
-        // Tạo JComboBox cho tháng
-        String[] months = {"Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"};
-        JComboBox<String> monthComboBox = new JComboBox<>(months);
+        Set<Date> SetNgay = new HashSet<>(); // 
+        Set<Integer> SetThang = new HashSet<>();
 
-        // Tạo JComboBox cho năm
-        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        Integer[] years = new Integer[currentYear - 2000 + 1];
-        for (int i = 0; i < years.length; i++) {
-            years[i] = 2000 + i;
+        for (Hoadon e : listhd) {
+            SetNgay.add(e.getNgayLap());
         }
-        JComboBox<Integer> yearComboBox = new JComboBox<>(years);
 
-        // Đặt vị trí và kích thước cho JComboBox
-        monthComboBox.setBounds(10, 10, 5, 30);
-        yearComboBox.setBounds(10, 30, 5, 30);
-
-        // Đặt giá trị mặc định cho JComboBox tháng và năm
-        monthComboBox.setSelectedItem("Tháng 1");
-        yearComboBox.setSelectedItem(currentYear);
-
-        // Tạo JPanel để chứa cả JComboBox và biểu đồ
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
-        panel.add(monthComboBox, BorderLayout.PAGE_START);
-        panel.add(yearComboBox);
-
-        // Tạo biểu đồ và thêm vào JPanel
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        JFreeChart chart = ChartFactory.createBarChart("Thống kê doanh thu theo ngày", "Ngày", "Doanh Thu (VND)", dataset, PlotOrientation.VERTICAL, false, true, false);
-        ChartPanel chartPanel = new ChartPanel(chart);
-        panel.add(chartPanel, BorderLayout.SOUTH);
-
-        // Thêm sự kiện lắng nghe cho JComboBox
-        ItemListener itemListener = new ItemListener() {
-            public void itemStateChanged(ItemEvent event) {
-                if (event.getStateChange() == ItemEvent.SELECTED) {
-                    int selectedMonth = monthComboBox.getSelectedIndex() + 1;
-                    int selectedYear = (int) yearComboBox.getSelectedItem();
-                    // Gọi hàm thực hiện xử lý và cập nhật dữ liệu cho biểu đồ
-                    updateChartForMonth(selectedMonth, selectedYear, dataset);
+        for (Hoadon e : listhd) {
+            SetThang.add(e.getNgayLap().getMonth());
+        }
+        // Tính tổng doanh thu của từng ngày        
+        ArrayList<Cus> dtday = new ArrayList();
+        for (var ngay : SetNgay) {
+            double dt = 0.0d;
+            // System.out.println(ngay.toString());
+            for (int j = 0; j < listhd.size(); ++j) {
+                if (ngay.toString().equals(listhd.get(j).getNgayLap().toString())) {
+                    dt = dt + listhd.get(j).getTongTien().doubleValue();
                 }
             }
-        };
-        monthComboBox.addItemListener(itemListener);
-        yearComboBox.addItemListener(itemListener);
+            Cus custemp = new Cus();
+            custemp.doanhthu = dt;
+            custemp.ngay = ngay;
+            dtday.add(custemp);
+        }
 
-        // Hiển thị JPanel chứa JComboBox và biểu đồ trong JFrame
-        JFrame frame = new JFrame("Doanh thu theo ngày");
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setLayout(new BorderLayout());
-        frame.add(panel, BorderLayout.NORTH);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(1244, 800);
+        Collections.sort(dtday, new Comparator<Cus>() {
+            public int compare(Cus cus1, Cus cus2) {
+                return cus1.ngay.compareTo(cus2.ngay);
+            }
+        });
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        if (dtday != null && !dtday.isEmpty()) {
+            for (Cus m : dtday) {
+                dataset.setValue(m.doanhthu, "Doanh thu theo ngày", (m.ngay));
+            }
+        }
+        // Tạo biểu đồ cột
+        JFreeChart chart = ChartFactory.createBarChart("Thống kê doanh thu theo ngày", "Ngày", "Doanh Thu (VND)", dataset, PlotOrientation.VERTICAL, false, true, false);
+        // Lấy đối tượng CategoryPlot từ biểu đồ
+        CategoryPlot plot = chart.getCategoryPlot();
+        // Thiết lập màu cho cột
+        GradientPaint gp = new GradientPaint(
+                0.0f, 0.0f, Color.white,
+                0.0f, 0.0f, Color.green
+        );
+        plot.getRenderer().setSeriesPaint(0, gp);
+        // Thiết lập màu nền cho biểu đồ
+        plot.setBackgroundPaint(new GradientPaint(
+                0.0f, 0.0f, Color.white,
+                0.0f, 0.0f, Color.gray
+        ));
+        // Thiết lập màu nền cho biểu đồ cột
+        plot.setRangeGridlinePaint(new Color(0, 0, 0, 0));
+        // Hiển thị biểu đồ trong JFrame
+        ChartFrame frame = new ChartFrame("Doanh thu", chart);
+        frame.pack();
         frame.setVisible(true);
-
+        frame.setSize(800, 600);
     }//GEN-LAST:event_tktngayMouseClicked
 
     private void tktthangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tktthangMouseClicked
@@ -442,13 +350,27 @@ public class ThongKeForm extends javax.swing.JFrame {
             }
         }
         // Tạo biểu đồ cột
-        JFreeChart chart = ChartFactory.createBarChart("Thống kê doanh thu theo tháng hiện tại", "Tháng", "Doanh Thu (VND)", dataset, PlotOrientation.VERTICAL, false, true, false);
-
+        JFreeChart chart = ChartFactory.createBarChart("Thống kê doanh thu theo tháng", "Tháng", "Doanh Thu (VND)", dataset, PlotOrientation.VERTICAL, false, true, false);
+        // Lấy đối tượng CategoryPlot từ biểu đồ
+        CategoryPlot plot = chart.getCategoryPlot();
+        // Thiết lập màu cho cột
+        GradientPaint gp = new GradientPaint(
+                0.0f, 0.0f, Color.white,
+                0.0f, 0.0f, Color.green
+        );
+        plot.getRenderer().setSeriesPaint(0, gp);
+        // Thiết lập màu nền cho biểu đồ
+        plot.setBackgroundPaint(new GradientPaint(
+                0.0f, 0.0f, Color.white,
+                0.0f, 0.0f, Color.gray
+        ));
+        // Thiết lập màu nền cho biểu đồ cột
+        plot.setRangeGridlinePaint(new Color(0, 0, 0, 0));
         // Hiển thị biểu đồ trong JFrame
         ChartFrame frame = new ChartFrame("Doanh thu", chart);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setSize(1244, 800);
+        frame.pack();
         frame.setVisible(true);
+        frame.setSize(800, 600);
     }//GEN-LAST:event_tktthangMouseClicked
 
     private void tkspbanchayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tkspbanchayMouseClicked
@@ -456,7 +378,7 @@ public class ThongKeForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tkspbanchayMouseClicked
 
     private void tkspBanChayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tkspBanChayMouseClicked
-
+        // TODO add your handling code here: 
         // Sắp xếp tháng theo thứ tự tăng dần
         Collections.sort(results, Comparator.comparingInt((Object[] o) -> (int) o[0])
                 .thenComparingInt(o -> ((Number) o[2]).intValue())
@@ -519,17 +441,25 @@ public class ThongKeForm extends javax.swing.JFrame {
         renderer.setSeriesItemLabelGenerator(0, generator);
         renderer.setSeriesItemLabelsVisible(0, true);
 
+        // Thiết lập màu cho cột
+        GradientPaint gp = new GradientPaint(
+                0.0f, 0.0f, Color.white,
+                0.0f, 0.0f, Color.green
+        );
+        plot.getRenderer().setSeriesPaint(0, gp);
+        // Thiết lập màu nền cho biểu đồ
+        plot.setBackgroundPaint(new GradientPaint(
+                0.0f, 0.0f, Color.white,
+                0.0f, 0.0f, Color.gray
+        ));
+        // Thiết lập màu nền cho biểu đồ cột
+        plot.setRangeGridlinePaint(new Color(0, 0, 0, 0));
         // Hiển thị biểu đồ trong JFrame
         ChartFrame frame = new ChartFrame("Sản phẩm bán chạy nhất theo tháng", chart);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setSize(1244, 800);
+        frame.pack();
         frame.setVisible(true);
+        frame.setSize(800, 600);
     }//GEN-LAST:event_tkspBanChayMouseClicked
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -545,42 +475,30 @@ public class ThongKeForm extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ThongKeForm.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(ThongKeFormOld.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ThongKeForm.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(ThongKeFormOld.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ThongKeForm.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(ThongKeFormOld.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ThongKeForm.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThongKeFormOld.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ThongKeForm().setVisible(true);
+                new ThongKeFormOld().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel containerPanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel tkdt;
