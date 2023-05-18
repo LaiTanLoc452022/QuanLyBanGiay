@@ -1,76 +1,110 @@
 package Main;
 
-import BUS.Bus;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.math.BigDecimal;
-
-import BUS.Generic_BUS;
-import BUS.ImageToByte;
-import GUI.*;
-
-import java.util.*;
-
+import DAO.Generic_Implement;
 import entity1.*;
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cache.internal.NaturalIdCacheKey;
-import org.hibernate.engine.query.spi.sql.NativeSQLQueryReturn;
-import org.hibernate.query.Query;
-
-import DAO.*;
-import Database.HIbernateUtil;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
+import java.awt.Component;
+import java.util.EventObject;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import javax.swing.*;
-public class Main {
+import javax.swing.event.CellEditorListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
+public class Main extends JFrame {
 
+   public static void main(String[] args) {
+        JFrame frame = new JFrame("JTable Checkbox Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Dữ liệu mẫu
+        Object[][] data = {
+                {"John", true},
+                {"Lisa", false},
+                {"David", true}
+        };
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            // Tạo frame
-            JFrame frame = new JFrame("Scroll Pane Frame Example");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Tiêu đề cột
+        String[] columnNames = {"Name", "Selected"};
 
-            // Tạo nội dung chứa dữ liệu dài
-            JPanel contentPane = new JPanel();
-            contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-            for (int i = 0; i < 100; i++) {
-                JLabel label = new JLabel("Line " + (i + 1));
-                contentPane.add(label);
+        // Tạo một DefaultTableModel với dữ liệu và tiêu đề cột
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+
+        // Tạo một JTable với DefaultTableModel
+        JTable table = new JTable(model) {
+            @Override
+            public Class<?> getColumnClass(int column) {
+                if (column == 1) {
+                    return Boolean.class; // Đặt kiểu dữ liệu của cột 1 là Boolean
+                }
+                return super.getColumnClass(column);
+            }
+        };
+
+        // Tạo một Renderer tùy chỉnh cho cột Checkbox
+        TableCellRenderer renderer = new TableCellRenderer() {
+            private final JCheckBox checkBox = new JCheckBox();
+
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                checkBox.setSelected((Boolean) value);
+                return checkBox;
+            }
+        };
+
+        // Tạo một Editor tùy chỉnh cho cột Checkbox
+        TableCellEditor editor = new TableCellEditor() {
+            private final JCheckBox checkBox = new JCheckBox();
+
+            @Override
+            public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+                checkBox.setSelected((Boolean) value);
+                return checkBox;
             }
 
-            // Tạo scroll pane và đặt content pane vào scroll pane
-            JScrollPane scrollPane = new JScrollPane(contentPane);
+            @Override
+            public Object getCellEditorValue() {
+                return checkBox.isSelected();
+            }
 
-            // Đặt scroll pane làm nội dung chính của frame
-            frame.getContentPane().add(scrollPane);
+            @Override
+            public boolean isCellEditable(EventObject anEvent) {
+                return true;
+            }
 
-            // Thiết lập kích thước của frame
-            frame.setSize(300, 200);
+            @Override
+            public boolean shouldSelectCell(EventObject anEvent) {
+                return true;
+            }
 
-            // Hiển thị frame
-            frame.setVisible(true);
-        });
-    
-}
+            @Override
+            public boolean stopCellEditing() {
+                return true;
+            }
 
+            @Override
+            public void cancelCellEditing() {
+            }
+
+            @Override
+            public void addCellEditorListener(CellEditorListener l) {
+            }
+
+            @Override
+            public void removeCellEditorListener(CellEditorListener l) {
+            }
+        };
+
+        // Đặt Renderer và Editor cho cột Checkbox
+        table.getColumnModel().getColumn(1).setCellRenderer(renderer);
+        table.getColumnModel().getColumn(1).setCellEditor(editor);
+
+        // Thêm JTable vào JFrame
+        frame.getContentPane().add(new JScrollPane(table));
+
+        frame.pack();
+        frame.setVisible(true);
+    }
 
 }

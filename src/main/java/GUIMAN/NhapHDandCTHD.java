@@ -566,7 +566,8 @@ public class NhapHDandCTHD extends JFrame {
         this.sp = new Sanpham();
 
         for (Sanpham x : listsp) {
-            if (x.getTen().equals(TenSP.getSelectedItem())) {
+            
+            if (x.getTen().equals(TenSP.getSelectedItem().toString())) {
                 sp = x;
                 GiaBan.setText(sp.getGiaBan().toString());
             }

@@ -24,6 +24,9 @@ public class Bus<Thing> {
        
        return list;
    }
+   public void setList(ArrayList<Thing> listTruyenVao){
+       this.list=listTruyenVao;
+   }
    public Thing Them(Thing instance){
        int tempsize=list.size();
        list.add(instance);

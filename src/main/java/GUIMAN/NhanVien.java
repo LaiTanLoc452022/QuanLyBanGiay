@@ -251,6 +251,7 @@ public class NhanVien extends javax.swing.JFrame {
         sadsa.setForeground(new java.awt.Color(204, 255, 204));
         sadsa.setText("LinkAnh");
 
+        LinkAnhNV.setEditable(false);
         LinkAnhNV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LinkAnhNVMouseClicked(evt);
@@ -300,7 +301,7 @@ public class NhanVien extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(sadsa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LinkAnhNV)))
+                        .addComponent(LinkAnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -451,16 +452,16 @@ public class NhanVien extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, 0, 429, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, 0, 398, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -483,7 +484,7 @@ public class NhanVien extends javax.swing.JFrame {
                         .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(AnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout NhanVienLayout = new javax.swing.GroupLayout(NhanVien);
@@ -536,9 +537,9 @@ public class NhanVien extends javax.swing.JFrame {
         NgaySinhNV.setDate(date1);
         EmailNV.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
         LuongNV.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
-        LinkAnhNV.setText("");
+        LinkAnhNV.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
         try{
-            byte[] byteArray = Ham.stringToByteArray((String)RecordTable.getValueAt(SelectedRows, 6));
+            byte[] byteArray = Ham.stringToByteArray(nv.get(SelectedRows).getAnh().toString());
             // Tạo một đối tượng ByteArrayInputStream từ mảng byte
             ByteArrayInputStream bais = new ByteArrayInputStream(byteArray);
             // Đọc hình ảnh từ ByteArrayInputStream

@@ -58,6 +58,7 @@ public class Kho extends javax.swing.JFrame {
         DefaultTableModel RecordTable = (DefaultTableModel) tableK.getModel();
         RecordTable.setRowCount(0);
         for (int i = 0; i < sp.size(); ++i) {
+            try{
             Object[] rowData = new Object[12];
             rowData[0] = sp.get(i).getIdgiay();
             rowData[1] = sp.get(i).getTen();
@@ -72,6 +73,10 @@ public class Kho extends javax.swing.JFrame {
             rowData[10] = pl.get(sp.get(i).getPhanloai().getIdphanLoai()-1).getMota();
             rowData[11] = Ham.AnhToString(sp.get(i).getAnh());
             RecordTable.addRow(rowData);
+            }
+            catch(NullPointerException npot){
+                
+            }
         }
     }
     
@@ -255,14 +260,14 @@ public class Kho extends javax.swing.JFrame {
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -451,7 +456,7 @@ public class Kho extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                         .addComponent(jPanel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -543,9 +548,10 @@ public class Kho extends javax.swing.JFrame {
     private void tableKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableKMouseClicked
         DefaultTableModel RecordTable = (DefaultTableModel) tableK.getModel();
         int SelectedRow = tableK.getSelectedRow();
-
+        try{
+            
         MaGiay.setText(RecordTable.getValueAt(SelectedRow,0).toString());
-        TenGiay.setText(RecordTable.getValueAt(SelectedRow,1).toString());
+        TenGiay.setText(RecordTable.getValueAt(SelectedRow,1)!=null?RecordTable.getValueAt(SelectedRow, 1).toString():"");
         Size.setText(RecordTable.getValueAt(SelectedRow, 2).toString());
         Mau.setText(RecordTable.getValueAt(SelectedRow, 3).toString());
         VatLieu.setText(RecordTable.getValueAt(SelectedRow, 4).toString());
@@ -554,6 +560,10 @@ public class Kho extends javax.swing.JFrame {
         MoTa.setText(RecordTable.getValueAt(SelectedRow, 7).toString());
         IDPL.setText(RecordTable.getValueAt(SelectedRow, 8).toString());
         LinkAnhK.setText("");
+        }
+        catch(NullPointerException nullpointerexception){
+            
+        }
         try{
             byte[] byteArray = Ham.stringToByteArray((String)RecordTable.getValueAt(SelectedRow, 11));
             // Tạo một đối tượng ByteArrayInputStream từ mảng byte
