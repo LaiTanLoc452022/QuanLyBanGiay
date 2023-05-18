@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 public class ImageToByte {
 
@@ -32,5 +33,9 @@ public class ImageToByte {
             Logger.getLogger(ImageToByte.class.getName()).log(Level.SEVERE, null, ex);
         }
         return bos.toByteArray();
+    }
+    public static ImageIcon byteToImageIcon(byte[] thamso){
+        ImageIcon imageicon=new ImageIcon(thamso);
+        return imageicon;
     }
 }

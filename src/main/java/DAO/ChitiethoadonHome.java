@@ -9,6 +9,10 @@ import entity1.Hoadon;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.query.Query;
+import entity1.Chitiethoadon;
+import entity1.Hoadon;
+import entity1.Sanpham;
+import java.util.ArrayList;
 
 /**
  * Home object for domain model class Chitiethoadon.
@@ -39,5 +43,15 @@ public class ChitiethoadonHome extends Generic_Implement {
         ArrayList<Object[]> results = new ArrayList(query.getResultList());
 
         return results;
+    public static ArrayList getAllParent(Hoadon hoadon){
+        ArrayList<Chitiethoadon>listCthd=new ArrayList(Generic_Implement.getAllChildrenFromParent(Chitiethoadon.class, hoadon));
+        ArrayList<Sanpham>resutl=new ArrayList();
+        for(Chitiethoadon cthd: listCthd){
+            Sanpham tamthoi=new Sanpham();
+            tamthoi=findByID(Sanpham.class, cthd.getId().getIdgiay());
+            resutl.add(tamthoi);
+        }
+        
+        return resutl;
     }
 }

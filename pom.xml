@@ -36,7 +36,24 @@
             <artifactId>miglayout</artifactId>
             <version>3.7.4</version>
             <type>jar</type>
-        </dependency>      
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-drive -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-drive</artifactId>
+            <version>v3-rev197-1.25.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/uk.co.caprica/vlcj -->
+        <dependency>
+            <groupId>uk.co.caprica</groupId>
+            <artifactId>vlcj</artifactId>
+            <version>4.8.2</version>
+        </dependency>
+
+      
+
+       
+         
         <dependency>  
             <groupId>com.google.zxing</groupId>  
             <artifactId>core</artifactId>  
@@ -70,6 +87,8 @@
             <artifactId>jcalendar</artifactId>
             <version>1.4</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.formdev/flatlaf -->
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>
@@ -80,6 +99,10 @@
             <artifactId>vlcj</artifactId>
             <version>4.8.2</version>
         </dependency>
+            <scope>runtime</scope>
+        </dependency>
+      
     </dependencies>
+  
 
 </project>

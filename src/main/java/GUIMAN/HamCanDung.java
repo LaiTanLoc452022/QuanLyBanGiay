@@ -39,7 +39,7 @@ public class HamCanDung {
         }
         return byteArray;
     }
-    public static void exportToExcel(JTable table, String filePath) {
+    public void exportToExcel(JTable table, String filePath) {
         try {
             Workbook workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet("Data");

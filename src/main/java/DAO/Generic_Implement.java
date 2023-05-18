@@ -17,9 +17,8 @@ public class Generic_Implement<T> implements GenericDAO {
     public static <T> void insert(T instance) {// tạo đối tượng trước rồi , gọi hàm insert nha mằn 
         try {
             session = HIbernateUtil.getSessionFactory().openSession();
-            transaction = session.beginTransaction();
             session.save(instance);
-            transaction.commit();
+
             session.close();
         } catch (HibernateException e) {
             throw new RuntimeException(e);
@@ -27,17 +26,24 @@ public class Generic_Implement<T> implements GenericDAO {
 
     }
 
-    public static <T> void update(T instance) {//object phải persisted
-        try {
-            session = HIbernateUtil.getSessionFactory().openSession();
-            transaction = session.beginTransaction();
-            session.update(instance);
-            transaction.commit();
-            session.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public static <T> void update(T instance) {
+    try {
+        session = HIbernateUtil.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
+
+        // Sử dụng merge() thay vì update()
+        session.update(instance);
+
+        transaction.commit();
+        session.close();
+
     }
+     catch (Exception e) {
+
+        throw new RuntimeException(e);
+    }
+}
+
 
     public static <T> void SuaTheoID(T instance) {
 
