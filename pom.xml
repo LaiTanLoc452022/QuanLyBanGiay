@@ -105,8 +105,7 @@
             <artifactId>vlcj</artifactId>
             <version>4.8.2</version>
         </dependency>
-            <scope>runtime</scope>
-        </dependency>
+            
       
     </dependencies>
 
