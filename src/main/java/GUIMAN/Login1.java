@@ -1,7 +1,7 @@
 package GUIMAN;
 
 import DAO.NguoidungHome;
-import UINam.UserInterfaceOld;
+import UINam.UserInterface;
 import entity1.Nguoidung;
 import java.util.List;
 import javax.swing.ImageIcon;

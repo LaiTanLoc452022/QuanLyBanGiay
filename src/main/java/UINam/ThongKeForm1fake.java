@@ -11,6 +11,8 @@ import entity1.Hoadon;
 import entity1.Sanpham;
 import java.awt.Color;
 import java.awt.GradientPaint;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -19,6 +21,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -35,7 +39,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author NAM
  */
-public class ThongKeFormOld extends javax.swing.JFrame {
+public class ThongKeForm1fake extends javax.swing.JFrame {
 
     /**
      * Creates new form ThongKeForm
@@ -45,7 +49,7 @@ public class ThongKeFormOld extends javax.swing.JFrame {
     public ArrayList<Sanpham> dssp;
     public ArrayList<Hoadon> listhd;
 
-    public ThongKeFormOld() {
+    public ThongKeForm1fake() {
         results = getTheoSLGiayVaThang();
         dscthd = Generic_BUS.getAll(Chitiethoadon.class);
         dssp = Generic_BUS.getAll(Sanpham.class);
@@ -71,7 +75,7 @@ public class ThongKeFormOld extends javax.swing.JFrame {
         tkspbanchay = new javax.swing.JPanel();
         tkspBanChay = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         containerPanel.setBackground(new java.awt.Color(0, 102, 102));
         containerPanel.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -219,6 +223,7 @@ public class ThongKeFormOld extends javax.swing.JFrame {
         public Date ngay;
         public Double doanhthu;
         public int soluong;
+        public int day;
 
         public Cus() {
         }
@@ -235,69 +240,109 @@ public class ThongKeFormOld extends javax.swing.JFrame {
         }
     }
 
+    private void generateChartForMonth(int selectedMonth) {
+        ArrayList<Cus> dtCacNgayTrongThang = new ArrayList<>();
 
-    private void tktngayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tktngayMouseClicked
-
-        Set<Date> SetNgay = new HashSet<>(); // 
-        Set<Integer> SetThang = new HashSet<>();
-
+        // Lọc dữ liệu trong listhd để chỉ lấy các hóa đơn của tháng được chọn
         for (Hoadon e : listhd) {
-            SetNgay.add(e.getNgayLap());
-        }
-
-        for (Hoadon e : listhd) {
-            SetThang.add(e.getNgayLap().getMonth());
-        }
-        // Tính tổng doanh thu của từng ngày        
-        ArrayList<Cus> dtday = new ArrayList();
-        for (var ngay : SetNgay) {
-            double dt = 0.0d;
-            // System.out.println(ngay.toString());
-            for (int j = 0; j < listhd.size(); ++j) {
-                if (ngay.toString().equals(listhd.get(j).getNgayLap().toString())) {
-                    dt = dt + listhd.get(j).getTongTien().doubleValue();
+            if (e.getNgayLap().getMonth() + 1 == selectedMonth) { // Month trong Java là 0-indexed, nên cần +1 để so sánh
+                boolean found = false;
+                for (Cus cus : dtCacNgayTrongThang) {
+                    if (cus.ngay.equals(e.getNgayLap())) {
+                        cus.doanhthu += e.getTongTien().doubleValue();
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    Cus custemp = new Cus();
+                    custemp.doanhthu = e.getTongTien().doubleValue();
+                    custemp.ngay = e.getNgayLap();
+                    dtCacNgayTrongThang.add(custemp);
                 }
             }
+        }
+
+        // Tính tổng doanh thu của từng ngày trong tháng
+        ArrayList<Cus> dtday = new ArrayList();
+        for (int ngay = 1; ngay <= 30; ngay++) {
+            double doanhthu = 0.0d;
+            for (Hoadon hoadon : listhd) {
+                if (hoadon.getNgayLap().getMonth() + 1 == selectedMonth && hoadon.getNgayLap().getDate() == ngay) {
+                    doanhthu += hoadon.getTongTien().doubleValue();
+                }
+            }
+
             Cus custemp = new Cus();
-            custemp.doanhthu = dt;
-            custemp.ngay = ngay;
+            custemp.doanhthu = doanhthu;
+            custemp.day = ngay;
             dtday.add(custemp);
         }
 
+        // Sắp xếp ngày tăng dần
         Collections.sort(dtday, new Comparator<Cus>() {
             public int compare(Cus cus1, Cus cus2) {
                 return cus1.ngay.compareTo(cus2.ngay);
             }
         });
 
+        // Tạo dataset cho biểu đồ
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        if (dtday != null && !dtday.isEmpty()) {
+        if (!dtday.isEmpty()) {
             for (Cus m : dtday) {
-                dataset.setValue(m.doanhthu, "Doanh thu theo ngày", (m.ngay));
+                dataset.setValue(m.doanhthu, "Doanh thu theo ngày", m.ngay);
             }
         }
+
         // Tạo biểu đồ cột
         JFreeChart chart = ChartFactory.createBarChart("Thống kê doanh thu theo ngày", "Ngày", "Doanh Thu (VND)", dataset, PlotOrientation.VERTICAL, false, true, false);
+
         // Lấy đối tượng CategoryPlot từ biểu đồ
         CategoryPlot plot = chart.getCategoryPlot();
+
         // Thiết lập màu cho cột
-        GradientPaint gp = new GradientPaint(
-                0.0f, 0.0f, Color.white,
-                0.0f, 0.0f, Color.green
-        );
+        GradientPaint gp = new GradientPaint(0.0f, 0.0f, Color.white, 0.0f, 0.0f, Color.green);
         plot.getRenderer().setSeriesPaint(0, gp);
+
         // Thiết lập màu nền cho biểu đồ
-        plot.setBackgroundPaint(new GradientPaint(
-                0.0f, 0.0f, Color.white,
-                0.0f, 0.0f, Color.gray
-        ));
+        plot.setBackgroundPaint(new GradientPaint(0.0f, 0.0f, Color.white, 0.0f, 0.0f, Color.gray));
+
         // Thiết lập màu nền cho biểu đồ cột
         plot.setRangeGridlinePaint(new Color(0, 0, 0, 0));
+
         // Hiển thị biểu đồ trong JFrame
         ChartFrame frame = new ChartFrame("Doanh thu", chart);
         frame.pack();
         frame.setVisible(true);
         frame.setSize(800, 600);
+    }
+
+    private void tktngayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tktngayMouseClicked
+        // Tạo JComboBox và danh sách các tháng
+        String[] months = {"Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"};
+        JComboBox<String> monthComboBox = new JComboBox<>(months);
+
+        // Đặt vị trí và kích thước cho JComboBox
+        monthComboBox.setBounds(10, 10, 100, 30);
+
+        // Thêm sự kiện lắng nghe cho JComboBox
+        monthComboBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent event) {
+                if (event.getStateChange() == ItemEvent.SELECTED) {
+                    int selectedMonth = monthComboBox.getSelectedIndex() + 1;
+                    // Gọi hàm thực hiện xử lý và hiển thị biểu đồ với tháng được chọn
+                    generateChartForMonth(selectedMonth);
+                }
+            }
+        });
+
+        // Thêm JComboBox vào JFrame của bạn
+        JFrame frame = new JFrame("Doanh thu theo ngày");
+        frame.setLayout(null);
+        frame.add(monthComboBox);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 600);
+        frame.setVisible(true);
     }//GEN-LAST:event_tktngayMouseClicked
 
     private void tktthangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tktthangMouseClicked
@@ -478,13 +523,13 @@ public class ThongKeFormOld extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ThongKeFormOld.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThongKeForm1fake.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ThongKeFormOld.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThongKeForm1fake.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ThongKeFormOld.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThongKeForm1fake.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ThongKeFormOld.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThongKeForm1fake.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -492,7 +537,7 @@ public class ThongKeFormOld extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ThongKeFormOld().setVisible(true);
+                new ThongKeForm1fake().setVisible(true);
             }
         });
     }
