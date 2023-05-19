@@ -80,7 +80,7 @@ public class NhapHDandCTHD extends JFrame {
         }
         TenSP.setModel(comboBoxModelSP);
     }
-
+    public  DefaultTableModel tableChiTietHoaDon;// Truyen ham nay vao de xuat hoadon
     public void GetDataCTHD() {
         DefaultTableModel RecordTable = (DefaultTableModel) tableCTHD.getModel();
         RecordTable.setRowCount(0);
@@ -93,6 +93,7 @@ public class NhapHDandCTHD extends JFrame {
             rowData[3] = listTongtien.get(i);
             RecordTable.addRow(rowData);
         }
+        this.tableChiTietHoaDon=RecordTable;
     }
     
     public void reset(){
@@ -508,7 +509,7 @@ public class NhapHDandCTHD extends JFrame {
             Generic_Implement.insert(var);
         }
         this.dispose();
-        In.openInHoaDon(hoaDontruyenvao,HoTen.getText());
+        In.openInHoaDon(hoaDontruyenvao,HoTen.getText(),this.tableChiTietHoaDon);
          
     }//GEN-LAST:event_InsertMouseClicked
 
