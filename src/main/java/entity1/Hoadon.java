@@ -93,8 +93,8 @@ public class Hoadon implements java.io.Serializable {
         return this.chitiethoadons;
     }
 
-	public void setChitiethoadons(Set<Chitiethoadon> chitiethoadons) {
-		this.chitiethoadons = chitiethoadons;
-	}
+    public void setChitiethoadons(Set<Chitiethoadon> chitiethoadons) {
+        this.chitiethoadons = chitiethoadons;
+    }
 
 }
