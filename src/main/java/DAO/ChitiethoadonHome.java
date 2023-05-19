@@ -14,10 +14,6 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
 import Database.HIbernateUtil;
-import entity1.Hoadon;
-import java.util.ArrayList;
-import java.util.List;
-import org.hibernate.query.Query;
 import entity1.Chitiethoadon;
 import entity1.Hoadon;
 import entity1.Sanpham;
