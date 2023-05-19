@@ -17,13 +17,14 @@ import com.google.api.services.drive.model.File;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
+import javax.swing.ImageIcon;
 
 public class GoogleDriveUploader {
 
     private static final String APPLICATION_NAME = "DoAnJava";
     private static final String CREDENTIALS_FILE_PATH = "/doanjava-386815-188644ee2f3d.json";
 
-    public static String pushAnhLenDrive(String pathImage) {
+    public static ImageIcon pushAnhLenDrive(String pathImage) {
         try {
             // Load credentials
             GoogleCredential credentials = GoogleCredential.fromStream(
@@ -56,8 +57,10 @@ public class GoogleDriveUploader {
                     .execute();
 
             System.out.println("File ID: " + uploadedFile.getWebViewLink());
-            System.out.println("Image uploaded successfully.");
-            return uploadedFile.getWebViewLink();
+           ImageIcon ii=new ImageIcon( QRCodeGenerator.generateQRCodeImage(uploadedFile.getWebViewLink()));
+            
+            //System.out.println("Image uploaded successfully.");
+            return ii;
         } catch (GeneralSecurityException | IOException e) {
             e.printStackTrace();
             Exception exp = new Exception("Khong push duoc nguoi ae oi!");

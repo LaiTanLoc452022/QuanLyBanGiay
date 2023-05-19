@@ -34,13 +34,13 @@ public class Kho extends javax.swing.JFrame {
     HamCanDung Ham = new HamCanDung();
     Bus bus = new Bus();
     ChonF cf = new ChonF(this,true);
-    public static ArrayList<Sanpham> sp = new ArrayList();
+    public static ArrayList<Sanpham> sp = Generic_BUS.getAll(Sanpham.class);
     ArrayList<Phanloai> listpl = PhanLoaiGiay.pl;
     /**
      * Creates new form Kho
      */
     public Kho() {
-        sp = bus.getList(Sanpham.class);
+        bus.setList(sp);
         initComponents();
     }
     
@@ -622,9 +622,10 @@ public class Kho extends javax.swing.JFrame {
             ImageIcon imageIcon = new ImageIcon(imagescaled);
             sp.setAnh(ImageToByte.FileToByte(file));
             AnhK.setIcon(imageIcon);
-
-            bus.getList(Sanpham.class);
+            
+          //  bus.getList(Sanpham.class);
             bus.Them(sp);
+            this.sp=bus.getList();
             GetDataK();
             JOptionPane.showMessageDialog(null, "Insert Successfully!");
         } catch (Exception e) {
@@ -657,9 +658,10 @@ public class Kho extends javax.swing.JFrame {
             ImageIcon imageIcon = new ImageIcon(imagescaled);
             sp.setAnh(ImageToByte.FileToByte(file));
             AnhK.setIcon(imageIcon);
-
-            bus.getList(Sanpham.class);
+            
+            
             bus.Sua(sp, SelectedRows);
+            this.sp=bus.getList();
             GetDataK();
             JOptionPane.showMessageDialog(null, "Update successfully!");
         } catch (Exception e) {

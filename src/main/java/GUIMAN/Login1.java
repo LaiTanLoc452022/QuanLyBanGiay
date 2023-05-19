@@ -5,12 +5,14 @@ import UINam.UserInterfaceOld;
 import entity1.Nguoidung;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class Login1 extends javax.swing.JFrame {
 
-    public  List<Nguoidung> list;
-   public static Nguoidung nguoiDungLogin;
-   public DEMO ui;
+    public List<Nguoidung> list;
+    public static Nguoidung nguoiDungLogin;
+    public DEMO ui;
+
     public Login1() {
         list = NguoidungHome.getAll(Nguoidung.class);
         initComponents();
@@ -168,22 +170,43 @@ public class Login1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
-        
-        for (Nguoidung temp : list) {
-
-            if (String.valueOf(passwordF.getPassword()).equals(temp.getMatKhau()) && usernameTF.getText().equals(temp.getTenDangNhap())) {
-                System.out.println("ThanhCong!");
-                this.dispose();
-                 ui = new DEMO();
-                this.nguoiDungLogin=temp;
-                ui.nguoiDungLog=nguoiDungLogin;
-                ui.setVisible(true);
-                return;
+        boolean state = false;
+        if (!this.usernameTF.equals("")) {
+            for (Nguoidung temp : list) {
+                if (String.valueOf(passwordF.getPassword()).equals(temp.getMatKhau()) && usernameTF.getText().equals(temp.getTenDangNhap())) {
+                    state = true;
+                    System.out.println("ThanhCong!");
+                    this.dispose();
+                    ui = new DEMO();
+                    this.nguoiDungLogin = temp;
+                    ui.nguoiDungLog = nguoiDungLogin;
+                    ui.setVisible(true);
+                    return;
+                } else {
+                    state = false;
+                }
             }
         }
+        if (state == false) {
+            // JOptionPane.showMessageDialog(null, "invalid", "NULL", JOptionPane.ERROR_MESSAGE);
+            handleLoginFailed();
+
+        }
+
 
     }//GEN-LAST:event_loginBtnMouseClicked
-
+private int loginAttempts = 0;
+   private final int MAX_LOGIN_ATTEMPTS=3;
+    private void handleLoginFailed() {
+    this.usernameTF.setText("");
+    loginAttempts++;
+    if (loginAttempts >= MAX_LOGIN_ATTEMPTS) {
+        JOptionPane.showMessageDialog(null, "Số lần thử đăng nhập đã vượt quá giới hạn.");
+        // Thực hiện hành động khi vượt quá giới hạn thử đăng nhập
+    } else {
+        loginBtnMouseClicked(null);
+    }
+    }
     private void passwordFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFActionPerformed
@@ -215,8 +238,6 @@ public class Login1 extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
-     
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -83,7 +83,6 @@ public class ThongKeForm extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(537, 550));
         setMinimumSize(new java.awt.Dimension(537, 550));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(537, 550));
 
         containerPanel.setBackground(new java.awt.Color(0, 102, 102));
         containerPanel.setMaximumSize(new java.awt.Dimension(537, 550));
@@ -196,7 +195,6 @@ public class ThongKeForm extends javax.swing.JFrame {
         );
 
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Downloads\\tke.jpg")); // NOI18N
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
@@ -227,7 +225,7 @@ public class ThongKeForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tkdt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addComponent(tkdt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(22, 22, 22)
                 .addComponent(tktngay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
