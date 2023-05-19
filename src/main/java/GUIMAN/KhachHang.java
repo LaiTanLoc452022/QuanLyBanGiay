@@ -31,14 +31,15 @@ public class KhachHang extends javax.swing.JFrame {
 
     HamCanDung Ham = new HamCanDung();
     ChonF cf = new ChonF(this, true);
-    Bus bus = new Bus();
+    Bus<Khachhang> bus = new Bus();
     public static ArrayList<Khachhang> kh = new ArrayList();
-    private ArrayList<The> listt = TheForm.t;
+    private ArrayList<The> listt =  TheForm.t;
 
     /**
      * Creates new form KhachHang
      */
     public KhachHang() {
+        
         kh = bus.getList(Khachhang.class);
         initComponents();
     }
@@ -73,12 +74,12 @@ public class KhachHang extends javax.swing.JFrame {
                 rowData[0] = kh.get(i).getIdkhachHang();
                 rowData[1] = kh.get(i).getThe().getIdthe();
                 if (checkListIdThe(kh.get(i).getThe().getIdthe())) {
-                    rowData[2] = listt.get(kh.get(i).getThe().getIdthe() - 2).getLoai();
-                    rowData[3] = listt.get(kh.get(i).getThe().getIdthe() - 2).getHeSo();
+                    rowData[2] = listt.get(kh.get(i).getThe().getIdthe() - 1).getLoai();
+                    rowData[3] = listt.get(kh.get(i).getThe().getIdthe() - 1).getHeSo();
                 }
                 else{
-                    rowData[2]="null";
-                    rowData[3]="null";
+                    rowData[2]="";
+                    rowData[3]="";
                 }
 
                 rowData[4] = kh.get(i).getNgayLapThe();
@@ -88,9 +89,9 @@ public class KhachHang extends javax.swing.JFrame {
                 rowData[8] = kh.get(i).getDiaChi();
 
             } catch (NullPointerException  npe) {
-                rowData[1] = "null";
-                rowData[2] = "null";
-                rowData[3] = "null";
+                rowData[1] = "";
+                rowData[2] = "";
+                rowData[3] = "";
                 rowData[4] = kh.get(i).getNgayLapThe();
                 rowData[5] = kh.get(i).getHoVaTen();
                 rowData[6] = kh.get(i).getGioiTinh();
@@ -140,7 +141,7 @@ public class KhachHang extends javax.swing.JFrame {
         NgaySinh = new com.toedter.calendar.JDateChooser();
         jPanel34 = new javax.swing.JPanel();
         InKH = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TimKiem = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -471,12 +472,12 @@ public class KhachHang extends javax.swing.JFrame {
 
         jPanel27.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 248, 95, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TimKiemActionPerformed(evt);
             }
         });
-        jPanel27.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 250, 40));
+        jPanel27.add(TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 250, 40));
 
         javax.swing.GroupLayout KhachHangLayout = new javax.swing.GroupLayout(KhachHang);
         KhachHang.setLayout(KhachHangLayout);
@@ -536,7 +537,7 @@ public class KhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_tableKHMouseClicked
 
     private void InsertKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertKHMouseClicked
-        try {
+//        try {
             Khachhang khachhang = new Khachhang();
             The T = new The();
             T = Generic_Implement.findByID(The.class, Integer.parseInt(MaThe.getText()));
@@ -554,9 +555,9 @@ public class KhachHang extends javax.swing.JFrame {
             this.kh = bus.getList();
             GetDataKH();
             JOptionPane.showMessageDialog(null, "Insert Successfully!");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
-        }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
+//        }
     }//GEN-LAST:event_InsertKHMouseClicked
 
     private void UpDateKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpDateKHMouseClicked
@@ -642,13 +643,9 @@ public class KhachHang extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_InKHMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // Tạo danh sách tìm kiếm
-        ArrayList<Khachhang> khachHangSearch = new ArrayList();
-        
-        JPopupMenu Search = new JPopupMenu();
-        
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimKiemActionPerformed
+  
+    }//GEN-LAST:event_TimKiemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -676,7 +673,6 @@ public class KhachHang extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(KhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -697,6 +693,7 @@ public class KhachHang extends javax.swing.JFrame {
     private javax.swing.JTextField MaThe;
     private com.toedter.calendar.JDateChooser NgayLap;
     private com.toedter.calendar.JDateChooser NgaySinh;
+    private javax.swing.JTextField TimKiem;
     private javax.swing.JLabel UpDateKH;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
@@ -720,7 +717,7 @@ public class KhachHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tableKH;
     // End of variables declaration//GEN-END:variables
 }
+

@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -391,17 +392,7 @@ public class HoaDon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void INHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_INHDMouseClicked
-        InHoaDon in = new InHoaDon();
-        BufferedImage image = new BufferedImage(in.width(), in.height(), BufferedImage.TYPE_INT_RGB);
-        Graphics2D graphics = image.createGraphics();
-        in.get().print(graphics);
-        graphics.dispose();
-        try {
-            ImageIO.write(image, "png", new File("src\\main\\java\\GUIMAN\\image\\HoaDon.png"));
-            System.out.println("Ảnh đã được tạo và lưu thành công.");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+       
     }//GEN-LAST:event_INHDMouseClicked
     public void CTHDdadong(NhapHDandCTHD cthd) {
         cthd.addWindowListener(new WindowAdapter() {
