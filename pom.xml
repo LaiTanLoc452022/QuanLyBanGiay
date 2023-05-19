@@ -101,14 +101,7 @@
             <artifactId>vlcj</artifactId>
             <version>4.8.2</version>
         </dependency>
-<<<<<<< HEAD
-            
-      
-=======
 
-
-
->>>>>>> parent of 3101c14 (Merge branch 'Nam'sbranch')
     </dependencies>
 
 
