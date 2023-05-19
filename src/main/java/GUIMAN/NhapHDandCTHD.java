@@ -101,7 +101,7 @@ public class NhapHDandCTHD extends JFrame {
 
     public void openHoaDon(Hoadon hoadontruyentuHoaDonform) {
         this.hoaDontruyenvao = hoadontruyentuHoaDonform;
-//        System.out.println(hoaDontruyenvao.getIdhoaDon());
+
         MaHD2.setText(this.hoaDontruyenvao.getIdhoaDon().toString());
         setSize(900, 760);
         setModelHD();
@@ -509,7 +509,6 @@ public class NhapHDandCTHD extends JFrame {
         }
         this.dispose();
         In.openInHoaDon(hoaDontruyenvao,HoTen.getText());
-         
     }//GEN-LAST:event_InsertMouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked

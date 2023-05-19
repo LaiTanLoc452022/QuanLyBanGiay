@@ -66,7 +66,6 @@ public class Kho extends javax.swing.JFrame {
     
     
     public void GetDataK(){
-        
         DefaultTableModel RecordTable = (DefaultTableModel) tableK.getModel();
         RecordTable.setRowCount(0);
         Object[] rowData=null;
@@ -599,32 +598,33 @@ public class Kho extends javax.swing.JFrame {
 
     private void InsertKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertKMouseClicked
         try {
-            Sanpham sp = new Sanpham();
+            Sanpham sanpham = new Sanpham();
             Phanloai pl = new Phanloai();
             pl = Generic_Implement.findByID(Phanloai.class, Integer.parseInt(IDPL.getText()));
-            sp.setIdgiay(Integer.parseInt(MaGiay.getText()));
-            sp.setPhanloai(pl);
-            sp.setTen(TenGiay.getText());
-            sp.setSize(Double.parseDouble(Size.getText()));
-            sp.setMau(Mau.getText());
-            sp.setVatLieu(VatLieu.getText());
+            sanpham.setIdgiay(Integer.parseInt(MaGiay.getText()));
+            sanpham.setPhanloai(pl);
+            sanpham.setTen(TenGiay.getText());
+            sanpham.setSize(Double.parseDouble(Size.getText()));
+            sanpham.setMau(Mau.getText());
+            sanpham.setVatLieu(VatLieu.getText());
             String strNumber = Gia.getText();
             BigDecimal number = new BigDecimal(strNumber);
-            sp.setGiaBan(number);
+            sanpham.setGiaBan(number);
 
-            sp.setSoluong(Double.parseDouble(SoLuong.getText()));
-            sp.setThemMoTa(MoTa.getText());
+            sanpham.setSoluong(Double.parseDouble(SoLuong.getText()));
+            sanpham.setThemMoTa(MoTa.getText());
 
             File file = new File(LinkAnhK.getText());
             BufferedImage picture = ImageIO.read(file);
             Image image = new ImageIcon(picture).getImage();
             Image imagescaled = image.getScaledInstance(AnhK.getWidth(), AnhK.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(imagescaled);
-            sp.setAnh(ImageToByte.FileToByte(file));
+            sanpham.setAnh(ImageToByte.FileToByte(file));
             AnhK.setIcon(imageIcon);
 
-            bus.getList(Sanpham.class);
-            bus.Them(sp);
+            
+            bus.Them(sanpham);
+            sp = bus.getList();
             GetDataK();
             JOptionPane.showMessageDialog(null, "Insert Successfully!");
         } catch (Exception e) {
@@ -636,30 +636,30 @@ public class Kho extends javax.swing.JFrame {
     private void UpdateKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateKMouseClicked
         try {
             int SelectedRows = tableK.getSelectedRow();
-            Sanpham sp = new Sanpham();
+            Sanpham sanpham = new Sanpham();
             Phanloai pl = new Phanloai();
-            sp.setIdgiay(Integer.parseInt(MaGiay.getText()));
+            sanpham.setIdgiay(Integer.parseInt(MaGiay.getText()));
             pl = Generic_Implement.findByID(Phanloai.class, Integer.parseInt(IDPL.getText()));
-            sp.setPhanloai(pl);
-            sp.setTen(TenGiay.getText());
-            sp.setSize(Double.parseDouble(Size.getText()));
-            sp.setMau(Mau.getText());
-            sp.setVatLieu(VatLieu.getText());
+            sanpham.setPhanloai(pl);
+            sanpham.setTen(TenGiay.getText());
+            sanpham.setSize(Double.parseDouble(Size.getText()));
+            sanpham.setMau(Mau.getText());
+            sanpham.setVatLieu(VatLieu.getText());
             String strNumber = Gia.getText();
             BigDecimal number = new BigDecimal(strNumber);
-            sp.setGiaBan(number);
-            sp.setSoluong(Double.parseDouble(SoLuong.getText()));
-            sp.setThemMoTa(MoTa.getText());
+            sanpham.setGiaBan(number);
+            sanpham.setSoluong(Double.parseDouble(SoLuong.getText()));
+            sanpham.setThemMoTa(MoTa.getText());
             File file = new File(LinkAnhK.getText());
             BufferedImage picture = ImageIO.read(file);
             Image image = new ImageIcon(picture).getImage();
             Image imagescaled = image.getScaledInstance(AnhK.getWidth(), AnhK.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(imagescaled);
-            sp.setAnh(ImageToByte.FileToByte(file));
+            sanpham.setAnh(ImageToByte.FileToByte(file));
             AnhK.setIcon(imageIcon);
 
-            bus.getList(Sanpham.class);
-            bus.Sua(sp, SelectedRows);
+            bus.Sua(sanpham, SelectedRows);
+            sp = bus.getList();
             GetDataK();
             JOptionPane.showMessageDialog(null, "Update successfully!");
         } catch (Exception e) {
@@ -670,8 +670,7 @@ public class Kho extends javax.swing.JFrame {
     private void DeleteKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteKMouseClicked
         Sanpham sanpham = new Sanpham();
         int SelectedRow = tableK.getSelectedRow();
-        sanpham.setIdgiay(Integer.parseInt(MaGiay.getText()));
-        bus.getList(Sanpham.class);
+        sanpham.setIdgiay(Integer.parseInt(MaGiay.getText()));   
         bus.Xoa(sanpham, SelectedRow);
         sp=bus.getList();
         GetDataK();

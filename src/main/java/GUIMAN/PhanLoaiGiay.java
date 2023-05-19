@@ -444,11 +444,15 @@ public class PhanLoaiGiay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablePhanLoaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePhanLoaiMouseClicked
+        try{
         DefaultTableModel Record = (DefaultTableModel) tablePhanLoai.getModel();
         int selecRow = tablePhanLoai.getSelectedRow();
         MaPhanLoai.setText(Record.getValueAt(selecRow, 0).toString());
         Loai.setText(Record.getValueAt(selecRow, 1).toString());
         MoTaPhanLoai.setText(Record.getValueAt(selecRow, 2).toString());
+        }catch(Exception e){
+            JOptionPane.showInternalMessageDialog(null, "không thể truy cập");
+        }
     }//GEN-LAST:event_tablePhanLoaiMouseClicked
 
     private void InsertKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertKMouseClicked
