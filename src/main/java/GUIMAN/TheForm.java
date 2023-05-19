@@ -85,8 +85,6 @@ public class TheForm extends javax.swing.JFrame {
         Loai = new javax.swing.JTextField();
         jPanel34 = new javax.swing.JPanel();
         InKH = new javax.swing.JLabel();
-        jPanel35 = new javax.swing.JPanel();
-        UpdateThe = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -338,38 +336,6 @@ public class TheForm extends javax.swing.JFrame {
 
         jPanel27.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 248, 95, -1));
 
-        jPanel35.setBackground(new java.awt.Color(0, 51, 51));
-
-        UpdateThe.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        UpdateThe.setForeground(new java.awt.Color(204, 255, 204));
-        UpdateThe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        UpdateThe.setText("SỬA");
-        UpdateThe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        UpdateThe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UpdateTheMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
-        jPanel35.setLayout(jPanel35Layout);
-        jPanel35Layout.setHorizontalGroup(
-            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel35Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(UpdateThe, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel35Layout.setVerticalGroup(
-            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel35Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(UpdateThe, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel27.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 190, 95, -1));
-
         javax.swing.GroupLayout FormTheLayout = new javax.swing.GroupLayout(FormThe);
         FormThe.setLayout(FormTheLayout);
         FormTheLayout.setHorizontalGroup(
@@ -469,31 +435,12 @@ public class TheForm extends javax.swing.JFrame {
     }//GEN-LAST:event_InKHMouseClicked
 
     private void tableTheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableTheMouseClicked
-        try{
-            DefaultTableModel Record = (DefaultTableModel) tableThe.getModel();
-            int selecRow = tableThe.getSelectedRow();
-            MaThe.setText(Record.getValueAt(selecRow, 0).toString());
-            Loai.setText(Record.getValueAt(selecRow, 1).toString());
-            Heso.setText(Record.getValueAt(selecRow, 2).toString());
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "không thể truy cập");
-        }
+        DefaultTableModel Record = (DefaultTableModel) tableThe.getModel();
+        int selecRow = tableThe.getSelectedRow();
+        MaThe.setText(Record.getValueAt(selecRow, 0).toString());
+        Loai.setText(Record.getValueAt(selecRow, 1).toString());
+        Heso.setText(Record.getValueAt(selecRow, 2).toString());
     }//GEN-LAST:event_tableTheMouseClicked
-
-    private void UpdateTheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateTheMouseClicked
-        try {
-            The updateThe = new The();
-            updateThe.setIdthe(Integer.parseInt(MaThe.getText()));
-            updateThe.setLoai(Loai.getText());
-            updateThe.setHeSo(Double.parseDouble(Heso.getText()));
-            busThe.Them(updateThe);
-            t = busThe.getList();
-            GetDataThe();
-            JOptionPane.showMessageDialog(null, "Insert Successfully!");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Insert Error!");
-        }
-    }//GEN-LAST:event_UpdateTheMouseClicked
 
     /**
      * @param args the command line arguments
@@ -541,7 +488,6 @@ public class TheForm extends javax.swing.JFrame {
     private javax.swing.JLabel InsertThe;
     private javax.swing.JTextField Loai;
     private javax.swing.JTextField MaThe;
-    private javax.swing.JLabel UpdateThe;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel17;
@@ -558,7 +504,6 @@ public class TheForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
-    private javax.swing.JPanel jPanel35;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tableThe;
     // End of variables declaration//GEN-END:variables

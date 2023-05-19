@@ -33,13 +33,12 @@ public class KhachHang extends javax.swing.JFrame {
     ChonF cf = new ChonF(this, true);
     Bus<Khachhang> bus = new Bus();
     public static ArrayList<Khachhang> kh = new ArrayList();
-    private ArrayList<The> listt =  TheForm.t;
+    private ArrayList<The> listt = TheForm.t;
 
     /**
      * Creates new form KhachHang
      */
     public KhachHang() {
-        
         kh = bus.getList(Khachhang.class);
         initComponents();
     }
@@ -74,12 +73,12 @@ public class KhachHang extends javax.swing.JFrame {
                 rowData[0] = kh.get(i).getIdkhachHang();
                 rowData[1] = kh.get(i).getThe().getIdthe();
                 if (checkListIdThe(kh.get(i).getThe().getIdthe())) {
-                    rowData[2] = listt.get(kh.get(i).getThe().getIdthe() - 1).getLoai();
-                    rowData[3] = listt.get(kh.get(i).getThe().getIdthe() - 1).getHeSo();
+                    rowData[2] = listt.get(kh.get(i).getThe().getIdthe() - 2).getLoai();
+                    rowData[3] = listt.get(kh.get(i).getThe().getIdthe() - 2).getHeSo();
                 }
                 else{
-                    rowData[2]="";
-                    rowData[3]="";
+                    rowData[2]="null";
+                    rowData[3]="null";
                 }
 
                 rowData[4] = kh.get(i).getNgayLapThe();
@@ -89,9 +88,9 @@ public class KhachHang extends javax.swing.JFrame {
                 rowData[8] = kh.get(i).getDiaChi();
 
             } catch (NullPointerException  npe) {
-                rowData[1] = "";
-                rowData[2] = "";
-                rowData[3] = "";
+                rowData[1] = "null";
+                rowData[2] = "null";
+                rowData[3] = "null";
                 rowData[4] = kh.get(i).getNgayLapThe();
                 rowData[5] = kh.get(i).getHoVaTen();
                 rowData[6] = kh.get(i).getGioiTinh();
@@ -537,7 +536,7 @@ public class KhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_tableKHMouseClicked
 
     private void InsertKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertKHMouseClicked
-//        try {
+        try {
             Khachhang khachhang = new Khachhang();
             The T = new The();
             T = Generic_Implement.findByID(The.class, Integer.parseInt(MaThe.getText()));
@@ -555,9 +554,9 @@ public class KhachHang extends javax.swing.JFrame {
             this.kh = bus.getList();
             GetDataKH();
             JOptionPane.showMessageDialog(null, "Insert Successfully!");
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
-//        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
+        }
     }//GEN-LAST:event_InsertKHMouseClicked
 
     private void UpDateKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpDateKHMouseClicked
@@ -644,7 +643,16 @@ public class KhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_InKHMouseClicked
 
     private void TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimKiemActionPerformed
-  
+        // Tạo danh sách tìm kiếm
+        ArrayList<Khachhang> khachHangSearch = new ArrayList();
+        
+        khachHangSearch = bus.TimKiem(TimKiem.getText());
+        
+        
+        JPopupMenu Search = new JPopupMenu();
+        
+        
+        
     }//GEN-LAST:event_TimKiemActionPerformed
 
     /**
@@ -673,6 +681,7 @@ public class KhachHang extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(KhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

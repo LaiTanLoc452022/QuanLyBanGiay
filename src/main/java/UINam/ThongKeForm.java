@@ -83,6 +83,7 @@ public class ThongKeForm extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(537, 550));
         setMinimumSize(new java.awt.Dimension(537, 550));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(537, 550));
 
         containerPanel.setBackground(new java.awt.Color(0, 102, 102));
         containerPanel.setMaximumSize(new java.awt.Dimension(537, 550));
@@ -90,6 +91,7 @@ public class ThongKeForm extends javax.swing.JFrame {
         containerPanel.setPreferredSize(new java.awt.Dimension(537, 550));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("X");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -194,6 +196,7 @@ public class ThongKeForm extends javax.swing.JFrame {
         );
 
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Downloads\\tke.jpg")); // NOI18N
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
