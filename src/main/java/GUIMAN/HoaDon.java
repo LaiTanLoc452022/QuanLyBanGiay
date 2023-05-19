@@ -425,8 +425,6 @@ public class HoaDon extends javax.swing.JFrame {
         hoadon.setIdnhanVien(this.HD.hdvao.getIdnhanVien());
         HD.openHoaDon(hoadon);
         CTHDdadong(HD);
-        
-
     }//GEN-LAST:event_InsertHDMouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked

@@ -119,7 +119,6 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGap(84, 84, 84))
         );
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\NAM\\OneDrive\\Documents\\NetBeansProjects\\QuanLyBanGiay2\\src\\main\\java\\UINam\\img\\login3.jpg")); // NOI18N
         jLabel5.setText("jLabel5");
         jLabel5.setMaximumSize(new java.awt.Dimension(460, 789));
         jLabel5.setMinimumSize(new java.awt.Dimension(460, 789));
@@ -151,7 +150,6 @@ public class LoginForm extends javax.swing.JFrame {
         );
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("X");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {

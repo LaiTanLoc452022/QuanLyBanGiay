@@ -18,27 +18,6 @@ import javax.swing.JOptionPane;
 public class Bus<Thing> {
    private Thing entity;
    private ArrayList<Thing> list;
-   public synchronized ArrayList getList(Class<Thing> instance){
-       list=new ArrayList();
-       list=Generic_BUS.getAll(instance);
-       
-       return list;
-   }
-   public void setList(ArrayList<Thing> listTruyenVao){
-       this.list=listTruyenVao;
-   }
-   public Thing Them(Thing instance){
-       int tempsize=list.size();
-       list.add(instance);
-    
-           Generic_Implement.insert(list.get(list.size()-1));
-  
-            
-       if(tempsize<list.size()){
-           return instance;
-       }
-       return null;
-   }
   /**
  * Sài cái Sửa này ae phải cho cái id của thằng instance bằng với 
  * thằng i 
@@ -51,48 +30,12 @@ public class Bus<Thing> {
  * @return void
  * @throws Exception Mô tả về các exception có thể xảy ra.
  */
-   public boolean Sua(Thing instance,int index){
-       try{
-       Thing tempObject=list.get(index);    //Object temp để lấy id phần tử ban đầu chưa update
-       list.set(index, instance);
-       Thing persistentObject=list.get(index);// Object persisted
- 
-      
-                Generic_Implement.SuaTheoID(persistentObject);
-                    
-            
+
+    public synchronized ArrayList getList(Class<Thing> instance){
+       list=new ArrayList();
+       list=Generic_BUS.getAll(instance);
        
-       }
-       catch(IndexOutOfBoundsException ioe){
-           JOptionPane.showMessageDialog(null, "Xay ra loi!", "Sua danh sach", JOptionPane.ERROR_MESSAGE);
-       }
-       return true;
-   }
-     /**
- * Sài cái Xóa này ae phải cho cái id của thằng instance bằng với 
- * thằng i 
- * Bởi vì phương thức này sẽ sử theo id của thằng truyền vào
- * Nếu ID không nằm trong ID của csdl thì nó sẽ không thực hiện
- * @param instance entity cần Xóa
- * @param
- *  index là dòng thứ bao nhiêu trên JTable nha
- *  nó tương đương với phần tử thứ bn trong ArrayList
- * @return void
- * @throws Exception Mô tả về các exception có thể xảy ra.
- */
-   public boolean Xoa(Thing instance,int index){
-     
-       list.set(index,instance);
-       try{
-
-    private Thing entity;
-    private ArrayList<Thing> list;
-
-    public synchronized ArrayList getList(Class<Thing> instance) {
-        list = new ArrayList();
-        list = Generic_BUS.getAll(instance);
-
-        return list;
+       return list;
     }
 
     public void setList(ArrayList<Thing> instance) {
@@ -131,9 +74,6 @@ public class Bus<Thing> {
         } catch (IndexOutOfBoundsException ioe) {
             JOptionPane.showMessageDialog(null, "Xay ra loi!", "Sua danh sach", JOptionPane.ERROR_MESSAGE);
 
-        }
-        catch(Exception e){
-            e.printStackTrace();
         }
         return true;
     }

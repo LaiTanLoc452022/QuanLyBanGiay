@@ -3,82 +3,43 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class SearchBarExample extends JFrame {
-    private JTextField searchField;
-    private JButton searchButton;
-    private JPopupMenu popupMenu;
+        ArrayList<ArrayList<Integer>> listOfLists = new ArrayList<>();
 
-    public SearchBarExample() {
-        setTitle("Search Bar Example");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+        // Thêm các danh sách con vào danh sách chính
+        ArrayList<Integer> list1 = new ArrayList<>();
+        list1.add(3);
+        list1.add(1);
+        list1.add(2);
+        listOfLists.add(list1);
 
-        // Tạo thanh tìm kiếm
-        searchField = new JTextField();
-        searchButton = new JButton("Search");
+        ArrayList<Integer> list2 = new ArrayList<>();
+        list2.add(6);
+        list2.add(4);
+        list2.add(5);
+        listOfLists.add(list2);
 
-        JPanel searchPanel = new JPanel(new BorderLayout());
-        searchPanel.add(searchField, BorderLayout.CENTER);
-        searchPanel.add(searchButton, BorderLayout.EAST);
+        ArrayList<Integer> list3 = new ArrayList<>();
+        list3.add(9);
+        list3.add(7);
+        list3.add(8);
+        listOfLists.add(list3);
 
-        // Tạo danh sách tìm kiếm
-        popupMenu = new JPopupMenu();
-
-        // Xử lý sự kiện tìm kiếm
-        searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                performSearch();
+        // Sắp xếp danh sách chính theo tiêu chí của danh sách con
+        Collections.sort(listOfLists, new Comparator<ArrayList<Integer>>() {
+            public int compare(ArrayList<Integer> list1, ArrayList<Integer> list2) {
+                // Ở đây, ta sắp xếp danh sách con theo thứ tự tăng dần
+                return list1.get(0).compareTo(list2.get(0));
             }
         });
 
-        searchField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                performSearch();
-            }
-        });
-
-        // Thêm các thành phần vào frame
-        add(searchPanel, BorderLayout.NORTH);
-
-        // Gắn sự kiện bấm chuột phải để hiển thị danh sách tìm kiếm
-        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                if (SwingUtilities.isRightMouseButton(evt)) {
-                    showPopupMenu();
-                }
-            }
-        });
-
-        pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
-
-    private void performSearch() {
-        String keyword = searchField.getText();
-        // Thực hiện tìm kiếm dựa trên từ khóa 'keyword' và cập nhật danh sách kết quả tìm kiếm
-        // popupMenu.removeAll();
-        // Thêm các kết quả tìm kiếm vào popupMenu
-        // ...
-
-        // Ví dụ: Tạm thời hiển thị kết quả mẫu
-        popupMenu.removeAll();
-        popupMenu.add(new JMenuItem("Result 1"));
-        popupMenu.add(new JMenuItem("Result 2"));
-        popupMenu.add(new JMenuItem("Result 3"));
-
-        // Hiển thị danh sách tìm kiếm
-        showPopupMenu();
-    }
-
-    private void showPopupMenu() {
-        popupMenu.show(searchField, 0, searchField.getHeight());
-    }
-
+        // In ra kết quả
+        for (ArrayList<Integer> list : listOfLists) {
+            System.out.println(list);
+        }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
