@@ -20,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,10 +29,12 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class NhanVien extends javax.swing.JFrame {
+
     HamCanDung Ham = new HamCanDung();
     Bus bus = new Bus();
-    ChonF cf = new ChonF(this,true);
-    static public ArrayList<Nhanvien> nv= new ArrayList();
+    ChonF cf = new ChonF(this, true);
+    static public ArrayList<Nhanvien> nv = new ArrayList();
+
     /**
      * Creates new form NhanVien
      */
@@ -39,15 +42,14 @@ public class NhanVien extends javax.swing.JFrame {
         nv = bus.getList(Nhanvien.class);
         initComponents();
     }
-    
-    public JPanel openNV(){
+
+    public JPanel openNV() {
         this.GetDataNV();
         return NhanVien;
     }
-   
 
     public void GetDataNV() {
-        
+
         DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
         RecordTable.setRowCount(0);
         for (int i = 0; i < nv.size(); ++i) {
@@ -59,7 +61,7 @@ public class NhanVien extends javax.swing.JFrame {
             rowData[4] = nv.get(i).getEmail();
             rowData[5] = nv.get(i).getLuong();
             rowData[6] = Ham.AnhToString(nv.get(i).getAnh());
-           
+
             RecordTable.addRow(rowData);
         }
     }
@@ -78,7 +80,7 @@ public class NhanVien extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableNV = new javax.swing.JTable();
         jPanel11 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        TimkiemNV = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel13 = new javax.swing.JPanel();
@@ -135,10 +137,15 @@ public class NhanVien extends javax.swing.JFrame {
 
         jPanel11.setBackground(new java.awt.Color(0, 51, 51));
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(204, 255, 204));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("TÌM KIẾM");
+        TimkiemNV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TimkiemNV.setForeground(new java.awt.Color(244, 96, 101));
+        TimkiemNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TimkiemNV.setText("TÌM KIẾM");
+        TimkiemNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TimkiemNVMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -146,14 +153,14 @@ public class NhanVien extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addComponent(TimkiemNV, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(TimkiemNV, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -162,7 +169,7 @@ public class NhanVien extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(0, 51, 51));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(204, 255, 204));
+        jLabel20.setForeground(new java.awt.Color(244, 96, 101));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("SẮP XẾP THEO");
 
@@ -189,7 +196,7 @@ public class NhanVien extends javax.swing.JFrame {
         jPanel35.setBackground(new java.awt.Color(0, 51, 51));
 
         InNV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        InNV.setForeground(new java.awt.Color(204, 255, 204));
+        InNV.setForeground(new java.awt.Color(244, 96, 101));
         InNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         InNV.setText("IN");
         InNV.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -344,7 +351,7 @@ public class NhanVien extends javax.swing.JFrame {
         jPanel36.setBackground(new java.awt.Color(0, 51, 51));
 
         UpdateNV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        UpdateNV.setForeground(new java.awt.Color(204, 255, 204));
+        UpdateNV.setForeground(new java.awt.Color(244, 96, 101));
         UpdateNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UpdateNV.setText("SỬA");
         UpdateNV.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -373,7 +380,7 @@ public class NhanVien extends javax.swing.JFrame {
         jPanel37.setBackground(new java.awt.Color(0, 51, 51));
 
         DeleteNV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        DeleteNV.setForeground(new java.awt.Color(204, 255, 204));
+        DeleteNV.setForeground(new java.awt.Color(244, 96, 101));
         DeleteNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         DeleteNV.setText("XÓA");
         DeleteNV.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -402,7 +409,7 @@ public class NhanVien extends javax.swing.JFrame {
         jPanel38.setBackground(new java.awt.Color(0, 51, 51));
 
         InsertNV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        InsertNV.setForeground(new java.awt.Color(204, 255, 204));
+        InsertNV.setForeground(new java.awt.Color(244, 96, 101));
         InsertNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         InsertNV.setText("THÊM");
         InsertNV.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -462,7 +469,7 @@ public class NhanVien extends javax.swing.JFrame {
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -471,7 +478,7 @@ public class NhanVien extends javax.swing.JFrame {
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
@@ -482,40 +489,42 @@ public class NhanVien extends javax.swing.JFrame {
                         .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(AnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
+
+        jLabel15.setBackground(new java.awt.Color(0, 51, 51));
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(244, 96, 101));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("NHÂN VIÊN");
 
         javax.swing.GroupLayout NhanVienLayout = new javax.swing.GroupLayout(NhanVien);
         NhanVien.setLayout(NhanVienLayout);
         NhanVienLayout.setHorizontalGroup(
             NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 1244, Short.MAX_VALUE)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         NhanVienLayout.setVerticalGroup(
             NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NhanVienLayout.createSequentialGroup()
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE))
         );
-
-        jLabel15.setBackground(new java.awt.Color(0, 51, 51));
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(204, 255, 204));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("NHÂN VIÊN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(NhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addComponent(NhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -533,16 +542,16 @@ public class NhanVien extends javax.swing.JFrame {
         EmailNV.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
         LuongNV.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
         //LinkAnhNV.setText(RecordTable.getValueAt(SelectedRows,6).toString());
-        try{
-            byte[] byteArray = Ham.stringToByteArray((String)RecordTable.getValueAt(SelectedRows, 6));
+        try {
+            byte[] byteArray = Ham.stringToByteArray((String) RecordTable.getValueAt(SelectedRows, 6));
             // Tạo một đối tượng ByteArrayInputStream từ mảng byte
             ByteArrayInputStream bais = new ByteArrayInputStream(byteArray);
             // Đọc hình ảnh từ ByteArrayInputStream
             BufferedImage bufferedImage = ImageIO.read(bais);
             // Chuyển đổi BufferedImage thành đối tượng Image
-            if(bufferedImage != null){
+            if (bufferedImage != null) {
                 Image image = bufferedImage.getScaledInstance(AnhNV.getWidth(), AnhNV.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon imgicon=new ImageIcon(image);
+                ImageIcon imgicon = new ImageIcon(image);
                 AnhNV.setIcon(imgicon);
             }
         } catch (IOException e) {
@@ -564,15 +573,21 @@ public class NhanVien extends javax.swing.JFrame {
             // Người dùng đã chọn một đường dẫn hợp lệ
             File selectedFile = cf.jFileChooser1.getSelectedFile();
             String filePath = selectedFile.getAbsolutePath();
+            DefaultTableModel model = (DefaultTableModel) tableNV.getModel();
+            int numberOfColumnsToShow = 5;
+            model.setColumnCount(numberOfColumnsToShow);
+            JTable tableTam = new JTable(model);
 
+            // Tạo DefaultTableModel với số cột nhất định và dữ liệu mô phỏng
             // Gọi phương thức để tạo file Excel tại đường dẫn đã chọn
-            Ham.exportToExcel(tableNV, filePath + ".xlsx");
+            Ham.exportToExcel(tableTam, filePath + ".xlsx");
 
             System.out.println("Excel file created successfully at: " + filePath + ".xlsx");
         } else {
             // Người dùng không chọn đường dẫn
             System.out.println("Creation canceled.");
         }
+        
     }//GEN-LAST:event_InNVMouseClicked
 
     private void LinkAnhNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LinkAnhNVMouseClicked
@@ -662,6 +677,32 @@ public class NhanVien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_InsertNVMouseClicked
 
+        public void GetDataNVSauKhiTimKiem(ArrayList<Nhanvien> sublistnv) {
+        DefaultTableModel RecordTable = (DefaultTableModel) tableNV.getModel();
+        RecordTable.setRowCount(0);
+        for (int i = 0; i < sublistnv.size(); ++i) {
+            Object[] rowData = new Object[7];
+            rowData[0] = sublistnv.get(i).getIdnhanVien();
+            rowData[1] = sublistnv.get(i).getHoVaTen();
+            rowData[2] = sublistnv.get(i).getSdt();
+            rowData[3] = sublistnv.get(i).getNgaySinh();
+            rowData[4] = sublistnv.get(i).getEmail();
+            rowData[5] = sublistnv.get(i).getLuong();
+            rowData[6] = Ham.AnhToString(sublistnv.get(i).getAnh());
+
+            RecordTable.addRow(rowData);
+        }
+    }
+    
+    private void TimkiemNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TimkiemNVMouseClicked
+        String condition = this.jTextField1.getText();
+       
+       ArrayList<Nhanvien> sublist=this.bus.TimKiem(condition);
+        System.out.println(bus.getList().size());
+        System.out.println(sublist.size());
+       this.GetDataNVSauKhiTimKiem(sublist);
+    }//GEN-LAST:event_TimkiemNVMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -676,16 +717,28 @@ public class NhanVien extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NhanVien.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(NhanVien.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(NhanVien.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(NhanVien.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         /* Create and display the form */
@@ -709,11 +762,11 @@ public class NhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel NhanVien;
     private javax.swing.JTextField SDTNV;
     private javax.swing.JTextField TenNV;
+    private javax.swing.JLabel TimkiemNV;
     private javax.swing.JLabel UpdateNV;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel56;

@@ -42,6 +42,14 @@ public class Sanpham implements java.io.Serializable {
 		this.chitiethoadons = chitiethoadons;
 	}
 
+   
+    public String toString(){
+        return this.idgiay+""+this.giaBan+""+this.mau+""+this.size+""+this.ten+this.vatLieu+"";
+    }
+
+
+  
+        
 	public Integer getIdgiay() {
 		return this.idgiay;
 	}

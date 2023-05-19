@@ -6,6 +6,7 @@ package GUIMAN;
 
 import BUS.Bus;
 import BUS.Generic_BUS;
+import UINam.ThongKeForm;
 import entity1.Hoadon;
 import entity1.Nhacungcap;
 import java.awt.Graphics2D;
@@ -100,6 +101,8 @@ public class HoaDon extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         jPanel39 = new javax.swing.JPanel();
         INHD = new javax.swing.JLabel();
+        jPanel40 = new javax.swing.JPanel();
+        thongKe = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1244, 650));
@@ -227,6 +230,11 @@ public class HoaDon extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(204, 255, 204));
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setText("TÌM KIẾM");
+        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel25MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -303,6 +311,35 @@ public class HoaDon extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel40.setBackground(new java.awt.Color(0, 51, 51));
+
+        thongKe.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        thongKe.setForeground(new java.awt.Color(204, 255, 204));
+        thongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        thongKe.setText("TK");
+        thongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                thongKeMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
+        jPanel40.setLayout(jPanel40Layout);
+        jPanel40Layout.setHorizontalGroup(
+            jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel40Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(thongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel40Layout.setVerticalGroup(
+            jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel40Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(thongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
@@ -325,7 +362,8 @@ public class HoaDon extends javax.swing.JFrame {
                             .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2)))
                 .addGap(16, 16, 16))
@@ -354,7 +392,9 @@ public class HoaDon extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -424,6 +464,12 @@ public class HoaDon extends javax.swing.JFrame {
         hoadon.setIdhoaDon(tmp);
         hoadon.setNgayLap(new Date());
         hoadon.setIdnhanVien(this.HD.hdvao.getIdnhanVien());
+        HD.TongTien.setText("");
+        HD.CTHDtamthoi.clear();
+        
+        
+        System.out.println("so dong trong table   "+ HD.tableCTHD.getModel().getColumnCount());
+        
         HD.openHoaDon(hoadon);
         CTHDdadong(HD);
         
@@ -437,6 +483,46 @@ public class HoaDon extends javax.swing.JFrame {
     private void tableHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHDMouseClicked
 
     }//GEN-LAST:event_tableHDMouseClicked
+
+    private void thongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongKeMouseClicked
+        // TODO add your handling code here:
+        ThongKeForm tk = new ThongKeForm();
+        tk.setLocationRelativeTo(null);
+        tk.setVisible(true);
+    }//GEN-LAST:event_thongKeMouseClicked
+
+        public void GetDataHDSauKhiTimKiem(ArrayList<Hoadon> sublisthd) {
+        Object[] rowData = null;
+
+        DefaultTableModel RecordTable = (DefaultTableModel) tableHD.getModel();
+
+        RecordTable.setRowCount(0);
+            System.out.println(sublisthd.size());
+        for (int i = 0; i < sublisthd.size(); i++) {
+            rowData = new Object[6];
+            try {
+                rowData[0] = sublisthd.get(i).getIdhoaDon();
+                rowData[1] = sublisthd.get(i).getNhacungcap().getIdnhaCungCap();
+                rowData[2] = sublisthd.get(i).getNgayLap();
+                rowData[3] = sublisthd.get(i).getIdkhachHang();
+                rowData[4] = sublisthd.get(i).getIdnhanVien();
+                rowData[5] = sublisthd.get(i).getTongTien();
+            } catch (NullPointerException nullpot) {
+                rowData[1] = "null";
+            }
+
+            RecordTable.addRow(rowData);
+        }
+
+    }
+    
+    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
+        String condition = this.jTextField2.getText();
+       
+       ArrayList<Hoadon> sublist=this.busHD.TimKiem(condition);
+        
+       this.GetDataHDSauKhiTimKiem(sublist);
+    }//GEN-LAST:event_jLabel25MouseClicked
 
     /**
      * @param args the command line arguments
@@ -491,8 +577,10 @@ public class HoaDon extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel39;
+    private javax.swing.JPanel jPanel40;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField2;
     public javax.swing.JTable tableHD;
+    private javax.swing.JLabel thongKe;
     // End of variables declaration//GEN-END:variables
 }

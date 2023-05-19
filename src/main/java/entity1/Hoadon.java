@@ -32,6 +32,10 @@ public class Hoadon implements java.io.Serializable {
         this.idnhanVien = idnhanVien;
         this.chitiethoadons = chitiethoadons;
     }
+    
+    public String toString(){
+        return this.idhoaDon + "" + this.idkhachHang + "" + this.idnhanVien +"" + this.ngayLap.toString()  + "" + this.tongTien + ""  + this.nhacungcap.getIdnhaCungCap() + "";
+    }
 
     public byte[] getQr() {
         return Qr;

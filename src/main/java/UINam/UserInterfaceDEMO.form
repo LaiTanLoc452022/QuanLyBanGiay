@@ -396,9 +396,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="background">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor" postCode="Image scaled=new javax.swing.ImageIcon(&quot;C:\\Users\\NAM\\OneDrive\\Documents\\NetBeansProjects\\QuanLyBanGiay2\\src\\main\\java\\UINam\\img\\backgr.jpg&quot;).getImage().getScaledInstance(1244, 700,Image.SCALE_SMOOTH);&#xa;background.setIcon(new javax.swing.ImageIcon(scaled));">
-              <Image iconType="2" name="C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\UINam\img\backgr.jpg"/>
-            </Property>
+            <Property name="icon" postCode="Image scaled=new javax.swing.ImageIcon(&quot;C:\\Users\\NAM\\OneDrive\\Documents\\NetBeansProjects\\QuanLyBanGiay2\\src\\main\\java\\UINam\\img\\backgr.jpg&quot;).getImage().getScaledInstance(1244, 700,Image.SCALE_SMOOTH);&#xa;background.setIcon(new javax.swing.ImageIcon(scaled));"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
@@ -411,9 +409,6 @@
               <Color blue="65" green="60" red="f4" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\NAM\OneDrive\Documents\NetBeansProjects\QuanLyBanGiay2\src\main\java\UINam\img\icons8_menu_50px.png"/>
-            </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>

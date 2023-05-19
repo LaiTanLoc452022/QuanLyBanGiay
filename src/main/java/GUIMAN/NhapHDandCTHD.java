@@ -40,7 +40,7 @@ public class NhapHDandCTHD extends JFrame {
     public Hoadon hdvao = new Hoadon();
     public Hoadon hoaDontruyenvao;
     ArrayList<Chitiethoadon> CTHD;
-    ArrayList<Chitiethoadon> CTHDtamthoi = new ArrayList();
+    public ArrayList<Chitiethoadon> CTHDtamthoi = new ArrayList();
     public Chitiethoadon cthd;//Chi tiet hoa don moi luc them
     public ArrayList<Sanpham> listSanphamCanThem = new ArrayList();
     public ArrayList<BigDecimal> listTongtien = new ArrayList();
@@ -81,9 +81,11 @@ public class NhapHDandCTHD extends JFrame {
         TenSP.setModel(comboBoxModelSP);
     }
     public  DefaultTableModel tableChiTietHoaDon;// Truyen ham nay vao de xuat hoadon
+  
     public void GetDataCTHD() {
         DefaultTableModel RecordTable = (DefaultTableModel) tableCTHD.getModel();
         RecordTable.setRowCount(0);
+        System.out.println(CTHDtamthoi.size());
         for (int i = 0; i < CTHDtamthoi.size(); ++i) {
             Object[] rowData = new Object[4];
             rowData[0] = listSanphamCanThem.get(i).getTen();
@@ -194,7 +196,6 @@ public class NhapHDandCTHD extends JFrame {
 
         TenKH.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         TenKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        TenKH.setBorder(null);
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jButton8.setText("Hủy");
@@ -240,7 +241,7 @@ public class NhapHDandCTHD extends JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(pThongTin_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(HoTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TongTien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TongTien, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                     .addGroup(pThongTin_ThongTinLayout.createSequentialGroup()
                         .addGroup(pThongTin_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TenNCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,7 +249,7 @@ public class NhapHDandCTHD extends JFrame {
                                 .addComponent(MaThe, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(TenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 15, Short.MAX_VALUE))
+                        .addGap(0, 9, Short.MAX_VALUE))
                     .addComponent(chonPhuongThucThanhToan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(52, 52, 52))
         );
@@ -504,9 +505,10 @@ public class NhapHDandCTHD extends JFrame {
         BigDecimal number = new BigDecimal(strNumber);
         this.hoaDontruyenvao.setTongTien(number);
         this.hoaDonTraVe();
+        System.out.println(CTHDtamthoi.size());
         Generic_Implement.insert(hoaDontruyenvao);
-        for (Chitiethoadon var : CTHDtamthoi) {
-            Generic_Implement.insert(var);
+        for (Chitiethoadon cthd : CTHDtamthoi) {
+            Generic_Implement.insert(cthd);
         }
         this.dispose();
         In.openInHoaDon(hoaDontruyenvao,HoTen.getText(),this.tableChiTietHoaDon);
@@ -520,7 +522,7 @@ public class NhapHDandCTHD extends JFrame {
         DefaultTableModel RecordTable = (DefaultTableModel) tableCTHD.getModel();
         RecordTable.setRowCount(0);
         this.TongTien.setText("");
-        setVisible(false);
+        
     }//GEN-LAST:event_jButton8MouseClicked
     private void InsertCTHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertCTHDMouseClicked
         try {
@@ -608,6 +610,6 @@ public class NhapHDandCTHD extends JFrame {
     private javax.swing.JLabel lblThongTin_TongTien1;
     private javax.swing.JPanel pThongTin;
     private javax.swing.JPanel pThongTin_ThongTin;
-    private javax.swing.JTable tableCTHD;
+    public javax.swing.JTable tableCTHD;
     // End of variables declaration//GEN-END:variables
 }

@@ -25,9 +25,8 @@ public class Nhanvien implements java.io.Serializable {
         
         
 
-    @Override
-    public String toString() {
-        return "Nhanvien{" + "idnhanVien=" + idnhanVien + ", hoVaTen=" + hoVaTen + ", sdt=" + sdt + ", ngaySinh=" + ngaySinh + ", email=" + email + ", luong=" + luong + '}';
+    public String toString(){
+        return this.idnhanVien + "" +  this.hoVaTen +  "" + this.email + "" + this.luong + "" + this.ngaySinh.toString() +  "" + this.sdt + "";
     }
 
    

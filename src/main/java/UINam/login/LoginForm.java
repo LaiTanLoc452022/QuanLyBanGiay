@@ -1,45 +1,59 @@
 package UINam.login;
 
+import DAO.NguoidungHome;
+import GUIMAN.DEMO;
+import static GUIMAN.Login1.nguoiDungLogin;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import entity1.Nguoidung;
 import java.awt.BorderLayout;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
 
 public class LoginForm extends javax.swing.JFrame {
-    
+
     private EmbeddedMediaPlayerComponent mediaPlayerComponent = new EmbeddedMediaPlayerComponent();
     private EmbeddedMediaPlayer mediaPlayer;
-    
+    public List<Nguoidung> list;
+    public static Nguoidung nguoiDungLogin;
+    public DEMO ui;
+
     private void addVideo() {
-        
+
         mediaPlayer = mediaPlayerComponent.mediaPlayer();
         videoPane.setLayout(new BorderLayout());
         videoPane.add(mediaPlayerComponent, BorderLayout.CENTER);
         add(videoPane, BorderLayout.CENTER);
         add(loginPanel);
-        
+
         mediaPlayer.media().play("D:\\Downloads\\ultraboost-1mfinal.mp4");
         mediaPlayer.controls().setRepeat(true);
     }
-    
+
     public LoginForm() {
+        list = NguoidungHome.getAll(Nguoidung.class);
+
         initComponents();
         addVideo();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         videoPane = new javax.swing.JPanel();
         loginPanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         usernameTF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        passwordTF = new javax.swing.JTextField();
         LoginBTN = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,6 +82,11 @@ public class LoginForm extends javax.swing.JFrame {
         loginPanel.setMinimumSize(new java.awt.Dimension(460, 790));
         loginPanel.setPreferredSize(new java.awt.Dimension(460, 790));
 
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\NAM\\OneDrive\\Máy tính\\SHOESING\\QuanLyBanGiay\\src\\main\\java\\UINam\\login\\login3.jpg")); // NOI18N
+        jLabel5.setMaximumSize(new java.awt.Dimension(460, 789));
+        jLabel5.setMinimumSize(new java.awt.Dimension(460, 789));
+        jLabel5.setPreferredSize(new java.awt.Dimension(460, 788));
+
         jPanel2.setBackground(new java.awt.Color(153, 204, 255, 175));
         jPanel2.setToolTipText("");
         jPanel2.setAlignmentX(1.0F);
@@ -86,6 +105,11 @@ public class LoginForm extends javax.swing.JFrame {
         LoginBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         LoginBTN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LoginBTN.setText("SIGN IN");
+        LoginBTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LoginBTNMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,10 +120,10 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGap(88, 88, 88)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(passwordTF, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                     .addComponent(LoginBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(usernameTF))
+                    .addComponent(usernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                    .addComponent(jPasswordField1))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -113,17 +137,11 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(LoginBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
                 .addGap(84, 84, 84))
         );
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\NAM\\OneDrive\\Documents\\NetBeansProjects\\QuanLyBanGiay2\\src\\main\\java\\UINam\\img\\login3.jpg")); // NOI18N
-        jLabel5.setText("jLabel5");
-        jLabel5.setMaximumSize(new java.awt.Dimension(460, 789));
-        jLabel5.setMinimumSize(new java.awt.Dimension(460, 789));
-        jLabel5.setPreferredSize(new java.awt.Dimension(460, 788));
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
@@ -198,6 +216,46 @@ public class LoginForm extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void LoginBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginBTNMouseClicked
+        // TODO add your handling code here:
+        boolean state = false;
+        if (!this.usernameTF.equals("")) {
+            for (Nguoidung temp : list) {
+                if (String.valueOf(jPasswordField1.getPassword()).equals(temp.getMatKhau()) && usernameTF.getText().equals(temp.getTenDangNhap())) {
+                    state = true;
+                    System.out.println("ThanhCong!");
+                    this.dispose();
+                    ui = new DEMO();
+                    this.nguoiDungLogin = temp;
+                    ui.nguoiDungLog = nguoiDungLogin;
+                    ui.setVisible(true);
+                    return;
+                } else {
+                    state = false;
+                }
+            }
+        }
+        if (state == false) {
+            // JOptionPane.showMessageDialog(null, "invalid", "NULL", JOptionPane.ERROR_MESSAGE);
+            handleLoginFailed();
+
+        }
+
+    }//GEN-LAST:event_LoginBTNMouseClicked
+    private int loginAttempts = 0;
+    private final int MAX_LOGIN_ATTEMPTS = 3;
+
+    private void handleLoginFailed() {
+        this.usernameTF.setText("");
+        loginAttempts++;
+        if (loginAttempts >= MAX_LOGIN_ATTEMPTS) {
+            JOptionPane.showMessageDialog(null, "Số lần thử đăng nhập đã vượt quá giới hạn.");
+            // Thực hiện hành động khi vượt quá giới hạn thử đăng nhập
+        } else {
+            LoginBTNMouseClicked(null);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -208,37 +266,25 @@ public class LoginForm extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                    
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel(new FlatMacLightLaf() );
+               } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginForm().setVisible(true);
-            }
-        });
+        // Rest of your application code here
+    
+    //</editor-fold>
+
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater ( new Runnable() {
+            
+
+    public void run() {
+        new LoginForm().setVisible(true);
+    }
+}
+);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LoginBTN;
@@ -248,8 +294,8 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel loginPanel;
-    private javax.swing.JTextField passwordTF;
     private javax.swing.JTextField usernameTF;
     private javax.swing.JPanel videoPane;
     // End of variables declaration//GEN-END:variables

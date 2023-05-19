@@ -548,7 +548,6 @@ public class UserInterfaceDEMO extends javax.swing.JFrame {
                 .addContainerGap(250, Short.MAX_VALUE))
         );
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\NAM\\OneDrive\\Documents\\NetBeansProjects\\QuanLyBanGiay2\\src\\main\\java\\UINam\\img\\backgr.jpg")); // NOI18N
         Image scaled=new javax.swing.ImageIcon("C:\\Users\\NAM\\OneDrive\\Documents\\NetBeansProjects\\QuanLyBanGiay2\\src\\main\\java\\UINam\\img\\backgr.jpg").getImage().getScaledInstance(1244, 700,Image.SCALE_SMOOTH);
         background.setIcon(new javax.swing.ImageIcon(scaled));
         background.setToolTipText("");
@@ -556,7 +555,6 @@ public class UserInterfaceDEMO extends javax.swing.JFrame {
         menu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         menu.setForeground(new java.awt.Color(244, 96, 101));
         menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menu.setIcon(new javax.swing.ImageIcon("C:\\Users\\NAM\\OneDrive\\Documents\\NetBeansProjects\\QuanLyBanGiay2\\src\\main\\java\\UINam\\img\\icons8_menu_50px.png")); // NOI18N
         menu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menu.setMaximumSize(new java.awt.Dimension(300, 50));
         menu.setMinimumSize(new java.awt.Dimension(300, 50));

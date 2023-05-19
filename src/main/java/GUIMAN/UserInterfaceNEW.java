@@ -2514,7 +2514,7 @@ public class UserInterfaceNEW extends javax.swing.JFrame {
             .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(containerPanelLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+                    .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 

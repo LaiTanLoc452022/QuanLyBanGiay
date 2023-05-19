@@ -91,15 +91,53 @@ public class Kho extends javax.swing.JFrame {
                 rowData[10] = "";
             }
             rowData[11] = Ham.AnhToString(sp.get(i).getAnh());
-            RecordTable.addRow(rowData);
+            
             }catch (NullPointerException npe){
                 rowData[8]="null";
                 rowData[9] = "null";
                 rowData[10] = "null";
                 rowData[11] = Ham.AnhToString(sp.get(i).getAnh());
             }
+            RecordTable.addRow(rowData);
         }
     }
+    public void GetDataSauKhiTimKiem(ArrayList<Sanpham> sublist){
+        
+        DefaultTableModel RecordTable = (DefaultTableModel) tableK.getModel();
+        RecordTable.setRowCount(0);
+        Object[] rowData=null;
+        for (int i = 0; i < sublist.size(); ++i) {
+            try{
+             rowData = new Object[12];
+            rowData[0] = sublist.get(i).getIdgiay();
+            rowData[1] = sublist.get(i).getTen();
+            rowData[2] = sublist.get(i).getSize();
+            rowData[3] = sublist.get(i).getMau();
+            rowData[4] = sublist.get(i).getVatLieu();
+            rowData[5] = sublist.get(i).getGiaBan();
+            rowData[6] = sublist.get(i).getSoluong();
+            rowData[7] = sublist.get(i).getThemMoTa();
+            rowData[8] = sublist.get(i).getPhanloai().getIdphanLoai();
+            if(checkIdphanloai(sublist.get(i).getPhanloai().getIdphanLoai())){
+                rowData[9] = listpl.get(sublist.get(i).getPhanloai().getIdphanLoai()-1).getLoai();
+                rowData[10] = listpl.get(sublist.get(i).getPhanloai().getIdphanLoai()-1).getMota();
+            }
+            else{
+                rowData[9] = "";
+                rowData[10] = "";
+            }
+            rowData[11] = Ham.AnhToString(sublist.get(i).getAnh());
+            
+            }catch (NullPointerException npe){
+                rowData[8]="null";
+                rowData[9] = "null";
+                rowData[10] = "null";
+                rowData[11] = Ham.AnhToString(sublist.get(i).getAnh());
+            }
+            RecordTable.addRow(rowData);
+        }
+    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -118,7 +156,7 @@ public class Kho extends javax.swing.JFrame {
         DeleteK = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        timKiemField = new javax.swing.JTextField();
         jComboBox5 = new javax.swing.JComboBox<>();
         jPanel25 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
@@ -152,7 +190,6 @@ public class Kho extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1244, 650));
         setMinimumSize(new java.awt.Dimension(1244, 650));
-        setPreferredSize(new java.awt.Dimension(1244, 650));
 
         Kho.setBackground(new java.awt.Color(0, 51, 51, 80));
 
@@ -281,6 +318,11 @@ public class Kho extends javax.swing.JFrame {
         jLabel31.setForeground(new java.awt.Color(204, 255, 204));
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel31.setText("TÌM KIẾM");
+        jLabel31.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel31MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -352,6 +394,7 @@ public class Kho extends javax.swing.JFrame {
 
         jLabel29.setText("LinkAnh");
 
+        LinkAnhK.setMaximumSize(new java.awt.Dimension(68, 26));
         LinkAnhK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LinkAnhKMouseClicked(evt);
@@ -396,7 +439,7 @@ public class Kho extends javax.swing.JFrame {
                             .addComponent(MoTa)
                             .addComponent(IDPL)
                             .addComponent(SoLuong, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LinkAnhK))))
+                            .addComponent(LinkAnhK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -443,7 +486,7 @@ public class Kho extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel29)
-                    .addComponent(LinkAnhK, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LinkAnhK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -492,7 +535,7 @@ public class Kho extends javax.swing.JFrame {
                     .addComponent(AnhK, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField3)
+                    .addComponent(timKiemField)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -515,7 +558,7 @@ public class Kho extends javax.swing.JFrame {
                         .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timKiemField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -531,7 +574,7 @@ public class Kho extends javax.swing.JFrame {
                         .addComponent(AnhK, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout KhoLayout = new javax.swing.GroupLayout(Kho);
@@ -609,9 +652,9 @@ public class Kho extends javax.swing.JFrame {
             Sanpham sp = new Sanpham();
             Phanloai pl = new Phanloai();
             pl = Generic_Implement.findByID(Phanloai.class, Integer.parseInt(IDPL.getText()));
-            sp.setIdgiay(Integer.parseInt(MaGiay.getText()));
             sp.setPhanloai(pl);
             sp.setTen(TenGiay.getText());
+            
             sp.setSize(Double.parseDouble(Size.getText()));
             sp.setMau(Mau.getText());
             sp.setVatLieu(VatLieu.getText());
@@ -622,6 +665,7 @@ public class Kho extends javax.swing.JFrame {
             sp.setSoluong(Double.parseDouble(SoLuong.getText()));
             sp.setThemMoTa(MoTa.getText());
 
+            
             File file = new File(LinkAnhK.getText());
             BufferedImage picture = ImageIO.read(file);
             Image image = new ImageIcon(picture).getImage();
@@ -630,7 +674,7 @@ public class Kho extends javax.swing.JFrame {
             sp.setAnh(ImageToByte.FileToByte(file));
             AnhK.setIcon(imageIcon);
             
-          //  bus.getList(Sanpham.class);
+          
             bus.Them(sp);
             this.sp=bus.getList();
             GetDataK();
@@ -718,6 +762,20 @@ public class Kho extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_InKMouseClicked
 
+    private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
+       String condition =timKiemField.getText();
+       
+       ArrayList<Sanpham> sublist=this.bus.TimKiem(condition);
+        System.out.println(bus.getList().size());
+        System.out.println(sublist.size());
+       this.GetDataSauKhiTimKiem(sublist);
+ 
+    
+           //JOptionPane.showMessageDialog(null, "Khong tim thay", "NULL", JOptionPane.ERROR_MESSAGE);
+ 
+       
+    }//GEN-LAST:event_jLabel31MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -795,7 +853,7 @@ public class Kho extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tableK;
+    private javax.swing.JTextField timKiemField;
     // End of variables declaration//GEN-END:variables
 }
