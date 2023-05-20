@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -44,6 +45,8 @@ public class NhanVien extends javax.swing.JFrame {
     }
 
     public JPanel openNV() {
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>((DefaultTableModel) tableNV.getModel());
+        tableNV.setRowSorter(sorter);
         this.GetDataNV();
         return NhanVien;
     }
@@ -698,8 +701,6 @@ public class NhanVien extends javax.swing.JFrame {
         String condition = this.jTextField1.getText();
        
        ArrayList<Nhanvien> sublist=this.bus.TimKiem(condition);
-        System.out.println(bus.getList().size());
-        System.out.println(sublist.size());
        this.GetDataNVSauKhiTimKiem(sublist);
     }//GEN-LAST:event_TimkiemNVMouseClicked
 

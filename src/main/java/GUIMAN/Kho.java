@@ -8,6 +8,7 @@ import BUS.Bus;
 import BUS.Generic_BUS;
 import BUS.ImageToByte;
 import DAO.Generic_Implement;
+import entity1.Chitiethoadon;
 import entity1.Phanloai;
 import entity1.Sanpham;
 import java.awt.Image;
@@ -24,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -36,6 +38,7 @@ public class Kho extends javax.swing.JFrame {
     ChonF cf = new ChonF(this,true);
     public static ArrayList<Sanpham> sp = Generic_BUS.getAll(Sanpham.class);
     ArrayList<Phanloai> listpl = PhanLoaiGiay.pl;
+    public NhapHDandCTHD decheck;
     /**
      * Creates new form Kho
      */
@@ -45,6 +48,8 @@ public class Kho extends javax.swing.JFrame {
     }
     
     public JPanel openK(){
+         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>((DefaultTableModel) tableK.getModel());
+        tableK.setRowSorter(sorter);
         this.GetDataK();
         return Kho;
     }
@@ -188,7 +193,6 @@ public class Kho extends javax.swing.JFrame {
         AnhK = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1244, 650));
         setMinimumSize(new java.awt.Dimension(1244, 650));
 
         Kho.setBackground(new java.awt.Color(0, 51, 51, 80));
@@ -341,7 +345,7 @@ public class Kho extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Giày", "Tên Giày", "Năm SX", "Thương Hiệu", "Giá" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Giày", "Tên Giày", "Giá" }));
 
         jPanel25.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -574,7 +578,7 @@ public class Kho extends javax.swing.JFrame {
                         .addComponent(AnhK, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout KhoLayout = new javax.swing.GroupLayout(Kho);
@@ -764,10 +768,7 @@ public class Kho extends javax.swing.JFrame {
 
     private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
        String condition =timKiemField.getText();
-       
        ArrayList<Sanpham> sublist=this.bus.TimKiem(condition);
-        System.out.println(bus.getList().size());
-        System.out.println(sublist.size());
        this.GetDataSauKhiTimKiem(sublist);
  
     

@@ -22,6 +22,10 @@ public class Phanloai implements java.io.Serializable {
 		this.mota = mota;
 		this.sanphams = sanphams;
 	}
+        
+        public String toString(){
+            return this.idphanLoai + "" + this.loai + "" + this.mota + "";
+        }
 
 	public Integer getIdphanLoai() {
 		return this.idphanLoai;

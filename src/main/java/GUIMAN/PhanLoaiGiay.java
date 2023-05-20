@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -35,6 +36,8 @@ public class PhanLoaiGiay extends javax.swing.JFrame {
     }
     
     public JPanel openPhanLoaiGiay(){
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>((DefaultTableModel) tablePhanLoai.getModel());
+        tablePhanLoai.setRowSorter(sorter);
         this.GetDataPhanLoaiGiay();
         return PhanLoaiGiay;
     }
@@ -73,7 +76,7 @@ public class PhanLoaiGiay extends javax.swing.JFrame {
         DeleteK = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jComboBox5 = new javax.swing.JComboBox<>();
         jPanel25 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
@@ -92,9 +95,7 @@ public class PhanLoaiGiay extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1244, 650));
         setMinimumSize(new java.awt.Dimension(1244, 650));
-        setPreferredSize(new java.awt.Dimension(1244, 650));
 
         PhanLoaiGiay.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -234,7 +235,7 @@ public class PhanLoaiGiay extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Giày", "Tên Giày", "Năm SX", "Thương Hiệu", "Giá" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Phân Loại", " " }));
 
         jPanel25.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -368,7 +369,7 @@ public class PhanLoaiGiay extends javax.swing.JFrame {
                     .addComponent(AnhK, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField3)
+                    .addComponent(jTextField1)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,7 +391,7 @@ public class PhanLoaiGiay extends javax.swing.JFrame {
                         .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -530,8 +531,25 @@ public class PhanLoaiGiay extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_InKMouseClicked
 
-    private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
+    public void GetDataPLSauKhiTimKiem(ArrayList<Phanloai> subListPl){
         
+        DefaultTableModel RecordTable = (DefaultTableModel) tablePhanLoai.getModel();
+        RecordTable.setRowCount(0);
+        for(int i = 0;i < subListPl.size();++i){
+            Object[] rowData = new Object[3];
+            rowData[0] = subListPl.get(i).getIdphanLoai();
+            rowData[1] = subListPl.get(i).getLoai();
+            rowData[2] = subListPl.get(i).getMota();
+            RecordTable.addRow(rowData);
+        }
+    }
+    
+    private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
+        String condition = this.jTextField1.getText();
+       
+       ArrayList<Phanloai> sublist=this.buspl.TimKiem(condition);
+        
+       this.GetDataPLSauKhiTimKiem(sublist);
     }//GEN-LAST:event_jLabel31MouseClicked
 
     public static void main(String args[]) {
@@ -594,7 +612,7 @@ public class PhanLoaiGiay extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tablePhanLoai;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,18 +10,24 @@ import DAO.Generic_Implement;
 import entity1.Khachhang;
 import entity1.The;
 import java.awt.PopupMenu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Vector;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -39,13 +45,14 @@ public class KhachHang extends javax.swing.JFrame {
      * Creates new form KhachHang
      */
     public KhachHang() {
-        
         kh = bus.getList(Khachhang.class);
         initComponents();
     }
 
     public JPanel openKH() {
         this.GetDataKH();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>((DefaultTableModel) tableKH.getModel());
+        tableKH.setRowSorter(sorter);
         return KhachHang;
     }
 
@@ -60,9 +67,9 @@ public class KhachHang extends javax.swing.JFrame {
                 return true;
             }
         }
-        return false;
+        return false; 
     }
-
+    
     public void GetDataKH() {
         System.out.println(listt.size());
         DefaultTableModel RecordTable = (DefaultTableModel) tableKH.getModel();
@@ -122,7 +129,7 @@ public class KhachHang extends javax.swing.JFrame {
         jComboBox7 = new javax.swing.JComboBox<>();
         jPanel32 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        sort = new javax.swing.JComboBox<>();
         jPanel33 = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -272,6 +279,11 @@ public class KhachHang extends javax.swing.JFrame {
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel41.setText("TÌM KIẾM");
         jLabel41.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel41MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -290,7 +302,7 @@ public class KhachHang extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã KH", "Tên KH", "Hạng", "Điểm", "Ngày tạo" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã KH", "Tên KH", "Loại", "Hệ Só" }));
 
         jPanel32.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -316,11 +328,11 @@ public class KhachHang extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TĂNG DẦN", "GIẢM DẦN" }));
-        jComboBox8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBox8.addActionListener(new java.awt.event.ActionListener() {
+        sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TĂNG DẦN", "GIẢM DẦN" }));
+        sort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        sort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox8ActionPerformed(evt);
+                sortActionPerformed(evt);
             }
         });
 
@@ -458,12 +470,6 @@ public class KhachHang extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
         jPanel27Layout.setHorizontalGroup(
@@ -487,10 +493,10 @@ public class KhachHang extends javax.swing.JFrame {
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel27Layout.createSequentialGroup()
                         .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
@@ -509,9 +515,9 @@ public class KhachHang extends javax.swing.JFrame {
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel27Layout.createSequentialGroup()
@@ -579,7 +585,7 @@ public class KhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_tableKHMouseClicked
 
     private void InsertKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertKHMouseClicked
-//        try {
+        try {
             Khachhang khachhang = new Khachhang();
             The T = new The();
             T = Generic_Implement.findByID(The.class, Integer.parseInt(MaThe.getText()));
@@ -597,9 +603,9 @@ public class KhachHang extends javax.swing.JFrame {
             this.kh = bus.getList();
             GetDataKH();
             JOptionPane.showMessageDialog(null, "Insert Successfully!");
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
-//        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Insert Unsuccessfully!");
+        }
     }//GEN-LAST:event_InsertKHMouseClicked
 
     private void UpDateKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpDateKHMouseClicked
@@ -689,9 +695,55 @@ public class KhachHang extends javax.swing.JFrame {
   
     }//GEN-LAST:event_TimKiemActionPerformed
 
-    private void jComboBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox8ActionPerformed
+    private void sortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortActionPerformed
+        
+    }//GEN-LAST:event_sortActionPerformed
+
+    public void GetDataKHSauKhiTimKiem(ArrayList<Khachhang> subListKH) {
+        DefaultTableModel RecordTable = (DefaultTableModel) tableKH.getModel();
+        RecordTable.setRowCount(0);
+        Object[] rowData = new Object[9];
+        for (int i = 0; i < subListKH.size(); ++i) {
+            try {
+                rowData = new Object[9];
+                rowData[0] = subListKH.get(i).getIdkhachHang();
+                rowData[1] = subListKH.get(i).getThe().getIdthe();
+                if (checkListIdThe(subListKH.get(i).getThe().getIdthe())) {
+                    rowData[2] = listt.get(subListKH.get(i).getThe().getIdthe() - 1).getLoai();
+                    rowData[3] = listt.get(subListKH.get(i).getThe().getIdthe() - 1).getHeSo();
+                }
+                else{
+                    rowData[2]="";
+                    rowData[3]="";
+                }
+
+                rowData[4] = subListKH.get(i).getNgayLapThe();
+                rowData[5] = subListKH.get(i).getHoVaTen();
+                rowData[6] = subListKH.get(i).getGioiTinh();
+                rowData[7] = subListKH.get(i).getNgaySinh();
+                rowData[8] = subListKH.get(i).getDiaChi();
+
+            } catch (NullPointerException  npe) {
+                rowData[1] = "";
+                rowData[2] = "";
+                rowData[3] = "";
+                rowData[4] = subListKH.get(i).getNgayLapThe();
+                rowData[5] = subListKH.get(i).getHoVaTen();
+                rowData[6] = subListKH.get(i).getGioiTinh();
+                rowData[7] = subListKH.get(i).getNgaySinh();
+                rowData[8] = subListKH.get(i).getDiaChi();
+            }
+            RecordTable.addRow(rowData);
+        }
+    }
+    
+    private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
+        String condition = this.jTextField1.getText();
+       
+       ArrayList<Khachhang> sublist=this.bus.TimKiem(condition);
+        
+       this.GetDataKHSauKhiTimKiem(sublist);
+    }//GEN-LAST:event_jLabel41MouseClicked
 
     /**
      * @param args the command line arguments
@@ -741,7 +793,6 @@ public class KhachHang extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser NgaySinh;
     private javax.swing.JLabel UpDateKH;
     private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel41;
@@ -763,6 +814,7 @@ public class KhachHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel34;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> sort;
     private javax.swing.JTable tableKH;
     // End of variables declaration//GEN-END:variables
 }

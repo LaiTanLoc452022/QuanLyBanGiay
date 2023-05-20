@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -35,6 +36,8 @@ public class NhaCungCap extends javax.swing.JFrame {
     }
     
     public JPanel openNCC(){
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>((DefaultTableModel) tableNCC.getModel());
+        tableNCC.setRowSorter(sorter);
         return NhaCungCap;
     }
 
@@ -74,7 +77,7 @@ public class NhaCungCap extends javax.swing.JFrame {
         DeleteNCC = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jComboBox5 = new javax.swing.JComboBox<>();
         jPanel25 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
@@ -219,6 +222,11 @@ public class NhaCungCap extends javax.swing.JFrame {
         jLabel31.setForeground(new java.awt.Color(204, 255, 204));
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel31.setText("TÌM KIẾM");
+        jLabel31.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel31MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -237,7 +245,7 @@ public class NhaCungCap extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Giày", "Tên Giày", "Năm SX", "Thương Hiệu", "Giá" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã NCC", "Tên" }));
 
         jPanel25.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -275,12 +283,6 @@ public class NhaCungCap extends javax.swing.JFrame {
         jLabel38.setText("thời gian");
 
         jLabel39.setText("MãNCC");
-
-        MaNCC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MaNCCActionPerformed(evt);
-            }
-        });
 
         jLabel40.setText("Tên");
 
@@ -397,7 +399,7 @@ public class NhaCungCap extends javax.swing.JFrame {
                     .addComponent(AnhK, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField3)
+                    .addComponent(jTextField1)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,7 +422,7 @@ public class NhaCungCap extends javax.swing.JFrame {
                         .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -565,9 +567,27 @@ public class NhaCungCap extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_InKMouseClicked
 
-    private void MaNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaNCCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MaNCCActionPerformed
+    public void GetDataNCCSauKhiTimKiem(ArrayList<Nhacungcap> subListNCC){
+        DefaultTableModel RecordTable = (DefaultTableModel) tableNCC.getModel();
+        RecordTable.setRowCount(0);
+        for(int i = 0;i < subListNCC.size();i++){
+            Object[] rowData = new Object[5];
+            rowData[0] = subListNCC.get(i).getIdnhaCungCap();
+            rowData[1] = subListNCC.get(i).getTen();
+            rowData[2] = subListNCC.get(i).getSdt();
+            rowData[3] = subListNCC.get(i).getEmail();
+            rowData[4] = subListNCC.get(i).getThoiGianHopTac();
+            RecordTable.addRow(rowData);
+        }
+    }
+    
+    private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
+        String condition = this.jTextField1.getText();
+       
+       ArrayList<Nhacungcap> sublist=this.busNCC.TimKiem(condition);
+        
+       this.GetDataNCCSauKhiTimKiem(sublist);
+    }//GEN-LAST:event_jLabel31MouseClicked
 
     /**
      * @param args the command line arguments
@@ -634,7 +654,7 @@ public class NhaCungCap extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField sdt;
     private javax.swing.JTable tableNCC;
     private com.toedter.calendar.JDateChooser time;

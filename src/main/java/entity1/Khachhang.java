@@ -19,10 +19,6 @@ public class Khachhang implements java.io.Serializable {
     public Khachhang() {
     }
 
- 
-    
-    
-
     public Khachhang(The the, Date ngayLapThe, String hoVaTen, String gioiTinh, Date ngaySinh, String diaChi) {
         this.the = the;
         this.ngayLapThe = ngayLapThe;
@@ -32,11 +28,9 @@ public class Khachhang implements java.io.Serializable {
         this.diaChi = diaChi;
     }
 
-    @Override
     public String toString() {
-    return "{" + idkhachHang + ", " + the.getIdthe() + ", " + ngayLapThe + ", " + hoVaTen + ", " + gioiTinh + ", " + ngaySinh + ", " + diaChi + "}";
-}
-
+        return this.idkhachHang + "" + this.the.getIdthe().toString() + "" + this.ngayLapThe.toString() + "" + this.hoVaTen + "" + this.gioiTinh + "" + this.ngaySinh.toString() + "" + this.diaChi + "";
+    }
 
     public Integer getIdkhachHang() {
         return this.idkhachHang;

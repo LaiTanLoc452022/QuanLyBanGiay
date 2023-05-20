@@ -3,9 +3,6 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1244, 650]"/>
-    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1244, 650]"/>
     </Property>
@@ -177,7 +174,7 @@
                           <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
                           <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <EmptySpace pref="53" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -409,12 +406,10 @@
             <Component class="javax.swing.JComboBox" name="jComboBox5">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
+                  <StringArray count="3">
                     <StringItem index="0" value="M&#xe3; Gi&#xe0;y"/>
                     <StringItem index="1" value="T&#xea;n Gi&#xe0;y"/>
-                    <StringItem index="2" value="N&#x103;m SX"/>
-                    <StringItem index="3" value="Th&#x1b0;&#x1a1;ng Hi&#x1ec7;u"/>
-                    <StringItem index="4" value="Gi&#xe1;"/>
+                    <StringItem index="2" value="Gi&#xe1;"/>
                   </StringArray>
                 </Property>
               </Properties>

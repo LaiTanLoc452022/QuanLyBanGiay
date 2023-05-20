@@ -22,6 +22,10 @@ public class The implements java.io.Serializable {
 		this.heSo = heSo;
 		this.khachhangs = khachhangs;
 	}
+        
+        public String toString(){
+            return this.idthe + "" +this.loai + "" + this.heSo +"";
+        }
 
 	public Integer getIdthe() {
 		return this.idthe;

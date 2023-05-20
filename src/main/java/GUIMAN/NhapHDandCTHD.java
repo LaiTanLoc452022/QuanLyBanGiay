@@ -27,31 +27,33 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class NhapHDandCTHD extends JFrame {
-
+    Bus<Sanpham> busKhachhang = new Bus();
     Bus busCTHD = new Bus();
     Bus<Chitiethoadon> busCTHDtamthoi;
     public Sanpham sp;
     InHoaDon In = new InHoaDon();
-    private ArrayList<Nhacungcap> listncc = HoaDon.ncc;
+    private ArrayList<Nhacungcap> listncc = NhaCungCap.listNCC;
     private ArrayList<The> listt = TheForm.t;
     private ArrayList<Khachhang> listkh = KhachHang.kh;
     private ArrayList<Nhanvien> listnv = NhanVien.nv;
     private ArrayList<Sanpham> listsp = Kho.sp;
     public Hoadon hdvao = new Hoadon();
     public Hoadon hoaDontruyenvao;
-    ArrayList<Chitiethoadon> CTHD;
+    public static ArrayList<Chitiethoadon> CTHD = Generic_BUS.getAll(Chitiethoadon.class);
     public ArrayList<Chitiethoadon> CTHDtamthoi = new ArrayList();
     public Chitiethoadon cthd;//Chi tiet hoa don moi luc them
     public ArrayList<Sanpham> listSanphamCanThem = new ArrayList();
     public ArrayList<BigDecimal> listTongtien = new ArrayList();
     public ArrayList<Integer> listSoLuongMua = new ArrayList();
-    public String phuongthucthanhtoan=new String();
+    public String phuongthucthanhtoan = new String();
+    
 
     /**
      * Creates new form NhapHDandCTHD
      */
     public NhapHDandCTHD() {
-        CTHD = busCTHD.getList(Chitiethoadon.class);
+        busCTHD.setList(CTHD);
+        busKhachhang.setList(listsp);
         initComponents();
     }
 
@@ -65,7 +67,7 @@ public class NhapHDandCTHD extends JFrame {
         for (The x : listt) {
             comboBoxModelThe.addElement(x.getIdthe().toString());
         }
-        
+
         MaThe.setModel(comboBoxModelThe);
         DefaultComboBoxModel<String> comboBoxModelKH = new DefaultComboBoxModel<>();
         for (Khachhang x : listkh) {
@@ -80,8 +82,8 @@ public class NhapHDandCTHD extends JFrame {
         }
         TenSP.setModel(comboBoxModelSP);
     }
-    public  DefaultTableModel tableChiTietHoaDon;// Truyen ham nay vao de xuat hoadon
-  
+    public DefaultTableModel tableChiTietHoaDon;// Truyen ham nay vao de xuat hoadon
+
     public void GetDataCTHD() {
         DefaultTableModel RecordTable = (DefaultTableModel) tableCTHD.getModel();
         RecordTable.setRowCount(0);
@@ -95,11 +97,11 @@ public class NhapHDandCTHD extends JFrame {
             rowData[3] = listTongtien.get(i);
             RecordTable.addRow(rowData);
         }
-        this.tableChiTietHoaDon=RecordTable;
+        this.tableChiTietHoaDon = RecordTable;
     }
-    
-    public void reset(){
-        
+
+    public void reset() {
+
     }
 
     public void openHoaDon(Hoadon hoadontruyentuHoaDonform) {
@@ -112,6 +114,16 @@ public class NhapHDandCTHD extends JFrame {
         setVisible(true);
     }
 
+    public boolean checkKho(Chitiethoadon cthdcheck) {
+        for (Sanpham x : listsp) {
+            if (x.getIdgiay().equals(cthdcheck.getId().getIdgiay())) {
+                if(x.getSoluong() >= cthdcheck.getId().getSoLuong()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -129,8 +141,6 @@ public class NhapHDandCTHD extends JFrame {
         TenKH = new javax.swing.JComboBox<>();
         jButton8 = new javax.swing.JButton();
         HoTen = new javax.swing.JLabel();
-        lblThongTin_TongTien1 = new javax.swing.JLabel();
-        chonPhuongThucThanhToan = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -184,11 +194,6 @@ public class NhapHDandCTHD extends JFrame {
                 InsertMouseClicked(evt);
             }
         });
-        Insert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertActionPerformed(evt);
-            }
-        });
 
         TenNCC.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         TenNCC.setMaximumRowCount(100);
@@ -209,17 +214,6 @@ public class NhapHDandCTHD extends JFrame {
         HoTen.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         HoTen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lblThongTin_TongTien1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblThongTin_TongTien1.setText("Phương thức");
-
-        chonPhuongThucThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        chonPhuongThucThanhToan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tại chỗ", "Momo" }));
-        chonPhuongThucThanhToan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chonPhuongThucThanhToanActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pThongTin_ThongTinLayout = new javax.swing.GroupLayout(pThongTin_ThongTin);
         pThongTin_ThongTin.setLayout(pThongTin_ThongTinLayout);
         pThongTin_ThongTinLayout.setHorizontalGroup(
@@ -236,9 +230,8 @@ public class NhapHDandCTHD extends JFrame {
                     .addComponent(lblThongTin_MaKH)
                     .addComponent(lblThongTin_TongTien)
                     .addComponent(lblThongTin_MaNV)
-                    .addComponent(jLabel1)
-                    .addComponent(lblThongTin_TongTien1))
-                .addGap(22, 22, 22)
+                    .addComponent(jLabel1))
+                .addGap(26, 26, 26)
                 .addGroup(pThongTin_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(HoTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(TongTien, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
@@ -249,8 +242,7 @@ public class NhapHDandCTHD extends JFrame {
                                 .addComponent(MaThe, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(TenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 9, Short.MAX_VALUE))
-                    .addComponent(chonPhuongThucThanhToan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addGap(52, 52, 52))
         );
         pThongTin_ThongTinLayout.setVerticalGroup(
@@ -273,13 +265,7 @@ public class NhapHDandCTHD extends JFrame {
                 .addGroup(pThongTin_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblThongTin_TongTien))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pThongTin_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pThongTin_ThongTinLayout.createSequentialGroup()
-                        .addComponent(chonPhuongThucThanhToan)
-                        .addGap(1, 1, 1))
-                    .addComponent(lblThongTin_TongTien1))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(pThongTin_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Insert)
                     .addComponent(jButton8))
@@ -358,11 +344,6 @@ public class NhapHDandCTHD extends JFrame {
                 "Tên SP", "SL", "Giá Bán", "T.Tiền"
             }
         ));
-        tableCTHD.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableCTHDMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tableCTHD);
 
         TenSP.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -486,6 +467,7 @@ public class NhapHDandCTHD extends JFrame {
         return this.hoaDontruyenvao;
     }
     private void InsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertMouseClicked
+        Sanpham sanphamtrura = new Sanpham();
         Nhacungcap ncc = new Nhacungcap();
         for (Nhacungcap x : listncc) {
             if (x.getTen().equals(TenNCC.getSelectedItem())) {
@@ -505,44 +487,61 @@ public class NhapHDandCTHD extends JFrame {
         BigDecimal number = new BigDecimal(strNumber);
         this.hoaDontruyenvao.setTongTien(number);
         this.hoaDonTraVe();
-        System.out.println(CTHDtamthoi.size());
         Generic_Implement.insert(hoaDontruyenvao);
         for (Chitiethoadon cthd : CTHDtamthoi) {
             Generic_Implement.insert(cthd);
+            for(int i = 0;i < listsp.size();i++){
+                if(cthd.getId().getIdgiay().equals(listsp.get(i).getIdgiay())){
+                    sanphamtrura.setIdgiay(listsp.get(i).getIdgiay());
+                    sanphamtrura.setMau(listsp.get(i).getMau());
+                    sanphamtrura.setPhanloai(listsp.get(i).getPhanloai());
+                    sanphamtrura.setSize(listsp.get(i).getSize());
+                    sanphamtrura.setVatLieu(listsp.get(i).getVatLieu());
+                    sanphamtrura.setGiaBan(listsp.get(i).getGiaBan());
+                    Double trura = listsp.get(i).getSoluong() - cthd.getId().getSoLuong();
+                    sanphamtrura.setSoluong(trura);
+                    busKhachhang.Sua(sanphamtrura, i);
+                }
+            }
         }
         this.dispose();
-        In.openInHoaDon(hoaDontruyenvao,HoTen.getText(),this.tableChiTietHoaDon);
-         
+        In.openInHoaDon(hoaDontruyenvao, HoTen.getText(), this.tableChiTietHoaDon);
+
     }//GEN-LAST:event_InsertMouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         listSanphamCanThem.clear();
         listSoLuongMua.clear();
         listTongtien.clear();
+        CTHDtamthoi.clear();
         DefaultTableModel RecordTable = (DefaultTableModel) tableCTHD.getModel();
         RecordTable.setRowCount(0);
         this.TongTien.setText("");
-        
+
     }//GEN-LAST:event_jButton8MouseClicked
     private void InsertCTHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertCTHDMouseClicked
         try {
             this.cthd = new Chitiethoadon();
             cthd.setId(new ChitiethoadonId(this.hoaDontruyenvao.getIdhoaDon(), this.sp.getIdgiay(), 0));
             cthd.getId().setSoLuong(Integer.parseInt(SoLuong.getValue().toString()));
-            int soluonggiay = Integer.parseInt(SoLuong.getValue().toString());
-            listSoLuongMua.add(soluonggiay);
-            BigDecimal tongtiencuamotdong = sp.getGiaBan().multiply(BigDecimal.valueOf(soluonggiay));
-            CTHDtamthoi.add(cthd);
-            listTongtien.add(tongtiencuamotdong);
-            BigDecimal sum = BigDecimal.ZERO;
-            for (BigDecimal x : listTongtien) {
-                sum = sum.add(x);
-            }
-            TongTien.setText(sum + "");
-            listSanphamCanThem.add(sp);
+            int soluonggiay=Integer.parseInt(SoLuong.getValue().toString());
+            if(checkKho(this.cthd)){
+                listSoLuongMua.add(soluonggiay);
+                BigDecimal tongtiencuamotdong = sp.getGiaBan().multiply(BigDecimal.valueOf(soluonggiay));
+                CTHDtamthoi.add(cthd);
+                listTongtien.add(tongtiencuamotdong);
+                BigDecimal sum = BigDecimal.ZERO;
+                for (BigDecimal x : listTongtien) {
+                    sum = sum.add(x);
+                }
+                TongTien.setText(sum + "");
+                listSanphamCanThem.add(sp);
 
-            GetDataCTHD();
-            JOptionPane.showMessageDialog(null, "Insert Successfully!");
+                GetDataCTHD();
+                JOptionPane.showMessageDialog(null, "Insert Successfully!");
+            }else{
+                JOptionPane.showMessageDialog(null, "kho thieu roi!");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Insert Error!");
         }
@@ -551,7 +550,7 @@ public class NhapHDandCTHD extends JFrame {
     private void TenSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TenSPActionPerformed
         this.sp = new Sanpham();
         for (Sanpham x : listsp) {
-            
+
             if (x.getTen().equals(TenSP.getSelectedItem().toString())) {
                 sp = x;
                 GiaBan.setText(sp.getGiaBan().toString());
@@ -560,25 +559,12 @@ public class NhapHDandCTHD extends JFrame {
         }
     }//GEN-LAST:event_TenSPActionPerformed
 
-    private void InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertActionPerformed
-
-    private void chonPhuongThucThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chonPhuongThucThanhToanActionPerformed
-        this.phuongthucthanhtoan= chonPhuongThucThanhToan.getSelectedItem().toString();
-        In.ThanhToan.setText(this.phuongthucthanhtoan);
-    }//GEN-LAST:event_chonPhuongThucThanhToanActionPerformed
-
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         int selectable = tableCTHD.getSelectedRow();
         System.out.println(selectable);
         CTHDtamthoi.remove(selectable);
         GetDataCTHD();
     }//GEN-LAST:event_jButton7MouseClicked
-    
-    private void tableCTHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCTHDMouseClicked
-        
-    }//GEN-LAST:event_tableCTHDMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField GiaBan;
@@ -592,7 +578,6 @@ public class NhapHDandCTHD extends JFrame {
     private javax.swing.JComboBox<String> TenNCC;
     private javax.swing.JComboBox<String> TenSP;
     public javax.swing.JTextField TongTien;
-    public javax.swing.JComboBox<String> chonPhuongThucThanhToan;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
@@ -607,7 +592,6 @@ public class NhapHDandCTHD extends JFrame {
     private javax.swing.JLabel lblThongTin_MaKH;
     private javax.swing.JLabel lblThongTin_MaNV;
     private javax.swing.JLabel lblThongTin_TongTien;
-    private javax.swing.JLabel lblThongTin_TongTien1;
     private javax.swing.JPanel pThongTin;
     private javax.swing.JPanel pThongTin_ThongTin;
     public javax.swing.JTable tableCTHD;
